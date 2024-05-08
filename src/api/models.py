@@ -8,7 +8,7 @@ class Vendedor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     productos = db.relationship('Producto', backref='vendedor', lazy=True)
     tiendas = db.relationship('Tienda', backref='vendedor', lazy=True)
 
@@ -26,7 +26,7 @@ class Vendedor(db.Model):
 class Tienda(db.Model):
     __tablename__ = 'tienda'
     id = db.Column(db.Integer, primary_key=True)
-    nombre_tienda = db.Column(db.String(120), unique=False, nullable=False)
+    nombre_tienda = db.Column(db.String(120), unique=True, nullable=False)
     descripcion_tienda = db.Column(db.String(500), unique=False)
     categoria_tienda = db.Column(db.String(80), unique=False, nullable=False)
     direccion_tienda = db.Column(db.String(120), unique=False, nullable=False)
