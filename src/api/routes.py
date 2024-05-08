@@ -39,7 +39,7 @@ def login():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
 
-    check_vendedor = User.query.filter_by(email=email).first()
+    check_vendedor = Vendedor.query.filter_by(email=email).first()
     print(check_vendedor)
 
     if check_vendedor is None:
