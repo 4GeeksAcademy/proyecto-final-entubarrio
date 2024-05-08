@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/navbar.css";
 
 export const Navbar = () => {
+
+	const navigate = useNavigate()
+
+
+
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary py-2 border-bottom">
 			<div className="container-fluid">
@@ -24,7 +30,9 @@ export const Navbar = () => {
 						<a className="nav-link" href="#">Productos</a>
 					</li>
 				</ul>
+				<Link to="/login">
 					<button className="Login btn btn-success me-5 my-3" type="submit"><i className="fa-solid fa-circle-user fa-fade"></i>  Iniciar sesión</button>
+				</Link>
 			</div>
 		</nav>
 	);
