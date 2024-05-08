@@ -22,10 +22,6 @@ def handle_invalid_usage(error):
 def sitemap():
     return generate_sitemap(api)
 
-# Setup the Flask-JWT-Extended extension
-api.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
-jwt = JWTManager(api)
-
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
