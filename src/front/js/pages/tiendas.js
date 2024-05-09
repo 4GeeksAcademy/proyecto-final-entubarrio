@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/tiendas.css";
 import Card from "../component/cardTienda";
+import TituloTienda from "../component/tituloTienda";
 
 export const Tiendas = () => {
 	const { store, actions } = useContext(Context);
@@ -11,8 +12,8 @@ export const Tiendas = () => {
         <div>
             <div className="title-shop">
                 <div className="text-custom-tienda">
-                <h1>Tiendas</h1>
-                <p>Descripción de la tienda seleccionada por el usuario. En esta página el usuario podra ver los detalles de la tienda</p>
+                <TituloTienda titulo="Título Tienda" 
+                texto="Aquí iría la descripción de la tienda y tal y tal"/>
                 </div>
                 
                 
