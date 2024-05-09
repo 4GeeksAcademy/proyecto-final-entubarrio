@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/inicioSesion.css";
+import "../../styles/iniciosesion.css";
 
 export const InicioSesion = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="InicioSesion  d-flex justify-content-center">
+		<div className="inicio-sesion d-flex justify-content-center">
 			<div className="LeftSide col-md-4">
 				<h1>¡Nos alegra volver a verte en tu barrio!</h1>
 			</div>
