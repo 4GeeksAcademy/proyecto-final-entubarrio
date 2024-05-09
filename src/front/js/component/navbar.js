@@ -18,10 +18,10 @@ export const Navbar = () => {
 				</button>
 				<ul className="nav justify-content-center">
 					<li className="nav-item border-end">
-						<a className="nav-link active" aria-current="page" href="#">Home</a>
+						<a className="nav-link active" aria-current="page" href="/">Home</a>
 					</li>
 					<li className="nav-item border-end">
-						<a className="nav-link" href="/demo">Nosotros</a>
+						<a className="nav-link" href="/nosotros">Nosotros</a>
 					</li>
 					<li className="nav-item border-end">
 						<a className="nav-link" href="/tiendas">Tiendas</a>
