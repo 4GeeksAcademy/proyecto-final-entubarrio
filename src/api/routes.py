@@ -50,3 +50,33 @@ def login():
 
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+
+
+
+
+
+
+
+
+
+
+@api.route("/signup", methods=["POST"])
+def signup():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+
+    
+    vendedor_exist = Vendedor.query.filter_by(email=email).first()
+    if vendedor_exist is None:
+        new_vendedor = Vendedor(
+            email=email,
+            password=password
+        )
+        db.session.add(new_vendedor)
+        db.session.commit()
+        access_token = create_access_token(identity=email)
+        return jsonify(access_token=access_token), 200
+
+    else:
+        return jsonify({"msg": "Vendedor existe"}), 400
