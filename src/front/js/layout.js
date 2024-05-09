@@ -6,11 +6,11 @@ import { BackendURL } from "./component/backendURL";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import { TiendaUsuario } from "./pages/tienda_usuario";
+
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { TiendaUsuario } from "./pages/tienda_usuario";
+/* import { TiendaUsuario } from "./pages/tienda_usuario"; */
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -35,20 +35,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
 
                         
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <Route element={<TiendaUsuario />} path="/tienda_usuario" />
+                      {/* <Route element={<TiendaUsuario />} path="/tienda_usuario" /> */}
                     </Routes>
                     <Footer />
                 </ScrollToTop>
