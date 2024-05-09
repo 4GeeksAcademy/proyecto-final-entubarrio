@@ -14,8 +14,8 @@ export const Nosotros = () => {
                 <br></br>productos únicos que hacen de nuestra comunidad un lugar especial.</p>
 
             <h2>¿Qué te ofrece En tu barrio?</h2>
-            <div className="lista-usuarios">
-            <ul>
+            <div className="lista-usuarios container px-5">
+            <ul className="Lista-propuestas" style={{ textAlign: 'left' }}>
                 <li><strong>Un centro comercial virtual para tu barrio: </strong>
                     Descubre una amplia variedad de productos y servicios a tu alcance,
                     desde tiendas de alimentación hasta librerías,
@@ -28,7 +28,8 @@ export const Nosotros = () => {
             </div>
             <h2>¿Eres un pequeño comerciante?</h2>
 
-            <p>Únete a En tu barrio y da a conocer tu negocio a miles de clientes potenciales. Crea tu perfil online de forma gratuita y empieza a vender tus productos desde hoy mismo.</p>
+            <p>Únete a En tu barrio y da a conocer tu negocio a miles de clientes potenciales. <br></br>
+            Crea tu perfil online de forma gratuita y empieza a vender tus productos desde hoy mismo.</p>
 
             <a href="/login">¡Regístrate ahora!</a>
 
@@ -37,11 +38,11 @@ export const Nosotros = () => {
 				<img src={rigoImageUrl} />
 			</p> */}
 
-            <p>
+            {/* <p>
                 <a href="/login">
                     Ahora que nos conoces ¿Te gustaría crear una cuenta?
                 </a>
-            </p>
+            </p> */}
         </div>
     );
 };
