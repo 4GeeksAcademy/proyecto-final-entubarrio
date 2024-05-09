@@ -10,7 +10,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { InicioSesion } from "./pages/iniciosesion";
-
+import { Tiendas } from "./pages/tiendas";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -34,6 +34,7 @@ const Layout = () => {
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<InicioSesion />} path="/login" />
+                        <Route element={<Tiendas />} path="/tiendas" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
