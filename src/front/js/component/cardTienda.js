@@ -2,8 +2,8 @@ import React from 'react';
 
 const CardTienda = ({ titulo, texto, boton }) => {
   return (
-    <div className="card custom-card" style={{ width: '100%', margin: '0.5rem' }}>
-      <img src="https://via.placeholder.com/500" className="card-img-top" alt="..." />
+    <div className="card custom-card" style={{ width: '50%', margin: '0.5rem' }}>
+      <img src="https://via.placeholder.com/300" className="card-img-top" alt="..." />
       <div className="card-body d-flex flex-column justify-content-between text-center">
         <h6 className="card-title">{titulo}</h6>
         <p className="card-text">{texto}</p>
