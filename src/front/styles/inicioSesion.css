@@ -1,0 +1,17 @@
+.LeftSide {
+    margin-top: 100px;
+}
+
+.card {
+    border-radius: 50px;
+}
+
+.boton {
+    background-color: #0d6efd;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: 0;
+}
