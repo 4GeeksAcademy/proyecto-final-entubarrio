@@ -10,6 +10,7 @@ import { TiendaUsuario } from "./pages/tienda_usuario";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
+import { TiendaUsuario } from "./pages/tienda_usuario";
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -33,6 +34,18 @@ const Layout = () => {
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
 
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                         <Route element={<TiendaUsuario />} path="/tienda_usuario" />
