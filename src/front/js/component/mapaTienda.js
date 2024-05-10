@@ -8,7 +8,7 @@ import React, { useEffect } from 'react';
 const MapaTienda = () => {
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap&v=weekly`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB3MYi2nqwYpjTrAl6Bu_7lNRKtczkO6pA&callback=initMap&v=weekly`;
         script.defer = true;
         script.async = true;
 
