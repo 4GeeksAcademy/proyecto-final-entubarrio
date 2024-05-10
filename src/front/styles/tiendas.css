@@ -48,17 +48,10 @@ justify-content: space-around;
  */
  #map {
     height: 100%;
+    margin: 5em;
+    
   }
-  
-  /* 
-   * Optional: Makes the sample page fill the window. 
-   */
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+ 
   
   .custom-map-control-button {
     background-color: #fff;

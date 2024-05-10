@@ -1,3 +1,8 @@
+/**
+ * license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 import React, { useEffect } from 'react';
 
 const MapaTienda = () => {
@@ -21,6 +26,12 @@ const MapaTienda = () => {
 
         // Función para inicializar el mapa
         function initMap() {
+
+/**
+ * license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
             let map, infoWindow;
 
             map = new window.google.maps.Map(document.getElementById("map"), {
