@@ -179,6 +179,7 @@ def delete_tienda(nombre_tienda):
         return jsonify({"msg":"La tienda no existe"}), 404
     else:
         del_tienda = Tienda.query.filter_by(nombre_tienda=nombre_tienda, vendedor_id=vendedor_id).first()
+        # with db.session() as session:
         if del_tienda:
             db.session.delete(del_tienda)
             db.session.commit()
