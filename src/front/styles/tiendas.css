@@ -25,3 +25,14 @@
 .card-img-top {
     min-height: 25em;
 }
+
+.custom-header {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+   
+}
+.form-select {
+
+    width: 15em;
+}

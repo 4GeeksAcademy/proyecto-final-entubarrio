@@ -5,6 +5,7 @@ import "../../styles/tiendas.css";
 import Card from "../component/cardTienda";
 import TituloTienda from "../component/tituloTienda";
 import TusProductosTienda from "../component/tusProductosTienda";
+import MapaTienda from "../component/mapaTienda";
 
 export const Tiendas = () => {
     const { store, actions } = useContext(Context);
@@ -58,8 +59,15 @@ export const Tiendas = () => {
 
 
             </div>    
+            <div className="mapa-tienda">
+                <div className="text-custom-tienda">
+                    
+                    <MapaTienda titulo="Título Tienda"
+                        descripcion="Aquí iría la descripción del mapa"
+                    />
+                </div>
         </div>
-
+        </div>
     );
 };
 
