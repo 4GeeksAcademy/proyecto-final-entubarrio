@@ -35,7 +35,7 @@ export const Navbar = () => {
 				</Link>
 			</div>
 
-			
+
 			
 			<a className="navbar-brand" href="/"><h1>En tu Barrio</h1></a>
 		</nav>
