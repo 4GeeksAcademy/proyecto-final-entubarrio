@@ -6,9 +6,12 @@
 
 
     .custom-card {
-        
+        max-width: 20em;
         border: none;
         margin: 0.5em;
+        margin-left: 5em;
+        margin-right: 5em;
+        
     
     }
     .card-img-top {

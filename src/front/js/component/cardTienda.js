@@ -5,7 +5,7 @@ const CardTienda = ({ titulo, texto, precio }) => {
   return (
 
     <div className="card custom-card mt-5">
-      <img src="https://via.placeholder.com/300" className="card-img-top" alt="placeholder" />
+      <img src="https://via.placeholder.com/200" className="card-img-top" alt="imagen ejemplo tarjeta" />
       <div className="card-body  flex-column">
         <h4 className="card-title">{titulo}</h4>
         <p className="card-text">{texto}</p>
