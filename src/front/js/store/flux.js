@@ -87,6 +87,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
+
+			logout: () => {
+				localStorage.removeItem("token")
+		 	},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
