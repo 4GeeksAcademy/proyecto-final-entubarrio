@@ -52,15 +52,6 @@ def login():
     return jsonify(access_token=access_token)
 
 
-
-
-
-
-
-
-
-
-
 @api.route("/signup", methods=["POST"])
 def signup():
     email = request.json.get("email", None)
@@ -80,3 +71,168 @@ def signup():
 
     else:
         return jsonify({"msg": "Vendedor existe"}), 400
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@api.route('/productos', methods=['GET'])
+def get_all_productos():
+
+    query_results = Producto.query.all()
+    results = list(map(lambda item: item.serialize(), query_results))
+   
+    if results == []:
+        return jsonify({"msg" : "No hay tiendas"}), 404
+
+    response_body = {
+        "msg": "Hello, this is your GET /user response ",
+        "results": results
+    }
+
+
+    return jsonify(response_body), 200
+
+@api.route('/productos/<int:producto_id>', methods=['GET'])
+def get_producto(producto_id):
+
+    producto = Producto.query.get(producto_id)
+   
+    if producto == None:
+        return jsonify({"msg" : "El producto no existe"}), 404
+
+    return jsonify(producto.serialize()), 200
+
+@api.route('/details-producto/<int:tienda_id>/<int:id>', methods=['GET'])
+def get_producto_tienda(tienda_id, id):
+
+    check_tienda_producto = Producto.query.filter_by(tienda_id=tienda_id, id=id).first()
+
+    if check_tienda_producto is None:
+        return jsonify({"msg" : "No existe este producto"}), 400
+
+    else:
+        db.session.get(check_tienda_producto)
+        db.session.commit()
+        return jsonify(check_tienda_producto.serialize()), 200
