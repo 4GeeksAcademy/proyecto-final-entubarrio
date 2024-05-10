@@ -13,8 +13,8 @@ const TusProductosTienda = () => {
                 </select>
             </div>
             <div className="custom-body">
-                {/* Aquí puedes importar y renderizar el componente de las tarjetas */}
-                {/* Ejemplo: <TusTarjetasComponente /> */}
+                
+                {/* Ejemplo: <Componente /> */}
             </div>
         </div>
     );

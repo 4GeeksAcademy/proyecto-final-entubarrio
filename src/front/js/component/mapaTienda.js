@@ -1,30 +1,26 @@
-/**
- * license
- * Copyright 2019 Google LLC. All Rights Reserved.
- * SPDX-License-Identifier: Apache-2.0
- */
+
 import React, { useEffect } from 'react';
 
 const MapaTienda = () => {
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB3MYi2nqwYpjTrAl6Bu_7lNRKtczkO6pA&callback=initMap&v=weekly`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=GOOGLENODEJAAAAA&callback=initMap&v=weekly`;
         script.defer = true;
         script.async = true;
 
         script.onload = () => {
-            // Una vez que el script se carga correctamente, se llama a la función initMap
+            
             initMap();
         };
 
         script.onerror = () => {
-            // Manejo de errores si el script no se carga correctamente
+            
             console.error('Error al cargar el script de la API de Google Maps.');
         };
 
         document.body.appendChild(script);
 
-        // Función para inicializar el mapa
+        
         function initMap() {
 
 /**
