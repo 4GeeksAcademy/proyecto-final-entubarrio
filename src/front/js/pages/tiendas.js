@@ -4,6 +4,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/tiendas.css";
 import Card from "../component/cardTienda";
 import TituloTienda from "../component/tituloTienda";
+import TusProductosTienda from "../component/tusProductosTienda";
 
 export const Tiendas = () => {
     const { store, actions } = useContext(Context);
@@ -41,9 +42,24 @@ export const Tiendas = () => {
                         <div className="card4">
                             <Card titulo="Product name 4" texto="description" precio="15€" />
                         </div>
+                        
                     </div>
                 </div>
+                
             </div>
+            
+            <div className="title-productos">
+                <div className="text-custom-tienda">
+                    
+                    <TusProductosTienda titulo="Título Tienda"
+                        descripcion="Aquí iría la descripción de la tienda y tal y tal"
+                    />
+                </div>
+
+
+            </div>    
         </div>
+
     );
 };
+
