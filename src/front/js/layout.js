@@ -13,7 +13,7 @@ import { InicioSesion } from "./pages/iniciosesion";
 import { Tiendas } from "./pages/tiendas";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import Informacion from "./component/info";
+import {Informacion} from "./component/info";
 
 //create your first component
 const Layout = () => {
