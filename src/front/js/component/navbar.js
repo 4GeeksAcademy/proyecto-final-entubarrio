@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../../styles/navbar.css";
 
+
 export const Navbar = () => {
 
 	const navigate = useNavigate()
@@ -34,10 +35,8 @@ export const Navbar = () => {
 					<button className="Login btn btn-success me-5 my-3" type="submit"><i className="fa-solid fa-circle-user fa-fade"></i>  Iniciar sesión</button>
 				</Link>
 			</div>
-
-
-			
-			<a className="navbar-brand" href="/"><h1>En tu Barrio</h1></a>
+        <a className="navbar-brand" href="/"><h1>En tu Barrio</h1></a>
 		</nav>
+
 	);
 };

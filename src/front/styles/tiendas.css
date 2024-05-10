@@ -1,0 +1,20 @@
+.text-custom-tienda {
+        margin-top: 2em;
+        text-align: center;
+        border-bottom: 1px solid rgb(202, 202, 202);
+    }
+
+
+    .custom-card {
+        max-width: 20em;
+        border: none;
+        margin: 0.5em;
+        margin-left: 5em;
+        margin-right: 5em;
+        
+    
+    }
+    .card-img-top {
+    min-height: 25em;
+
+    }

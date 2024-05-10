@@ -14,7 +14,7 @@ class Vendedor(db.Model):
 
 
     def __repr__(self):
-        return f'<Vendedor {self.id}>'
+        return f'<Vendedor {self.email}>'
 
     def serialize(self):
         return {

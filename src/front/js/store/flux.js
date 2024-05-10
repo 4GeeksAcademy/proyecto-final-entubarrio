@@ -60,6 +60,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
+			createUser: async (email, password) => {
+				try{
+				let response = await fetch(process.env.BACKEND_URL + "/api/signup", {
+					method: 'POST',
+					headers:{
+						'Content-Type':'application/json'
+					},
+					body: JSON.stringify({
+						email:email,
+						password:password
+					})
+				})
+
+				let data = await response.json()
+				if (response.status === 200) {
+					localStorage.setItem("token", data.access_token);
+					console.log(data);
+					return true;
+				}else{
+					console.log(data);
+					return false
+				}
+				} catch (error) {
+					return false;
+				}
+
+			},
+
+			logout: () => {
+				localStorage.removeItem("token")
+		 	},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
