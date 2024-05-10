@@ -6,8 +6,11 @@ import { BackendURL } from "./component/backendURL";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import { Nosotros } from "./pages/nosotros";
 import injectContext from "./store/appContext";
 
+import { InicioSesion } from "./pages/iniciosesion";
+import { Tiendas } from "./pages/tiendas";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import Informacion from "./pages/info";
@@ -28,14 +31,13 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
+                        <Route element={<Nosotros />} path="/nosotros" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<h1>Not found!</h1>} />
-                        
-
-
-
-
+                        <Route element={<h1>Not found!</h1>} />                     
+                        <Route element={<InicioSesion />} path="/login" />
+                        <Route element={<Tiendas />} path="/tiendas" />
                         <Route element={<Informacion />} path="/info" />
+
                     </Routes>
                     <Footer />
                 </ScrollToTop>
