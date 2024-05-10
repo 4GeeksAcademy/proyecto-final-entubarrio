@@ -5,21 +5,19 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const CreateUser = () => {
 
-	// const [email, setEmail] = useState("")
-    // const [password, setPassword] = useState("")
+	const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
-	// const { store, actions } = useContext(Context);
-	// const navigate = useNavigate()
+	const { store, actions } = useContext(Context);
+	const navigate = useNavigate()
 
-	// async function handleSubmit(e) {
-    //     e.preventDefault()
-    //     const isLogged = await actions.login(email, password)
-    //     if (isLogged) {
-    //         navigate("/demo");
-    //     }
-    // }
-
-    // onSubmit={handleSubmit}
+	async function handleSubmit(e) {
+        e.preventDefault()
+        const isCreated = await actions.createUser(email, password)
+        if (isCreated) {
+            navigate("/login");
+        }
+    }
 
 	return (
 		<div className="inicio-sesion d-flex justify-content-center">
@@ -29,17 +27,17 @@ export const CreateUser = () => {
 			<div className="col-md-4 m-4">
 				<div className="card p-5">
 					<div className="card-body">
-					<form>
+					<form onSubmit={handleSubmit}>
 						<div className="mb-4">
 							<h1>Crea Tu Cuenta</h1>
 						</div>
 						<div className="mb-3">
 							<label for="exampleInputEmail1" className="form-label">Email</label>
-							{/* <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@address.com" onChange={(event) => { setEmail(event.target.value) }}/> */}
+							<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@address.com" onChange={(event) => { setEmail(event.target.value) }}/>
 						</div>
 						<div className="mb-4">
 							<label for="exampleInputPassword1" className="form-label">Contraseña</label>
-							{/* <input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }}/> */}
+							<input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }}/>
 							<div className="form-text">¿Olvidaste tu contraseña?</div>
 						</div>
                         <div className="">
@@ -55,14 +53,14 @@ export const CreateUser = () => {
 								</div>
 							</div>
 						</div>
-						<button type="submit" className="boton mb-1">Iniciar sesión</button>
+						<button type="submit" className="boton mb-1">Crear Cuenta</button>
                         <div className="form-text mb-4">Creando una cuenta aceptas nuestros terminos y condiciones de uso.</div>
 						<div className="mb-3 form-check">
 							<input type="checkbox" className="form-check-input" id="exampleCheck1"/>
 							<label className="form-check-label" for="exampleCheck1">Recordarme</label>
 						</div>
 						<div className="form-text d-flex justify-content-center">¿Ya tienes una cuenta?  
-                        <Link to="/iniciosesion">Inicia sesión</Link></div>
+                        <Link to="/login">Inicia sesión</Link></div>
 						</form>
 					</div>
 				</div>

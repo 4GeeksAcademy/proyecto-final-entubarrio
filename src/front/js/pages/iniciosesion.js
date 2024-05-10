@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/iniciosesion.css";
 
 export const InicioSesion = () => {
@@ -53,12 +53,16 @@ export const InicioSesion = () => {
 							<input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }}/>
 							<div className="form-text">¿Olvidaste tu contraseña?</div>
 						</div>
-						<button type="submit" className="boton mb-4">Iniciar sesión</button>
+						<button type="submit" className="boton mb-4">Iniciar Sesión</button>
 						<div className="mb-3 form-check">
 							<input type="checkbox" className="form-check-input" id="exampleCheck1"/>
 							<label className="form-check-label" for="exampleCheck1">Recordarme</label>
 						</div>
-						<div className="form-text d-flex justify-content-center">¿No tienes cuenta? Crea una cuenta nueva</div>
+						<div className="form-text d-flex justify-content-center">¿No tienes cuenta?  
+						<Link to="/createuser">
+						Crea una cuenta nueva
+						</Link>
+						</div>
 						</form>
 					</div>
 				</div>
