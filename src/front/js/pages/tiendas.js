@@ -48,11 +48,11 @@ export const Tiendas = () => {
                 
             </div>
             
-            <div className="title-productos">
+            <div className="tus-productos">
                 <div className="text-custom-tienda">
                     
                     <TusProductosTienda titulo="Título Tienda"
-                        descripcion="Aquí iría la descripción de la tienda y tal y tal"
+                        descripcion="Aquí iría la descripción de los productos"
                     />
                 </div>
 
