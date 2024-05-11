@@ -13,7 +13,7 @@ import { InicioSesion } from "./pages/iniciosesion";
 import { Tiendas } from "./pages/tiendas";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import Informacion from "./pages/info";
+import {Informacion} from "./component/info";
 
 
 
