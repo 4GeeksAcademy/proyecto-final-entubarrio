@@ -1,26 +1,32 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
 import Informacion from "../component/info";
+import CardTienda from "../component/cardTienda";
 
 
-export const Informacion_producto = ({ productoInfo }) => {
 
-    const { store, actions } = useContext(Context)
+export const Informacionproducto = () => {
+
   
-    
-  
-    function producto() {
-     
-    }
   
     return (
-      <div className="card" style={{ width: "18rem" }}>
+      <>
+      <div className="card" >
         <div className="card-body">
           <h5 className="card-text">holeeeeee</h5>
+          <div><Informacion /></div>
+          <div>
+            <div><CardTienda /></div>
+          
+  
+          </div>
+          
+         
+          <span>esto va</span>
         
          </div>
       </div>
+      </>
     );
   };
 
