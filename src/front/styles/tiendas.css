@@ -37,6 +37,15 @@ justify-content: space-around;
     width: 15em;
 }
 
+.custom-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
