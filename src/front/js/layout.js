@@ -13,12 +13,13 @@ import { InicioSesion } from "./pages/iniciosesion";
 import { Tiendas } from "./pages/tiendas";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import Informacion from "./pages/info";
+import Informacion from "./component/info";
 
 
 
 
 import { CreateUser } from "./pages/createuser";
+import { Informacion_producto } from "./pages/infoProducto";
 
 //create your first component
 const Layout = () => {
@@ -43,6 +44,8 @@ const Layout = () => {
                         <Route element={<Tiendas />} path="/tiendas" />
                         <Route element={<CreateUser />} path="/createuser" />
                         <Route element={<Informacion />} path="/info" />
+                        <Route element={<Informacion_producto />} path="/infoProducto"/>
+
                     </Routes>
                     <Footer />
                 </ScrollToTop>
