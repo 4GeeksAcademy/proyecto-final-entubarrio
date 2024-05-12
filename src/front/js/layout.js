@@ -19,7 +19,7 @@ import Informacion from "./component/info";
 
 
 import { CreateUser } from "./pages/createuser";
-import { Informacion_producto } from "./pages/infoProducto";
+import { Informacion_producto } from "./pages/infoproducto";
 
 //create your first component
 const Layout = () => {
