@@ -5,7 +5,7 @@ import barraPan from "../../img/barra_pan.jpg";
 
 // hay que quitar de las lineas 22,30,35 el texto una ves que este la base de datos y la imagen tambien
 
-const Informacion = ({nombre,precio,informacion}) => {
+const Info = ({nombre,precio,informacion}) => {
   return (
     <>
       <div className="card mb-3">
@@ -95,4 +95,4 @@ const Informacion = ({nombre,precio,informacion}) => {
   );
 };
 
-export default Informacion;
+export default Info;

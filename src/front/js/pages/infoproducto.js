@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Informacion from "../component/info";
+import Info from "../component/info";
 // import CardTienda from "../component/cardTienda";
 import CardProductos from "../component/cardProductos";
 
 
 
-export const Informacionproducto = () => {
+export const Infoproducto = () => {
 
   
   
@@ -15,7 +15,7 @@ export const Informacionproducto = () => {
       <div className="card" >
         <div className="card-body">
           <h5 className="card-text">holeeeeee</h5>
-          <div><Informacion /></div>
+          <div><Info/></div>
           <div>
             {/* <div><CardTienda /></div> */}
             <div><CardProductos/></div>

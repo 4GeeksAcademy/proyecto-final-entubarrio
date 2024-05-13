@@ -28,14 +28,14 @@ export const Navbar = () => {
 						<a className="nav-link" href="/tiendas">Tiendas</a>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">Productos</a>
+						<a className="nav-link" href="infoproducto">Productos</a>
 					</li>
 				</ul>
 				<Link to="/login">
 					<button className="Login btn btn-success me-5 my-3" type="submit"><i className="fa-solid fa-circle-user fa-fade"></i>  Iniciar sesión</button>
 				</Link>
 			</div>
-        <a className="navbar-brand" href="/"><h1>En tu Barrio</h1></a>
+			<a className="navbar-brand" href="/"><h1>En tu Barrio</h1></a>
 		</nav>
 
 	);
