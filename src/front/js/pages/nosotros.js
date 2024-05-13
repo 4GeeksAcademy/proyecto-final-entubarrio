@@ -31,7 +31,7 @@ export const Nosotros = () => {
             <p>Únete a En tu barrio y da a conocer tu negocio a miles de clientes potenciales. <br></br>
             Crea tu perfil online de forma gratuita y empieza a vender tus productos desde hoy mismo.</p>
 
-            <a href="/login"><h4>¡Regístrate ahora!</h4></a>
+            <a href="/createuser"><h4>¡Regístrate ahora!</h4></a>
 
             <p><h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6></p>
         </div>
