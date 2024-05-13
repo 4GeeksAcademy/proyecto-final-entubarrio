@@ -216,13 +216,10 @@ def get_all_productos():
    
     if results == []:
         return jsonify({"msg" : "No hay productos"}), 404
-
     response_body = {
         "msg": "Hello, this is your GET /user response ",
         "results": results
     }
-
-
     return jsonify(response_body), 200
 
 @api.route('/productos/<int:producto_id>', methods=['GET'])
@@ -280,7 +277,8 @@ def create_new_producto():
         return jsonify({"msg": "Producto creado correctamente"}), 200
     else:
         return jsonify({"msg": "El producto ya existe"}), 400
-      
+
+  
 # #Enpoint PUT editar un Producto-----------------------------------------------------------------------------------
 @api.route("/producto/<int:producto_id>", methods=["PUT"])
 @jwt_required()
@@ -325,17 +323,4 @@ def delete_producto(producto_id):
         db.session.delete(check_producto)
         db.session.commit()
         return jsonify({"msg" : "Producto eliminado de la tienda"}), 200
-
-
-
-
-
-
-
-
-
-
-
-
-
 
