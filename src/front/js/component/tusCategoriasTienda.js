@@ -31,7 +31,7 @@ const TusCategoriasTienda = () => {
     return (
         <div className="custom-categoria-tienda">
             <div className="custom-header">
-                <h2 className="custom-titulo">Productos</h2>
+                <h2 className="custom-titulo">Selecciona Categoria</h2>
                 <select className="form-select-tienda" aria-label="Selecciona Productos" value={opcionSeleccionada} onChange={handleChange}>
                     <option value="">Selecciona</option>
                     <option value="opcion1">Opción 1</option>
