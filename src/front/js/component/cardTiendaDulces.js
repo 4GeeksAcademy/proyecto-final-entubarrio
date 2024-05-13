@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../styles/tiendas.css";
 
-const CardTienda = ({ titulo, texto, precio }) => {
+const CardDulces = ({ titulo, texto, precio }) => {
   return (
 
     <div className="card custom-card mt-5">
@@ -17,4 +17,4 @@ const CardTienda = ({ titulo, texto, precio }) => {
   );
 };
 
-export default CardTienda;
+export default CardDulces;
