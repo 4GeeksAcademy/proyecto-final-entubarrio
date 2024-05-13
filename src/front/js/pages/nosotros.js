@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const Nosotros = () => {
 
     return (
-        <div className="text-center mt-5">
+        <div className="text-center mt-5 mb-5">
             <h1>Bienvenido</h1><br></br>
             <h3>¡En tu barrio te espera un mundo de posibilidades!</h3>
 

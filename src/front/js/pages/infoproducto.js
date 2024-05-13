@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Informacion from "../component/info";
-import CardTienda from "../component/cardTienda";
+// import CardTienda from "../component/cardTienda";
 import CardProductos from "../component/cardProductos";
 
 
