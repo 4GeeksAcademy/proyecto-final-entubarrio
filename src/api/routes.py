@@ -103,8 +103,8 @@ def get_one_tienda(tienda_id):
 # @api.route('/details-tienda/<string:nombre_tienda>/<int:producto_id>', methods=['GET'])
 # def get_one_tienda_one_producto(nombre_tienda, producto_id):
 #     # this is how you can use the Family datastructure by calling its methods
-#     # tienda = Tienda.query.get(nombre_tienda)
-#     # producto = Producto.query.get(id)
+#     tienda = Tienda.query.get(nombre_tienda)
+#     producto = Producto.query.get(producto_id)
 #     check_tienda_producto = Tienda.query.filter_by(nombre_tienda=tienda, producto_id=producto, ).first()  
 
 #     if check_tienda_producto is None:
@@ -176,7 +176,7 @@ def delete_tienda(nombre_tienda):
         else:
             return jsonify({"msg":"La tienda no existe"}), 404
           
-# #Enpoint PUT añadir una Nueva Tienda-----------------------------------------------------------------------------------
+# #Enpoint PUT editar una Tienda-----------------------------------------------------------------------------------
 @api.route("/tienda/<string:nombre_tienda>", methods=["PUT"]) # ¿es necesario poner el id del vendedor?
 
 @jwt_required()
