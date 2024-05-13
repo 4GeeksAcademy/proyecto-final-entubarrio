@@ -116,20 +116,6 @@ def get_one_tienda(tienda_id):
 #         db.session.commit()
 #         return jsonify(check_tienda_producto.serialize()), 200
 
-# #Endpoint Get de una tienda un producto-------------------------------------------------------------------------------------------------   
-# @api.route('/details-producto/<int:tienda_id>/<int:id>', methods=['GET'])
-# def get_producto_tienda(tienda_id, id):
-
-#     check_tienda_producto = Producto.query.filter_by(tienda_id=tienda_id, id=id).first()
-
-#     if check_tienda_producto is None:
-#         return jsonify({"msg" : "No existe este producto"}), 400
-
-#     else:
-#         db.session.get(check_tienda_producto)
-#         db.session.commit()
-#         return jsonify(check_tienda_producto.serialize()), 200
-
 # #Enpoint POST añadir una Nueva Tienda-----------------------------------------------------------------------------------
 @api.route("/tienda", methods=["POST"]) # ¿es necesario poner el id del vendedor?
 @jwt_required()
@@ -191,35 +177,31 @@ def delete_tienda(nombre_tienda):
             return jsonify({"msg":"La tienda no existe"}), 404
 
 # #Enpoint PUT añadir una Nueva Tienda-----------------------------------------------------------------------------------
-# @api.route("/tienda", methods=["PUT"]) # ¿es necesario poner el id del vendedor?
-# @jwt_required()
-# def edit_tienda():
+@api.route("/tienda/<string:nombre_tienda>", methods=["PUT"]) # ¿es necesario poner el id del vendedor?
+@jwt_required()
+def edit_tienda(nombre_tienda):
 
-#     email = get_jwt_identity()
-#     vendedor = Vendedor.query.filter_by(email=email).first()
-#     vendedor_id=vendedor.id
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
 
-#     nombre_tienda = request.json.get("nombre_tienda", None)
-#     descripcion_tienda = request.json.get("descripcion_tienda", None)
-#     categoria_tienda = request.json.get("categoria_tienda", None)
-#     direccion_tienda = request.json.get("direccion_tienda", None)
-#     url_imagen_tienda = request.json.get("url_imagen_tienda", None)
+    nombre_tienda = request.json.get("nombre_tienda")
+    descripcion_tienda = request.json.get("descripcion_tienda")
+    categoria_tienda = request.json.get("categoria_tienda")
+    direccion_tienda = request.json.get("direccion_tienda")
+    url_imagen_tienda = request.json.get("url_imagen_tienda")
     
-#     tienda_exist = Tienda.query.filter_by(nombre_tienda=nombre_tienda).first()
+    tienda_exist = Tienda.query.filter_by(nombre_tienda=nombre_tienda, vendedor_id=vendedor_id).first()
 
-#     # poner error si el nombre ya existe
-#     if tienda_exist is None:
-#         edit_tienda = Tienda(
-#             nombre_tienda=nombre_tienda,
-#             descripcion_tienda=descripcion_tienda,
-#             categoria_tienda=categoria_tienda,
-#             direccion_tienda=direccion_tienda,
-#             url_imagen_tienda=url_imagen_tienda,
-#             vendedor_id=vendedor_id           # es necesario el id para asignar la tienda
-#         )
-#         db.session.add(edit_tienda)
-#         db.session.commit()
-#         return jsonify({"msg": "Tienda creada correctamente"}), 200
-
-#     else:
-#         return jsonify({"msg": "La tienda ya existe"}), 400
+    # poner error si el nombre ya existe
+    if tienda_exist is None:
+        return jsonify({"msg": "La tienda con el nombre especificado no existe"}), 404
+    else:
+        tienda_exist.nombre_tienda=nombre_tienda,
+        tienda_exist.descripcion_tienda=descripcion_tienda,
+        tienda_exist.categoria_tienda=categoria_tienda,
+        tienda_exist.direccion_tienda=direccion_tienda,
+        tienda_exist.url_imagen_tienda=url_imagen_tienda
+        
+        db.session.commit()
+        return jsonify({"msg": "Tienda editada correctamente"}), 200
