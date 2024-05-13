@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const Nosotros = () => {
 
     return (
-        <div className="text-center mt-5">
+        <div className="text-center mt-5 mb-5">
             <h1>Bienvenido</h1><br></br>
             <h3>¡En tu barrio te espera un mundo de posibilidades!</h3>
 
@@ -34,15 +34,6 @@ export const Nosotros = () => {
             <a href="/login"><h4>¡Regístrate ahora!</h4></a>
 
             <p><h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6></p>
-            {/* <p>
-				<img src={rigoImageUrl} />
-			</p> */}
-
-            {/* <p>
-                <a href="/login">
-                    Ahora que nos conoces ¿Te gustaría crear una cuenta?
-                </a>
-            </p> */}
         </div>
     );
 };
