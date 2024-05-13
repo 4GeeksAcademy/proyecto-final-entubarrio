@@ -1,85 +1,37 @@
-
 import React, { useEffect } from 'react';
 
 const MapaTienda = () => {
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=GOOGLENODEJAAAAA&callback=initMap&v=weekly`;
-        script.defer = true;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=maps,marker&v=beta`;
         script.async = true;
-
-        script.onload = () => {
-            
-            initMap();
-        };
-
-        script.onerror = () => {
-            
-            console.error('Error al cargar el script de la API de Google Maps.');
-        };
-
         document.body.appendChild(script);
 
-        
-        function initMap() {
-
-/**
- * license
- * Copyright 2019 Google LLC. All Rights Reserved.
- * SPDX-License-Identifier: Apache-2.0
- */
-            let map, infoWindow;
-
-            map = new window.google.maps.Map(document.getElementById("map"), {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 6,
+        const initMap = () => {
+            const map = new window.google.maps.Map(document.getElementById("map"), {
+                center: { lat: 40.378013610839844, lng: -3.7512316703796387 },
+                zoom: 14,
             });
-            infoWindow = new window.google.maps.InfoWindow();
 
-            const locationButton = document.createElement("button");
-
-            locationButton.textContent = "Pan to Current Location";
-            locationButton.classList.add("custom-map-control-button");
-            map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-            locationButton.addEventListener("click", () => {
-                // Try HTML5 geolocation.
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                            const pos = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude,
-                            };
-
-                            infoWindow.setPosition(pos);
-                            infoWindow.setContent("Location found.");
-                            infoWindow.open(map);
-                            map.setCenter(pos);
-                        },
-                        () => {
-                            handleLocationError(true, infoWindow, map.getCenter());
-                        }
-                    );
-                } else {
-                    // Browser doesn't support Geolocation
-                    handleLocationError(false, infoWindow, map.getCenter());
-                }
+            new window.google.maps.Marker({
+                position: { lat: 40.378013610839844, lng: -3.7512316703796387 },
+                map: map,
+                title: "My location"
             });
-        }
+        };
 
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(
-                browserHasGeolocation
-                    ? "Error: The Geolocation service failed."
-                    : "Error: Your browser doesn't support geolocation."
-            );
-            infoWindow.open(map);
-        }
+        window.initMap = initMap;
+
+        return () => {
+            window.initMap = null;
+        };
     }, []);
 
     return (
-        <div id="map" style={{ width: '100%', height: '400px' }}></div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <h1>Nos puedes encontrar aquí</h1>
+            <div id="map" style={{ height: "70vh", width: "90%" }}></div>
+        </div>
     );
 };
 

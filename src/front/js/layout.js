@@ -15,6 +15,8 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 // import {Informacion} from "./component/info";
 
+import Informacion from "./component/info";
+
 
 
 

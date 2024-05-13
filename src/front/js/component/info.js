@@ -48,7 +48,9 @@ const Informacion = ({nombre,precio,informacion}) => {
         </div>
       </div>
       
+
 {/*       esta es una alternativa descartada pero funcional pero es mejor la otra claro esta :)
+
 
       <div className="row mt-5">
         <div className="col-md-2">
@@ -58,6 +60,7 @@ const Informacion = ({nombre,precio,informacion}) => {
             alt="Producto"
           />
         </div>
+
 
 
         <div className="col-md-4">
