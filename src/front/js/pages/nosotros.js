@@ -6,7 +6,7 @@ export const Nosotros = () => {
 
     return (
         <div className="text-center mt-5">
-            <h1>En tu barrio</h1><br></br>
+            <h1>Bienvenido</h1><br></br>
             <h3>¡En tu barrio te espera un mundo de posibilidades!</h3>
 
             <p>¿Cansado de las grandes superficies y de la impersonalidad de las compras online? 
@@ -31,9 +31,9 @@ export const Nosotros = () => {
             <p>Únete a En tu barrio y da a conocer tu negocio a miles de clientes potenciales. <br></br>
             Crea tu perfil online de forma gratuita y empieza a vender tus productos desde hoy mismo.</p>
 
-            <a href="/login">¡Regístrate ahora!</a>
+            <a href="/login"><h4>¡Regístrate ahora!</h4></a>
 
-            <p>Juntos, podemos construir un futuro mejor para nuestros barrios.</p>
+            <p><h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6></p>
             {/* <p>
 				<img src={rigoImageUrl} />
 			</p> */}
