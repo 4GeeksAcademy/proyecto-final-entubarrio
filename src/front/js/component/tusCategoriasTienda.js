@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../../styles/tiendas.css";
 
-const TusProductosTienda = () => {
+const TusCategoriasTienda = () => {
    
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
     const [contenidoCuerpo, setContenidoCuerpo] = useState('');
@@ -29,10 +29,10 @@ const TusProductosTienda = () => {
     };
 
     return (
-        <div className="custom-productos">
+        <div className="custom-categoria-tienda">
             <div className="custom-header">
                 <h2 className="custom-titulo">Productos</h2>
-                <select className="form-select" aria-label="Selecciona Productos" value={opcionSeleccionada} onChange={handleChange}>
+                <select className="form-select-tienda" aria-label="Selecciona Productos" value={opcionSeleccionada} onChange={handleChange}>
                     <option value="">Selecciona</option>
                     <option value="opcion1">Opción 1</option>
                     <option value="opcion2">Opción 2</option>
@@ -47,4 +47,4 @@ const TusProductosTienda = () => {
     );
 };
 
-export default TusProductosTienda;
+export default TusCategoriasTienda;
