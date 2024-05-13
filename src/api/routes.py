@@ -275,7 +275,7 @@ def get_all_productos():
     results = list(map(lambda item: item.serialize(), query_results))
    
     if results == []:
-        return jsonify({"msg" : "No hay tiendas"}), 404
+        return jsonify({"msg" : "No hay productos"}), 404
 
     response_body = {
         "msg": "Hello, this is your GET /user response ",
