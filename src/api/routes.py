@@ -205,3 +205,4 @@ def edit_tienda(nombre_tienda):
         
         db.session.commit()
         return jsonify({"msg": "Tienda editada correctamente"}), 200
+
