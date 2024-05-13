@@ -13,7 +13,7 @@ import { InicioSesion } from "./pages/iniciosesion";
 import { Tiendas } from "./pages/tiendas";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-// import {Informacion} from "./component/info";
+// import {Informacion} from "./component/infoproducto";
 
 import Informacion from "./component/info";
 
@@ -44,7 +44,7 @@ const Layout = () => {
                         <Route element={<InicioSesion />} path="/login" />
                         <Route element={<Tiendas />} path="/tiendas" />
                         <Route element={<CreateUser />} path="/createuser" />
-                        {/* <Route element={<Informacion />} path="/info" /> */}
+                        {/* <Route element={<Informacion />} path=/info" /> */}
                     </Routes>
                     <Footer />
                 </ScrollToTop>
