@@ -175,9 +175,10 @@ def delete_tienda(nombre_tienda):
             return jsonify({"msg":"Tienda eliminada"}), 200
         else:
             return jsonify({"msg":"La tienda no existe"}), 404
-
+          
 # #Enpoint PUT añadir una Nueva Tienda-----------------------------------------------------------------------------------
 @api.route("/tienda/<string:nombre_tienda>", methods=["PUT"]) # ¿es necesario poner el id del vendedor?
+
 @jwt_required()
 def edit_tienda(nombre_tienda):
 
@@ -205,11 +206,14 @@ def edit_tienda(nombre_tienda):
         
         db.session.commit()
         return jsonify({"msg": "Tienda editada correctamente"}), 200
-
+      
+# #Enpoints PRODUCTOS-----------------------------------------------------------------------------------
 @api.route('/productos', methods=['GET'])
 def get_all_productos():
+
     query_results = Producto.query.all()
     results = list(map(lambda item: item.serialize(), query_results))
+   
     if results == []:
         return jsonify({"msg" : "No hay productos"}), 404
     response_body = {
@@ -217,17 +221,25 @@ def get_all_productos():
         "results": results
     }
     return jsonify(response_body), 200
+
 @api.route('/productos/<int:producto_id>', methods=['GET'])
 def get_producto(producto_id):
+
     producto = Producto.query.get(producto_id)
+   
     if producto == None:
         return jsonify({"msg" : "El producto no existe"}), 404
+
     return jsonify(producto.serialize()), 200
+
 @api.route('/details-producto/<int:tienda_id>/<int:id>', methods=['GET'])
 def get_producto_tienda(tienda_id, id):
+
     check_tienda_producto = Producto.query.filter_by(tienda_id=tienda_id, id=id).first()
+
     if check_tienda_producto is None:
         return jsonify({"msg" : "No existe este producto"}), 400
+
     else:
         db.session.get(check_tienda_producto)
         db.session.commit()
@@ -265,8 +277,9 @@ def create_new_producto():
         return jsonify({"msg": "Producto creado correctamente"}), 200
     else:
         return jsonify({"msg": "El producto ya existe"}), 400
-    
-# #Enpoint PUT añadir un Nuevo Producto-----------------------------------------------------------------------------------
+
+  
+# #Enpoint PUT editar un Producto-----------------------------------------------------------------------------------
 @api.route("/producto/<int:producto_id>", methods=["PUT"])
 @jwt_required()
 def update_producto(producto_id):
@@ -293,7 +306,6 @@ def update_producto(producto_id):
         producto_exist.url_imagen_producto=url_imagen_update
         db.session.commit()
         return jsonify({"msg": "Producto actualizado correctamente"}), 200
-    
 # #Enpoint DELETE eliminar un Producto-----------------------------------------------------------------------------------
 @api.route('/producto/<int:producto_id>', methods=['DELETE'])
 @jwt_required()
@@ -311,3 +323,4 @@ def delete_producto(producto_id):
         db.session.delete(check_producto)
         db.session.commit()
         return jsonify({"msg" : "Producto eliminado de la tienda"}), 200
+
