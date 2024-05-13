@@ -207,6 +207,21 @@ def signup():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @api.route('/productos', methods=['GET'])
 def get_all_productos():
 
@@ -280,39 +295,37 @@ def create_new_producto():
     else:
         return jsonify({"msg": "El producto ya existe"}), 400
     
-# # #Enpoint PUT editar un Producto-----------------------------------------------------------------------------------
-# @api.route("/producto/<int:producto_id>", methods=["PUT"]) # ¿es necesario poner el id del vendedor?
+# #Enpoint PUT añadir un Nuevo Producto-----------------------------------------------------------------------------------
+# @api.route("/producto/<int:producto_id>", methods=["PUT"])
 # @jwt_required()
 # def update_producto(producto_id):
 #     email = get_jwt_identity()
 #     vendedor = Vendedor.query.filter_by(email=email).first()
 #     vendedor_id=vendedor.id
-#     # Seleciono la tienda porque un vendedor puede tener varias
+#     Seleciono la tienda porque un vendedor puede tener varias
 #     tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first() 
 #     tienda_id=tienda.id
-#     nombre_producto = request.json.get("nombre_producto", None)
-#     descripcion_producto = request.json.get("descripcion_producto", None)
-#     categoria_producto = request.json.get("categoria_producto", None)
-#     precio = request.json.get("precio", None)
-#     url_imagen_producto = request.json.get("url_imagen_producto", None)
-#     producto_exist = Producto.query.filter_by(producto_id=producto_id, tienda_id=tienda_id).first()
-#     # poner error si el nombre ya existe
+#     nombre_update = request.json.get("nombre_producto", nombre_producto)
+#     descripcion_update = request.json.get("descripcion_producto", descripcion_producto)
+#     categoria_update = request.json.get("categoria_producto", categoria_producto)
+#     precio_update = request.json.get("precio", precio)
+#     url_imagen_update = request.json.get("url_imagen_producto", url_imagen_producto)
+#     producto_exist = Producto.query.get(producto_id)
+#     poner error si el nombre ya existe
 #     if producto_exist is None:
-#         producto_actualizado = Producto(
-#             nombre_producto=nombre_producto,
-#             descripcion_producto=descripcion_producto,
-#             categoria_producto=categoria_producto,
-#             precio=precio,
-#             url_imagen_producto=url_imagen_producto,
-#             vendedor_id=vendedor_id,           # es necesario el id para asignar la tienda
-#             tienda_id=tienda_id           # es necesario el id para asignar el producto a la tienda
-#         )
-       
+#         return jsonify({"msg": "El producto no existe"}), 400
+
+#     else:
+#         producto_exist.nombre_producto=nombre_update,
+#         producto_exist.descripcion_producto=descripcion_update,
+#         producto_exist.categoria_producto=categoria_update,
+#         producto_exist.precio=precio_update,
+#         producto_exist.url_imagen_producto=url_imagen_update
+
+        
+
 #         db.session.commit()
-#         return producto_schema.jsonify(producto_actualizado),200
-#         return jsonify({"msg": "Producto creado correctamente"}), 200
-    # else:
-    #     return jsonify({"msg": "El producto ya existe"}), 400
+#         return jsonify({"msg": "Producto actualizado correctamente"}), 200
 
 # #Enpoint DELETE eliminar un Producto-----------------------------------------------------------------------------------
 @api.route('/producto/<int:producto_id>', methods=['DELETE'])
