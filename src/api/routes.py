@@ -342,36 +342,36 @@ def create_new_producto():
         return jsonify({"msg": "El producto ya existe"}), 400
     
 # #Enpoint PUT añadir un Nuevo Producto-----------------------------------------------------------------------------------
-# @api.route("/producto/<int:producto_id>", methods=["PUT"])
-# @jwt_required()
-# def update_producto(producto_id):
-#     email = get_jwt_identity()
-#     vendedor = Vendedor.query.filter_by(email=email).first()
-#     vendedor_id=vendedor.id
-#     Seleciono la tienda porque un vendedor puede tener varias
-#     tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first() 
-#     tienda_id=tienda.id
-#     nombre_update = request.json.get("nombre_producto", nombre_producto)
-#     descripcion_update = request.json.get("descripcion_producto", descripcion_producto)
-#     categoria_update = request.json.get("categoria_producto", categoria_producto)
-#     precio_update = request.json.get("precio", precio)
-#     url_imagen_update = request.json.get("url_imagen_producto", url_imagen_producto)
-#     producto_exist = Producto.query.get(producto_id)
-#     poner error si el nombre ya existe
-#     if producto_exist is None:
-#         return jsonify({"msg": "El producto no existe"}), 400
+@api.route("/producto/<int:producto_id>", methods=["PUT"])
+@jwt_required()
+def update_producto(producto_id):
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
+    # # Seleciono la tienda porque un vendedor puede tener varias
+    # tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first() 
+    # tienda_id=tienda.id
+    nombre_update = request.json.get("nombre_producto")
+    descripcion_update = request.json.get("descripcion_producto")
+    categoria_update = request.json.get("categoria_producto")
+    precio_update = request.json.get("precio")
+    url_imagen_update = request.json.get("url_imagen_producto")
+    producto_exist = Producto.query.filter_by(id=producto_id, vendedor_id=vendedor_id).first()
+    # poner error si el nombre ya existe
+    if producto_exist is None:
+        return jsonify({"msg": "El producto no existe"}), 400
 
-#     else:
-#         producto_exist.nombre_producto=nombre_update,
-#         producto_exist.descripcion_producto=descripcion_update,
-#         producto_exist.categoria_producto=categoria_update,
-#         producto_exist.precio=precio_update,
-#         producto_exist.url_imagen_producto=url_imagen_update
+    else:
+        producto_exist.nombre_producto=nombre_update,
+        producto_exist.descripcion_producto=descripcion_update,
+        producto_exist.categoria_producto=categoria_update,
+        producto_exist.precio=precio_update,
+        producto_exist.url_imagen_producto=url_imagen_update
 
         
 
-#         db.session.commit()
-#         return jsonify({"msg": "Producto actualizado correctamente"}), 200
+        db.session.commit()
+        return jsonify({"msg": "Producto actualizado correctamente"}), 200
 
 # #Enpoint DELETE eliminar un Producto-----------------------------------------------------------------------------------
 @api.route('/producto/<int:producto_id>', methods=['DELETE'])
