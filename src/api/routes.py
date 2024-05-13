@@ -65,7 +65,7 @@ def login():
 def signup():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-
+    print(email, password)
     
     vendedor_exist = Vendedor.query.filter_by(email=email).first()
     if vendedor_exist is None:
