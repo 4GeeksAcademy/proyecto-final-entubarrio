@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Informacion from "../component/info";
 import CardTienda from "../component/cardTienda";
+import CardProductos from "../component/cardProductos";
 
 
 
@@ -16,13 +17,17 @@ export const Informacionproducto = () => {
           <h5 className="card-text">holeeeeee</h5>
           <div><Informacion /></div>
           <div>
-            <div><CardTienda /></div>
+            {/* <div><CardTienda /></div> */}
+            <div><CardProductos/></div>
+            <div><h2>las reviews van es esta linea</h2> </div>
+
+           
           
   
           </div>
           
          
-          <span>esto va</span>
+          
         
          </div>
       </div>
