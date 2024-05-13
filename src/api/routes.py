@@ -206,3 +206,110 @@ def edit_tienda(nombre_tienda):
         db.session.commit()
         return jsonify({"msg": "Tienda editada correctamente"}), 200
 
+@api.route('/productos', methods=['GET'])
+def get_all_productos():
+    query_results = Producto.query.all()
+    results = list(map(lambda item: item.serialize(), query_results))
+    if results == []:
+        return jsonify({"msg" : "No hay productos"}), 404
+    response_body = {
+        "msg": "Hello, this is your GET /user response ",
+        "results": results
+    }
+    return jsonify(response_body), 200
+
+@api.route('/productos/<int:producto_id>', methods=['GET'])
+def get_producto(producto_id):
+    producto = Producto.query.get(producto_id)
+    if producto == None:
+        return jsonify({"msg" : "El producto no existe"}), 404
+    return jsonify(producto.serialize()), 200
+
+@api.route('/details-producto/<int:tienda_id>/<int:id>', methods=['GET'])
+def get_producto_tienda(tienda_id, id):
+    check_tienda_producto = Producto.query.filter_by(tienda_id=tienda_id, id=id).first()
+    if check_tienda_producto is None:
+        return jsonify({"msg" : "No existe este producto"}), 400
+    else:
+        db.session.get(check_tienda_producto)
+        db.session.commit()
+        return jsonify(check_tienda_producto.serialize()), 200
+    
+# #Enpoint POST añadir un Nuevo Producto-----------------------------------------------------------------------------------
+@api.route("/producto", methods=["POST"]) # ¿es necesario poner el id del vendedor?
+@jwt_required()
+def create_new_producto():
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
+    # Seleciono la tienda porque un vendedor puede tener varias
+    tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first()
+    tienda_id=tienda.id
+    nombre_producto = request.json.get("nombre_producto", None)
+    descripcion_producto = request.json.get("descripcion_producto", None)
+    categoria_producto = request.json.get("categoria_producto", None)
+    precio = request.json.get("precio", None)
+    url_imagen_producto = request.json.get("url_imagen_producto", None)
+    producto_exist = Producto.query.filter_by(nombre_producto=nombre_producto, tienda_id=tienda_id).first()
+    # poner error si el nombre ya existe
+    if producto_exist is None:
+        new_producto = Producto(
+            nombre_producto=nombre_producto,
+            descripcion_producto=descripcion_producto,
+            categoria_producto=categoria_producto,
+            precio=precio,
+            url_imagen_producto=url_imagen_producto,
+            vendedor_id=vendedor_id,           # es necesario el id para asignar la tienda
+            tienda_id=tienda_id           # es necesario el id para asignar el producto a la tienda
+        )
+        db.session.add(new_producto)
+        db.session.commit()
+        return jsonify({"msg": "Producto creado correctamente"}), 200
+    else:
+        return jsonify({"msg": "El producto ya existe"}), 400
+    
+# #Enpoint PUT añadir un Nuevo Producto-----------------------------------------------------------------------------------
+@api.route("/producto/<int:producto_id>", methods=["PUT"])
+@jwt_required()
+def update_producto(producto_id):
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
+    # # Seleciono la tienda porque un vendedor puede tener varias
+    # tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first()
+    # tienda_id=tienda.id
+    nombre_update = request.json.get("nombre_producto")
+    descripcion_update = request.json.get("descripcion_producto")
+    categoria_update = request.json.get("categoria_producto")
+    precio_update = request.json.get("precio")
+    url_imagen_update = request.json.get("url_imagen_producto")
+    producto_exist = Producto.query.filter_by(id=producto_id, vendedor_id=vendedor_id).first()
+    # poner error si el nombre ya existe
+    if producto_exist is None:
+        return jsonify({"msg": "El producto no existe"}), 400
+    else:
+        producto_exist.nombre_producto=nombre_update,
+        producto_exist.descripcion_producto=descripcion_update,
+        producto_exist.categoria_producto=categoria_update,
+        producto_exist.precio=precio_update,
+        producto_exist.url_imagen_producto=url_imagen_update
+        db.session.commit()
+        return jsonify({"msg": "Producto actualizado correctamente"}), 200
+    
+# #Enpoint DELETE eliminar un Producto-----------------------------------------------------------------------------------
+@api.route('/producto/<int:producto_id>', methods=['DELETE'])
+@jwt_required()
+def delete_producto(producto_id):
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
+    # Seleciono la tienda porque un vendedor puede tener varias
+    tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first()
+    tienda_id=tienda.id
+    check_producto = Producto.query.filter_by(id=producto_id, tienda_id=tienda_id, vendedor_id=vendedor_id).first()
+    if check_producto is None:
+        return jsonify({"msg" : "El producto no existe en esta tienda"}), 404
+    else:
+        db.session.delete(check_producto)
+        db.session.commit()
+        return jsonify({"msg" : "Producto eliminado de la tienda"}), 200
