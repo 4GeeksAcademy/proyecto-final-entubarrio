@@ -17,7 +17,7 @@ import {Infoproducto} from "./pages/infoproducto";
 
 /* import Informacion from "./component/info"; AJUSTADO LAYOUT DE ADRI */
 
-
+import { Productos } from "./pages/productos";
 
 
 import { CreateUser } from "./pages/createuser";
@@ -44,7 +44,8 @@ const Layout = () => {
                         <Route element={<InicioSesion />} path="/login" />
                         <Route element={<Tiendas />} path="/tiendas" />
                         <Route element={<CreateUser />} path="/createuser" />
-                        <Route element={<Infoproducto />} path="/infoproducto" /> 
+                        <Route element={<Infoproducto />} path="/infoproducto" />
+                        <Route element={<Productos />} path="/productos" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
