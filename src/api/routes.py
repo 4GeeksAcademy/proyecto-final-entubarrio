@@ -206,7 +206,6 @@ def edit_tienda(nombre_tienda):
         db.session.commit()
         return jsonify({"msg": "Tienda editada correctamente"}), 200
 
-# Endpoint (Todas los productos)-------------------------------------------------------------------------------------------------
 @api.route('/productos', methods=['GET'])
 def get_all_productos():
     query_results = Producto.query.all()
@@ -233,6 +232,7 @@ def get_producto_tienda(tienda_id, id):
         db.session.get(check_tienda_producto)
         db.session.commit()
         return jsonify(check_tienda_producto.serialize()), 200
+    
 # #Enpoint POST añadir un Nuevo Producto-----------------------------------------------------------------------------------
 @api.route("/producto", methods=["POST"]) # ¿es necesario poner el id del vendedor?
 @jwt_required()
@@ -265,6 +265,7 @@ def create_new_producto():
         return jsonify({"msg": "Producto creado correctamente"}), 200
     else:
         return jsonify({"msg": "El producto ya existe"}), 400
+    
 # #Enpoint PUT añadir un Nuevo Producto-----------------------------------------------------------------------------------
 @api.route("/producto/<int:producto_id>", methods=["PUT"])
 @jwt_required()
@@ -292,6 +293,7 @@ def update_producto(producto_id):
         producto_exist.url_imagen_producto=url_imagen_update
         db.session.commit()
         return jsonify({"msg": "Producto actualizado correctamente"}), 200
+    
 # #Enpoint DELETE eliminar un Producto-----------------------------------------------------------------------------------
 @api.route('/producto/<int:producto_id>', methods=['DELETE'])
 @jwt_required()
