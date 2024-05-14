@@ -3,6 +3,7 @@ import "../../styles/tiendas.css";
 import CardPan from "./cardTiendaPan";
 import CardDulces from "./cardTiendaDulces";
 import Info from './info';
+import Info2 from './info2';
 
 const TusCategoriasTienda = () => {
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
@@ -34,7 +35,7 @@ const TusCategoriasTienda = () => {
                 )}
                 {opcionSeleccionada === 'opcion2' && (
                     <>
-                        <CardDulces titulo="Dulce 1" texto="description" precio="15€" />
+                        <Info2 titulo="Dulce 1" texto="description" precio="15€" />
                         <CardDulces titulo="Dulce 2" texto="description" precio="16€" />
                         <CardDulces titulo="Dulce 3" texto="description" precio="17€" />
                         <CardDulces titulo="Dulce 4" texto="description" precio="18€" />
