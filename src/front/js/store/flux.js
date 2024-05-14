@@ -13,12 +13,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			tiendas: [],
+			productos: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-
-			
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
@@ -106,71 +106,73 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
-		},
-	
+			},
 //LINEAS RESERVADAS ALVARO
-/* getTiendaId: async (tiendaId) => {
-    try {
-        
-        const resp = await fetch(process.env.BACKEND_URL + "/tienda/<int:tienda_id>");
-        const data = await resp.json();
-        console.log("Datos de la API:", data);
-        return data;
-    } catch (error) {
-        console.error("Error loading message from backend", error);
-        
-    }
-},  */
 
-};
-};
-
-
-
-
-
-
-
+		/* getTiendaById: async (tiendaId) => {
+			try {
+				const response = await fetch(`${process.env.BACKEND_URL}/api/tienda/${tiendaId}`);
+				if (response.ok) {
+					const data = await response.json();
+					// Actualiza el estado con los datos de la tienda obtenida
+					// Asumiendo que la respuesta contiene una propiedad 'tienda'
+					setStore({ tienda: data.tienda });
+					return true;
+				} else {
+					console.error("Error al obtener la tienda:", response.statusText);
+					return false;
+				}
+			} catch (error) {
+				console.error("Error al procesar la solicitud:", error);
+				return false;
+			}
+		}
+ */
 
 
+			getTiendas: async () => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/tiendas", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({tiendas:data.result})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			getProductos: async () => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({productos:data.results})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
 
 
@@ -320,8 +322,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-
-
-
+		},
+	};
+};		
 
 export default getState;
