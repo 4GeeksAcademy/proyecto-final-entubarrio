@@ -108,26 +108,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	};
 //LINEAS RESERVADAS ALVARO
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//};
+		/* getTiendaById: async (tiendaId) => {
+			try {
+				const response = await fetch(`${process.env.BACKEND_URL}/api/tienda/${tiendaId}`);
+				if (response.ok) {
+					const data = await response.json();
+					// Actualiza el estado con los datos de la tienda obtenida
+					// Asumiendo que la respuesta contiene una propiedad 'tienda'
+					setStore({ tienda: data.tienda });
+					return true;
+				} else {
+					console.error("Error al obtener la tienda:", response.statusText);
+					return false;
+				}
+			} catch (error) {
+				console.error("Error al procesar la solicitud:", error);
+				return false;
+			}
+		}
+ */
 
 
 
@@ -198,6 +198,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 //LINEAS RESERVADAS ADRIAN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
