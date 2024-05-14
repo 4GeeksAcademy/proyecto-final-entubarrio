@@ -15,7 +15,7 @@ export const InicioSesion = () => {
         e.preventDefault()
         const isLogged = await actions.login(email, password)
         if (isLogged) {
-            navigate("/demo");
+            navigate("/vendedor");
         }
     }
 
