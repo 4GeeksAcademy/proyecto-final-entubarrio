@@ -48,6 +48,9 @@ const Layout = () => {
                         <Route element={<Infoproducto />} path="/infoproducto" /> 
 
 
+                        
+                        
+                        
                         <Route element={<AgregarTienda />} path="/agregartienda" /> 
                     </Routes>
                     <Footer />
