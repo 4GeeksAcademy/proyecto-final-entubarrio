@@ -2,6 +2,8 @@ import React, { useContext, useEffect} from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import "../../styles/home.css";
+import { TodosProductos } from "../component/cardTodosProductos";
+import { TodasTiendas } from "../component/cardTodasTiendas";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -28,7 +30,12 @@ export const Home = () => {
 			<h2>Seleccion de Tiendas</h2>
 			<p>Aqui podras encontrar una variedad de tiendas de tu barrio</p>
 			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
+				{store.tiendas.map((tienda) =>{
+					return (
+						<TodasTiendas nombre_tienda = {tienda.nombre_tienda} id ={tienda.id} url_imagen_tienda={tienda.url_imagen_tienda} descripcion_tienda={tienda.descripcion_tienda} />
+					)
+				})}
+				{/* <div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
 				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
 					<div className="absolute bottom-0 left-0 right-0 p-2">
 						<h3 className="text-black text-sm font-bold">Fruteria Juani</h3>
@@ -55,7 +62,7 @@ export const Home = () => {
 						<h3 className="text-black text-sm font-bold">Pasteles Goloso</h3>
 						<p className="text-black text-xs">Dulces y tartas</p>
 					</div>
-				</div>
+				</div> */}
 			</div>
 			<h2>Seleccion de Productos</h2>
 			<p>Aqui podras encontrar una variedad de productos de tu barrio</p>
