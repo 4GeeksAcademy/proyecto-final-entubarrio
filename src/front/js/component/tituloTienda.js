@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Context } from '../store/appContext'; // Importa el contexto
+import { Context } from '../store/appContext'; 
 
 const TituloTienda = () => {
-    const { store, actions } = useContext(Context); // Obtiene el store y las acciones del contexto
+    const { store, actions } = useContext(Context); 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        actions.getMessage(); // Llama a la acción getMessage cuando el componente se monta
+        actions.getMessage(); 
     }, [actions]);
 
     useEffect(() => {
-        // Establece loading a false cuando el mensaje se ha cargado en el store
+        
         if (store.message !== null) {
             setLoading(false);
         }
@@ -23,6 +23,7 @@ const TituloTienda = () => {
             ) : (
                 <div className="card-body d-flex flex-column justify-content-between text-center">
                     <h3 className="tienda-title mb-4">{store.message}</h3>
+                    <p className="tienda-descripcion mb-4">{store.message}</p>
                 </div>
             )}
         </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../../styles/tiendas.css";
 import CardPan from "./cardTiendaPan";
 import CardDulces from "./cardTiendaDulces";
+import Info from './info';
 
 const TusCategoriasTienda = () => {
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
@@ -25,10 +26,10 @@ const TusCategoriasTienda = () => {
                 {/* Mostrar las tarjetas correspondientes a la opción seleccionada */}
                 {opcionSeleccionada === 'opcion1' && (
                     <>
-                        <CardPan titulo="Pan 1" texto="description" precio="12€" />
-                        <CardPan titulo="Pan 2" texto="description" precio="13€" />
-                        <CardPan titulo="Pan 3" texto="description" precio="14€" />
-                        <CardPan titulo="Pan 4" texto="description" precio="15€" />
+                        <Info titulo="Pan 1" texto="description" precio="12€" />
+                        <Info titulo="Pan 2" texto="description" precio="13€" />
+                        <Info titulo="Pan 3" texto="description" precio="14€" />
+                        <Info titulo="Pan 4" texto="description" precio="15€" />
                     </>
                 )}
                 {opcionSeleccionada === 'opcion2' && (
