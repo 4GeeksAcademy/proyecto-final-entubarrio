@@ -37,7 +37,7 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
-                        <Route element={<Home />} path="/" />
+                    <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Nosotros />} path="/nosotros" />
                         <Route element={<Single />} path="/single/:theid" />
@@ -45,12 +45,9 @@ const Layout = () => {
                         <Route element={<InicioSesion />} path="/login" />
                         <Route element={<Tiendas />} path="/tiendas" />
                         <Route element={<CreateUser />} path="/createuser" />
-                        <Route element={<Infoproducto />} path="/infoproducto" /> 
-
-
-                        
-                        
-                        
+                        <Route element={<Infoproducto />} path="/infoproducto" />
+                        <Route element={<Productos />} path="/productos" />
+                        <Route element={<Vendedor />} path="/vendedor" />
                         <Route element={<AgregarTienda />} path="/agregartienda" /> 
                     </Routes>
                     <Footer />
