@@ -19,7 +19,7 @@ const Info2 = ({nombre,precio,informacion}) => {
           </div>
           <div className="col-md-4">
             <div className="card-body">
-              <h2 className="card-title">Un tipo de verdura{nombre}</h2> 
+              <h2 className="card-title">Un tipo de verdura molona{nombre}</h2> 
               <p className="card-text">
                 <small className="text-body-secondary">
                   las reviews que tiene esto es un extra
