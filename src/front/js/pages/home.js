@@ -1,10 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect} from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import "../../styles/home.css";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+    
+	useEffect(()=>{
+		actions.getTiendas()
+		actions.getProductos()
+
+
+	},[]);
+	console.log(store.productos);
+
 
 	return (
 		<div className="text-center mt-0">
