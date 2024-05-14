@@ -16,7 +16,7 @@ export const Tiendas = () => {
             <div className="title-shop">
                 <div className="text-custom-tienda">
 
-                    <TituloTienda titulo="Título Tienda"
+                <TituloTienda tiendaId={1}
                         descripcion="Aquí iría la descripción de la tienda y tal y tal"
                     />
                 </div>

@@ -17,6 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+
+			
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
@@ -105,29 +107,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			}
-		}
-	};
+		},
+	
 //LINEAS RESERVADAS ALVARO
-//};
-		/* getTiendaById: async (tiendaId) => {
-			try {
-				const response = await fetch(`${process.env.BACKEND_URL}/api/tienda/${tiendaId}`);
-				if (response.ok) {
-					const data = await response.json();
-					// Actualiza el estado con los datos de la tienda obtenida
-					// Asumiendo que la respuesta contiene una propiedad 'tienda'
-					setStore({ tienda: data.tienda });
-					return true;
-				} else {
-					console.error("Error al obtener la tienda:", response.statusText);
-					return false;
-				}
-			} catch (error) {
-				console.error("Error al procesar la solicitud:", error);
-				return false;
-			}
-		}
- */
+/* getTiendaId: async (tiendaId) => {
+    try {
+        
+        const resp = await fetch(process.env.BACKEND_URL + "/tienda/<int:tienda_id>");
+        const data = await resp.json();
+        console.log("Datos de la API:", data);
+        return data;
+    } catch (error) {
+        console.error("Error loading message from backend", error);
+        
+    }
+},  */
+
+};
+};
+
 
 
 
@@ -324,6 +322,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-};
+
 
 export default getState;
