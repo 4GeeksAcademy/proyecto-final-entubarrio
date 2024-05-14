@@ -99,22 +99,22 @@ def get_one_tienda(tienda_id):
         return jsonify({"msg": "No existe el personaje"}), 404
     return jsonify(tienda.serialize()), 200
 
-# #Endpoint Get de una tienda un producto-------------------------------------------------------------------------------------------------
-# @api.route('/details-tienda/<string:nombre_tienda>/<int:producto_id>', methods=['GET'])
-# def get_one_tienda_one_producto(nombre_tienda, producto_id):
-#     # this is how you can use the Family datastructure by calling its methods
-#     # tienda = Tienda.query.get(nombre_tienda)
-#     # producto = Producto.query.get(id)
-#     check_tienda_producto = Tienda.query.filter_by(nombre_tienda=tienda, producto_id=producto, ).first()  
+# #Endpoint Get todos los productos de una tienda-------------------------------------------------------------------------------------------------
+@api.route('/productos/<int:tienda_id>', methods=['GET'])
+def obtener_productos_tienda(tienda_id):
+    # Buscar la tienda por su ID
+    tienda = Tienda.query.get(tienda_id)
 
-#     if check_tienda_producto is None:
-#         return jsonify({"msg": "No existe la tienda"}), 404
-#     # elif producto is None:
-#     #     return jsonify({"msg": "No existe el producto en esta tienda"}), 404
-#     else:
-#         db.session.get(check_tienda_producto)
-#         db.session.commit()
-#         return jsonify(check_tienda_producto.serialize()), 200
+    # Si la tienda no existe, devolver un error 404
+    if tienda is None:
+        return jsonify({"msg": "Tienda no encontrada"}), 404
+    # Obtener todos los productos de la tienda
+    productos = tienda.productos
+    # Serializar los productos a JSON
+    productos_serializados = [producto.serialize() for producto in productos]
+
+    # Devolver la lista de productos serializados
+    return jsonify({'productos': productos_serializados}), 200
 
 # #Enpoint POST añadir una Nueva Tienda-----------------------------------------------------------------------------------
 @api.route("/tienda", methods=["POST"]) # ¿es necesario poner el id del vendedor?
@@ -176,7 +176,7 @@ def delete_tienda(nombre_tienda):
         else:
             return jsonify({"msg":"La tienda no existe"}), 404
           
-# #Enpoint PUT añadir una Nueva Tienda-----------------------------------------------------------------------------------
+# #Enpoint PUT editar una Tienda-----------------------------------------------------------------------------------
 @api.route("/tienda/<string:nombre_tienda>", methods=["PUT"]) # ¿es necesario poner el id del vendedor?
 
 @jwt_required()
