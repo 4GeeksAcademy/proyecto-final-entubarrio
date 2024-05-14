@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Verduras from "../../img/Verduras.png";
+import Dulces from "../../img/Dulces.jpg";
 
 
 // hay que quitar de las lineas 22,30,35 el texto una ves que este la base de datos y la imagen tambien
@@ -12,7 +12,7 @@ const Info2 = ({nombre,precio,informacion}) => {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src={Verduras}
+              src={Dulces}
               className="img-fluid rounded-start"
               alt="descripción del producto de la foto"
             />
