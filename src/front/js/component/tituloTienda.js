@@ -38,3 +38,5 @@ const TituloTienda = ({ tiendaId }) => {
 };
 
 export default TituloTienda;
+
+
