@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import { TodosProductos } from "../component/cardTodosProductos";
-import "../../styles/productos.css";
+import "../../styles/todosproductos.css";
 
 export const Productos = () => {
     const { store, actions } = useContext(Context);

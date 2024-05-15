@@ -1,0 +1,18 @@
+.tarjeta-productos {
+    max-width: 20em;
+    border: none;
+    margin: 0.5em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+.img-todos-productos {
+    width: 8cm; /* Ajustar el ancho según sea necesario */
+    height: 7cm; /* Mantener la relación de aspecto */
+    object-fit: cover; /* Cubrir toda el área disponible */
+    min-height: 15em;
+  }
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px; /* Ajuste el espacio entre elementos como necesite */
+}
