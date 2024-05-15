@@ -9,11 +9,14 @@ export const Productos = () => {
 
 	useEffect(() => {
 		actions.getProductos()
+		// actions.getTiendas()
 	}, [])
 
+	// const nombre_tienda = store?.tiendas?.nombre_tienda
+
     return (
-			<div className="productos">
-			<h2 className="tittles text-danger ms-5">Productos</h2>
+			<div className="productos container">
+			<h2 className="tittles text-danger ms-5 mt-5">Productos</h2>
 			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
 				{store.productos.map((producto) => {
 					return (
@@ -25,12 +28,14 @@ export const Productos = () => {
 								url_imagen_producto={producto.url_imagen_producto}
 								descripcion_producto={producto.descripcion_producto}
 								precio={producto.precio}
+								// nombre_tienda={nombre_tienda}
 							/>
 
 						</div>
 					);
 				})}
 			</div>
+
 			{/* <div className="categorias-home container d-flex mb-5 justify-content-space-evenly" style={{ overflowBlock: "scroll" }}>
 				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
 				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
