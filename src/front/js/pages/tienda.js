@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/tiendas.css";
+import "../../styles/tienda.css";
 import CardPanaderias from "../component/cardTiendaPan";
 import CardVerdulerias from "../component/cardTiendaDulces";
 import TituloTienda from "../component/tituloTienda";
 import TusCategoriasTienda from "../component/tusCategoriasTienda";
 import MapaTienda from "../component/mapaTienda";
 
-export const Tiendas = () => {
+export const Tienda = () => {
     const { store, actions } = useContext(Context);
 
     return (

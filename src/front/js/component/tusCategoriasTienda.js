@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../../styles/tiendas.css";
+import "../../styles/tienda.css";
 import Info from './info';
 import Info2 from './info2';
 import Info3 from './info3';
