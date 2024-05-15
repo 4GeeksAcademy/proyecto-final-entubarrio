@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 
-export const AgregarTienda = () => {
+export const MiTienda = () => {
     const { store, actions } = useContext(Context);
     const [formData, setFormData] = useState({
         nombre_tienda: "",
@@ -29,63 +29,63 @@ export const AgregarTienda = () => {
             </div>
             <div className="row d-flex justify-content-center">
                 <div className="col-4">
-                    <h2>Añade una tienda</h2>
+                    <h2>Añade un producto</h2>
                 </div>
                 <div className="col-4">
                     <form onSubmit={handleSubmit}>
                         <div className="">
-                            <label htmlFor="nombre_tienda" className="form-label"></label>
+                            <label htmlFor="nombre_producto" className="form-label"></label>
                             <input 
                                 type="text" 
                                 className="form-control" 
-                                id="nombre_tienda" 
-                                placeholder="Nombre de la tienda"
-                                value={formData.nombre_tienda}
-                                onChange={(event) => setFormData({ ...formData, nombre_tienda: event.target.value })}
+                                id="nombre_producto" 
+                                placeholder="Nombre de producto"
+                                value={formData.nombre_producto}
+                                onChange={(event) => setFormData({ ...formData, nombre_producto: event.target.value })}
                             />
                         </div>
                         <div className="">
-                            <label htmlFor="descripcion_tienda" className="form-label"></label>
+                            <label htmlFor="descripcion_producto" className="form-label"></label>
                             <input 
                                 type="text" 
                                 className="form-control" 
-                                id="descripcion_tienda" 
-                                placeholder="Descripción de la tienda"
-                                value={formData.descripcion_tienda}
-                                onChange={(event) => setFormData({ ...formData, descripcion_tienda: event.target.value })}
+                                id="descripcion_producto" 
+                                placeholder="Descripción de producto"
+                                value={formData.descripcion_producto}
+                                onChange={(event) => setFormData({ ...formData, descripcion_producto: event.target.value })}
                             />
                         </div>
                         <div className="">
-                            <label htmlFor="categoria_tienda" className="form-label"></label>
+                            <label htmlFor="categoria_producto" className="form-label"></label>
                             <input 
                                 type="text" 
                                 className="form-control" 
-                                id="categoria_tienda" 
-                                placeholder="Categoría"
-                                value={formData.categoria_tienda}
-                                onChange={(event) => setFormData({ ...formData, categoria_tienda: event.target.value })}
+                                id="categoria_producto" 
+                                placeholder="Categoría de producto"
+                                value={formData.categoria_producto}
+                                onChange={(event) => setFormData({ ...formData, categoria_producto: event.target.value })}
                             />
                         </div>
                         <div className="">
-                            <label htmlFor="direccion_tienda" className="form-label"></label>
+                            <label htmlFor="precio" className="form-label"></label>
                             <input 
                                 type="text" 
                                 className="form-control" 
-                                id="direccion_tienda" 
-                                placeholder="Dirección"
-                                value={formData.direccion_tienda}
-                                onChange={(event) => setFormData({ ...formData, direccion_tienda: event.target.value })}
+                                id="precio" 
+                                placeholder="Precio"
+                                value={formData.precio}
+                                onChange={(event) => setFormData({ ...formData, precio: event.target.value })}
                             />
                         </div>
                         <div className="mb-4">
-                            <label htmlFor="url_imagen_tienda" className="form-label"></label>
+                            <label htmlFor="url_imagen_producto" className="form-label"></label>
                             <input 
                                 type="text" 
                                 className="form-control" 
-                                id="url_imagen_tienda" 
+                                id="url_imagen_producto" 
                                 placeholder="Foto"
-                                value={formData.url_imagen_tienda}
-                                onChange={(event) => setFormData({ ...formData, url_imagen_tienda: event.target.value })}
+                                value={formData.url_imagen_producto}
+                                onChange={(event) => setFormData({ ...formData, url_imagen_producto: event.target.value })}
                             />
                         </div>
                         <button type="submit" className="boton mb-4">Guardar</button>

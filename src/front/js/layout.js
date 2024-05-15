@@ -14,7 +14,7 @@ import { Tiendas } from "./pages/tiendas";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import {Infoproducto} from "./pages/infoproducto";
-import { AgregarTienda } from "./pages/agregartienda";
+import { MiTienda } from "./pages/mitienda";
 
 /* import Informacion from "./component/info"; AJUSTADO LAYOUT DE ADRI */
 
@@ -48,7 +48,7 @@ const Layout = () => {
                         <Route element={<Infoproducto />} path="/infoproducto" />
                         <Route element={<Productos />} path="/productos" />
                         <Route element={<Vendedor />} path="/vendedor" />
-                        <Route element={<AgregarTienda />} path="/agregartienda" /> 
+                        <Route element={<MiTienda />} path="/mitienda" /> 
                     </Routes>
                     <Footer />
                 </ScrollToTop>

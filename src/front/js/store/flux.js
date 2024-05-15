@@ -90,31 +90,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			agregarTienda: async (formData) => {
-				try {
-					const response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `Bearer ${localStorage.getItem("token")}`
-						},
-						body: JSON.stringify(formData)
-					});
-			
-					const data = await response.json();
-					if (response.status === 200) {
-						console.log(data, "La tienda se agregó correctamente");
-						return true;
-					} else {
-						console.error(data, "Hubo un error al agregar la tienda");
-						return false;
-					}
-				} catch (error) {
-					console.error("Error:", error);
-					return false;
-				}
-			},
-
 			logout: () => {
 				localStorage.removeItem("token")
 		 	},
@@ -222,31 +197,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-//LINEAS RESERVADAS ADRIAN
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// LINEAS RESERVADAS ADRIAN
+agregarTienda: async (formData) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem("token")}`
+						},
+						body: JSON.stringify(formData)
+					});
+			
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data, "La tienda se agregó correctamente");
+						return true;
+					} else {
+						console.error(data, "Hubo un error al agregar la tienda");
+						return false;
+					}
+				} catch (error) {
+					console.error("Error:", error);
+					return false;
+				}
+			},
 
 
 
