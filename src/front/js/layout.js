@@ -46,15 +46,9 @@ const Layout = () => {
                         <Route element={<Tiendas />} path="/tiendas" />
                         <Route element={<CreateUser />} path="/createuser" />
                         <Route element={<Infoproducto />} path="/infoproducto" />
-<<<<<<< HEAD
-                        {/* <Route element={<Productos />} path="/productos" /> */}
-                        {/* <Route element={<Vendedor />} path="/vendedor" /> */}
-
-                        <Route element={<AgregarTienda />} path="/agregartienda" /> 
-=======
                         <Route element={<Productos />} path="/productos" />
                         <Route element={<Vendedor />} path="/vendedor" />
->>>>>>> f1e1e78a5bbecaeee5fe8cc54b99ff1a24f11a8f
+                        <Route element={<AgregarTienda />} path="/agregartienda" /> 
                     </Routes>
                     <Footer />
                 </ScrollToTop>
