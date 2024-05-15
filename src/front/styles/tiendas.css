@@ -4,16 +4,18 @@
         border-bottom: 1px solid rgb(202, 202, 202);
     }
 
-.cardcontainertiendas {
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    border-bottom: 1px solid rgb(202, 202, 202);
-}
+    .cardcontainertiendas {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        border-bottom: 1px solid rgb(202, 202, 202);
+    }
+
+
 .custom-card {
         max-width: 20em;
         border: none;

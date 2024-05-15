@@ -1,10 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect} from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import "../../styles/home.css";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+    
+	useEffect(()=>{
+		actions.getTiendas()
+		actions.getProductos()
+
+
+	},[]);
+	console.log(store.productos);
+
 
 	return (
 		<div className="text-center mt-0">
@@ -18,7 +27,7 @@ export const Home = () => {
 			</div>
 			<h2>Seleccion de Tiendas</h2>
 			<p>Aqui podras encontrar una variedad de tiendas de tu barrio</p>
-			<div className="categorias-home container d-flex mb-5 justify-content-space-evenly" style={{ overflowX: "scroll" }}>
+			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
 				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
 				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
 					<div className="absolute bottom-0 left-0 right-0 p-2">
@@ -50,7 +59,7 @@ export const Home = () => {
 			</div>
 			<h2>Seleccion de Productos</h2>
 			<p>Aqui podras encontrar una variedad de productos de tu barrio</p>
-			<div className="categorias-home container d-flex mb-5 justify-content-space-evenly" style={{ overflowX: "scroll" }}>
+			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
 				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
 				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
 					<div className="absolute bottom-0 left-0 right-0 p-2">
