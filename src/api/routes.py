@@ -96,7 +96,7 @@ def get_one_tienda(tienda_id):
     # this is how you can use the Family datastructure by calling its methods
     tienda = Tienda.query.get(tienda_id)
     if tienda is None:
-        return jsonify({"msg": "No existe el personaje"}), 404
+        return jsonify({"msg": "No existe la tienda"}), 404
     return jsonify(tienda.serialize()), 200
 
 # #Endpoint Get todos los productos de una tienda-------------------------------------------------------------------------------------------------
