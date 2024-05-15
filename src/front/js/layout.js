@@ -46,8 +46,9 @@ const Layout = () => {
                         <Route element={<Tiendas />} path="/tiendas" />
                         <Route element={<CreateUser />} path="/createuser" />
                         <Route element={<Infoproducto />} path="/infoproducto" />
-                        <Route element={<Productos />} path="/productos" />
-                        <Route element={<Vendedor />} path="/vendedor" />
+                        {/* <Route element={<Productos />} path="/productos" /> */}
+                        {/* <Route element={<Vendedor />} path="/vendedor" /> */}
+
                         <Route element={<AgregarTienda />} path="/agregartienda" /> 
                     </Routes>
                     <Footer />
