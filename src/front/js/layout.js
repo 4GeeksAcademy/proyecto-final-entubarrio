@@ -19,7 +19,7 @@ import {Infoproducto} from "./pages/infoproducto";
 
 import { Productos } from "./pages/productos";
 import { Vendedor } from "./pages/vendedor";
-
+import { PaginaTodasTiendas } from "./pages/paginatodastiendas";
 import { CreateUser } from "./pages/createuser";
 
 //create your first component
@@ -47,6 +47,7 @@ const Layout = () => {
                         <Route element={<Infoproducto />} path="/infoproducto" />
                         <Route element={<Productos />} path="/productos" />
                         <Route element={<Vendedor />} path="/vendedor" />
+                        <Route element={<PaginaTodasTiendas />} path="/paginatodastiendas" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
