@@ -35,34 +35,6 @@ export const Home = () => {
 						<TodasTiendas nombre_tienda = {tienda.nombre_tienda} id ={tienda.id} url_imagen_tienda={tienda.url_imagen_tienda} descripcion_tienda={tienda.descripcion_tienda} />
 					)
 				})}
-				{/* <div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Fruteria Juani</h3>
-						<p className="text-black text-xs">Frutas de temporada</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Verduras Paco</h3>
-						<p className="text-black text-xs">Verduras y Hortalizas</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-					<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Pan para hoy</h3>
-						<p className="text-black text-xs">Pan casero</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Pasteles Goloso</h3>
-						<p className="text-black text-xs">Dulces y tartas</p>
-					</div>
-				</div> */}
 			</div>
 			<h2>Seleccion de Productos</h2>
 			<p>Aqui podras encontrar una variedad de productos de tu barrio</p>
@@ -72,34 +44,6 @@ export const Home = () => {
 						<TodosProductos nombre_producto = {producto.nombre_producto} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
 					)
 				})}
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Frutas</h3>
-						<p className="text-black text-xs">Frutas de temporada</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Verduras</h3>
-						<p className="text-black text-xs">Verduras y Hortalizas</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-					<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Pan</h3>
-						<p className="text-black text-xs">Pan casero</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Dulces</h3>
-						<p className="text-black text-xs">Dulces y tartas</p>
-					</div>
-				</div>
 			</div>
 		</div>
 	);
