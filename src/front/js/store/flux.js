@@ -12,8 +12,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					title: "SECOND",
 					background: "white",
 					initial: "white"
-				}
-			]
+				},
+			],
+			tiendas: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -86,6 +87,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 
+			},
+
+			agregarTienda: async (formData) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem("token")}`
+						},
+						body: JSON.stringify(formData)
+					});
+			
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data, "La tienda se agregó correctamente");
+						return true;
+					} else {
+						console.error(data, "Hubo un error al agregar la tienda");
+						return false;
+					}
+				} catch (error) {
+					console.error("Error:", error);
+					return false;
+				}
 			},
 
 			logout: () => {
