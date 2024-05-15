@@ -6,15 +6,15 @@ import "../../styles/vendedor.css";
 export const Vendedor = () => {
 
 	const [nombre_producto, setNombre_producto] = useState("")
-    const [email, setEmail] = useState("")
-    const [phone, setPhone] = useState("")
-    const [address, setAddress] = useState("")
+    const [descripcion_producto, setDescripcion_producto] = useState("")
+    const [categoria_producto, setCategoria_producto] = useState("")
+    const [url_imagen_producto, setUrl_imagen_producto] = useState("")
 
 	const { store, actions } = useContext(Context);
 
 	const handleSubmit = async (e) => {
         e.preventDefault();
-        const success = await actions.agregarTienda();
+        const success = await actions.agregarProducto();
         if (success) {
             navigate("/productos");
 			store.productos();
