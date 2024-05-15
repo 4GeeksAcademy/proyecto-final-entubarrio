@@ -2,23 +2,34 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import { TodosProductos } from "../component/cardTodosProductos";
-import "../../styles/productos.css";
+import "../../styles/todosproductos.css";
 
-export const Productos = ({precio}) => {
+export const Productos = () => {
     const { store, actions } = useContext(Context);
 
+	useEffect(() => {
+		actions.getProductos()
+	}, [])
+
     return (
-        <div>
-        <h1 className="titulo-productos text-center mt-4">Productos</h1>
-        {/* <h2>Seleccion de Productos</h2> */}
-			<p className="parrafo-productos text-center">Aqui podras encontrar una variedad de productos de tu barrio</p>
-			<div className="todos-productos container d-flex mb-5 justify-content-space-evenly">
-			<TodosProductos />
-			<TodosProductos />
-			<TodosProductos />
-			<TodosProductos />
-			<TodosProductos />
-			<TodosProductos />
+			<div className="productos">
+			<h2 className="tittles text-danger ms-5">Productos</h2>
+			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
+				{store.productos.map((producto) => {
+					return (
+						<div className="text m-3" key={producto.id}>
+
+							<TodosProductos producto={producto}
+								// type={people}
+								nombre_producto={producto.nombre_producto}
+								url_imagen_producto={producto.url_imagen_producto}
+								descripcion_producto={producto.descripcion_producto}
+								precio={producto.precio}
+							/>
+
+						</div>
+					);
+				})}
 			</div>
 			{/* <div className="categorias-home container d-flex mb-5 justify-content-space-evenly" style={{ overflowBlock: "scroll" }}>
 				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
