@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../styles/tiendas.css";
+import "../../styles/tienda.css";
 
 const CardDulces = ({ titulo, texto, precio }) => {
   return (
