@@ -1,19 +1,99 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import fruteria from "../../img/fruteria.jpg";
 import "../../styles/vendedor.css";
 
 export const Vendedor = () => {
+
+	const [nombre_producto, setNombre_producto] = useState("")
+    const [descripcion_producto, setDescripcion_producto] = useState("")
+    const [categoria_producto, setCategoria_producto] = useState("")
+    const [url_imagen_producto, setUrl_imagen_producto] = useState("")
+
 	const { store, actions } = useContext(Context);
 
+	const handleSubmit = async (e) => {
+        e.preventDefault();
+        const success = await actions.agregarProducto();
+        if (success) {
+            navigate("/productos");
+			store.productos();
+        }
+    };
+
 	return (
+		<>
 		<div className="text-center mt-5">
 			<h2>Fruteria Juani</h2>
 			<p></p>
 				<img src={fruteria}
 					className="imagen-fruteria img-fluid w-150"
 					alt="Foto Home" />
-			
+			 <div className="row d-flex justify-content-center border-top mt-5">
+                <div className="titulo-añadir-productos col-4 mt-4 ms-4">
+                    <h2>Añade un producto</h2>
+                </div>
+                <div className="formulario col-4">
+                    <form onSubmit={handleSubmit}>
+                        <div className="">
+                            <label htmlFor="nombre_producto" className="form-label"></label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="nombre_producto"
+                                placeholder="Nombre de producto"
+                                // value={formData.nombre_producto}
+                                // onChange={(event) => setFormData({ ...formData, nombre_producto: event.target.value })}
+                            />
+                        </div>
+                        <div className="">
+                            <label htmlFor="descripcion_producto" className="form-label"></label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="descripcion_producto"
+                                placeholder="Descripción de producto"
+                                // value={formData.descripcion_producto}
+                                // onChange={(event) => setFormData({ ...formData, descripcion_producto: event.target.value })}
+                            />
+                        </div>
+                        <div className="">
+                            <label htmlFor="categoria_producto" className="form-label"></label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="categoria_producto"
+                                placeholder="Categoría de producto"
+                                // value={formData.categoria_producto}
+                                // onChange={(event) => setFormData({ ...formData, categoria_producto: event.target.value })}
+                            />
+                        </div>
+                        <div className="">
+                            <label htmlFor="precio" className="form-label"></label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="precio"
+                                placeholder="Precio"
+                                // value={formData.precio}
+                                // onChange={(event) => setFormData({ ...formData, precio: event.target.value })}
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="url_imagen_producto" className="form-label"></label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="url_imagen_producto"
+                                placeholder="Foto"
+                                // value={formData.url_imagen_producto}
+                                // onChange={(event) => setFormData({ ...formData, url_imagen_producto: event.target.value })}
+                            />
+                        </div>
+                        <button type="submit" className="boton mb-4">Guardar</button>
+                    </form>
+                </div>
+			</div>
 			<div className="alert alert-info">
 				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
 			</div>
@@ -50,5 +130,6 @@ export const Vendedor = () => {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 };
