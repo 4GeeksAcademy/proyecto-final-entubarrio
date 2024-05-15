@@ -7,7 +7,7 @@ const TituloTienda = ({ tiendaId }) => {
     useEffect(() => {
         const fetchTiendaData = async () => {
             try {
-                const resp = await fetch(`${process.env.BACKEND_URL}api/tienda/${tiendaId}`);
+                const resp = await fetch(`${process.env.BACKEND_URL}/api/tienda/${tiendaId}`);
                 if (!resp.ok) {
                     throw new Error('Failed to fetch tienda data');
                 }
