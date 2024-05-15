@@ -4,7 +4,7 @@ import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042
 import { TodasTiendas } from "../component/cardTodasTiendas";
 import "../../styles/todastiendas.css";
 
-export const PaginaTodasTiendas = () => {
+export const PaginaTiendas = () => {
     const { store, actions } = useContext(Context);
 
 	useEffect(() => {
