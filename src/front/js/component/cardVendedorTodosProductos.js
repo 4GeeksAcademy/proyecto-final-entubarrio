@@ -9,6 +9,7 @@ export const TodosProductosVendedor = ({url_imagen_producto,nombre_producto,desc
     return (
         <div>
             <div className="grid-container d-flex mb-2 mt-2 justify-content-space-evenly" style={{ overflowBlock: "scroll" }} key= {id}>
+                <h6>Esto es un componente</h6>
                 <p>Aquí se renderizarán en breve (o eso espero) los productos de la tienda específica</p>
                 <div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
                     <a href="/infoproducto"><img src={url_imagen_producto} alt="Image 1" className="img-todos-productos w-20 h-20 object-fit" /></a>
