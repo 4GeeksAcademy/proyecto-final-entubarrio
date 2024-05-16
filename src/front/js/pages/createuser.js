@@ -67,7 +67,7 @@ export const CreateUser = () => {
 			isCreated = await actions.createUser(email, password);
 		} else {
 			// Registro de empresa
-			isCreated = await actions.createTienda(data);
+			isCreated = await actions.crearTienda(data);
 		}
 
 		if (isCreated) {
