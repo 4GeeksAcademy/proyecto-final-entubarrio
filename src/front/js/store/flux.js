@@ -15,7 +15,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			tiendas: [],
-			productos: []
+			productos: [],
+			tienda: [],
+			productosSeleccionados:[],
+			productosTienda:[],
+			categoriasProductosTienda:[]
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -215,46 +220,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
-			crearTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda) => {
-				let token = localStorage.getItem("token")
-				try {
-					console.log("Datos de la tienda  a enviar:", {
-						nombre_tienda: nombre_tienda,
-						descripcion_tienda: descripcion_tienda,
-						categoria_tienda: categoria_tienda,
-						direccion_tienda: direccion_tienda,
-						url_imagen_tienda: url_imagen_tienda
-					});
-					
-					const response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-							'Authorization': `Bearer ${token}`
-						},
-						body: JSON.stringify({
-							nombre_tienda: nombre_tienda,
-							descripcion_tienda: descripcion_producto,
-							categoria_tienda: categoria_tienda,
-							direccion_tienda: direccion_tienda,
-							url_imagen_tienda: url_imagen_tienda
-						})
-					});
-			
-					const data = await response.json();
-					if (response.status === 200) {
-						console.log(data.msg);
-						setStore({ tiendas: data.result });
-						console.log("Tienda creado:", data.result);
-					} else {
-						console.log("Mensaje de error:", data.msg);
-						return false;
-					}
-				} catch (error) {
-					console.error("Error al crear la tienda:", error);
-					return false;
-				}
-			},
+
 
 
 
