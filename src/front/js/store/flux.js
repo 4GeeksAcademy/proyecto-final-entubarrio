@@ -180,7 +180,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-
+			crearNuevoProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
+				try {
+					console.log("Datos del producto a enviar:", {
+						nombre_producto: nombreProducto,
+						descripcion_producto: descripcionProducto,
+						categoria_producto: categoriaProducto,
+						precio: precio,
+						url_imagen_producto: urlImagenProducto
+					});
+			
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						body: JSON.stringify({
+							nombre_producto: nombreProducto,
+							descripcion_producto: descripcionProducto,
+							categoria_producto: categoriaProducto,
+							precio: precio,
+							url_imagen_producto: urlImagenProducto,
+						})
+					});
+			
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ productos: data.results });
+						console.log("Producto creado:", data.results);
+					} else {
+						console.log("Mensaje de error:", data.msg);
+						return false;
+					}
+				} catch (error) {
+					console.error("Error al crear el producto:", error);
+					return false;
+				}
+			},
+			
 
 
 
@@ -202,45 +241,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 //LINEAS RESERVADAS ADRIAN
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
