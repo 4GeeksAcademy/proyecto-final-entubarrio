@@ -237,7 +237,8 @@ export const Vendedor = () => {
                                     onChange={(e) => setUrlImagenProducto(e.target.value)}
                                 />
                             </div>
-                            <button type="submit" className="boton mb-4"></button>
+                            <button type="submit" className="boton vendedor mb-4">Añadir Producto</button>
+
                         </form>
                     </div>
                     <h2>Tus Productos</h2>
