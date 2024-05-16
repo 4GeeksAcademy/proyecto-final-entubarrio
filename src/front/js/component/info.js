@@ -5,21 +5,21 @@ import barraPan from "../../img/barra_pan.jpg";
 
 // hay que quitar de las lineas 22,30,35 el texto una ves que este la base de datos y la imagen tambien
 
-const Info = ({nombre,precio,informacion}) => {
+const Info = ({url_imagen_producto,nombre_producto,descripcion_producto,precio,id}) => {
   return (
     <>
       <div className="card mb-3">
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src={barraPan}
+              src={url_imagen_producto}
               className="img-fluid rounded-start"
               alt="descripción del producto de la foto"
             />
           </div>
           <div className="col-md-4">
             <div className="card-body">
-              <h2 className="card-title">NOMBRE DEL PRODUCTO borrar{nombre}</h2> 
+              <h2 className="card-title">{nombre_producto}</h2> 
               <p className="card-text">
                 <small className="text-body-secondary">
                   las reviews que tiene esto es un extra
@@ -27,13 +27,12 @@ const Info = ({nombre,precio,informacion}) => {
               </p>
 
               <hr />
-              <h2 className="mt-4">$ 232 borrar{precio}</h2>
+              <h2 className="mt-4">$ {precio}</h2>
               <h5 className="text-muted">Valoración:<span className="text-warning">★★★★★</span> </h5>
               
               <hr />
               <p className="text-muted">
-                informacion del producto .Una barra de pan hecha al horno y con
-                masa borrar{informacion}
+                {descripcion_producto}
               </p>
              
               <hr />

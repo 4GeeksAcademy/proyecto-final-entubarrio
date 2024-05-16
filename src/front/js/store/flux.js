@@ -19,7 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			tienda: [],
 			productosSeleccionados:[],
 			productosTienda:[],
-			categoriasProductosTienda:[]
+			categoriasProductosTienda:[],
+			producto:[]
 
 		},
 		actions: {
@@ -272,9 +273,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				console.log(categoriasProductos);
 				setStore({categoriasProductosTienda:categoriasProductos})
-			}
+			},
 
-
+			getProducto: async (id) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/producto"+id, {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({producto:data})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
 
 

@@ -1,21 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Info from "../component/info";
 // import CardTienda from "../component/cardTienda";
 import CardProductos from "../component/cardProductos";
+import { useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 
 
 export const Infoproducto = () => {
 
-  
+  const { store, actions } = useContext(Context);
+
+  const params = useParams()
+  console.log(params.id);
+  useEffect(()=>{
+      actions.getProducto(params.id)
+      actions.getProductosTienda(store.producto.tienda_id)
+      actions.seleccionCategoriaProductosTienda()
+},[]); 
   
     return (
       <>
       <div className="card" >
         <div className="card-body">
           <h5 className="card-text">holeeeeee</h5>
-          <div><Info/></div>
+          <div><Info nombre_producto = {store.producto.nombre_producto} key={store.producto.id} url_imagen_producto={store.producto.url_imagen_producto} descripcion_producto={store.producto.descripcion_producto} precio={store.producto.precio} id ={store.producto.id}/></div>
           <div>
             {/* <div><CardTienda /></div> */}
             <div><CardProductos/></div>
