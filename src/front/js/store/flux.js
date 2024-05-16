@@ -277,7 +277,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getProducto: async (id) => {
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/producto"+id, {
+					let response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
 						method: "GET",
 						headers:{
 							"Content-Type":"application/json" 
