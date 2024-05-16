@@ -25,14 +25,6 @@ export const Tienda = () => {
     console.log(store.categoriasProductosTienda);
 
 
-    // const params = useParams()
-    // console.log(params.id);
-    // useEffect(()=>{
-	// 	actions.getCharacter(params.id)
-	// },[]);
-    // // const properties = store.character.properties
-    // console.log(store.character);
-
     return (
         <div>
             <div className="title-shop">
