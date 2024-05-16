@@ -11,12 +11,20 @@ import MapaTienda from "../component/mapaTienda";
 export const Tienda = () => {
     const { store, actions } = useContext(Context);
 
+    // const params = useParams()
+    // console.log(params.id);
+    // useEffect(()=>{
+	// 	actions.getCharacter(params.id)
+	// },[]);
+    // // const properties = store.character.properties
+    // console.log(store.character);
+
     return (
         <div>
             <div className="title-shop">
                 <div className="text-custom-tienda">
 
-                <TituloTienda tiendaId={1}
+                <TituloTienda tiendaId={2}
                         descripcion="Aquí iría la descripción de la tienda y tal y tal"
                     />
                 </div>
