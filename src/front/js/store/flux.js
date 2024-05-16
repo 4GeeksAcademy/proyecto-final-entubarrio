@@ -220,6 +220,59 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
+			getTienda: async (id) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/tienda/"+id, {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({tienda:data})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
+
+			getProductosTienda: async (id) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos/"+id, {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({productosTienda:data.productos})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
+
+			seleccionCategoriaProductosTienda: () => {
+				// let productosTienda = getStore().productos.filter_by(tienda_id=id)
+				// setStore({productosTienda:productosTienda})
+				const categoriasProductos = getStore().productosTienda.filter(function(v,i,self){
+					return i == self.indexOf(v);
+				});
+				console.log(categoriasProductos);
+				setStore({categoriasProductosTienda:categoriasProductos})
+			}
 
 
 

@@ -8,6 +8,7 @@ import TituloTienda from "../component/tituloTienda";
 import TusCategoriasTienda from "../component/tusCategoriasTienda";
 import MapaTienda from "../component/mapaTienda";
 import { useParams } from "react-router-dom";
+import { TodosProductos } from "../component/cardTodosProductos";
 
 export const Tienda = () => {
     const { store, actions } = useContext(Context);
@@ -50,7 +51,13 @@ export const Tienda = () => {
 
 
             </div>
-
+			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
+			{store.productosTienda.map((producto) =>{
+					return (
+						<TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
+					)
+				})}
+			</div>
             <div className="mapa-tienda">
                 <div className="text-custom-tienda">
 
