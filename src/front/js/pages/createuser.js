@@ -52,31 +52,30 @@ export const CreateUser = () => {
 		};
 
 		// Check if user already exists before attempting registration
-		const userExist = await actions.checkUserExists(email); // Assuming 'checkUserExists' exists
+		// const userExist = await actions.checkUserExists(email); // Assuming 'checkUserExists' exists
 
-		if (existingUser) {
-		  // User already exists, display alert
-		  alert("El usuario con este correo electrónico ya existe.");
-		  return null; // Prevent further processing if user already exists
-		}
+		// if (email) {
+		//   // User already exists, display alert
+		//   alert("El usuario con este correo electrónico ya esta registrado.");
+		//   return null; // Prevent further processing if user already exists
+		// }
 
 		let isCreated;
 
-		if (tipoUsuario === "particular") {
+		if (tipoUsuario === "empresa") {
 			// Registro de usuario individual
 			isCreated = await actions.createUser(email, password);
 		} else {
 			// Registro de empresa
-			isCreated = await actions.crearTienda(data);
+			return null;
 		}
-
 		if (isCreated) {
 			if (tipoUsuario === "particular") {
 				// Redireccionar a login para usuario individual
 				navigate("/login");
 			} else {
 				// Redireccionar a crearEmpresa para empresa
-				navigate("/crearTienda");
+				navigate("/creartienda");
 			}
 		}
 	}

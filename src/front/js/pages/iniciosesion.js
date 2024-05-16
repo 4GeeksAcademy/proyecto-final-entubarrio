@@ -5,7 +5,7 @@ import "../../styles/iniciosesion.css";
 
 export const InicioSesion = () => {
 
-	// const [tipoUsuario, setTipoUsuario] = useState("");
+	const [tipoUsuario, setTipoUsuario] = useState("");
 	const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -14,10 +14,10 @@ export const InicioSesion = () => {
 
 	async function handleSubmit(e) {
         e.preventDefault()
-		// if (!tipoUsuario) {
-		// 	alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
-		// 	return null;
-		// }
+		if (!tipoUsuario) {
+			alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+			return null;
+		}
         const isLogged = await actions.login(email, password)
         if (isLogged) {
             navigate("/vendedor");
@@ -40,11 +40,25 @@ export const InicioSesion = () => {
 							<label for="exampleInputEmail1" className="form-label">Accede con tu dirreción de email y contraseña</label>
 							<div className="d-flex justify-content-around m-2">
 								<div className="form-check">
-									<input className="form-check-input" type="radio" name="opcion" id="opcion1" value="opcion1"/>
+									<input className="form-check-input" 
+									type="radio" 
+									name="opcion" 
+									id="opcion1" 
+									value="particular"
+									checked={tipoUsuario === "particular"}
+									onChange={(event) => setTipoUsuario(event.target.value)}
+									/>
 									<label className="form-check-label" for="opcion1">Soy un particular</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="radio" name="opcion" id="opcion2" value="opcion2"/>
+									<input className="form-check-input" 
+									type="radio" 
+									name="opcion" 
+									id="opcion2" 
+									value="empresa"
+									checked={tipoUsuario === "empresa"}
+									onChange={(event) => setTipoUsuario(event.target.value)}
+									/>
 									<label className="form-check-label" for="opcion2">Soy una empresa</label>
 								</div>
 							</div>

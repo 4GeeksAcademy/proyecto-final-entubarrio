@@ -317,7 +317,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						},
 						body: JSON.stringify({
 							nombre_tienda: nombre_tienda,
-							descripcion_tienda: descripcion_producto,
+							descripcion_tienda: descripcion_tienda,
 							categoria_tienda: categoria_tienda,
 							direccion_tienda: direccion_tienda,
 							url_imagen_tienda: url_imagen_tienda
