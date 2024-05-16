@@ -166,7 +166,7 @@ export const CreateUser = () => {
 								<input type="checkbox" className="form-check-input" id="exampleCheck1" />
 								<label className="form-check-label" for="exampleCheck1">Recordarme</label>
 							</div>
-							<div className="form-text d-flex justify-content-center">¿Ya tienes una cuenta?
+							<div className="form-text d-flex justify-content-center">¿Ya tienes una cuenta? 
 								<Link to="/login">Inicia sesión</Link></div>
 						</form>
 					</div>

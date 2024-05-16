@@ -5,6 +5,7 @@ import "../../styles/iniciosesion.css";
 
 export const InicioSesion = () => {
 
+	// const [tipoUsuario, setTipoUsuario] = useState("");
 	const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -13,6 +14,10 @@ export const InicioSesion = () => {
 
 	async function handleSubmit(e) {
         e.preventDefault()
+		// if (!tipoUsuario) {
+		// 	alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+		// 	return null;
+		// }
         const isLogged = await actions.login(email, password)
         if (isLogged) {
             navigate("/vendedor");
@@ -58,9 +63,9 @@ export const InicioSesion = () => {
 							<input type="checkbox" className="form-check-input" id="exampleCheck1"/>
 							<label className="form-check-label" for="exampleCheck1">Recordarme</label>
 						</div>
-						<div className="form-text d-flex justify-content-center">¿No tienes cuenta?  
+						<div className="form-text d-flex justify-content-center">¿No tienes cuenta?   
 						<Link to="/createuser">
-						Crea una cuenta nueva
+						  Crea una cuenta nueva
 						</Link>
 						</div>
 						</form>
