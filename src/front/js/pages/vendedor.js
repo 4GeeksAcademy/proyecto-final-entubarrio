@@ -179,56 +179,65 @@ export const Vendedor = () => {
                     <div className="formulariovendedor col-4">
                         <form onSubmit={handleSubmit}>
                             <div className="">
-                                <label htmlFor="nombreProducto" className="form-label">Nombre de producto</label>
+                                <label htmlFor="nombreProducto" className="form-label"></label>
                                 <input
                                     type="text"
                                     className="form-control vendedor"
                                     id="nombreProducto"
+                                    placeholder="Nombre de producto"
                                     value={nombreProducto}
                                     onChange={(e) => setNombreProducto(e.target.value)}
                                 />
                             </div>
                             <div className="">
-                                <label htmlFor="descripcionProducto" className="form-label">Descripción de producto</label>
+                                <label htmlFor="descripcionProducto" className="form-label"></label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="descripcionProducto"
+                                    placeholder="Descripción del producto"
                                     value={descripcionProducto}
                                     onChange={(e) => setDescripcionProducto(e.target.value)}
                                 />
                             </div>
                             <div className="">
-                                <label htmlFor="categoriaProducto" className="form-label">Categoría de producto</label>
+                                <label htmlFor="categoriaProducto" className="form-label"></label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="categoriaProducto"
+                                    placeholder="Categoria del producto (Por ejemplo: Frutas, Verduras, Pan, Dulces)"
                                     value={categoriaProducto}
                                     onChange={(e) => setCategoriaProducto(e.target.value)}
                                 />
                             </div>
+                            
                             <div className="">
-                                <label htmlFor="precio" className="form-label">Precio</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="precio"
-                                    value={precio}
-                                    onChange={(e) => setPrecio(e.target.value)}
-                                />
-                            </div>
+                                <label htmlFor="precio" className="form-label"></label>
+                                    <input
+                                        type="number"
+                                        className="form-control"
+                                        id="precio"
+                                        placeholder="Precio en €"
+                                        value={precio}
+                                        onChange={(e) => setPrecio(e.target.value)}
+                                        step="1"
+                                    />
+                                </div>
+
+                            
                             <div className="mb-4">
-                                <label htmlFor="urlImagenProducto" className="form-label">Foto</label>
+                                <label htmlFor="urlImagenProducto" className="form-label"></label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="urlImagenProducto"
+                                    placeholder="URL de la imagen del producto"
                                     value={urlImagenProducto}
                                     onChange={(e) => setUrlImagenProducto(e.target.value)}
                                 />
                             </div>
-                            <button type="submit" className="boton mb-4">Guardar</button>
+                            <button type="submit" className="boton mb-4"></button>
                         </form>
                     </div>
                     <h2>Tus Productos</h2>
