@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/tienda.css";
@@ -7,23 +7,39 @@ import CardVerdulerias from "../component/cardTiendaDulces";
 import TituloTienda from "../component/tituloTienda";
 import TusCategoriasTienda from "../component/tusCategoriasTienda";
 import MapaTienda from "../component/mapaTienda";
+import { useParams } from "react-router-dom";
 
 export const Tienda = () => {
     const { store, actions } = useContext(Context);
+
+    const params = useParams()
+    console.log(params.id);
+    useEffect(()=>{
+		actions.getTienda(params.id)
+        actions.getProductosTienda(params.id)
+        actions.seleccionCategoriaProductosTienda()
+	},[]);
+    console.log(store.tienda);
+    console.log(store.productosTienda);
+    console.log(store.categoriasProductosTienda);
+
 
     return (
         <div>
             <div className="title-shop">
                 <div className="text-custom-tienda">
 
-                <TituloTienda tiendaId={1}
-                        descripcion="Aquí iría la descripción de la tienda y tal y tal"
+                <TituloTienda 
+                // tiendaId={params.id}
+                //         descripcion="Aquí iría la descripción de la tienda y tal y tal"
                     />
                 </div>
 
 
             </div>
-
+            <img src={store.tienda.url_imagen_tienda}
+					className="container-fluid d-flex justify-content-center img-fluid w-150"
+					alt="Foto Home" />
             <div className="tus-productos">
                 <div className="text-custom-tienda">
 
