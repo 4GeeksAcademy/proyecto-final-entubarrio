@@ -67,6 +67,7 @@ export const CreateUser = () => {
 			isCreated = await actions.createUser(email, password);
 		} else {
 			// Registro de empresa
+			alert("Aún no esta disponible crear un perfil de particular pero falta poco");
 			return null;
 		}
 		if (isCreated) {
