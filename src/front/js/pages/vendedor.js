@@ -137,7 +137,7 @@ export const Vendedor = () => {
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import fruteria from "../../img/fruteria.jpg";
-import { TodosProductos } from "../component/cardTodosProductos";
+import { TodosProductosVendedor } from "../component/cardVendedorTodosProductos";
 import "../../styles/vendedor.css";
 
 export const Vendedor = () => {
@@ -243,13 +243,7 @@ export const Vendedor = () => {
                     <h2>Tus Productos</h2>
                     
                     <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
-                        <div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
-                            <a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-                            <div className="absolute bottom-0 left-0 right-0 p-2">
-                                <h3 className="text-black text-sm font-bold">Frutas</h3>
-                                <p className="text-black text-xs">Frutas de temporada</p>
-                            </div>
-                        </div>
+                        <TodosProductosVendedor />
                     </div>
                 </div>
             </div>
