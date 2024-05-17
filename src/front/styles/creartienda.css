@@ -1,0 +1,12 @@
+.form-tienda {
+    width: auto;
+    margin: 50px;
+}
+.title-crear-tienda {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+.guardar {
+    width: 100%;
+}

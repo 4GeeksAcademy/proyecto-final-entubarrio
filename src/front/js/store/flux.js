@@ -276,37 +276,77 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getProducto: async (id) => {
+                try {
+                    let response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
+                        method: "GET",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },
+                    })
+                    let data = await response.json()
+                    if (response.status === 200){
+                        // Actualiza el estado con los datos de las tiendas
+                        // Asumiendo que la respuesta contiene una propiedad 'tienda'
+                        setStore({producto:data})
+                    } else {
+                        console.log(data);
+                        return console.log("No funciona");
+                    }
+                } catch (error) {
+                    return false;
+                }
+            },
+
+
+
+			crearTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda) => {
+				let token = localStorage.getItem("token")
+				if (!token) {
+					console.error("Falta el token de autenticación");
+					return false;
+				  }
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
-						method: "GET",
-						headers:{
-							"Content-Type":"application/json" 
+					// console.log("Datos de la tienda  a enviar:", {
+					// 	nombre_tienda: nombre_tienda,
+					// 	descripcion_tienda: descripcion_tienda,
+					// 	categoria_tienda: categoria_tienda,
+					// 	direccion_tienda: direccion_tienda,
+					// 	url_imagen_tienda: url_imagen_tienda
+					// });
+					
+					const response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': "Bearer "+token
 						},
-					})
-					let data = await response.json()
-					if (response.status === 200){
-						// Actualiza el estado con los datos de las tiendas
-						// Asumiendo que la respuesta contiene una propiedad 'tienda'
-						setStore({producto:data})
+						body: JSON.stringify({
+							nombre_tienda: nombre_tienda,
+							descripcion_tienda: descripcion_tienda,
+							categoria_tienda: categoria_tienda,
+							direccion_tienda: direccion_tienda,
+							url_imagen_tienda: url_imagen_tienda
+						})
+					});
+
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ tiendas: data.result });
+						console.log("Tienda creada:", data.result);
 					} else {
-						console.log(data);
-						return console.log("No funciona");
+						console.log("Error al crear la tienda:", data.msg);
+						return false;
 					}
 				} catch (error) {
-					return false;
-				}
-			},
-
-
-
-
-
-
-
-
-
-
-
+					// if (error instanceof NetworkError) {
+					// 	console.error("Error de red:", error.message);
+					//   } else {
+						console.error("Error desconocido:", error);
+					//   }
+					  return false;
+					}
+				  },
 
 
 
@@ -315,46 +355,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 //LINEAS RESERVADAS ADRIAN
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
