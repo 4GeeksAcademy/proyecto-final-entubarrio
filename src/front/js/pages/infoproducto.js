@@ -1,25 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Info from "../component/info";
 // import CardTienda from "../component/cardTienda";
 import CardProductos from "../component/cardProductos";
+import { useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 
 
 export const Infoproducto = () => {
 
-  
+  const { store, actions } = useContext(Context);
+
+  const params = useParams()
+  console.log(params.id);
+  useEffect(()=>{
+      actions.getProducto(params.id)
+      actions.getProductosTienda(store.producto.tienda_id)
+      actions.seleccionCategoriaProductosTienda()
+},[]); 
+  console.log(store.producto);
   
     return (
       <>
       <div className="card" >
         <div className="card-body">
-          <h5 className="card-text">holeeeeee</h5>
-          <div><Info/></div>
+          <div><Info nombre_producto = {store.producto.nombre_producto} key={store.producto.id} url_imagen_producto={store.producto.url_imagen_producto} descripcion_producto={store.producto.descripcion_producto} precio={store.producto.precio} id ={store.producto.id}/></div>
           <div>
             {/* <div><CardTienda /></div> */}
-            <div><CardProductos/></div>
-            <div><h2>las reviews van es esta linea</h2> </div>
+          
+            {/* <div><h2>las reviews van es esta linea</h2> </div> */}
 
            
           
@@ -31,6 +41,13 @@ export const Infoproducto = () => {
         
          </div>
       </div>
+      <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
+              {store.productosTienda.map((producto) =>{
+                  return (
+                    <TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
+                  )
+                })}
+			</div>  
       </>
     );
   };
