@@ -12,12 +12,12 @@ export const PaginaTiendas = () => {
 	}, [])
 
     return (
-			<div className="todas-tiendas container mt-5">
-			<h2 className="tittles text-danger ms-5">Tiendas</h2>
-			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
+			<div className="todas-tiendas">
+			<div className="tittles text-danger">Tiendas</div>
+			<div className="cards row justify-content-center">
 				{store.tiendas.map((tienda) => {
 					return (
-						<div className="text m-3" key={tienda.id}>
+						<div className="bg-body-secondary text col-md-3 col-sm-6 mb-4 d-flex justify-content-center custom-col" key={tienda.id}>
 
 							<TodasTiendas tienda={tienda}
 								// type={people}
