@@ -2,7 +2,7 @@ import React, { useContext, useEffect} from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import "../../styles/home.css";
-import { VendedorTodosProductos } from "../component/cardVendedorTodosProductos";
+import { TodosProductos } from "../component/cardTodosProductos";
 import { TodasTiendas } from "../component/cardTodasTiendas";
 
 export const Home = () => {
@@ -41,7 +41,7 @@ export const Home = () => {
 			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
 			{store.productos.map((producto) =>{
 					return (
-						<VendedorTodosProductosTodos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
+						<TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
 					)
 				})}
 			</div>
