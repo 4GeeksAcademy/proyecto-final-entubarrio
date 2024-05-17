@@ -155,7 +155,7 @@ export const Vendedor = () => {
         const success = await actions.crearNuevoProducto(nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto,token);
         if (token) {
             // Aquí puedes redirigir a la página de productos o mostrar un mensaje de éxito
-            alert(" Yupiii!!! Producto creado");
+            alert("Producto creado");
         } else {
             // Manejo de errores, como mostrar un mensaje al usuario
             alert("Error al crear el producto");
