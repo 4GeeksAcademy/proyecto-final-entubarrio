@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/todosproductos.css";
+import "../../styles/todosproductosv.css";
 
 export const VendedorTodosProductos = ({url_imagen_producto,nombre_producto,descripcion_producto,id,precio}) => {
     const { store, actions } = useContext(Context);

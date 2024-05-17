@@ -138,7 +138,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import fruteria from "../../img/fruteria.jpg";
-import { TodosProductos } from "../component/cardTodosProductos";
+import { VendedorTodosProductos } from "../component/cardVendedorTodosProductos";
 import "../../styles/vendedor.css";
 
 export const Vendedor = () => {
@@ -249,11 +249,11 @@ export const Vendedor = () => {
                         </form>
                     </div>
                     <h2>Tus productos</h2>
-			<p>Aqui tienes los productos añadidos a tu tienda</p>
+			<p>Productos añadidos a tu tienda</p>
 			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
 			{store.productos.map((producto) =>{
 					return (
-						<TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
+						<VendedorTodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
 					)
 				})}
 			</div>
