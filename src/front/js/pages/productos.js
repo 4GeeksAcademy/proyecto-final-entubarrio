@@ -20,6 +20,7 @@ export const Productos = () => {
 						<div className="text m-3" key={producto.id}>
 
 							<TodosProductos producto={producto}
+								tienda_id={producto.tienda_id}
 								id ={producto.id}
 								nombre_producto={producto.nombre_producto}
 								url_imagen_producto={producto.url_imagen_producto}

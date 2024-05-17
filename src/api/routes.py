@@ -324,3 +324,19 @@ def delete_producto(producto_id):
         db.session.commit()
         return jsonify({"msg" : "Producto eliminado de la tienda"}), 200
 
+# Endpoint (Todas los vendedores)-------------------------------------------------------------------------------------------------
+@api.route('/vendedores', methods=['GET'])
+def get_all_vendedores():
+
+    query_results = Vendedor.query.all()
+    results = list(map(lambda item: item.serialize(), query_results))
+    # print(results)
+    if results == []:
+        return jsonify({"msg":"Empty"}), 404
+
+    response_body = {
+        "msg": "Ok",
+        "result": results
+    }
+
+    return jsonify(response_body), 200

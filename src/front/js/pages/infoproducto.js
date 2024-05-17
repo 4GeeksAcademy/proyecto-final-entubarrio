@@ -5,7 +5,7 @@ import Info from "../component/info";
 import CardProductos from "../component/cardProductos";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-
+import { TodosProductos } from "../component/cardTodosProductos";
 
 
 export const Infoproducto = () => {
@@ -16,10 +16,12 @@ export const Infoproducto = () => {
   console.log(params.id);
   useEffect(()=>{
       actions.getProducto(params.id)
-      actions.getProductosTienda(store.producto.tienda_id)
+      console.log(store.producto);
+      actions.getProductosTienda(params.tienda_id);
       actions.seleccionCategoriaProductosTienda()
 },[]); 
-  console.log(store.producto);
+  console.log(store.productosTienda);
+  console.log(params.tienda_id);
   
     return (
       <>
@@ -44,7 +46,7 @@ export const Infoproducto = () => {
       <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
               {store.productosTienda.map((producto) =>{
                   return (
-                    <TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
+                    <TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id}/>
                   )
                 })}
 			</div>  
