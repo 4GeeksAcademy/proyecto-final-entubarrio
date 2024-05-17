@@ -16,15 +16,3 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px; /* Ajuste el espacio entre elementos como necesite */
 }
-.custom-col {
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 25px;
-    text-align: center;
-}
-.tittles {
-    font-size: 50px;
-    margin-top: 20px;
-    margin-left: 200px;
-    margin-bottom: 25px;
-}
