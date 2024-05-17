@@ -1,37 +1,24 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/todosproductos.css";
 
-export const TodosProductosVendedor = ({ id }) => {
+export const VendedorTodosProductos = ({url_imagen_producto,nombre_producto,descripcion_producto,id,precio}) => {
     const { store, actions } = useContext(Context);
 
-    useEffect(() => {
-        // Llamar a la función para obtener los productos de la tienda específica
-        actions.getProductosTienda(id);
-    }, [id]);
-
+    // const nombre_tienda = store?.tiendas?.nombre_tienda
     return (
         <div>
-            <h2>Seleccion de Productos</h2>
-            <p>Aquí podrás encontrar una variedad de productos de tu barrio</p>
-            <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
-                {store.productosTienda ? (
-                    store.productosTienda.map(producto => (
-                        <TodosProductos
-                            key={producto.id}
-                            nombre_producto={producto.nombre_producto}
-                            id={producto.id}
-                            url_imagen_producto={producto.url_imagen_producto}
-                            descripcion_producto={producto.descripcion_producto}
-                            precio={producto.precio}
-                        />
-                    ))
-                ) : (
-                    <div className="en-obras">
-                        <i className="fas fa-tools icono-en-obras"></i>
-                        <h3 className="text-center">En obras</h3>
+            <h3>Tus productos</h3>
+            <div className="grid-container d-flex mb-2 mt-2 justify-content-space-evenly" style={{ overflowBlock: "scroll" }} key= {id}>
+                <div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
+                    <a href={"/infoproducto/"+id}><img src={url_imagen_producto} alt="Image 1" className="img-todos-productos w-20 h-20 object-fit" /></a>
+                    <div className="absolute bottom-0 left-0 right-0 p-2">
+                        <h4 className="text-black text-sm font-bold">{nombre_producto}</h4>
+                        <p className="text-black text-xs">{descripcion_producto}</p>
+                        <h5 className="text-black">{precio}€</h5>
+                        {/* <h5 className="text-black">{store.tiendas.nombre_tienda}</h5> */}
                     </div>
-                )}
+                </div>
             </div>
         </div>
     );

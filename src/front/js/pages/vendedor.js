@@ -248,10 +248,8 @@ export const Vendedor = () => {
 
                         </form>
                     </div>
-                    <h2>Tus Productos</h2>
-                    
-                    <h2>Seleccion de Productos</h2>
-			<p>Aqui podras encontrar una variedad de productos de tu barrio</p>
+                    <h2>Tus productos</h2>
+			<p>Aqui tienes los productos añadidos a tu tienda</p>
 			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
 			{store.productos.map((producto) =>{
 					return (
