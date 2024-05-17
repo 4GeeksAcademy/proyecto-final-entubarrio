@@ -71,7 +71,8 @@ class Producto(db.Model):
             "precio": self.precio,
             "descripcion_producto": self.descripcion_producto,   
             "categoria_producto": self.categoria_producto, 
-            "url_imagen_producto": self.url_imagen_producto,        
+            "url_imagen_producto": self.url_imagen_producto,   
+            "tienda_id": self.tienda_id,        
             # do not serialize the password, its a security breach
         } 
     
