@@ -21,14 +21,14 @@ const Info = ({url_imagen_producto,nombre_producto,descripcion_producto,precio,i
             <div className="card-body">
               <h2 className="card-title">{nombre_producto}</h2> 
               <p className="card-text">
-                <small className="text-body-secondary">
+                {/* <small className="text-body-secondary">
                   las reviews que tiene esto es un extra
-                </small>
+                </small> */}
               </p>
 
               <hr />
               <h2 className="mt-4">$ {precio}</h2>
-              <h5 className="text-muted">Valoración:<span className="text-warning">★★★★★</span> </h5>
+              {/* <h5 className="text-muted">Valoración:<span className="text-warning">★★★★★</span> </h5> */}
               
               <hr />
               <p className="text-muted">
