@@ -134,14 +134,15 @@ export const Vendedor = () => {
 	);
 }; */
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
 import fruteria from "../../img/fruteria.jpg";
 import { TodosProductosVendedor } from "../component/cardVendedorTodosProductos";
 import "../../styles/vendedor.css";
 
 export const Vendedor = () => {
-    const { actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
     const [nombreProducto, setNombreProducto] = useState("");
     const [descripcionProducto, setDescripcionProducto] = useState("");
@@ -166,6 +167,12 @@ export const Vendedor = () => {
     if (!token) {
         return <h2>No estás autorizado para acceder a esta página.</h2>;
     }
+
+    const params = useParams()
+
+    useEffect(() => {
+		actions.getTienda(store.tienda.id)
+	}, [])
 
     return (
         <>
