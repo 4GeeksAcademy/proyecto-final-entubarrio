@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/todosproductosv.css";
+import "../../styles/todosproductos.css";
 
 export const VendedorTodosProductos = ({url_imagen_producto,nombre_producto,descripcion_producto,id,precio}) => {
     const { store, actions } = useContext(Context);
@@ -8,7 +8,7 @@ export const VendedorTodosProductos = ({url_imagen_producto,nombre_producto,desc
     // const nombre_tienda = store?.tiendas?.nombre_tienda
     return (
         <div>
-            <h3>Tus productos</h3>
+            
             <div className="grid-container d-flex mb-2 mt-2 justify-content-space-evenly" style={{ overflowBlock: "scroll" }} key= {id}>
                 <div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
                     <a href={"/infoproducto/"+id}><img src={url_imagen_producto} alt="Image 1" className="img-todos-productos w-20 h-20 object-fit" /></a>
