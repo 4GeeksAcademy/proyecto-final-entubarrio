@@ -338,11 +338,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					}
 				} catch (error) {
-					if (error instanceof NetworkError) {
-						console.error("Error de red:", error.message);
-					  } else {
+					// if (error instanceof NetworkError) {
+					// 	console.error("Error de red:", error.message);
+					//   } else {
 						console.error("Error desconocido:", error);
-					  }
+					//   }
 					  return false;
 					}
 				  },
