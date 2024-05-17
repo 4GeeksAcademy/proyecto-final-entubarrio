@@ -138,6 +138,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import fruteria from "../../img/fruteria.jpg";
+import { TodosProductosVendedor } from "../component/cardVendedorTodosProductos";
 import "../../styles/vendedor.css";
 
 export const Vendedor = () => {
@@ -185,68 +186,72 @@ export const Vendedor = () => {
                     <div className="formulariovendedor col-4">
                         <form onSubmit={handleSubmit}>
                             <div className="">
-                                <label htmlFor="nombreProducto" className="form-label">Nombre de producto</label>
+                                <label htmlFor="nombreProducto" className="form-label"></label>
                                 <input
                                     type="text"
                                     className="form-control vendedor"
                                     id="nombreProducto"
+                                    placeholder="Nombre de producto"
                                     value={nombreProducto}
                                     onChange={(e) => setNombreProducto(e.target.value)}
                                 />
                             </div>
                             <div className="">
-                                <label htmlFor="descripcionProducto" className="form-label">Descripción de producto</label>
+                                <label htmlFor="descripcionProducto" className="form-label"></label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="descripcionProducto"
+                                    placeholder="Descripción del producto"
                                     value={descripcionProducto}
                                     onChange={(e) => setDescripcionProducto(e.target.value)}
                                 />
                             </div>
                             <div className="">
-                                <label htmlFor="categoriaProducto" className="form-label">Categoría de producto</label>
+                                <label htmlFor="categoriaProducto" className="form-label"></label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="categoriaProducto"
+                                    placeholder="Categoria del producto (Por ejemplo: Frutas, Verduras, Pan, Dulces)"
                                     value={categoriaProducto}
                                     onChange={(e) => setCategoriaProducto(e.target.value)}
                                 />
                             </div>
+                            
                             <div className="">
-                                <label htmlFor="precio" className="form-label">Precio</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="precio"
-                                    value={precio}
-                                    onChange={(e) => setPrecio(e.target.value)}
-                                />
-                            </div>
+                                <label htmlFor="precio" className="form-label"></label>
+                                    <input
+                                        type="number"
+                                        className="form-control"
+                                        id="precio"
+                                        placeholder="Precio en €"
+                                        value={precio}
+                                        onChange={(e) => setPrecio(e.target.value)}
+                                        step="1"
+                                    />
+                                </div>
+
+                            
                             <div className="mb-4">
-                                <label htmlFor="urlImagenProducto" className="form-label">Foto</label>
+                                <label htmlFor="urlImagenProducto" className="form-label"></label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="urlImagenProducto"
+                                    placeholder="URL de la imagen del producto"
                                     value={urlImagenProducto}
                                     onChange={(e) => setUrlImagenProducto(e.target.value)}
                                 />
                             </div>
-                            <button type="submit" className="boton mb-4">Guardar</button>
+                            <button type="submit" className="boton vendedor mb-4">Añadir Producto</button>
+
                         </form>
                     </div>
-                    <h2>Nuestros de Productos</h2>
-                    <p>Aqui podras encontrar todos nuestros productos</p>
+                    <h2>Tus Productos</h2>
+                    
                     <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
-                        <div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
-                            <a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-                            <div className="absolute bottom-0 left-0 right-0 p-2">
-                                <h3 className="text-black text-sm font-bold">Frutas</h3>
-                                <p className="text-black text-xs">Frutas de temporada</p>
-                            </div>
-                        </div>
+                        <TodosProductosVendedor />
                     </div>
                 </div>
             </div>

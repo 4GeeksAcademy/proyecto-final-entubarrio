@@ -1,0 +1,9 @@
+.boton.vendedor:active {
+    transform: translateY(2px);
+    
+}
+
+.boton.vendedor:hover {
+    background-color: #0664d0; /* Color de fondo cuando el mouse está sobre el botón */
+    color: #fff; /* Color de texto cuando el mouse está sobre el botón */
+}
