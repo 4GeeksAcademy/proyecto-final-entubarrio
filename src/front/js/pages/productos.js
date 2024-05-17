@@ -20,7 +20,7 @@ export const Productos = () => {
 						<div className="bg-body-secondary text col-md-3 col-sm-6 mb-4 d-flex justify-content-center custom-col" key={producto.id}>
 
 							<TodosProductos producto={producto}
-								// type={people}
+								id ={producto.id}
 								nombre_producto={producto.nombre_producto}
 								url_imagen_producto={producto.url_imagen_producto}
 								descripcion_producto={producto.descripcion_producto}

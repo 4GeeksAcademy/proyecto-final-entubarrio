@@ -222,7 +222,7 @@ def get_all_productos():
     }
     return jsonify(response_body), 200
 
-@api.route('/productos/<int:producto_id>', methods=['GET'])
+@api.route('/producto/<int:producto_id>', methods=['GET'])
 def get_producto(producto_id):
 
     producto = Producto.query.get(producto_id)
