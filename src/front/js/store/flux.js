@@ -305,13 +305,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				  }
 				try {
-					console.log("Datos de la tienda  a enviar:", {
-						nombre_tienda: nombre_tienda,
-						descripcion_tienda: descripcion_tienda,
-						categoria_tienda: categoria_tienda,
-						direccion_tienda: direccion_tienda,
-						url_imagen_tienda: url_imagen_tienda
-					});
+					// console.log("Datos de la tienda  a enviar:", {
+					// 	nombre_tienda: nombre_tienda,
+					// 	descripcion_tienda: descripcion_tienda,
+					// 	categoria_tienda: categoria_tienda,
+					// 	direccion_tienda: direccion_tienda,
+					// 	url_imagen_tienda: url_imagen_tienda
+					// });
 					
 					const response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
 						method: 'POST',
