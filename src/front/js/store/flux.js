@@ -306,14 +306,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				  }
 				try {
-					// console.log("Datos de la tienda  a enviar:", {
-					// 	nombre_tienda: nombre_tienda,
-					// 	descripcion_tienda: descripcion_tienda,
-					// 	categoria_tienda: categoria_tienda,
-					// 	direccion_tienda: direccion_tienda,
-					// 	url_imagen_tienda: url_imagen_tienda
-					// });
-					
 					const response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
 						method: 'POST',
 						headers: {
@@ -332,18 +324,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json();
 					if (response.status === 200) {
 						console.log(data.msg);
-						setStore({ tiendas: data.result });
-						console.log("Tienda creada:", data.result);
+						console.log("Tienda creada:", data.msg);
 					} else {
 						console.log("Error al crear la tienda:", data.msg);
 						return false;
 					}
 				} catch (error) {
-					// if (error instanceof NetworkError) {
-					// 	console.error("Error de red:", error.message);
-					//   } else {
 						console.error("Error desconocido:", error);
-					//   }
 					  return false;
 					}
 				  },

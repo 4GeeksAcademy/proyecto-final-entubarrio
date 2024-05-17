@@ -45,7 +45,7 @@ class Tienda(db.Model):
             "descripcion_tienda": self.descripcion_tienda,   
             "categoria_tienda": self.categoria_tienda, 
             "direccion_tienda": self.direccion_tienda, 
-            "url_imagen_tienda": self.url_imagen_tienda,        
+            "url_imagen_tienda": self.url_imagen_tienda        
             # do not serialize the password, its a security breach
         }  
      
@@ -65,13 +65,16 @@ class Producto(db.Model):
         return f'<Producto {self.nombre_producto}>'
 
     def serialize(self):
+        result= Tienda.query.filter_by(id=self.tienda_id).first()
         return {
             "id": self.id,
             "nombre_producto": self.nombre_producto,
             "precio": self.precio,
+            "nombre_tienda": result.serialize()["nombre_tienda"],
             "descripcion_producto": self.descripcion_producto,   
             "categoria_producto": self.categoria_producto, 
-            "url_imagen_producto": self.url_imagen_producto,        
+            "url_imagen_producto": self.url_imagen_producto,   
+            "tienda_id": self.tienda_id        
             # do not serialize the password, its a security breach
         } 
     
