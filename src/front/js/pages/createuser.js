@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 export const CreateUser = () => {
 
 	const [tipoUsuario, setTipoUsuario] = useState("");
-	const [nombreEmpresa, setNombreEmpresa] = useState("");
+	const [nombre_tienda, setNombre_tienda] = useState("");
 
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
@@ -48,7 +48,7 @@ export const CreateUser = () => {
 		const data = {
 			email,
 			password,
-			...(tipoUsuario === "empresa" && { nombreEmpresa }),
+			...(tipoUsuario === "empresa" && { nombre_tienda }),
 		};
 
 		// Check if user already exists before attempting registration
@@ -142,7 +142,7 @@ export const CreateUser = () => {
 										id="nombreTienda"
 										placeholder="Nombre de tu empresa"
 										onChange={(event) => {
-											setNombreEmpresa(event.target.value);
+											setNombre_tienda(event.target.value);
 										}}
 									/>
 								</div>

@@ -300,6 +300,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			crearTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda) => {
 				let token = localStorage.getItem("token")
+				if (!token) {
+					console.error("Falta el token de autenticación");
+					return false;
+				  }
 				try {
 					console.log("Datos de la tienda  a enviar:", {
 						nombre_tienda: nombre_tienda,
@@ -313,7 +317,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
-							'Authorization': `Bearer ${token}`
+							'Authorization': "Bearer "+token
 						},
 						body: JSON.stringify({
 							nombre_tienda: nombre_tienda,
@@ -328,16 +332,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 200) {
 						console.log(data.msg);
 						setStore({ tiendas: data.result });
-						console.log("Tienda creado:", data.result);
+						console.log("Tienda creada:", data.result);
 					} else {
-						console.log("Mensaje de error:", data.msg);
+						console.log("Error al crear la tienda:", data.msg);
 						return false;
 					}
 				} catch (error) {
-					console.error("Error al crear la tienda:", error);
-					return false;
-				}
-			},
+					if (error instanceof NetworkError) {
+						console.error("Error de red:", error.message);
+					  } else {
+						console.error("Error desconocido:", error);
+					  }
+					  return false;
+					}
+				  },
 
 
 

@@ -19,20 +19,16 @@ export const CrearTienda = () => {
     
     function handleSubmit(e) {
         e.preventDefault()
-        // const crearTienda = {
-        //     name,
-        //     email,
-        //     address,
-        //     phone
-        // }
-        actions.crearTienda(nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda)
+        
+        actions.crearTienda(
+            nombre_tienda, 
+            descripcion_tienda, 
+            categoria_tienda, 
+            direccion_tienda, 
+            url_imagen_tienda)
         console.log(actions.crearTienda());
         navigate("/login")
-        // actions.getProducts()
     }
-
-
-    // tiendaCreada = actions.crearTienda(data);
 
     return (
         <div className="container-fluid form-tienda">
