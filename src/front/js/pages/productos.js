@@ -13,11 +13,11 @@ export const Productos = () => {
 
     return (
 			<div className="productos">
-			<h2 className="tittles text-danger ms-5">Productos</h2>
-			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
+			<div className="tittles text-danger">Productos</div>
+			<div className="cards row justify-content-center">
 				{store.productos.map((producto) => {
 					return (
-						<div className="text m-3" key={producto.id}>
+						<div className="bg-body-secondary text col-md-3 col-sm-6 mb-4 d-flex justify-content-center custom-col" key={producto.id}>
 
 							<TodosProductos producto={producto}
 								// type={people}
