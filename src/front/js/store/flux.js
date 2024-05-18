@@ -324,6 +324,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json();
 					if (response.status === 200) {
 						console.log(data.msg);
+						setStore({ tiendas: data.result})
 						console.log("Tienda creada:", data.msg);
 					} else {
 						console.log("Error al crear la tienda:", data.msg);

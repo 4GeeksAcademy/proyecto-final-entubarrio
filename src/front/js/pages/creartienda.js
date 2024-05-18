@@ -25,9 +25,9 @@ export const CrearTienda = () => {
             descripcion_tienda, 
             categoria_tienda, 
             direccion_tienda, 
-            url_imagen_tienda)
-        console.log(actions.crearTienda());
-        navigate("/login")
+            url_imagen_tienda);
+        navigate("/vendedor")
+        // actions.getTienda();
     }
 
     return (
