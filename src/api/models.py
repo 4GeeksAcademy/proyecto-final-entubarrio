@@ -70,7 +70,7 @@ class Producto(db.Model):
             "id": self.id,
             "nombre_producto": self.nombre_producto,
             "precio": self.precio,
-            "nombre_tienda": result.serialize()["nombre_tienda"],
+            # "nombre_tienda": result.serialize()["nombre_tienda"],
             "descripcion_producto": self.descripcion_producto,   
             "categoria_producto": self.categoria_producto, 
             "url_imagen_producto": self.url_imagen_producto,   
