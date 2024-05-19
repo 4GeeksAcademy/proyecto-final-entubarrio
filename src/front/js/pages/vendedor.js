@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import fruteria from "../../img/fruteria.jpg";
 import { TodosProductos } from "../component/cardTodosProductos";
+import MapaTienda from "../component/mapaTienda";
 import "../../styles/vendedor.css";
 
 export const Vendedor = () => {
@@ -35,8 +36,8 @@ export const Vendedor = () => {
     const params = useParams()
 
     useEffect(() => {
-		actions.getProductos(store.productos)
-	}, [])
+        actions.getProductos(store.productos)
+    }, [])
 
     return (
         <>
@@ -113,17 +114,24 @@ export const Vendedor = () => {
                         </form>
                     </div>
                     <h2>Tus productos</h2>
-			<p>Productos añadidos a la tienda</p>
-			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
-			{store.productos.map((producto) =>{
-					return (
-						<TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
-					)
-				})}
-			</div>
-		</div>
+            <p>Productos añadidos a la tienda</p>
+            <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
+            {store.productos.map((producto) =>{
+                    return (
+                        <TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio}/>
+                    )
+                })}
+            </div>
+        </div>
                 </div>
-            
+                <div className="mapa-tienda">
+                <div className="text-custom-tienda">
+                    <h2>Ubicación de tu tienda</h2>
+                    <MapaTienda titulo="Título Tienda"
+                        descripcion="Aquí iría la descripción del mapa"
+                    />
+                </div>
+            </div>
             
         </>
     );

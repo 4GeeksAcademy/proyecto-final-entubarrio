@@ -29,7 +29,7 @@ const MapaTienda = () => {
 
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <h1>Nos puedes encontrar aquí</h1>
+            
             <div id="map" style={{ height: "70vh", width: "90%" }}></div>
         </div>
     );
