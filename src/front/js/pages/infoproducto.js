@@ -18,7 +18,6 @@ export const Infoproducto = () => {
       actions.getProducto(params.id)
       console.log(store.producto);
       actions.getProductosTienda(params.tienda_id);
-      // actions.seleccionCategoriaProductos()
 },[]); 
   console.log(store.productosTienda);
   console.log(params.tienda_id);

@@ -265,14 +265,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// seleccionCategoriaProductos: () => {
-			// 	// let productosTienda = getStore().productos.filter_by(tienda_id=id)
-			// 	// setStore({productosTienda:productosTienda})
-			// 		return i == self.indexOf(v);
-			// 	});
-			// 	console.log(categoriasProductos);
-			// 	setStore({categoriasProductosTienda:categoriasProductos})
-			// },
+			seleccionCategoriaProductos: () => {
+				try {
+					let arrayProductos = getStore().productos
+					let categoriasProductos = [...new Set(arrayProductos.map(o => o.categoria_producto))]
+					setStore({categoriasProductos:categoriasProductos})
+				} catch (error) {
+					return false;
+				}
+
+			},
 
 			getProducto: async (id) => {
                 try {
