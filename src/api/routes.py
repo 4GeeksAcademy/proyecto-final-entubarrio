@@ -340,3 +340,21 @@ def get_all_vendedores():
     }
 
     return jsonify(response_body), 200
+
+# #Enpoints Categorias Productos-----------------------------------------------------------------------------------
+@api.route('/categorias-productos', methods=['GET'])
+def get_all_categorias_productos():
+
+    query_results = Producto.query.all()
+    categorias = set()
+    for producto in query_results:
+        categorias.add(producto.categoria_producto)
+
+    categorias_lista = list(categorias)
+   
+    if categorias_lista == []:
+        return jsonify({"msg" : "No hay productos"}), 404
+    response_body = {
+        "results": categorias_lista
+    }
+    return jsonify(response_body), 200
