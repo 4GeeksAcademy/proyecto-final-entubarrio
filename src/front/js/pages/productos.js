@@ -22,11 +22,11 @@ export const Productos = () => {
 							<TodosProductos producto={producto}
 								tienda_id={producto.tienda_id}
 								id ={producto.id}
+								nombre_tienda={producto.nombre_tienda}
 								nombre_producto={producto.nombre_producto}
 								url_imagen_producto={producto.url_imagen_producto}
 								descripcion_producto={producto.descripcion_producto}
 								precio={producto.precio}
-								nombre_tienda={producto.nombre_tienda}
 							/>
 
 						</div>

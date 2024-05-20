@@ -18,11 +18,11 @@ export const Tienda = () => {
     useEffect(()=>{
 		actions.getTienda(params.id)
         actions.getProductosTienda(params.id)
-        actions.seleccionCategoriaProductosTienda()
+        // actions.seleccionCategoriaProductosTienda()
 	},[]);
     console.log(store.tienda);
     console.log(store.productosTienda);
-    console.log(store.categoriasProductosTienda);
+    // console.log(store.categoriasProductosTienda);
 
 
     return (
