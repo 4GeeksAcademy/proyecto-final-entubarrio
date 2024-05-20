@@ -61,7 +61,7 @@ class Producto(db.Model):
     url_imagen_producto = db.Column(db.String(120), unique=False, nullable=False)
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
     tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
-    # particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
+    particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
     # tienda = db.relationship('Tienda', backref='productos')
 
     def __repr__(self):
@@ -81,22 +81,22 @@ class Producto(db.Model):
             # do not serialize the password, its a security breach
         } 
     
-    # class Particular(db.Model):
-    #     __tablename__ = 'particular'
-    #     id = db.Column(db.Integer, primary_key=True)
-    #     email = db.Column(db.String(120), unique=True, nullable=False)
-    #     password = db.Column(db.String(80), nullable=False)
-    #     # tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
-    #     productos = db.relationship('Producto', backref='particular', lazy=True)
-    #     # tiendas = db.relationship('Tienda', backref='particular', lazy=True)
-    #     # Otros campos que quieras agregar para usuarios particulares
+    class Particular(db.Model):
+        __tablename__ = 'particular'
+        id = db.Column(db.Integer, primary_key=True)
+        email = db.Column(db.String(120), unique=True, nullable=False)
+        password = db.Column(db.String(80), nullable=False)
+        # tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
+        productos = db.relationship('Producto', backref='particular', lazy=True)
+        # tiendas = db.relationship('Tienda', backref='particular', lazy=True)
+        # Otros campos que quieras agregar para usuarios particulares
 
-    #     def __repr__(self):
-    #         return f'<Particular {self.email}>'
+        def __repr__(self):
+            return f'<Particular {self.email}>'
         
-    #     def serialize(self):
-    #         return {
-    #             "id": self.id,
-    #             "email": self.email,
-    #             # do not serialize the password, its a security breach
-    #         }
+        def serialize(self):
+            return {
+                "id": self.id,
+                "email": self.email,
+                # do not serialize the password, its a security breach
+            }
