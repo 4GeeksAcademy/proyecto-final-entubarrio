@@ -172,6 +172,7 @@ export const Vendedor = () => {
 
     useEffect(() => {
 		actions.getTienda(store.tienda.id)
+        actions.getTiendas()
 	}, [])
 
     return (

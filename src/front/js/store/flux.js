@@ -20,8 +20,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			productosSeleccionados:[],
 			productosTienda:[],
 			categoriasProductos:[],
-			producto:[]
-
+			producto:[],
+			vendedores:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -114,27 +114,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 //LINEAS RESERVADAS ALVARO
-
-		/* getTiendaById: async (tiendaId) => {
-			try {
-				const response = await fetch(`${process.env.BACKEND_URL}/api/tienda/${tiendaId}`);
-				if (response.ok) {
-					const data = await response.json();
-					// Actualiza el estado con los datos de la tienda obtenida
-					// Asumiendo que la respuesta contiene una propiedad 'tienda'
-					setStore({ tienda: data.tienda });
-					return true;
-				} else {
-					console.error("Error al obtener la tienda:", response.statusText);
+			getAllVendedores: async () => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/vendedores", {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json"
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200) {
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({ vendedores: data.result })
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
 					return false;
 				}
-			} catch (error) {
-				console.error("Error al procesar la solicitud:", error);
-				return false;
-			}
-		}
- */
-
+			},
 
 			getTiendas: async () => {
 				try {
@@ -325,6 +325,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json();
 					if (response.status === 200) {
 						console.log(data.msg);
+						setStore({ tiendas: data.result})
 						console.log("Tienda creada:", data.msg);
 					} else {
 						console.log("Error al crear la tienda:", data.msg);
@@ -343,7 +344,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 //LINEAS RESERVADAS ADRIAN
-
 
 
 
