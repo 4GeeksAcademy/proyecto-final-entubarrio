@@ -23,9 +23,6 @@ export const Home = () => {
 					className="imagen-barrio img-fluid w-150"
 					alt="Foto Home" />
 			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
 			<h2>Seleccion de Tiendas</h2>
 			<p>Aqui podras encontrar una variedad de tiendas de tu barrio</p>
 			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
