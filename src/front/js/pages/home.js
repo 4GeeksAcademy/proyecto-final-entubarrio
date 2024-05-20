@@ -11,7 +11,7 @@ export const Home = () => {
 	useEffect(()=>{
 		actions.getTiendas()
 		actions.getProductos()
-		actions.seleccionCategoriaProductos()
+		// actions.seleccionCategoriaProductos()
 
 	},[]);
 	console.log(store.productos);
