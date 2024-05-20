@@ -265,16 +265,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			seleccionCategoriaProductos: () => {
-				try {
-					let arrayProductos = getStore().productos
-					let categoriasProductos = [...new Set(arrayProductos.map(o => o.categoria_producto))]
-					setStore({categoriasProductos:categoriasProductos})
-				} catch (error) {
-					return false;
-				}
+			// seleccionCategoriaProductos: () => {
+			// 	try {
+			// 		let arrayProductos = await getStore().productos
+			// 		let categoriasProductos = [...new Set(arrayProductos.map(o => o.categoria_producto))]
+			// 		setStore({categoriasProductos:categoriasProductos})
+			// 	} catch (error) {
+			// 		return false;
+			// 	}
 
-			},
+			// },
 
 			getProducto: async (id) => {
                 try {

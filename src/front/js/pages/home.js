@@ -14,7 +14,6 @@ export const Home = () => {
 
 	},[]);
 	console.log(store.productos);
-	actions.seleccionCategoriaProductos();
 
 	return (
 		<div className="text-center mt-0">
