@@ -4,6 +4,8 @@ import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042
 import "../../styles/home.css";
 import { TodosProductos } from "../component/cardTodosProductos";
 import { TodasTiendas } from "../component/cardTodasTiendas";
+import Verduras from "../../img/Verduras.png";
+import { CardDesplegable } from "../component/cardDesplegable";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -38,13 +40,18 @@ export const Home = () => {
 			</div>
 			<h2>Seleccion de Productos</h2>
 			<p>Aqui podras encontrar una variedad de productos de tu barrio</p>
-			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
+			{/* <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
 			{store.productos.map((producto) =>{
 					return (
 						<TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id}/>
 					)
 				})}
-			</div>
+			</div> */}
+			<img src={Verduras}
+					className="imagen-Verduras img-fluid w-150"
+					alt="Foto Home" />
+			<CardDesplegable/>
+
 		</div>
 	);
 };
