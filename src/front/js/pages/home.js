@@ -11,10 +11,10 @@ export const Home = () => {
 	useEffect(()=>{
 		actions.getTiendas()
 		actions.getProductos()
-
+		actions.getCategoriasProductos()
 
 	},[]);
-	console.log(store.productos);
+	console.log(store.categoriasProductos);
 
 	return (
 		<div className="text-center mt-0">
