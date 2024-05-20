@@ -265,13 +265,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			seleccionCategoriaProductosTienda: () => {
+			seleccionCategoriaProductos: () => {
 				// let productosTienda = getStore().productos.filter_by(tienda_id=id)
 				// setStore({productosTienda:productosTienda})
-				const categoriasProductos = getStore().productosTienda.filter(function(v,i,self){
-					return i == self.indexOf(v);
-				});
-				console.log(categoriasProductos);
+				const store = getStore()
+				const categoriasProductos = store.productos.map(obj => obj.categoria_producto);
+
+				console.log(store.productos);
 				setStore({categoriasProductosTienda:categoriasProductos})
 			},
 
