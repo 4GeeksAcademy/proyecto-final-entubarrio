@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Vendedor, Producto, Tienda
+from api.models import db, Vendedor, Producto, Tienda, Particular
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
@@ -52,25 +52,25 @@ def login():
     return jsonify(access_token=access_token)
 
 # SIGNUP-------------------------------------------------------------------------------------------------------------------
-@api.route("/signup", methods=["POST"])
-def signup():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
+# @api.route("/signup", methods=["POST"])
+# def signup():
+#     email = request.json.get("email", None)
+#     password = request.json.get("password", None)
 
     
-    vendedor_exist = Vendedor.query.filter_by(email=email).first()
-    if vendedor_exist is None:
-        new_vendedor = Vendedor(
-            email=email,
-            password=password
-        )
-        db.session.add(new_vendedor)
-        db.session.commit()
-        access_token = create_access_token(identity=email)
-        return jsonify(access_token=access_token), 200
+#     vendedor_exist = Vendedor.query.filter_by(email=email).first()
+#     if vendedor_exist is None:
+#         new_vendedor = Vendedor(
+#             email=email,
+#             password=password
+#         )
+#         db.session.add(new_vendedor)
+#         db.session.commit()
+#         access_token = create_access_token(identity=email)
+#         return jsonify(access_token=access_token), 200
 
-    else:
-        return jsonify({"msg": "Vendedor existe"}), 400
+#     else:
+#         return jsonify({"msg": "Vendedor existe"}), 400
     
 # -------------------------------------------------ENPOINTS BASE DE DATOS------------------------------------------------------
 # Endpoint (Todas las tiendas)-------------------------------------------------------------------------------------------------
@@ -360,26 +360,26 @@ def get_all_categorias_productos():
     return jsonify(response_body), 200
 
 # SIGNUP por Tipo de Usuario-------------------------------------------------------------------------------------------------------------------
-# @api.route("/signup", methods=["POST"])
-# def signup():
-#     email = request.json.get("email", None)
-#     password = request.json.get("password", None)
-#     tipo_usuario = request.json.get("tipo_usuario", None)
+@api.route("/signup", methods=["POST"])
+def signup():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    tipo_usuario = request.json.get("tipo_usuario", None)
     
-#     vendedor_exist = Vendedor.query.filter_by(email=email).first()
-#     particultar_exist = Particular.query.filter_by(email=email).first()
+    vendedor_exist = Vendedor.query.filter_by(email=email).first()
+    particultar_exist = Particular.query.filter_by(email=email).first()
 
-#     if vendedor_exist is None & tipo_usuario == 'vendedor':
-#         # Crear un nuevo registro en la tabla de vendedores
-#         new_vendedor = Vendedor(email=email, password=password)
-#         db.session.add(new_vendedor)
-#     elif particultar_exist is None & tipo_usuario == 'particular':
-#         # Crear un nuevo registro en la tabla de particulares
-#         new_particular = Particular(email=email, password=password)
-#         db.session.add(new_particular)
-#     else:
-#         return jsonify({"msg": "Tipo de usuario invalido o ya existe"}), 400
+    if vendedor_exist is None & tipo_usuario == 'vendedor':
+        # Crear un nuevo registro en la tabla de vendedores
+        new_vendedor = Vendedor(email=email, password=password, tipo_usuario="vendedor")
+        db.session.add(new_vendedor)
+    elif particultar_exist is None & tipo_usuario == 'particular':
+        # Crear un nuevo registro en la tabla de particulares
+        new_particular = Particular(email=email, password=password)
+        db.session.add(new_particular)
+    else:
+        return jsonify({"msg": "Tipo de usuario invalido o ya existe"}), 400
     
-#     db.session.commit()
-#     access_token = create_access_token(identity=email)
-#     return jsonify(access_token=access_token) + jsonify({"message": "Usuario registrado correctamente"}), 201
+    db.session.commit()
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token) + jsonify({"message": "Usuario registrado correctamente"}), 201
