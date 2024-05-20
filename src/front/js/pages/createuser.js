@@ -71,12 +71,12 @@ export const CreateUser = () => {
 			return null;
 		}
 		if (isCreated) {
-			if (tipoUsuario === "particular") {
+			if (tipoUsuario === "empresa") {
 				// Redireccionar a login para usuario individual
 				navigate("/login");
 			} else {
 				// Redireccionar a crearEmpresa para empresa
-				navigate("/creartienda");
+				navigate("/login");
 			}
 		}
 	}
