@@ -12,6 +12,7 @@ export const Home = () => {
 		actions.getTiendas()
 		actions.getProductos()
 
+
 	},[]);
 	console.log(store.productos);
 
