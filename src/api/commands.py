@@ -59,9 +59,9 @@ def setup_commands(app):
             db.session.commit()
 
             tiendas = [
-                Tienda(nombre_tienda="Verduras Paco", categoria_tienda="Frutería", direccion_tienda="Calle cebolla", descripcion_tienda="La tienda de Paco te trae verduras a saco", url_imagen_tienda="https://frutasyverduraspaco.com/wp-content/themes/yootheme/cache/6306ce68-a34e-4cc9-ae8b-d8282936975a-a14cb339.jpg", vendedor_id=vendedores[0].id),
-                Tienda(nombre_tienda="Verduras Isa", categoria_tienda="Frutería", direccion_tienda="Calle canela", descripcion_tienda="En verduras Isa los precios dan risa", url_imagen_tienda="https://frutasmontijo.com/wp-content/uploads/2018/10/fruterias.jpg", vendedor_id=vendedores[1].id),
-                Tienda(nombre_tienda="La huerta en casa", categoria_tienda="Frutería", direccion_tienda="Calle Badajoz", descripcion_tienda="Nuestros productos vienen directos de la huerta", url_imagen_tienda="https://www.sanferescomercio.com/wp-content/uploads/2019/01/LAHUERTAENCASA6.jpg", vendedor_id=vendedores[2].id),
+                Tienda(nombre_tienda="Verduras Paco", categoria_tienda="Frutería", direccion_tienda="Calle de Escalante 1, Valencia", descripcion_tienda="La tienda de Paco te trae verduras a saco", url_imagen_tienda="https://frutasyverduraspaco.com/wp-content/themes/yootheme/cache/6306ce68-a34e-4cc9-ae8b-d8282936975a-a14cb339.jpg", vendedor_id=vendedores[0].id),
+                Tienda(nombre_tienda="Verduras Isa", categoria_tienda="Frutería", direccion_tienda="Calle Sierra de Cádiz 4, Vallecas, Madrid", descripcion_tienda="En verduras Isa los precios dan risa", url_imagen_tienda="https://frutasmontijo.com/wp-content/uploads/2018/10/fruterias.jpg", vendedor_id=vendedores[1].id),
+                Tienda(nombre_tienda="La huerta en casa", categoria_tienda="Frutería", direccion_tienda="Calle Badajoz 2, Barcelona", descripcion_tienda="Nuestros productos vienen directos de la huerta", url_imagen_tienda="https://www.sanferescomercio.com/wp-content/uploads/2019/01/LAHUERTAENCASA6.jpg", vendedor_id=vendedores[2].id),
             ]
             db.session.add_all(tiendas)
             db.session.commit()
