@@ -59,21 +59,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (data.msg) {
 					localStorage.setItem("token", data.access_token);
 					console.log(data);
-					if (tipo_usuario == "vendedor"){
-						navigate("/creartienda")
-					}
 					return true;
-				}else{
+				}
 					console.log(data);
 					return false
-				}
 				} catch (error) {
-					if (response.status === 201){
-						navigate("/vendedor")
-					}
+					console.log(error);
 					return false;
 				}
-
 			},
 			createUser: async (email, password, tipo_usuario, navigate) => {
 				try{

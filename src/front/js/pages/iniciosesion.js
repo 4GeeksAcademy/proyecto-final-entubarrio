@@ -18,14 +18,14 @@ export const InicioSesion = () => {
 			alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
 			return null;
 		}
-		const isLogged = await actions.login(email, password)
+		const isLogged = await actions.login(email, password, tipoUsuario)
 
 		if (isLogged) {
 			if (tipoUsuario === "vendedor") {
 				navigate("/creartienda");
 			} else {
 				// Registro de empresa
-				navigate("/");
+				navigate("/vendedor");
 			}
 		}
 	}
@@ -61,8 +61,8 @@ export const InicioSesion = () => {
 											type="radio"
 											name="opcion"
 											id="opcion2"
-											value="empresa"
-											checked={tipoUsuario === "empresa"}
+											value="vendedor"
+											checked={tipoUsuario === "vendedor"}
 											onChange={(event) => setTipoUsuario(event.target.value)}
 										/>
 										<label className="form-check-label" for="opcion2">Soy una empresa</label>
