@@ -58,14 +58,10 @@ export const Tienda = () => {
 					)
 				})}
 			</div>
-            <div className="mapa-tienda">
-                <div className="text-custom-tienda">
+            <div>
+            <MapaTienda direccion={store.tienda.direccion_tienda} />
+        </div>
 
-                    <MapaTienda titulo="Título Tienda"
-                        descripcion="Aquí iría la descripción del mapa"
-                    />
-                </div>
-            </div>
         </div>
     );
 };
