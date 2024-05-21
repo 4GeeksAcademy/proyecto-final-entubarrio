@@ -20,13 +20,13 @@ export const InicioSesion = () => {
 		}
 		const isLogged = await actions.login(email, password, tipoUsuario)
 
-		if (isLogged) {
-			if (tipoUsuario === "vendedor") {
+		if (isLogged && tipoUsuario === "particular") {
+			navigate("/")}
+		else if (isLogged && tipoUsuario === "vendedor") {
 				navigate("/creartienda");
-			} else {
+		} else {
 				// Registro de empresa
 				navigate("/vendedor");
-			}
 		}
 	}
 
