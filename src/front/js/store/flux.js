@@ -337,47 +337,99 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				  },
 
+			borrarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
+				try {
+					console.log("Datos del producto a borrar:", {
+						nombre_producto: nombreProducto,
+						descripcion_producto: descripcionProducto,
+						categoria_producto: categoriaProducto,
+						precio: precio,
+						url_imagen_producto: urlImagenProducto
+					});
 
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto"+id, {
+						method: 'DELETE',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						
+					});
 
-
-
-
-
-//LINEAS RESERVADAS ADRIAN
-borrarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
-	try {
-		console.log("Datos del producto a borrar:", {
-			nombre_producto: nombreProducto,
-			descripcion_producto: descripcionProducto,
-			categoria_producto: categoriaProducto,
-			precio: precio,
-			url_imagen_producto: urlImagenProducto
-		});
-
-		const response = await fetch(process.env.BACKEND_URL + "/api/producto"+id, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ productos: data.results });
+						console.log("Producto borrado:", data.results);
+					} else {
+						console.log("Mensaje de error:", data.msg);
+						return false;
+					}
+				} catch (error) {
+					console.error("Error al borrar el producto:", error);
+					return false;
+				}
 			},
+
+			getCategoriasProductos: async () => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/categorias-productos", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						setStore({categoriasProductos:data.results})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
+
+			editarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token, id) => {
+				try {
+					console.log("Datos del producto a editar:", {
+						nombre_producto: nombreProducto,
+						descripcion_producto: descripcionProducto,
+						categoria_producto: categoriaProducto,
+						precio: precio,
+						url_imagen_producto: urlImagenProducto
+					});
 			
-		});
-
-		const data = await response.json();
-		if (response.status === 200) {
-			console.log(data.msg);
-			setStore({ productos: data.results });
-			console.log("Producto borrado:", data.results);
-		} else {
-			console.log("Mensaje de error:", data.msg);
-			return false;
-		}
-	} catch (error) {
-		console.error("Error al borrar el producto:", error);
-		return false;
-	}
-},
-
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto/" + id, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						body: JSON.stringify({
+							nombre_producto: nombreProducto,
+							descripcion_producto: descripcionProducto,
+							categoria_producto: categoriaProducto,
+							precio: precio,
+							url_imagen_producto: urlImagenProducto,
+						})
+					});
+			
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ productos: data.results });
+						console.log("Producto creado:", data.results);
+					} else {
+						console.log("Mensaje de error:", data.msg);
+						return false;
+					}
+				} catch (error) {
+					console.error("Error al crear el producto:", error);
+					return false;
+				}
+			},
 
 
 
