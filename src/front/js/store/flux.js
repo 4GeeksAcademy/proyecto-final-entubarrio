@@ -41,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
-			login: async (email, password) => {
+			login: async (email, password, tipo_usuario) => {
 				try{
 				let response = await fetch(process.env.BACKEND_URL + "/api/login", {
 					method: 'POST',
@@ -50,20 +50,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 						email:email,
-						password:password
+						password:password,
+						tipo_usuario:tipo_usuario
 					})
 				})
 
 				let data = await response.json()
-				if (response.status === 200) {
+				if (data.msg) {
 					localStorage.setItem("token", data.access_token);
 					console.log(data);
+					if (tipo_usuario == "vendedor"){
+						navigate("/creartienda")
+					}
 					return true;
 				}else{
 					console.log(data);
 					return false
 				}
 				} catch (error) {
+					if (response.status === 201){
+						navigate("/vendedor")
+					}
 					return false;
 				}
 
