@@ -48,7 +48,7 @@ export const CreateUser = () => {
 		const data = {
 			email,
 			password,
-			...(tipoUsuario === "empresa" && { nombre_tienda }),
+			...(tipoUsuario === "vendedor" && { nombre_tienda }),
 		};
 
 		// Check if user already exists before attempting registration
@@ -62,23 +62,14 @@ export const CreateUser = () => {
 
 		let isCreated;
 
-		if (tipoUsuario === "empresa") {
+		if (tipoUsuario) {
 			// Registro de usuario individual
-			isCreated = await actions.createUser(email, password);
+			isCreated = await actions.createUser(email, password, tipoUsuario, navigate);
 		} else {
 			// Registro de empresa
 			alert("Aún no esta disponible crear un perfil de particular pero falta poco");
 			return null;
-		}
-		if (isCreated) {
-			if (tipoUsuario === "empresa") {
-				// Redireccionar a login para usuario individual
-				navigate("/login");
-			} else {
-				// Redireccionar a crearEmpresa para empresa
-				navigate("/login");
-			}
-		}
+		}	
 	}
 
 	return (
@@ -112,8 +103,8 @@ export const CreateUser = () => {
 											type="radio"
 											name="opcion"
 											id="opcion2"
-											value="empresa"
-											checked={tipoUsuario === "empresa"}
+											value="vendedor"
+											checked={tipoUsuario === "vendedor"}
 											onChange={(event) => setTipoUsuario(event.target.value)}
 										/>
 										<label className="form-check-label" for="opcion2">Soy una empresa</label>
@@ -128,7 +119,7 @@ export const CreateUser = () => {
 								<label for="exampleInputPassword1" className="form-label">Contraseña</label>
 								<input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }} />
 							</div>
-							{tipoUsuario === "empresa" && (
+							{tipoUsuario === "vendedor" && (
 								<div className="mb-3">
 									<label
 										for="nombreTienda"

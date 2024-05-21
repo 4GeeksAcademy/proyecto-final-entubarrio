@@ -22,6 +22,7 @@ class Vendedor(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "tiendas": self.tiendas
             # do not serialize the password, its a security breach
         }
     

@@ -68,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
-			createUser: async (email, password) => {
+			createUser: async (email, password, tipo_usuario, navigate) => {
 				try{
 				let response = await fetch(process.env.BACKEND_URL + "/api/signup", {
 					method: 'POST',
@@ -77,14 +77,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 						email:email,
-						password:password
+						password:password,
+						tipo_usuario:tipo_usuario
 					})
 				})
 
 				let data = await response.json()
-				if (response.status === 200) {
-					localStorage.setItem("token", data.access_token);
+				if (data.msg) {
 					console.log(data);
+					navigate("/login")
 					return true;
 				}else{
 					console.log(data);

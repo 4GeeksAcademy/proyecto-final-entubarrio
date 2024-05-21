@@ -21,7 +21,7 @@ export const InicioSesion = () => {
 		const isLogged = await actions.login(email, password)
 
 		if (isLogged) {
-			if (tipoUsuario === "empresa") {
+			if (tipoUsuario === "vendedor") {
 				navigate("/creartienda");
 			} else {
 				// Registro de empresa
