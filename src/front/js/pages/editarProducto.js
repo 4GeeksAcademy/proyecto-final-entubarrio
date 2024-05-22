@@ -4,22 +4,26 @@ import { useParams } from "react-router-dom";
 import fruteria from "../../img/fruteria.jpg";
 import { TodosProductosVendedor } from "../component/cardVendedorTodosProductos";
 import "../../styles/vendedor.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export const editarProducto = () => {
     const { store, actions } = useContext(Context);
 
-    const [nombreProducto, setNombreProducto] = useState("");
-    const [descripcionProducto, setDescripcionProducto] = useState("");
-    const [categoriaProducto, setCategoriaProducto] = useState("");
-    const [precio, setPrecio] = useState("");
-    const [urlImagenProducto, setUrlImagenProducto] = useState("");
+    const [nombreProducto, setNombreProducto] = useState(store.producto.nombre_producto);
+    const [descripcionProducto, setDescripcionProducto] = useState(store.producto.descripcion_producto);
+    const [categoriaProducto, setCategoriaProducto] = useState(store.producto.categoria_producto);
+    const [precio, setPrecio] = useState(store.producto.precio);
+    const [urlImagenProducto, setUrlImagenProducto] = useState(store.producto.url_imagen_producto);
+
+    const navigate = useNavigate()
 
     const handleSubmit = async () => {
         // e.preventDefault();
         const success = await actions.editarProducto(nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto,token);
         if (token) {
             // Aquí puedes redirigir a la página de productos o mostrar un mensaje de éxito
-            alert("Producto creado");
+            alert("Producto editado");
+            navigate("/vendedor");
         } else {
             // Manejo de errores, como mostrar un mensaje al usuario
             alert("Error al crear el producto");
@@ -35,9 +39,11 @@ export const editarProducto = () => {
     const params = useParams()
 
     useEffect(() => {
-		actions.getTienda(store.tienda.id)
-        actions.getProducto(store.producto.id)
-        actions.getCategoriasProductos()
+        const token = localStorage.getItem("token");
+
+		actions.getTiendaVendedor(token)
+        // actions.getTiendas()
+        actions.getProductosVendedor(token)
 	}, [])
 
     return (
