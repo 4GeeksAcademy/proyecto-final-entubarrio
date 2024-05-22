@@ -392,34 +392,52 @@ def signup():
 # create_access_token() function is used to actually generate the JWT.
 @api.route("/login", methods=["POST"])
 def login():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-    tipo_usuario = request.json.get("tipo_usuario", None)
-
+    email = request.json.get("email")
+    password = request.json.get("password")
+    tipo_usuario = request.json.get("tipo_usuario")
+    print(email, password, tipo_usuario)
     if not email or not password:
         return jsonify({"msg": "Faltan datos de acceso"}), 400
 
-    vendedor_exist = Vendedor.query.filter_by(email=email, password=password).first()
-    particular_exist = Particular.query.filter_by(email=email, password=password).first()
-
+    if tipo_usuario == 'particular':
+            particular_exist = Particular.query.filter_by(email=email, password=password).first()
+            if particular_exist is None:
+                return jsonify({"msg": "Email no existe"}), 401
+            
+            # Si existe se el envia el acceso al particular y crea el token
+            access_token = create_access_token(identity=email)
+            return jsonify({"msg": "Este Usuario ya tiene un perfil particular", "access_token":access_token, "particular":particular_exist.serialize()}), 201
+    
     if tipo_usuario == 'vendedor':
-       if vendedor_exist is None:
-            return jsonify({"msg": "El vendedor no existe"}), 404
-    elif tipo_usuario == 'particular':
+            vendedor_exist = Vendedor.query.filter_by(email=email, password=password).first()
+            print(vendedor_exist)
+            if vendedor_exist is None:
+                return jsonify({"msg": "El vendedor no existe"}), 404
+            access_token = create_access_token(identity=email)
+            return jsonify({"msg": "Este Vendedor ya tiene un perfil empresa", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
+    
+
+    # vendedor_exist = Vendedor.query.filter_by(email=email, password=password).first()
+    # particular_exist = Particular.query.filter_by(email=email, password=password).first()
+
+    # if tipo_usuario == 'vendedor':
+    #    if vendedor_exist is None:
+    #         return jsonify({"msg": "El vendedor no existe"}), 404
+    # elif tipo_usuario == 'particular':
         
-        if particular_exist is None:
-            return jsonify({"msg": "Email no existe"}), 401
-    # Verificar si vendedor tiene tiendas    
-    tiendas_vendedor = Tienda.query.filter_by(vendedor_id=vendedor_exist.id).count()
-    tiene_tienda = tiendas_vendedor > 0
-    access_token = create_access_token(identity=email)
+    #     if particular_exist is None:
+    #         return jsonify({"msg": "Email no existe"}), 401
+    # # Verificar si vendedor tiene tiendas    
+    # tiendas_vendedor = Tienda.query.filter_by(vendedor_id=vendedor_exist.id).count()
+    # tiene_tienda = tiendas_vendedor > 0
+    # access_token = create_access_token(identity=email)
 
-    if tipo_usuario == 'vendedor' and tiene_tienda:
-        return jsonify({"msg": "Este vendedor ya tiene una tienda", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
-    elif tipo_usuario == 'vendedor' and not tiene_tienda: 
-        return jsonify({"msg": "Aún no dispone de tienda", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
+    # if tipo_usuario == 'vendedor' and tiene_tienda:
+    #     return jsonify({"msg": "Este vendedor ya tiene una tienda", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
+    # elif tipo_usuario == 'vendedor' and not tiene_tienda: 
+    #     return jsonify({"msg": "Aún no dispone de tienda", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
 
-    elif tipo_usuario == 'particular':
-        return jsonify({"msg": "Este Usuario ya tiene un perfil", "access_token":access_token, "particular":particular_exist.serialize()}), 201
-    else: 
-        return jsonify({"msg": "Este usuario aun no esta registrado"}), 404
+    # elif tipo_usuario == 'particular':
+    #     return jsonify({"msg": "Este Usuario ya tiene un perfil", "access_token":access_token, "particular":particular_exist.serialize()}), 201
+    # else: 
+    #     return jsonify({"msg": "Este usuario aun no esta registrado"}), 404

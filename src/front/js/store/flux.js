@@ -41,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
-			login: async (email, password, tipo_usuario) => {
+			login: async (email, password, tipo_usuario, navigate) => {
 				try{
 				let response = await fetch(process.env.BACKEND_URL + "/api/login", {
 					method: 'POST',
@@ -56,18 +56,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 
 				let data = await response.json()
-				if (data.msg) {
+				console.log(data);
+				if (data) {
 					localStorage.setItem("token", data.access_token);
-					console.log(data);
-					return true;
+					setStore({ vendedores: data.vendedor.tiendas })
 				}
+				// if (data.access_token) {
+				// 	localStorage.setItem("token", data.access_token);
+				// 	localStorage.setItem("tipo_usuario", tipo_usuario);
+				// 	if (tipo_usuario === "vendedor") {
+				// 		localStorage.setItem(data.vendedor_exist);
+				// 		if (data.vendedor.tiendas === false) {
+				// 			navigate("/creartienda")
+				// 		} else {
+				// 			navigate("/vendedor")
+				// 		} 
+				// 	}
+					// console.log(data);
+					// return true;
+				else {
 					console.log(data);
-					return false
-				} catch (error) {
-					console.log(error);
 					return false;
 				}
-			},
+			} catch (error) {
+				console.log(error);
+				return false;
+			}
+		},
+			// 	if (data.msg) {
+			// 		localStorage.setItem("token", data.access_token);
+			// 		console.log(data);
+			// 		return true;
+			// 	}
+			// 		console.log(data);
+			// 		return false
+			// 	} catch (error) {
+			// 		console.log(error);
+			// 		return false;
+			// 	}
+			// },
 			createUser: async (email, password, tipo_usuario, navigate) => {
 				try{
 				let response = await fetch(process.env.BACKEND_URL + "/api/signup", {
@@ -115,27 +142,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 //LINEAS RESERVADAS ALVARO
-			getAllVendedores: async () => {
-				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/vendedores", {
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json"
-						},
-					})
-					let data = await response.json()
-					if (response.status === 200) {
-						// Actualiza el estado con los datos de las tiendas
-						// Asumiendo que la respuesta contiene una propiedad 'tienda'
-						setStore({ vendedores: data.result })
-					} else {
-						console.log(data);
-						return console.log("No funciona");
-					}
-				} catch (error) {
-					return false;
-				}
-			},
+			// getAllVendedores: async () => {
+			// 	try {
+			// 		let response = await fetch(process.env.BACKEND_URL + "/api/vendedores", {
+			// 			method: "GET",
+			// 			headers: {
+			// 				"Content-Type": "application/json"
+			// 			},
+			// 		})
+			// 		let data = await response.json()
+			// 		if (response.status === 200) {
+			// 			// Actualiza el estado con los datos de las tiendas
+			// 			// Asumiendo que la respuesta contiene una propiedad 'tienda'
+			// 			setStore({ vendedores: data.result })
+			// 		} else {
+			// 			console.log(data);
+			// 			return console.log("No funciona");
+			// 		}
+			// 	} catch (error) {
+			// 		return false;
+			// 	}
+			// },
 
 			getTiendas: async () => {
 				try {

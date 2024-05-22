@@ -19,10 +19,11 @@ class Vendedor(db.Model):
         return f'<Vendedor {self.email}>'
 
     def serialize(self):
+        tiendas = list(map(lambda item: item.serialize(), self.tiendas))
         return {
             "id": self.id,
-            "email": self.email
-            # "tiendas": self.tiendas
+            "email": self.email,
+            "tiendas": True if len(tiendas) > 0  else False
             # do not serialize the password, its a security breach
         }
     

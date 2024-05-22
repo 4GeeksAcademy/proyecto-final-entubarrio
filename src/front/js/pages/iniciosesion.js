@@ -18,17 +18,22 @@ export const InicioSesion = () => {
 			alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
 			return null;
 		}
+
 		const isLogged = await actions.login(email, password, tipoUsuario)
+		const tieneTienda = store.vendedores.vendedor.tiendas
 
 		if (isLogged && tipoUsuario === "particular") {
-			navigate("/")}
-		else if (isLogged && tipoUsuario === "vendedor") {
-				navigate("/creartienda");
-		} else {
-				// Registro de empresa
-				navigate("/vendedor");
+			navigate("/");
 		}
-	}
+		else if (isLogged && tipoUsuario === "vendedor") {
+			if (tieneTienda) {
+				navigate("/vendedor");
+			} else {
+				// Registro de empresa
+				navigate("/creartienda");
+			}
+		};
+	};
 
 	return (
 		<div className="inicio-sesion d-flex justify-content-center">
