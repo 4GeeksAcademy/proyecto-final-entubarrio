@@ -358,3 +358,42 @@ def get_all_categorias_productos():
         "results": categorias_lista
     }
     return jsonify(response_body), 200
+
+#Endpoint Get Tienda Vendedor-------------------------------------------------------------------------------------------------
+@api.route('/tienda', methods=['GET'])
+@jwt_required()
+def get_vendedor_tienda():
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
+    # Seleciono la tienda porque un vendedor puede tener varias
+    tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first()
+    # tienda_id=tienda.id
+    # tienda = Tienda.query.get(tienda_id)
+    if tienda is None:
+        return jsonify({"msg": "No existe la tienda"}), 404
+    return jsonify(tienda.serialize()), 200
+
+#Endpoint Get Productos Vendedor-------------------------------------------------------------------------------------------------
+@api.route('/productos-vendedor', methods=['GET'])
+@jwt_required()
+def get_productos_vendedor():
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
+    # Seleciono la tienda porque un vendedor puede tener varias
+    tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first()
+    # tienda_id=tienda.id
+
+    # tienda = Tienda.query.get(tienda_id)
+
+    # Si la tienda no existe, devolver un error 404
+    if tienda is None:
+        return jsonify({"msg": "Tienda no encontrada"}), 404
+    # Obtener todos los productos de la tienda
+    productos = tienda.productos
+    # Serializar los productos a JSON
+    productos_serializados = [producto.serialize() for producto in productos]
+
+    # Devolver la lista de productos serializados
+    return jsonify({'productos': productos_serializados}), 200
