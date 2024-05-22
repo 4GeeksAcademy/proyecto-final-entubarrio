@@ -397,11 +397,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						nombre_producto: nombreProducto,
 						descripcion_producto: descripcionProducto,
 						categoria_producto: categoriaProducto,
-						precio: precio,
+						precio: parseInt(precio),
 						url_imagen_producto: urlImagenProducto
 					});
 			
-					const response = await fetch(process.env.BACKEND_URL + "/api/producto/" + id, {
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
 						method: 'PUT',
 						headers: {
 							'Content-Type': 'application/json',
@@ -411,7 +411,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							nombre_producto: nombreProducto,
 							descripcion_producto: descripcionProducto,
 							categoria_producto: categoriaProducto,
-							precio: precio,
+							precio: parseInt(precio),
 							url_imagen_producto: urlImagenProducto,
 						})
 					});
@@ -420,13 +420,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 200) {
 						console.log(data.msg);
 						setStore({ productos: data.results });
-						console.log("Producto creado:", data.results);
-					} else {
-						console.log("Mensaje de error:", data.msg);
-						return false;
-					}
+						return true
+					} 
 				} catch (error) {
-					console.error("Error al crear el producto:", error);
+					console.error("Error al editar el producto:", error);
 					return false;
 				}
 			},
@@ -477,7 +474,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-
+			verProducto: (producto) => {
+				setStore({producto:producto})
+			},
 
 
 

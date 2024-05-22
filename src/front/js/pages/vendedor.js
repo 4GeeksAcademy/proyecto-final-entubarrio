@@ -184,8 +184,8 @@ export const Vendedor = () => {
     return (
         <>
             <div className="text-center mt-5 vendedor">
-                <h2>{store.tienda.nombre_tienda}</h2>
-                <img src={store.tienda.url_imagen_tienda} className="imagen-fruteria img-fluid w-150" alt="Foto Home" />
+                <h2>{store.tienda?.nombre_tienda}</h2>
+                <img src={store.tienda?.url_imagen_tienda} className="imagen-fruteria img-fluid w-150" alt="Foto Home" />
                 <div className="vendedor row d-flex justify-content-center border-top mt-5">
                     <div className="titulovendedor-añadir-productos col-4 mt-4 ms-4">
                         <h2>Añade un producto</h2>
@@ -260,7 +260,7 @@ export const Vendedor = () => {
                     <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
                         {store.productosTienda.map((producto) =>{
                                 return (
-                                    <EditarEliminarProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id} nombre_tienda={producto.nombre_tienda}/>
+                                    <EditarEliminarProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id} nombre_tienda={producto.nombre_tienda} producto={producto}/>
                                 )
                             })}
                         </div>

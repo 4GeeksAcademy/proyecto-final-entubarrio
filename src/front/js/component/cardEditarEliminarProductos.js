@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/todosproductos.css";
+import { useNavigate } from "react-router-dom";
 
-export const EditarEliminarProductos = ({url_imagen_producto,nombre_producto,descripcion_producto,id,precio,tienda_id,nombre_tienda}) => {
+export const EditarEliminarProductos = ({url_imagen_producto,nombre_producto,descripcion_producto,id,precio,tienda_id,nombre_tienda,producto}) => {
     const { store, actions } = useContext(Context);
+
+    const navigate = useNavigate()
 
     return (
         <div>
@@ -16,7 +19,10 @@ export const EditarEliminarProductos = ({url_imagen_producto,nombre_producto,des
                         <p className="text-black text-xs">{descripcion_producto}</p>
                         <h5 className="text-black">{precio}€</h5>
                         <div>
-                        <button type="button" className="btn btn-success"><i className="fa fa-pen p-2 m-3" /></button>
+                        <button type="button" className="btn btn-success" onClick={()=>{
+                            actions.verProducto(producto)
+                            navigate("/editarproducto")
+                                }}><i className="fa fa-pen p-2 m-3" /></button>
                         <button type="button" className="btn btn-danger"><i className="fa fa-trash p-2 m-3" /></button>
                         </div>
                     </div>
