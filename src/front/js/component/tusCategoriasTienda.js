@@ -18,6 +18,11 @@ const TusCategoriasTienda = () => {
                 <h2 className="custom-titulo">Selecciona Categoria</h2>
                 <select className="form-select-tienda" aria-label="Selecciona Productos" value={opcionSeleccionada} onChange={handleChange}>
                     <option value="">Selecciona</option>
+                    {categorias.map((categoria) =>{
+					return (
+						<option value={categoria}/>
+					)
+				})}
                     <option value="opcion1">Verduras</option>
                     <option value="opcion2">Frutas</option>
                 </select>

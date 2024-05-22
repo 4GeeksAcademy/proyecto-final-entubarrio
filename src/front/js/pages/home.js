@@ -4,6 +4,7 @@ import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042
 import "../../styles/home.css";
 import { TodosProductos } from "../component/cardTodosProductos";
 import { TodasTiendas } from "../component/cardTodasTiendas";
+import { TusCategoriasTienda } from "../component/tusCategoriasTienda";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -34,6 +35,16 @@ export const Home = () => {
 			</div>
 			<h2>Seleccion de Productos</h2>
 			<p>Aqui podras encontrar una variedad de productos de tu barrio</p>
+			<div className="tus-productos">
+                <div className="text-custom-tienda">
+
+                    <TusCategoriasTienda categorias= {store.categoriasProductos}
+                        productos={store.productos}
+                    />
+                </div>
+
+
+            </div>
 			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
 			{store.productos.map((producto) =>{
 					return (
