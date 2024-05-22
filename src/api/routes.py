@@ -358,3 +358,28 @@ def get_all_categorias_productos():
         "results": categorias_lista
     }
     return jsonify(response_body), 200
+
+
+#----------------------------------------
+
+@api.route('/tienda/<int:tienda_id>', methods=['DELETE'])
+@jwt_required()
+def borrar_tienda(tienda_id):
+    
+
+    # Obtener la tienda por ID
+    tienda_a_eliminar = Tienda.query.get(tienda_id)
+
+    # Si no se encuentra la tienda, devolver un mensaje de error
+    if tienda_a_eliminar is None:
+        return jsonify({"msg": "La tienda no existe"}), 404
+
+    # Eliminar la tienda de la base de datos
+    try:
+        db.session.delete(tienda_a_eliminar)
+        db.session.commit()
+        return jsonify({"msg": "Tienda eliminada"}), 200
+    except Exception as e:
+        # Registrar el error y devolver un mensaje de error genérico
+        print(f"Error al eliminar la tienda: {e}")
+        return jsonify({"msg": "Error al eliminar la tienda"}), 500

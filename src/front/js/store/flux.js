@@ -377,12 +377,35 @@ borrarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, p
 		return false;
 	}
 },
-
-
-
-
-
-
+//borrar la  tienda
+borrarTienda: async (token,) => {
+	try {
+	  const response = await fetch(process.env.BACKEND_URL + "/api/tienda" + id, {
+		method: 'DELETE',
+		headers: {
+		  'Content-Type': 'application/json',
+		  'Authorization': `Bearer ${token}`
+		}
+	  });
+  
+	  const data = await response.json();
+	  if (response.status === 200) {
+		if (data.results) { // Compruebe si data.results existe antes de acceder
+		  console.log(data.msg);
+		  setStore({ tienda: data.results });
+		} else {
+		 
+		}
+		
+	  } else {
+		console.log("Mensaje de error:", data.msg);
+		return false;
+	  }
+	} catch (error) {
+	  console.error("Error al borrar la tienda:", error);
+	  return false;
+	}
+  },
 
 
 
