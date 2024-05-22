@@ -431,7 +431,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			getTiendaVendedor: async (token) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({tienda:data})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
+			getProductosVendedor: async (token) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos-vendedor", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({productosTienda:data.productos})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
 
 
