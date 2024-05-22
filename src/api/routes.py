@@ -395,7 +395,7 @@ def login():
     email = request.json.get("email")
     password = request.json.get("password")
     tipo_usuario = request.json.get("tipo_usuario")
-    print(email, password, tipo_usuario)
+    
     if not email or not password:
         return jsonify({"msg": "Faltan datos de acceso"}), 400
 

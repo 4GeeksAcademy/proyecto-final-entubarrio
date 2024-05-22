@@ -13,27 +13,30 @@ export const InicioSesion = () => {
 	const navigate = useNavigate()
 
 	async function handleSubmit(e) {
-		e.preventDefault()
+		e.preventDefault();
 		if (!tipoUsuario) {
-			alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
-			return null;
+		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+		  return null;
+		}else {
+			actions.login(email, password, tipoUsuario, navigate);
 		}
-
-		const isLogged = await actions.login(email, password, tipoUsuario)
-		const tieneTienda = store.vendedores.vendedor.tiendas
-
-		if (isLogged && tipoUsuario === "particular") {
-			navigate("/");
-		}
-		else if (isLogged && tipoUsuario === "vendedor") {
-			if (tieneTienda) {
-				navigate("/vendedor");
-			} else {
-				// Registro de empresa
-				navigate("/creartienda");
-			}
-		};
-	};
+	}
+	
+		// const isLogged = await actions.login(email, password, tipoUsuario);
+	// 	const tieneTienda = store.vendedores.vendedor.tiendas;
+	
+	// 	if (isLogged && tipoUsuario === "particular") {
+	// 	  navigate("/");
+	// 	} else if (isLogged && tipoUsuario === "vendedor") {
+	// 	  if (tieneTienda) {
+	// 		navigate("/vendedor");
+	// 	  } else {
+	// 		navigate("/creartienda");
+	// 	  }
+	// 	} else {
+	// 	  alert("Credenciales incorrectas");
+	// 	}
+	//   };
 
 	return (
 		<div className="inicio-sesion d-flex justify-content-center">
