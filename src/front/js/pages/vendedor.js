@@ -141,6 +141,8 @@ import fruteria from "../../img/fruteria.jpg";
 import { TodosProductosVendedor } from "../component/cardVendedorTodosProductos";
 import "../../styles/vendedor.css";
 import { EditarEliminarProductos } from "../component/cardEditarEliminarProductos";
+import { useNavigate } from "react-router-dom";
+
 
 export const Vendedor = () => {
     const { store, actions } = useContext(Context);
@@ -169,10 +171,13 @@ export const Vendedor = () => {
         return <h2>No estás autorizado para acceder a esta página.</h2>;
     }
 
+    const navigate = useNavigate()
+
     const params = useParams()
 
     useEffect(() => {
         const token = localStorage.getItem("token");
+        
 
 		actions.getTiendaVendedor(token)
         // actions.getTiendas()
@@ -186,6 +191,13 @@ export const Vendedor = () => {
             <div className="text-center mt-5 vendedor">
                 <h2>{store.tienda?.nombre_tienda}</h2>
                 <img src={store.tienda?.url_imagen_tienda} className="imagen-fruteria img-fluid w-150" alt="Foto Home" />
+                <div>
+                    <button type="button" className="btn btn-success m-2" onClick={()=>{
+                        actions.verTienda(store.tienda)
+                        navigate("/editartienda")
+                            }}><i className="fa fa-pen p-1" /></button>
+                    <button type="button" className="btn btn-danger m-2"><i className="fa fa-trash p-1" /></button>
+                </div>
                 <div className="vendedor row d-flex justify-content-center border-top mt-5">
                     <div className="titulovendedor-añadir-productos col-4 mt-4 ms-4">
                         <h2>Añade un producto</h2>

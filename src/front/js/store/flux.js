@@ -478,9 +478,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({producto:producto})
 			},
 
+			verTienda: (tienda) => {
+				setStore({tienda:tienda})
+			},
 
-
-
+			editarTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda, token) => {
+				try {
+					console.log("Datos del producto a editar:");
+			
+					const response = await fetch(process.env.BACKEND_URL + "/api/tienda/"+nombre_tienda, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						body: JSON.stringify({
+							nombre_tienda: nombre_tienda,
+							descripcion_tienda: descripcion_tienda,
+							categoria_tienda: categoria_tienda,
+							direccion_tienda: direccion_tienda,
+							url_imagen_tienda: url_imagen_tienda,
+						})
+					});
+			
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ tiendas: data.results });
+						return true
+					} 
+				} catch (error) {
+					console.error("Error al editar el producto:", error);
+					return false;
+				}
+			},
 
 
 

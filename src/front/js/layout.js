@@ -22,6 +22,8 @@ import { Vendedor } from "./pages/vendedor";
 import { PaginaTiendas } from "./pages/paginatiendas";
 import { CreateUser } from "./pages/createuser";
 import { EditarProducto } from "./pages/editarProducto";
+import { EditarTienda } from "./pages/editartienda";
+
 
 //create your first component
 const Layout = () => {
@@ -51,6 +53,8 @@ const Layout = () => {
                         <Route element={<PaginaTiendas />} path="/paginatiendas" />
                         <Route element={<CrearTienda />} path="/creartienda" />
                         <Route element={<EditarProducto />} path="/editarproducto" />
+                        <Route element={<EditarTienda />} path="/editartienda" />
+
                     </Routes>
                     <Footer />
                 </ScrollToTop>
