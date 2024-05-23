@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "../../styles/iniciosesion.css";
 
 export const InicioSesion = () => {
@@ -15,13 +16,23 @@ export const InicioSesion = () => {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		if (!tipoUsuario) {
-		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+			Swal.fire({
+				title: 'Error!',
+				text: 'Seleccione un tipo de usuario (Particular o Empresa)',
+				icon: 'error',
+				confirmButtonText: 'OK'
+			  })
 		  return null;
 		}
 		try {
 			const response = await actions.login(email, password, tipoUsuario, navigate);
 			if (response) {
-			  alert(response); // Display error message using toast
+				Swal.fire({
+					title: 'Error!',
+					text: (response),
+					icon: 'error',
+					confirmButtonText: 'OK'
+				  }); // Display error message using toast
 			} else {
 			  // Successful login logic
 			  localStorage.setItem("token", response.access_token);
