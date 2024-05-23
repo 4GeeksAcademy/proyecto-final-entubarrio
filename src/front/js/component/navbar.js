@@ -14,10 +14,11 @@ export const Navbar = () => {
 		actions.logout();
 		navigate("/");
 		window.location.reload();
+		console.log(store.vendedores);
 	}
 
 	let token = localStorage.getItem("token")
-	let tipo_usuario = localStorage.getItem("tipo_usuario")
+	let tieneTienda = store.vendedores
 
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary py-2 border-bottom d-flex flex-column">
@@ -39,7 +40,7 @@ export const Navbar = () => {
 					<li className="nav-item ">
 						<a className="nav-link" href="/productos">Productos</a>
 					</li>
-					{token ? <li className="nav-item border-start">
+					{tieneTienda && token ? <li className="nav-item border-start">
 						<a className="nav-link" href="/vendedor">Mi Tienda</a>
 					</li> : null}
 				</ul>

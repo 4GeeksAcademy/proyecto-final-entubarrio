@@ -67,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						// Verificar si vendedor tiene una tienda
 						if (tipo_usuario === "vendedor" && data.vendedor.tiendas) {
-							setStore({ vendedores: data.vendedor.tiendas })
+							// setStore({ vendedores: data.vendedor.tiendas })
 							navigate("/vendedor") // Navigate a perfil vendedor
 						} else if (tipo_usuario === "vendedor") {
 							// Es Vendedor pero no tiene tienda - navigate a pagina crear tienda
@@ -86,18 +86,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// 	if (data.msg) {
-			// 		localStorage.setItem("token", data.access_token);
-			// 		console.log(data);
-			// 		return true;
-			// 	}
-			// 		console.log(data);
-			// 		return false
-			// 	} catch (error) {
-			// 		console.log(error);
-			// 		return false;
-			// 	}
-			// },
 			createUser: async (email, password, tipo_usuario, navigate) => {
 				try {
 					let response = await fetch(process.env.BACKEND_URL + "/api/signup", {

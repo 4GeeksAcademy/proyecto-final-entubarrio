@@ -17,11 +17,35 @@ export const InicioSesion = () => {
 		if (!tipoUsuario) {
 		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
 		  return null;
-		}else {
-			actions.login(email, password, tipoUsuario, navigate);
 		}
-	}
+		try {
+			const response = await actions.login(email, password, tipoUsuario, navigate);
+			if (response.error) {
+			  toast.error(response.message); // Display error message using toast
+			} else {
+			  // Successful login logic
+			  localStorage.setItem("token", response.access_token);
+			  // ... (navigate to appropriate page)
+			}
+		  } catch (error) {
+			console.error(error);
+			toast.error("Ha ocurrido un error. Intente nuevamente."); // Generic error message
+		  }
+		 
+		}
 	
+// --------------------------------------Este es es handlesubmit que funciona-----------------------------------------------------------
+// 	async function handleSubmit(e) {
+// 		e.preventDefault();
+// 		if (!tipoUsuario) {
+// 		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+// 		  return null;
+// 		}else {
+// 			actions.login(email, password, tipoUsuario, navigate);
+// 		}
+// 	}
+// -------------------------------------------------------------------------------------------------
+
 		// const isLogged = await actions.login(email, password, tipoUsuario);
 	// 	const tieneTienda = store.vendedores.vendedor.tiendas;
 	

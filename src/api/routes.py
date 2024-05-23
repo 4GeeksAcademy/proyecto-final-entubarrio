@@ -402,7 +402,7 @@ def login():
     if tipo_usuario == 'particular':
             particular_exist = Particular.query.filter_by(email=email, password=password).first()
             if particular_exist is None:
-                return jsonify({"msg": "Email no existe"}), 401
+                return jsonify({"msg": "Email no existe o tipo de usuario incorrecto"}), 401
             
             # Si existe se el envia el acceso al particular y crea el token
             access_token = create_access_token(identity=email)
