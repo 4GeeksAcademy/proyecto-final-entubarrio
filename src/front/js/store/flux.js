@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			tienda: [],
 			productosSeleccionados:[],
 			productosTienda:[],
-			categoriasProductos:[],
+			categoriasProductos:[],categoriasTiendas:[],
 			producto:[],
 			vendedores:[]
 		},
@@ -477,26 +477,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			verProducto: (producto) => {
 				setStore({producto:producto})
 			},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			getCategoriasTiendas: async () => {
+                try {
+                    let response = await fetch(process.env.BACKEND_URL + "/api/categorias-tiendas", {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    });
+                    let data = await response.json();
+                    if (response.status === 200) {
+                        setStore({ categoriasTiendas: data.results });
+                    } else {
+                        console.log(data);
+                        console.log("No funciona");
+                    }
+                } catch (error) {
+                    console.error("Error fetching categorias tiendas:", error);
+                }
+            },
+ 
 
 
 
