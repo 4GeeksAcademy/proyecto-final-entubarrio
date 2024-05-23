@@ -410,7 +410,7 @@ def get_all_categorias_tiendas():
     categorias_lista = list(categorias)
    
     if categorias_lista == []:
-        return jsonify({"msg" : "No hay tiendas"}), 404
+        return jsonify({"msg" : "No hay categorias guardadas"}), 404
     response_body = {
         "results": categorias_lista
     }
