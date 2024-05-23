@@ -20,8 +20,8 @@ export const InicioSesion = () => {
 		}
 		try {
 			const response = await actions.login(email, password, tipoUsuario, navigate);
-			if (response.error) {
-			  toast.error(response.message); // Display error message using toast
+			if (response) {
+			  alert(response); // Display error message using toast
 			} else {
 			  // Successful login logic
 			  localStorage.setItem("token", response.access_token);

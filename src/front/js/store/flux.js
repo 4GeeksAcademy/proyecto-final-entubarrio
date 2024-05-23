@@ -21,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			productosTienda:[],
 			categoriasProductos:[],categoriasTiendas:[],
 			producto:[],
-			vendedores:[]
+			tipo_usuario:""
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -67,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						// Verificar si vendedor tiene una tienda
 						if (tipo_usuario === "vendedor" && data.vendedor.tiendas) {
-							// setStore({ vendedores: data.vendedor.tiendas })
+							setStore({ tipo_usuario: tipo_usuario })
 							navigate("/vendedor") // Navigate a perfil vendedor
 						} else if (tipo_usuario === "vendedor") {
 							// Es Vendedor pero no tiene tienda - navigate a pagina crear tienda
@@ -82,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				} catch (error) {
 					console.log(error.message);
-					return false;
+					return error.message;
 				}
 			},
 
