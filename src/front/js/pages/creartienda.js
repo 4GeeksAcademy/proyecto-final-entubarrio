@@ -30,8 +30,8 @@ export const CrearTienda = () => {
             descripcion_tienda, 
             categoria_tienda, 
             direccion_tienda, 
-            url_imagen_tienda);
-        navigate("/vendedor")
+            url_imagen_tienda, navigate);
+        // navigate("/vendedor")
         // actions.getTienda();
     }
 

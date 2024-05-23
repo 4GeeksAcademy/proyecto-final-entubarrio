@@ -43,44 +43,49 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (email, password, tipo_usuario, navigate) => {
 				try {
-				  let response = await fetch(process.env.BACKEND_URL + "/api/login", {
-					method: 'POST',
-					headers:{
-					  'Content-Type':'application/json'
-					},
-					body: JSON.stringify({
-					  email:email,
-					  password:password,
-					  tipo_usuario:tipo_usuario
+					let response = await fetch(process.env.BACKEND_URL + "/api/login", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							email: email,
+							password: password,
+							tipo_usuario: tipo_usuario
+						})
 					})
-				  })
-			  
-				  let data = await response.json()
-				  console.log(data);
-				  if (data) {
-					localStorage.setItem("token", data.access_token);
-			  
-					// Verificar si vendedor tiene una tienda
-					if (tipo_usuario === "vendedor" && data.vendedor.tiendas) {
-					//   setStore({ vendedores: data.vendedor.tiendas })
-					  navigate("/vendedor") // Navigate a perfil vendedor
-					} else if (tipo_usuario === "vendedor") {
-					  // Es Vendedor pero no tiene tienda - navigate a pagina crear tienda
-					  navigate("/creartienda")
-					} else {
-					  // si es usuario Particular - navigate a home por ahora)
-					  navigate("/")
+					console.log(response);
+					if (!response.ok) {
+						const errorData = await response.json()
+						console.log(errorData);
+						throw new Error(errorData.msg)
 					}
-				  } else {
+					let data = await response.json()
 					console.log(data);
-					return false;
-				  }
+					if (data) {
+						localStorage.setItem("token", data.access_token);
+
+						// Verificar si vendedor tiene una tienda
+						if (tipo_usuario === "vendedor" && data.vendedor.tiendas) {
+							setStore({ vendedores: data.vendedor.tiendas })
+							navigate("/vendedor") // Navigate a perfil vendedor
+						} else if (tipo_usuario === "vendedor") {
+							// Es Vendedor pero no tiene tienda - navigate a pagina crear tienda
+							navigate("/creartienda")
+						} else {
+							// si es usuario Particular - navigate a home por ahora)
+							navigate("/")
+						}
+					} else {
+						console.log(data);
+						return false;
+					}
 				} catch (error) {
-				  console.log(error);
-				  return false;
+					console.log(error.message);
+					return false;
 				}
-			  },
-			  
+			},
+
 			// 	if (data.msg) {
 			// 		localStorage.setItem("token", data.access_token);
 			// 		console.log(data);
@@ -326,7 +331,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-			crearTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda) => {
+			crearTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda, navigate) => {
 				let token = localStorage.getItem("token")
 				if (!token) {
 					console.error("Falta el token de autenticación");
@@ -352,6 +357,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 200) {
 						console.log(data.msg);
 						setStore({ tiendas: data.result })
+						navigate("/vendedor")
 						console.log("Tienda creada:", data.msg);
 					} else {
 						console.log("Error al crear la tienda:", data.msg);

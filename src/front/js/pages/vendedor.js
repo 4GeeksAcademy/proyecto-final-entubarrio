@@ -171,7 +171,7 @@ export const Vendedor = () => {
     const params = useParams()
 
     useEffect(() => {
-		actions.getTienda(store.tienda.id)
+		// actions.getTienda(store.tienda.id)
         actions.getTiendas()
 	}, [])
 
