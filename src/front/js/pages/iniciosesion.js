@@ -21,45 +21,42 @@ export const InicioSesion = () => {
 				text: 'Seleccione un tipo de usuario (Particular o Empresa)',
 				icon: 'error',
 				confirmButtonText: 'OK'
-			  })
-		  return null;
+			})
+			return null;
 		}
-		try {
-			const response = await actions.login(email, password, tipoUsuario, navigate);
-			if (response) {
-				Swal.fire({
-					title: 'Error!',
-					text: (response),
-					icon: 'error',
-					confirmButtonText: 'OK'
-				  }); // Display error message using toast
-			} else {
-			  // Successful login logic
-			  localStorage.setItem("token", response.access_token);
-			  // ... (navigate to appropriate page)
-			}
-		  } catch (error) {
-			console.error(error);
-			Swal.fire("Ha ocurrido un error. Intente nuevamente."); // Generic error message
-		  }
-		 
-		}
-	
-// --------------------------------------Este es es handlesubmit que funciona-----------------------------------------------------------
-// 	async function handleSubmit(e) {
-// 		e.preventDefault();
-// 		if (!tipoUsuario) {
-// 		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
-// 		  return null;
-// 		}else {
-// 			actions.login(email, password, tipoUsuario, navigate);
-// 		}
-// 	}
-// -------------------------------------------------------------------------------------------------
 
-		// const isLogged = await actions.login(email, password, tipoUsuario);
+		const response = await actions.login(email, password, tipoUsuario, navigate);
+		if (response) {
+			Swal.fire({
+				title: 'Error!',
+				text: (response),
+				icon: 'error',
+				confirmButtonText: 'OK'
+			}); // Display error message using toast
+		} else {
+			// Successful login logic
+			localStorage.setItem("token", response.access_token);
+			// ... (navigate to appropriate page)
+		}
+
+
+	}
+
+	// --------------------------------------Este es es handlesubmit que funciona-----------------------------------------------------------
+	// 	async function handleSubmit(e) {
+	// 		e.preventDefault();
+	// 		if (!tipoUsuario) {
+	// 		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+	// 		  return null;
+	// 		}else {
+	// 			actions.login(email, password, tipoUsuario, navigate);
+	// 		}
+	// 	}
+	// -------------------------------------------------------------------------------------------------
+
+	// const isLogged = await actions.login(email, password, tipoUsuario);
 	// 	const tieneTienda = store.vendedores.vendedor.tiendas;
-	
+
 	// 	if (isLogged && tipoUsuario === "particular") {
 	// 	  navigate("/");
 	// 	} else if (isLogged && tipoUsuario === "vendedor") {

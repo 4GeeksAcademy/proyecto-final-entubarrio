@@ -64,6 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					if (data) {
 						localStorage.setItem("token", data.access_token);
+						localStorage.setItem("tipo_usuario", tipo_usuario);
 
 						// Verificar si vendedor tiene una tienda
 						if (tipo_usuario === "vendedor" && data.vendedor.tiendas) {
