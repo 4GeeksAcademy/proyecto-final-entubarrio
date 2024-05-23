@@ -1,38 +1,49 @@
 import React, { useEffect } from 'react';
+import { Loader } from "@googlemaps/js-api-loader";
 
-const MapaTienda = () => {
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=maps,marker&v=beta`;
-        script.async = true;
-        document.body.appendChild(script);
+const MapaTienda = ({ direccion }) => {
+  useEffect(() => {
+    const loadMap = async () => {
+      const loader = new Loader({
+        apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        version: "weekly",
+        libraries: ["marker"], 
+      });
 
-        const initMap = () => {
-            const map = new window.google.maps.Map(document.getElementById("map"), {
-                center: { lat: 40.378013610839844, lng: -3.7512316703796387 },
-                zoom: 14,
-            });
+      await loader.load();
 
-            new window.google.maps.Marker({
-                position: { lat: 40.378013610839844, lng: -3.7512316703796387 },
-                map: map,
-                title: "My location"
-            });
-        };
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: direccion }, (results, status) => {
+        if (status === 'OK') {
+          const map = new google.maps.Map(document.getElementById("map"), {
+            center: results[0].geometry.location,
+            zoom: 14,
+            mapId: "DEMO_MAP_ID", 
+          });
 
-        window.initMap = initMap;
+          
+          const marker = new google.maps.marker.AdvancedMarkerElement({
+            map,
+            position: results[0].geometry.location,
+            title: "Tienda",
+          });
+        } else {
+          console.error();
+        }
+      });
+    };
 
-        return () => {
-            window.initMap = null;
-        };
-    }, []);
+    loadMap().catch(error => {
+      console.error('Error loading Google Maps API: ', error);
+    });
+  }, [direccion]);
 
-    return (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <h1>Nos puedes encontrar aquí</h1>
-            <div id="map" style={{ height: "70vh", width: "90%" }}></div>
-        </div>
-    );
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <h3>Ubicación de la tienda</h3>
+      <div id="map" style={{ height: "70vh", width: "90%" }}></div>
+    </div>
+  );
 };
 
 export default MapaTienda;

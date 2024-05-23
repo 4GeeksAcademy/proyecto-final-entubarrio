@@ -17,11 +17,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			tiendas: [],
 			productos: [],
 			tienda: [],
-			productosSeleccionados: [],
-			productosTienda: [],
-			categoriasProductos: [],
-			producto: [],
-			vendedores: []
+			productosSeleccionados:[],
+			productosTienda:[],
+			categoriasProductos:[],categoriasTiendas:[],
+			producto:[],
+			vendedores:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -199,7 +199,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-
 			crearNuevoProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
 				try {
 					console.log("Datos del producto a enviar:", {
@@ -318,7 +317,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-
 			crearTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda, navigate) => {
 				let token = localStorage.getItem("token")
 				if (!token) {
@@ -357,57 +355,166 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			borrarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
+				try {
+					console.log("Datos del producto a borrar:", {
+						nombre_producto: nombreProducto,
+						descripcion_producto: descripcionProducto,
+						categoria_producto: categoriaProducto,
+						precio: precio,
+						url_imagen_producto: urlImagenProducto
+					});
 
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto"+id, {
+						method: 'DELETE',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						
+					});
 
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ productos: data.results });
+						console.log("Producto borrado:", data.results);
+					} else {
+						console.log("Mensaje de error:", data.msg);
+						return false;
+					}
+				} catch (error) {
+					console.error("Error al borrar el producto:", error);
+					return false;
+				}
+			},
 
+			getCategoriasProductos: async () => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/categorias-productos", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						setStore({categoriasProductos:data.results})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
+			editarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token, id) => {
+				try {
+					console.log("Datos del producto a editar:", {
+						nombre_producto: nombreProducto,
+						descripcion_producto: descripcionProducto,
+						categoria_producto: categoriaProducto,
+						precio: parseInt(precio),
+						url_imagen_producto: urlImagenProducto
+					});
+			
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						body: JSON.stringify({
+							nombre_producto: nombreProducto,
+							descripcion_producto: descripcionProducto,
+							categoria_producto: categoriaProducto,
+							precio: parseInt(precio),
+							url_imagen_producto: urlImagenProducto,
+						})
+					});
+			
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ productos: data.results });
+						return true
+					} 
+				} catch (error) {
+					console.error("Error al editar el producto:", error);
+					return false;
+				}
+			},
 
+			getTiendaVendedor: async (token) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({tienda:data})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
-			//LINEAS RESERVADAS ADRIAN
+			getProductosVendedor: async (token) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos-vendedor", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({productosTienda:data.productos})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			verProducto: (producto) => {
+				setStore({producto:producto})
+			},
+			getCategoriasTiendas: async () => {
+                try {
+                    let response = await fetch(process.env.BACKEND_URL + "/api/categorias-tiendas", {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    });
+                    let data = await response.json();
+                    if (response.status === 200) {
+                        setStore({ categoriasTiendas: data.results });
+                    } else {
+                        console.log(data);
+                        console.log("No funciona");
+                    }
+                } catch (error) {
+                    console.error("Error fetching categorias tiendas:", error);
+                }
+            },
+      
 		},
 	};
 };

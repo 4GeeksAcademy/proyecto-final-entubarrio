@@ -359,85 +359,59 @@ def get_all_categorias_productos():
     }
     return jsonify(response_body), 200
 
-# SIGNUP por Tipo de Usuario-------------------------------------------------------------------------------------------------------------------
-@api.route("/signup", methods=["POST"])
-def signup():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-    tipo_usuario = request.json.get("tipo_usuario", None)
+#Endpoint Get Tienda Vendedor-------------------------------------------------------------------------------------------------
+@api.route('/tienda', methods=['GET'])
+@jwt_required()
+def get_vendedor_tienda():
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
+    # Seleciono la tienda porque un vendedor puede tener varias
+    tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first()
+    # tienda_id=tienda.id
+    # tienda = Tienda.query.get(tienda_id)
+    if tienda is None:
+        return jsonify({"msg": "No existe la tienda"}), 404
+    return jsonify(tienda.serialize()), 200
 
-    if tipo_usuario == 'vendedor':
-        # Crear un nuevo registro en la tabla de vendedores
-        vendedor_exist = Vendedor.query.filter_by(email=email).first()
-        if vendedor_exist is None:
-            new_vendedor = Vendedor(email=email, password=password)
-            db.session.add(new_vendedor)
-        else:
-            return jsonify({"msg": "Tipo de usuario invalido o ya existe"}), 400
-    elif tipo_usuario == 'particular':
-        # Crear un nuevo registro en la tabla de particulares
-        particular_exist = Particular.query.filter_by(email=email).first()
-        if particular_exist is None:
-            new_particular = Particular(email=email, password=password)
-            db.session.add(new_particular)
-        else:
-            return jsonify({"msg": "Tipo de usuario invalido o ya existe"}), 400
-    
-    db.session.commit()
-    return jsonify({"msg": "Usuario registrado correctamente"}), 201
+#Endpoint Get Productos Vendedor-------------------------------------------------------------------------------------------------
+@api.route('/productos-vendedor', methods=['GET'])
+@jwt_required()
+def get_productos_vendedor():
+    email = get_jwt_identity()
+    vendedor = Vendedor.query.filter_by(email=email).first()
+    vendedor_id=vendedor.id
+    # Seleciono la tienda porque un vendedor puede tener varias
+    tienda = Tienda.query.filter_by(vendedor_id=vendedor_id).first()
+    # tienda_id=tienda.id
 
+    # tienda = Tienda.query.get(tienda_id)
 
-# LOGIN con Tipo de Usuario-------------------------------------------------------------------------------------------------------------------
-# Create a route to authenticate your users and return JWTs. The
-# create_access_token() function is used to actually generate the JWT.
-@api.route("/login", methods=["POST"])
-def login():
-    email = request.json.get("email")
-    password = request.json.get("password")
-    tipo_usuario = request.json.get("tipo_usuario")
-    
-    if not email or not password:
-        return jsonify({"msg": "Faltan datos de acceso"}), 400
+    # Si la tienda no existe, devolver un error 404
+    if tienda is None:
+        return jsonify({"msg": "Tienda no encontrada"}), 404
+    # Obtener todos los productos de la tienda
+    productos = tienda.productos
+    # Serializar los productos a JSON
+    productos_serializados = [producto.serialize() for producto in productos]
 
-    if tipo_usuario == 'particular':
-            particular_exist = Particular.query.filter_by(email=email, password=password).first()
-            if particular_exist is None:
-                return jsonify({"msg": "Email no existe o tipo de usuario incorrecto"}), 401
-            
-            # Si existe se el envia el acceso al particular y crea el token
-            access_token = create_access_token(identity=email)
-            return jsonify({"msg": "Este Usuario ya tiene un perfil particular", "access_token":access_token, "particular":particular_exist.serialize()}), 201
-    
-    if tipo_usuario == 'vendedor':
-            vendedor_exist = Vendedor.query.filter_by(email=email, password=password).first()
-            print(vendedor_exist)
-            if vendedor_exist is None:
-                return jsonify({"msg": "El vendedor no existe"}), 404
-            access_token = create_access_token(identity=email)
-            return jsonify({"msg": "Este Vendedor ya tiene un perfil empresa", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
-    
+    # Devolver la lista de productos serializados
+    return jsonify({'productos': productos_serializados}), 200
 
-    # vendedor_exist = Vendedor.query.filter_by(email=email, password=password).first()
-    # particular_exist = Particular.query.filter_by(email=email, password=password).first()
+# #Enpoints Categorias tiendas-----------------------------------------------------------------------------------
+@api.route('/categorias-tiendas', methods=['GET'])
+def get_all_categorias_tiendas():
 
-    # if tipo_usuario == 'vendedor':
-    #    if vendedor_exist is None:
-    #         return jsonify({"msg": "El vendedor no existe"}), 404
-    # elif tipo_usuario == 'particular':
-        
-    #     if particular_exist is None:
-    #         return jsonify({"msg": "Email no existe"}), 401
-    # # Verificar si vendedor tiene tiendas    
-    # tiendas_vendedor = Tienda.query.filter_by(vendedor_id=vendedor_exist.id).count()
-    # tiene_tienda = tiendas_vendedor > 0
-    # access_token = create_access_token(identity=email)
+    query_results = Tienda.query.all()
+    categorias = set()
+    for tienda in query_results:
+        categorias.add(tienda.categoria_tienda)
 
-    # if tipo_usuario == 'vendedor' and tiene_tienda:
-    #     return jsonify({"msg": "Este vendedor ya tiene una tienda", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
-    # elif tipo_usuario == 'vendedor' and not tiene_tienda: 
-    #     return jsonify({"msg": "Aún no dispone de tienda", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
-
-    # elif tipo_usuario == 'particular':
-    #     return jsonify({"msg": "Este Usuario ya tiene un perfil", "access_token":access_token, "particular":particular_exist.serialize()}), 201
-    # else: 
-    #     return jsonify({"msg": "Este usuario aun no esta registrado"}), 404
+    categorias_lista = list(categorias)
+   
+    if categorias_lista == []:
+        return jsonify({"msg" : "No hay categorias guardadas"}), 404
+    response_body = {
+        "results": categorias_lista
+    }
+    return jsonify(response_body), 200

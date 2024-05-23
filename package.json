@@ -73,6 +73,7 @@
 		]
 	},
 	"dependencies": {
+		"@googlemaps/js-api-loader": "^1.16.6",
 		"leaflet": "^1.9.4",
 		"prop-types": "^15.6.1",
 		"react": "^16.14.0",
