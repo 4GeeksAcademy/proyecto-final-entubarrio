@@ -423,6 +423,9 @@ def signup():
     password = request.json.get("password", None)
     tipo_usuario = request.json.get("tipo_usuario", None)
 
+    if not email or not password:
+        return jsonify({"msg": "Faltan datos de acceso"}), 400
+        
     if tipo_usuario == 'vendedor':
         # Crear un nuevo registro en la tabla de vendedores
         vendedor_exist = Vendedor.query.filter_by(email=email).first()

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 // import "../../styles/iniciosesion.css";
 
 export const CreateUser = () => {
@@ -14,35 +15,16 @@ export const CreateUser = () => {
 	const { store, actions } = useContext(Context);
 	const navigate = useNavigate()
 
-	// async function handleSubmit(e) {
-	// 	e.preventDefault()
-	// 	const isCreated = await actions.createUser(email, password)
-	// 	if (isCreated) {
-	// 		navigate("/login");
-	// 	}
-	// }
-
-	// async function handleSubmit(e) {
-	// 	e.preventDefault()
-	// 	const crearUsuario = await actions.createUser(email, password)
-	// 	if (tipoUsuario === "particular") {
-	// 		// Función de Flux para registro de usuario individual
-	// 		await actions.createUser(email, password)
-	// 	  } else {
-	// 		// Función de Flux para registro de empresa
-	// 		navigate("/creartienda");
-	// 	  }
-	// 	const isCreated = await actions.createUser(email, password)
-	// 	if (isCreated) {
-	// 		navigate("/login");
-	// 	}
-	// }
-
 	async function handleSubmit(e) {
 		e.preventDefault();
 
 		if (!tipoUsuario) {
-			alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+			Swal.fire({
+				title: 'Error!',
+				text: 'Seleccione un tipo de usuario (Particular o Empresa)',
+				icon: 'error',
+				confirmButtonText: 'OK'
+			})
 			return null;
 		}
 		const data = {
@@ -67,9 +49,15 @@ export const CreateUser = () => {
 			isCreated = await actions.createUser(email, password, tipoUsuario, navigate);
 		} else {
 			// Registro de empresa
-			alert("Error al crear el usuario");
+			Swal.fire({
+				title: 'Error!',
+				text: (error.message),
+				icon: 'error',
+				confirmButtonText: 'OK'
+			})
+			// alert("Error al crear el usuario");
 			return null;
-		}	
+		}
 	}
 
 	return (
@@ -144,7 +132,7 @@ export const CreateUser = () => {
 								<input type="checkbox" className="form-check-input" id="exampleCheck1" />
 								<label className="form-check-label" for="exampleCheck1">Recordarme</label>
 							</div>
-							<div className="form-text d-flex justify-content-center">¿Ya tienes una cuenta? 
+							<div className="form-text d-flex justify-content-center">¿Ya tienes una cuenta?
 								<Link to="/login">Inicia sesión</Link></div>
 						</form>
 					</div>

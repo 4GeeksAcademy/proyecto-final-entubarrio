@@ -40,7 +40,7 @@ export const InicioSesion = () => {
 			}
 		  } catch (error) {
 			console.error(error);
-			toast.error("Ha ocurrido un error. Intente nuevamente."); // Generic error message
+			Swal.fire("Ha ocurrido un error. Intente nuevamente."); // Generic error message
 		  }
 		 
 		}

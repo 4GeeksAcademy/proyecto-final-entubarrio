@@ -99,18 +99,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 							tipo_usuario: tipo_usuario
 						})
 					})
-
+					if (!response.ok) {
+						const errorData = await response.json()
+						console.log(errorData);
+						throw new Error(errorData.msg)
+					}
 					let data = await response.json()
-					if (data.msg) {
+					if (data) {
 						console.log(data);
 						navigate("/login")
-						return true;
+						// return true;
 					} else {
 						console.log(data);
 						return false
 					}
 				} catch (error) {
-					return false;
+					console.log(error.message);
+					return error.message;
 				}
 
 			},
