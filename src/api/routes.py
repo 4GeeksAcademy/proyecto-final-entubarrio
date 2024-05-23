@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Vendedor, Producto, Tienda
+from api.models import db, Vendedor, Producto, Tienda, Particular
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
@@ -34,43 +34,43 @@ def handle_hello():
 # LOGIN-------------------------------------------------------------------------------------------------------------------
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
-@api.route("/login", methods=["POST"])
-def login():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
+# @api.route("/login", methods=["POST"])
+# def login():
+#     email = request.json.get("email", None)
+#     password = request.json.get("password", None)
 
-    vendedor_exist = Vendedor.query.filter_by(email=email).first()
-    print(vendedor_exist)
+#     vendedor_exist = Vendedor.query.filter_by(email=email).first()
+#     print(vendedor_exist)
 
-    if vendedor_exist is None:
-        return jsonify({"msg": "Email doesn't exist"}), 404
+#     if vendedor_exist is None:
+#         return jsonify({"msg": "Email doesn't exist"}), 404
 
-    if email != vendedor_exist.email or password != vendedor_exist.password:
-        return jsonify({"msg": "Bad username or password"}), 401
+#     if email != vendedor_exist.email or password != vendedor_exist.password:
+#         return jsonify({"msg": "Bad username or password"}), 401
 
-    access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+#     access_token = create_access_token(identity=email)
+#     return jsonify(access_token=access_token), 200
 
 # SIGNUP-------------------------------------------------------------------------------------------------------------------
-@api.route("/signup", methods=["POST"])
-def signup():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
+# @api.route("/signup", methods=["POST"])
+# def signup():
+#     email = request.json.get("email", None)
+#     password = request.json.get("password", None)
 
     
-    vendedor_exist = Vendedor.query.filter_by(email=email).first()
-    if vendedor_exist is None:
-        new_vendedor = Vendedor(
-            email=email,
-            password=password
-        )
-        db.session.add(new_vendedor)
-        db.session.commit()
-        access_token = create_access_token(identity=email)
-        return jsonify(access_token=access_token), 200
+#     vendedor_exist = Vendedor.query.filter_by(email=email).first()
+#     if vendedor_exist is None:
+#         new_vendedor = Vendedor(
+#             email=email,
+#             password=password
+#         )
+#         db.session.add(new_vendedor)
+#         db.session.commit()
+#         access_token = create_access_token(identity=email)
+#         return jsonify(access_token=access_token), 200
 
-    else:
-        return jsonify({"msg": "Vendedor existe"}), 400
+#     else:
+#         return jsonify({"msg": "Vendedor existe"}), 400
     
 # -------------------------------------------------ENPOINTS BASE DE DATOS------------------------------------------------------
 # Endpoint (Todas las tiendas)-------------------------------------------------------------------------------------------------
@@ -415,4 +415,3 @@ def get_all_categorias_tiendas():
         "results": categorias_lista
     }
     return jsonify(response_body), 200
-

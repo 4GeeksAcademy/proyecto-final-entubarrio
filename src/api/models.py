@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
+from flask_migrate import migrate
+
 
 db = SQLAlchemy()
 
@@ -17,9 +19,11 @@ class Vendedor(db.Model):
         return f'<Vendedor {self.email}>'
 
     def serialize(self):
+        tiendas = list(map(lambda item: item.serialize(), self.tiendas))
         return {
             "id": self.id,
             "email": self.email,
+            "tiendas": True if len(tiendas) > 0  else False
             # do not serialize the password, its a security breach
         }
     
@@ -33,7 +37,7 @@ class Tienda(db.Model):
     url_imagen_tienda = db.Column(db.String(120), unique=False, nullable=False)
     productos = db.relationship('Producto', backref='tienda', lazy=True)
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
-
+    # particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
 
     def __repr__(self):
         return f'<Tienda {self.nombre_tienda}>'
@@ -59,7 +63,8 @@ class Producto(db.Model):
     url_imagen_producto = db.Column(db.String(120), unique=False, nullable=False)
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
     tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
-
+    particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
+    # tienda = db.relationship('Tienda', backref='productos')
 
     def __repr__(self):
         return f'<Producto {self.nombre_producto}>'
@@ -78,4 +83,22 @@ class Producto(db.Model):
             # do not serialize the password, its a security breach
         } 
     
- 
+class Particular(db.Model):
+    __tablename__ = 'particular'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(80), nullable=False)
+    # tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
+    productos = db.relationship('Producto', backref='particular', lazy=True)
+    # tiendas = db.relationship('Tienda', backref='particular', lazy=True)
+    # Otros campos que quieras agregar para usuarios particulares
+
+    def __repr__(self):
+        return f'<Particular {self.email}>'
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            # do not serialize the password, its a security breach
+        }

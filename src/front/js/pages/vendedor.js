@@ -172,7 +172,7 @@ export const Vendedor = () => {
     const params = useParams()
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
 		actions.getTiendaVendedor(token)
         // actions.getTiendas()

@@ -13,23 +13,54 @@ export const InicioSesion = () => {
 	const navigate = useNavigate()
 
 	async function handleSubmit(e) {
-		e.preventDefault()
+		e.preventDefault();
 		if (!tipoUsuario) {
-			alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
-			return null;
+		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+		  return null;
 		}
-		const isLogged = await actions.login(email, password)
-
-		if (isLogged) {
-			if (tipoUsuario === "empresa") {
-				navigate("/creartienda");
+		try {
+			const response = await actions.login(email, password, tipoUsuario, navigate);
+			if (response.error) {
+			  toast.error(response.message); // Display error message using toast
 			} else {
-				// Registro de empresa
-				alert("Aún no esta disponible crear un perfil de particular pero falta poco");
-				return null;
+			  // Successful login logic
+			  localStorage.setItem("token", response.access_token);
+			  // ... (navigate to appropriate page)
 			}
+		  } catch (error) {
+			console.error(error);
+			toast.error("Ha ocurrido un error. Intente nuevamente."); // Generic error message
+		  }
+		 
 		}
-	}
+	
+// --------------------------------------Este es es handlesubmit que funciona-----------------------------------------------------------
+// 	async function handleSubmit(e) {
+// 		e.preventDefault();
+// 		if (!tipoUsuario) {
+// 		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
+// 		  return null;
+// 		}else {
+// 			actions.login(email, password, tipoUsuario, navigate);
+// 		}
+// 	}
+// -------------------------------------------------------------------------------------------------
+
+		// const isLogged = await actions.login(email, password, tipoUsuario);
+	// 	const tieneTienda = store.vendedores.vendedor.tiendas;
+	
+	// 	if (isLogged && tipoUsuario === "particular") {
+	// 	  navigate("/");
+	// 	} else if (isLogged && tipoUsuario === "vendedor") {
+	// 	  if (tieneTienda) {
+	// 		navigate("/vendedor");
+	// 	  } else {
+	// 		navigate("/creartienda");
+	// 	  }
+	// 	} else {
+	// 	  alert("Credenciales incorrectas");
+	// 	}
+	//   };
 
 	return (
 		<div className="inicio-sesion d-flex justify-content-center">
@@ -62,8 +93,8 @@ export const InicioSesion = () => {
 											type="radio"
 											name="opcion"
 											id="opcion2"
-											value="empresa"
-											checked={tipoUsuario === "empresa"}
+											value="vendedor"
+											checked={tipoUsuario === "vendedor"}
 											onChange={(event) => setTipoUsuario(event.target.value)}
 										/>
 										<label className="form-check-label" for="opcion2">Soy una empresa</label>

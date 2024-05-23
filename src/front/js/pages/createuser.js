@@ -48,7 +48,7 @@ export const CreateUser = () => {
 		const data = {
 			email,
 			password,
-			...(tipoUsuario === "empresa" && { nombre_tienda }),
+			...(tipoUsuario === "vendedor" && { nombre_tienda }),
 		};
 
 		// Check if user already exists before attempting registration
@@ -62,23 +62,14 @@ export const CreateUser = () => {
 
 		let isCreated;
 
-		if (tipoUsuario === "empresa") {
+		if (tipoUsuario === "vendedor" || "particular") {
 			// Registro de usuario individual
-			isCreated = await actions.createUser(email, password);
+			isCreated = await actions.createUser(email, password, tipoUsuario, navigate);
 		} else {
 			// Registro de empresa
-			alert("Aún no esta disponible crear un perfil de particular pero falta poco");
+			alert("Error al crear el usuario");
 			return null;
-		}
-		if (isCreated) {
-			if (tipoUsuario === "empresa") {
-				// Redireccionar a login para usuario individual
-				navigate("/login");
-			} else {
-				// Redireccionar a crearEmpresa para empresa
-				navigate("/login");
-			}
-		}
+		}	
 	}
 
 	return (
@@ -112,8 +103,8 @@ export const CreateUser = () => {
 											type="radio"
 											name="opcion"
 											id="opcion2"
-											value="empresa"
-											checked={tipoUsuario === "empresa"}
+											value="vendedor"
+											checked={tipoUsuario === "vendedor"}
 											onChange={(event) => setTipoUsuario(event.target.value)}
 										/>
 										<label className="form-check-label" for="opcion2">Soy una empresa</label>
@@ -128,7 +119,7 @@ export const CreateUser = () => {
 								<label for="exampleInputPassword1" className="form-label">Contraseña</label>
 								<input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }} />
 							</div>
-							{tipoUsuario === "empresa" && (
+							{tipoUsuario === "vendedor" && (
 								<div className="mb-3">
 									<label
 										for="nombreTienda"
@@ -147,19 +138,6 @@ export const CreateUser = () => {
 									/>
 								</div>
 							)}
-							{/* <div className="">
-								<label for="exampleInputEmail1" className="form-label">Accede con tu dirreción de email y contraseña</label>
-								<div className="d-flex justify-content-around m-2">
-									<div className="form-check">
-										<input className="form-check-input" type="radio" name="opcion" id="opcion1" value="opcion1" />
-										<label className="form-check-label" for="opcion1">Soy un particular</label>
-									</div>
-									<div className="form-check">
-										<input className="form-check-input" type="radio" name="opcion" id="opcion2" value="opcion2" />
-										<label className="form-check-label" for="opcion2">Soy una empresa</label>
-									</div>
-								</div>
-							</div> */}
 							<button type="submit" className="boton mb-1">Crear Cuenta</button>
 							<div className="form-text mb-4">Creando una cuenta aceptas nuestros terminos y condiciones de uso.</div>
 							<div className="mb-3 form-check">
