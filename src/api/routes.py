@@ -397,3 +397,22 @@ def get_productos_vendedor():
 
     # Devolver la lista de productos serializados
     return jsonify({'productos': productos_serializados}), 200
+
+# #Enpoints Categorias tiendas-----------------------------------------------------------------------------------
+@api.route('/categorias-tiendas', methods=['GET'])
+def get_all_categorias_tiendas():
+
+    query_results = Tienda.query.all()
+    categorias = set()
+    for tienda in query_results:
+        categorias.add(tienda.categoria_tienda)
+
+    categorias_lista = list(categorias)
+   
+    if categorias_lista == []:
+        return jsonify({"msg" : "No hay tiendas"}), 404
+    response_body = {
+        "results": categorias_lista
+    }
+    return jsonify(response_body), 200
+
