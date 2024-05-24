@@ -355,17 +355,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			borrarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
+			borrarProducto: async (id, token) => {
+				console.log("Funciona");
 				try {
-					console.log("Datos del producto a borrar:", {
-						nombre_producto: nombreProducto,
-						descripcion_producto: descripcionProducto,
-						categoria_producto: categoriaProducto,
-						precio: precio,
-						url_imagen_producto: urlImagenProducto
-					});
+					// console.log("Datos del producto a borrar:", {
+					// 	nombre_producto: nombreProducto,
+					// 	descripcion_producto: descripcionProducto,
+					// 	categoria_producto: categoriaProducto,
+					// 	precio: precio,
+					// 	url_imagen_producto: urlImagenProducto
+					// });
 
-					const response = await fetch(process.env.BACKEND_URL + "/api/producto"+id, {
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
 						method: 'DELETE',
 						headers: {
 							'Content-Type': 'application/json',
@@ -551,6 +552,28 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
+			deleteTienda: async (nombre_tienda,token) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/tienda/"+nombre_tienda, {
+						method: "DELETE",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						return response.json
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 		},
 	};
 };
