@@ -40,70 +40,76 @@ const CompararProductos = () => {
 
   return (
     <div className='Comparador'>
-        <div className='text-danger text-center m-2'>
-            <h1>
-                Comparar productos
-            </h1>
-        </div>
-        <div className='d-flex justify-content-center'>
-            <div className='m-3'>
-                <select className="form-select" onChange={e => setProducto1(e.target.value)}>
-                    <option value="">Seleccione un producto</option>
-                    {store.productos.map(producto => (
-                      <option key={producto.id} value={producto.id}>
-                        {producto.nombre_producto}
-                      </option>
-                    ))}
-                </select>
-                <div className={`card mb-3 ${comparar ? obtenerColorDeFondo(producto1) : 'bg-white'}`}>
-                    {producto1 && (
-                      <div className="row g-0">
-                          <div className="col-md-4">
-                          <img src={store.productos.find(p => p.id === parseInt(producto1)).url_imagen_producto} className="img-fluid rounded-start" alt="..." />
-                          </div>
-                          <div className="col-md-8">
-                          <div className="card-body">
-                              <h5 className="card-title">{store.productos.find(p => p.id === parseInt(producto1)).nombre_producto}</h5>
-                              <p className="card-text">{store.productos.find(p => p.id === parseInt(producto1)).descripcion_producto}</p>
-                              <p className="card-text">${store.productos.find(p => p.id === parseInt(producto1)).precio}</p>
-                          </div>
-                          </div>
-                      </div>
-                    )}
+      <div className='text-danger text-center m-2'>
+        <h1>Comparar productos</h1>
+      </div>
+      <div className='d-flex justify-content-center'>
+        <div className='m-3'>
+          <select className="form-select" onChange={e => setProducto1(e.target.value)}>
+            <option value="">Seleccione un producto</option>
+            {store.productos.map(producto => (
+              <option key={producto.id} value={producto.id}>
+                {producto.nombre_producto}
+              </option>
+            ))}
+          </select>
+          <div className={`card mb-3 ${comparar ? obtenerColorDeFondo(producto1) : 'bg-white'}`}>
+            {producto1 && (
+              <div className="row g-0">
+                <div className="col-md-4 d-flex align-items-center justify-content-center">
+                  <div className="image-container">
+                    <img
+                      src={store.productos.find(p => p.id === parseInt(producto1)).url_imagen_producto}
+                      className="img-fluid" alt="..."
+                    />
+                  </div>
                 </div>
-            </div>
-            <div className='m-3'>
-                <select className="form-select" onChange={e => setProducto2(e.target.value)}>
-                    <option value="">Seleccione un producto</option>
-                    {store.productos.map(producto => (
-                      <option key={producto.id} value={producto.id}>
-                        {producto.nombre_producto}
-                      </option>
-                    ))}
-                </select>
-                <div className={`card mb-3 ${comparar ? obtenerColorDeFondo(producto2) : 'bg-white'}`}>
-                    {producto2 && (
-                      <div className="row g-0">
-                          <div className="col-md-4">
-                          <img src={store.productos.find(p => p.id === parseInt(producto2)).url_imagen_producto} className="img-fluid rounded-start" alt="..." />
-                          </div>
-                          <div className="col-md-8">
-                          <div className="card-body">
-                              <h5 className="card-title">{store.productos.find(p => p.id === parseInt(producto2)).nombre_producto}</h5>
-                              <p className="card-text">{store.productos.find(p => p.id === parseInt(producto2)).descripcion_producto}</p>
-                              <p className="card-text">${store.productos.find(p => p.id === parseInt(producto2)).precio}</p>
-                          </div>
-                          </div>
-                      </div>
-                    )}
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title">{store.productos.find(p => p.id === parseInt(producto1)).nombre_producto}</h5>
+                    <p className="card-text">{store.productos.find(p => p.id === parseInt(producto1)).descripcion_producto}</p>
+                    <p className="card-text">${store.productos.find(p => p.id === parseInt(producto1)).precio}</p>
+                  </div>
                 </div>
-            </div>
+              </div>
+            )}
+          </div>
         </div>
-        <div className='d-flex justify-content-center mb-4'>
-            <button className='btn btn-success' onClick={handleComparar}>
-                Comparar
-            </button>
+        <div className='m-3'>
+          <select className="form-select" onChange={e => setProducto2(e.target.value)}>
+            <option value="">Seleccione un producto</option>
+            {store.productos.map(producto => (
+              <option key={producto.id} value={producto.id}>
+                {producto.nombre_producto}
+              </option>
+            ))}
+          </select>
+          <div className={`card mb-3 ${comparar ? obtenerColorDeFondo(producto2) : 'bg-white'}`}>
+            {producto2 && (
+              <div className="row g-0">
+                <div className="col-md-4 d-flex align-items-center justify-content-center">
+                  <div className="image-container">
+                    <img
+                      src={store.productos.find(p => p.id === parseInt(producto2)).url_imagen_producto}
+                      className="img-fluid" alt="..."
+                    />
+                  </div>
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title">{store.productos.find(p => p.id === parseInt(producto2)).nombre_producto}</h5>
+                    <p className="card-text">{store.productos.find(p => p.id === parseInt(producto2)).descripcion_producto}</p>
+                    <p className="card-text">${store.productos.find(p => p.id === parseInt(producto2)).precio}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
+      </div>
+      <div className='d-flex justify-content-center mb-4'>
+        <button className='btn btn-success' onClick={handleComparar}>Comparar</button>
+      </div>
     </div>
   );
 }
