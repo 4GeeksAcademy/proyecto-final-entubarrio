@@ -197,7 +197,28 @@ export const Vendedor = () => {
                         actions.verTienda(store.tienda)
                         navigate("/editartienda")
                             }}><i className="fa fa-pen p-1" /></button>
-                    <button type="button" className="btn btn-danger m-2"><i className="fa fa-trash p-1" /></button>
+                    <button type="button" className="btn btn-danger m-2"><i className="fa fa-trash p-1" onClick={()=>{
+                        Swal.fire({
+                            title: "¿Estás seguro?",
+                            text: "¡Esta tienda promete!",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "¡Si, elimínala!",
+                            cancelButtonText: "¡No, espera!"
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                actions.deleteTienda(store.tienda?.nombre_tienda, token);
+                                window.location.reload();
+                                Swal.fire({
+                                title: "¡Eliminada!",
+                                text: "Ya no tienes esta tienda.",
+                                icon: "success"
+                              });
+                            }
+                          });
+                    }}/></button>
                 </div>
                 <div className="vendedor row d-flex justify-content-center border-top mt-5">
                     <div className="titulovendedor-añadir-productos col-4 mt-4 ms-4">
