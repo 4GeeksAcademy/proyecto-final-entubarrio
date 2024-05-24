@@ -27,6 +27,16 @@ export const CreateUser = () => {
 			})
 			return null;
 		}
+		if ( email === "" || password === "") {
+			// Verificar campos completos
+			Swal.fire({
+				title: 'Error!',
+				text: "Faltan datos para crear la cuenta",
+				icon: 'error',
+				confirmButtonText: 'OK'
+			})
+			return null;
+		}
 		const data = {
 			email,
 			password,
@@ -57,16 +67,7 @@ export const CreateUser = () => {
 			})
 			return null;
 		}
-			// if ( "email" || "password" === "") {
-			// 	// Verificar campos completos
-			// 	Swal.fire({
-			// 		title: 'Error!',
-			// 		text: "Faltan datos para crear la cuenta",
-			// 		icon: 'error',
-			// 		confirmButtonText: 'OK'
-			// 	})
-			// 	return null;
-			// }
+			
 	}
 
 	return (

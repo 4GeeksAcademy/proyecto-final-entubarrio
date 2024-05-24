@@ -148,7 +148,7 @@ def create_new_tienda():
         return jsonify({"msg": "Tienda creada correctamente"}), 200
 
     else:
-        return jsonify({"msg": "La tienda ya existe"}), 400
+        return jsonify({"error": "La tienda ya existe"}), 400
     
 # Enpoint DELETE eliminar una Nueva Tienda-----------------------------------------------------------------------------------
 @api.route('/tienda/<string:nombre_tienda>', methods=['DELETE'])

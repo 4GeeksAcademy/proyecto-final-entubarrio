@@ -3,6 +3,7 @@ import { Context } from "../store/appContext.js";
 import "../../styles/creartienda.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 export const CrearTienda = () => {
@@ -26,27 +27,30 @@ export const CrearTienda = () => {
             return; // Detener la ejecución si algún campo está vacío
         }
         
-        const response = actions.crearTienda(
+        actions.crearTienda(
             nombre_tienda,
             descripcion_tienda,
             categoria_tienda,
             direccion_tienda,
-            url_imagen_tienda, navigate);
-        if (response) {
-            Swal.fire({
-                title: 'Enhorabuena!',
-                text: (response),
-                icon: 'éxito',
-                confirmButtonText: 'OK'
-            }); // Display error message using toast
-        } else {
-			Swal.fire({
-				title: 'Error!',
-				text: (response),
-				icon: 'error',
-				confirmButtonText: 'OK'
-			}); // Display error message using toast
-		}
+            url_imagen_tienda, navigate)
+            .then(response => {console.log(response);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: response,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            })
+            .catch (error => {
+                console.error(error)
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            })
     }
 
     return (

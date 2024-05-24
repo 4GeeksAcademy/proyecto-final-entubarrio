@@ -346,19 +346,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 
 					const data = await response.json();
-					if (data) {
-						console.log(data.msg);
+					if (!response.ok) {
+						throw new Error (data.error)
+					}
+						console.log(data);
 						setStore({ tiendas: data.result })
 						navigate("/vendedor")
 						console.log("Tienda creada:", data.msg);
-						return true;
-					} else {
-						console.log("Error al crear la tienda:", data.msg);
-						return false;
-					}
+						return data.msg;
 				} catch (error) {
 					console.error("Error desconocido:", error);
-					return false;
+					throw error;
 				}
 			},
 

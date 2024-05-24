@@ -47,7 +47,7 @@ export const Navbar = () => {
 					</li> : null}
 				</ul>
 				{token ?
-				<button type="button" className="btn btn-success me-5 my-3 rounded" onClick={logout}><i class="fa-solid fa-right-from-bracket"></i>  Cerrar sesión</button>
+				<button type="button" className="btn btn-success me-5 my-3 rounded" onClick={logout}><i className="fa-solid fa-right-from-bracket"></i>  Cerrar sesión</button>
 				: <Link to="/login">
 					<button className="Login btn btn-success me-5 my-3" type="submit"><i className="fa-solid fa-circle-user fa-fade"></i>  Iniciar sesión</button>
 				</Link>}
