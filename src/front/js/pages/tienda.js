@@ -5,7 +5,7 @@ import "../../styles/tienda.css";
 import CardPanaderias from "../component/cardTiendaPan";
 import CardVerdulerias from "../component/cardTiendaDulces";
 import TituloTienda from "../component/tituloTienda";
-import TusCategoriasTienda from "../component/tusCategoriasTienda";
+import CategoriasProductos from "../component/CategoriasProductos";
 import MapaTienda from "../component/mapaTienda";
 import { useParams } from "react-router-dom";
 import { TodosProductos } from "../component/cardTodosProductos";
@@ -44,7 +44,7 @@ export const Tienda = () => {
             <div className="tus-productos">
                 <div className="text-custom-tienda">
 
-                    <TusCategoriasTienda titulo="Título Tienda"
+                    <CategoriasProductos titulo="Título Tienda"
                         descripcion="Aquí iría la descripción de los productos"
                     />
                 </div>

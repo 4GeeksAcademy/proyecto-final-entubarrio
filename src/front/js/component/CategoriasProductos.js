@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../store/appContext'; // Ajusta la ruta de importación según la estructura de tu proyecto
 import "../../styles/tienda.css";
 
-const TusCategoriasTienda = () => {
+const CategoriasProductos = () => {
     const { store, actions } = useContext(Context);
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
 
@@ -42,7 +42,7 @@ const TusCategoriasTienda = () => {
     );
 };
 
-export default TusCategoriasTienda;
+export default CategoriasProductos;
 
 
 
