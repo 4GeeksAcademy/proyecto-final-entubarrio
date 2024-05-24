@@ -64,6 +64,7 @@ class Producto(db.Model):
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
     tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
     particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
+
     # tienda = db.relationship('Tienda', backref='productos')
 
     def __repr__(self):
