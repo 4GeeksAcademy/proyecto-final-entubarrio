@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Context } from '../store/appContext'; // Ajusta la ruta de importación según la estructura de tu proyecto
 import "../../styles/tienda.css";
-import Info from './info';
-import Info2 from './info2';
-import Info3 from './info3';
 
 const TusCategoriasTienda = () => {
+    const { store, actions } = useContext(Context);
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
+
+    useEffect(() => {
+        actions.getCategoriasProductos(); // Llama a la función getCategoriasProductos del flujo al montar el componente
+    }, []);
 
     const handleChange = (event) => {
         const opcion = event.target.value;
@@ -16,29 +19,23 @@ const TusCategoriasTienda = () => {
         <div className="custom-categoria-tienda">
             <div className="custom-header">
                 <h2 className="custom-titulo">Selecciona Categoria</h2>
-                <select className="form-select-tienda" aria-label="Selecciona Productos" value={opcionSeleccionada} onChange={handleChange}>
+                <select
+                    className="form-select-tienda"
+                    aria-label="Selecciona Productos"
+                    value={opcionSeleccionada}
+                    onChange={handleChange}
+                >
                     <option value="">Selecciona</option>
-                    <option value="opcion1">Verduras</option>
-                    <option value="opcion2">Frutas</option>
+                    {store.categoriasProductos.map((categoria, index) => (
+                        <option key={index} value={categoria}>
+                            {categoria}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div className="cardcontainertiendas">
-                {/* Mostrar las tarjetas correspondientes a la opción seleccionada */}
-                {opcionSeleccionada === 'opcion1' && (
-                    <>
-                        <Info2 titulo="Pan 1" texto="description" precio="12€" />
-                        <Info2 titulo="Pan 2" texto="description" precio="13€" />
-                        <Info2 titulo="Pan 3" texto="description" precio="14€" />
-                        <Info2 titulo="Pan 4" texto="description" precio="15€" />
-                    </>
-                )}
-                {opcionSeleccionada === 'opcion2' && (
-                    <>
-                        <Info3 titulo="Dulce 1" texto="description" precio="15€" />
-                        <Info3 titulo="Dulce 2" texto="description" precio="16€" />
-                        <Info3 titulo="Dulce 3" texto="description" precio="17€" />
-                        <Info3 titulo="Dulce 4" texto="description" precio="18€" />
-                    </>
+                {opcionSeleccionada && (
+                    <h3>Seleccionaste: {opcionSeleccionada}</h3>
                 )}
             </div>
         </div>
@@ -46,3 +43,6 @@ const TusCategoriasTienda = () => {
 };
 
 export default TusCategoriasTienda;
+
+
+
