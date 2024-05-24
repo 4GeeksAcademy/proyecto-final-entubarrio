@@ -39,7 +39,7 @@ export const Tienda = () => {
 
             </div>
             <img src={store.tienda.url_imagen_tienda}
-					className="container-fluid d-flex justify-content-center img-fluid w-150"
+					className="tienda-img"
 					alt="Foto Home" />
             <div className="tus-productos">
                 <div className="text-custom-tienda">

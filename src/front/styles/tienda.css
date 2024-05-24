@@ -80,4 +80,13 @@ justify-content: space-around;
     background: rgb(235, 235, 235);
   }
   
-  
+  .tienda-img {
+    width: 60%; /* Ancho completo */
+    max-width: 600px; /* Máximo ancho de 600px para que sea responsiva */
+    height: auto; /* Altura automática */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    display: block; /* Para centrar la imagen */
+    margin: 20px auto; /* Margen superior e inferior de 20px y centrado horizontal */
+    border: 2px solid #ccc; /* Marco de 2px sólido de color gris */
+}
