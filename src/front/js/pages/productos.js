@@ -12,7 +12,7 @@ export const Productos = () => {
 	}, [])
 
     return (
-			<div className="productos">
+			<div className="todos-productos">
 			<h2 className="tittles text-danger">Productos</h2>
 			<div className="cards row justify-content-center">
 				{store.productos.map((producto) => {
