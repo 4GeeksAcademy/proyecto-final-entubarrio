@@ -1,3 +1,8 @@
+.todos-productos{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 .tarjeta-producto {
     /* Estilos generales de la tarjeta */
     max-width: 300px;
