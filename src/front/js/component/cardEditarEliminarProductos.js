@@ -14,13 +14,12 @@ export const EditarEliminarProductos = ({ url_imagen_producto, nombre_producto, 
 
     return (
         <div>
-            <div className="grid-container d-flex mb-2 mt-2 justify-content-space-evenly" style={{ overflowBlock: "scroll" }} key={id}>
-                <div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
-                    <a href={"/infoproducto/" + id + "/tienda/" + tienda_id}><img src={url_imagen_producto} alt="Image 1" className="img-todos-productos w-20 h-20 object-fit" /></a>
-                    <div className="absolute bottom-0 left-0 right-0 p-2">
-                        <h4 className="text-black text-sm font-bold">{nombre_producto}</h4>
-                        <b className="text-black text-xs">{nombre_tienda}</b>
-                        <p className="text-black text-xs">{descripcion_producto}</p>
+            <div className="grid-container" style={{ overflowBlock: "scroll" }} key={id}>
+                <div className="tarjeta-tienda">
+                    <a href={"/infoproducto/" + id + "/tienda/" + tienda_id}><img src={url_imagen_producto} alt="Image 1" className="img-tienda" /></a>
+                    <div className="tarjeta-tienda-info">
+                        <h4 className="titulo-tienda">{nombre_producto}</h4>
+                        <p className="descripcion-producto">{descripcion_producto}</p>
                         <h5 className="text-black">{precio}€</h5>
                         <div>
                             <button type="button" className="btn btn-success m-2" onClick={() => {
