@@ -64,6 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					if (data) {
 						localStorage.setItem("token", data.access_token);
+						localStorage.setItem("tipo_usuario", tipo_usuario);
 
 						// Verificar si vendedor tiene una tienda
 						if (tipo_usuario === "vendedor" && data.vendedor.tiendas) {
@@ -99,9 +100,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 							tipo_usuario: tipo_usuario
 						})
 					})
-
+					if (!response.ok) {
+						const errorData = await response.json()
+						console.log(errorData);
+						throw new Error(errorData.msg)
+					}
 					let data = await response.json()
-					if (data.msg) {
+					if (data) {
 						console.log(data);
 						navigate("/login")
 						return true;
@@ -110,7 +115,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false
 					}
 				} catch (error) {
-					return false;
+					console.log(error.message);
+					return error.message;
 				}
 
 			},
@@ -340,18 +346,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 
 					const data = await response.json();
-					if (response.status === 200) {
-						console.log(data.msg);
+					if (!response.ok) {
+						throw new Error (data.error)
+					}
+						console.log(data);
 						setStore({ tiendas: data.result })
 						navigate("/vendedor")
 						console.log("Tienda creada:", data.msg);
-					} else {
-						console.log("Error al crear la tienda:", data.msg);
-						return false;
-					}
+						return data.msg;
 				} catch (error) {
 					console.error("Error desconocido:", error);
-					return false;
+					throw error;
 				}
 			},
 

@@ -17,7 +17,7 @@ export const Navbar = () => {
 	}
 
 	let token = localStorage.getItem("token")
-	let tipo_usuario = store.tipo_usuario
+	let tipo_usuario = localStorage.getItem("tipo_usuario");
 
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary py-2 border-bottom d-flex flex-column">
@@ -42,9 +42,12 @@ export const Navbar = () => {
 					{tipo_usuario == "vendedor" && token ? <li className="nav-item border-start">
 						<a className="nav-link" href="/vendedor">Mi Tienda</a>
 					</li> : null}
+					{tipo_usuario == "particular" && token ? <li className="nav-item border-start">
+						<a className="nav-link" href="/nosotros">Mi Perfil</a>
+					</li> : null}
 				</ul>
 				{token ?
-				<button type="button" className="btn btn-success me-5 my-3 rounded" onClick={logout}><i class="fa-solid fa-right-from-bracket"></i>  Cerrar sesión</button>
+				<button type="button" className="btn btn-success me-5 my-3 rounded" onClick={logout}><i className="fa-solid fa-right-from-bracket"></i>  Cerrar sesión</button>
 				: <Link to="/login">
 					<button className="Login btn btn-success me-5 my-3" type="submit"><i className="fa-solid fa-circle-user fa-fade"></i>  Iniciar sesión</button>
 				</Link>}
