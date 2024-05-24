@@ -37,6 +37,8 @@ class Tienda(db.Model):
     url_imagen_tienda = db.Column(db.String(120), unique=False, nullable=False)
     productos = db.relationship('Producto', backref='tienda', lazy=True)
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
+    favoritos = db.relationship('FavoritosTiendas', backref='tienda', lazy=True)
+
     # particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
 
     def __repr__(self):
@@ -61,6 +63,7 @@ class Producto(db.Model):
     descripcion_producto = db.Column(db.String(500), unique=False)
     categoria_producto = db.Column(db.String(80), unique=False, nullable=False)
     url_imagen_producto = db.Column(db.String(120), unique=False, nullable=False)
+    favoritos = db.relationship('FavoritosProductos', backref='producto', lazy=True)
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
     tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
     particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
@@ -89,7 +92,9 @@ class Particular(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
-    # tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
+    favoritos_productos = db.relationship('FavoritosProductos', backref='particular', lazy=True)
+    favoritos_tiendas = db.relationship('FavoritosTiendas', backref='particular', lazy=True)
+
     productos = db.relationship('Producto', backref='particular', lazy=True)
     # tiendas = db.relationship('Tienda', backref='particular', lazy=True)
     # Otros campos que quieras agregar para usuarios particulares
@@ -103,3 +108,47 @@ class Particular(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class FavoritosProductos(db.Model):
+    __tablename__ = 'favoritos_productos'
+    id = db.Column(db.Integer, primary_key=True)
+    producto_id = db.Column(db.Integer, db.ForeignKey('producto.id'))
+    particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
+
+    # tienda = db.relationship('Tienda', backref='productos')
+
+    def __repr__(self):
+        return f'<FavoritosProductos {self.nombre_producto}>'
+
+    def serialize(self):
+        result= Producto.query.filter_by(id=self.producto_id).first()
+
+        return {
+            "id": self.id,
+            "nombre_producto": result.serialize()["nombre_producto"], 
+            "producto_id": self.producto_id        
+      
+            # do not serialize the password, its a security breach
+        } 
+    
+class FavoritosTiendas(db.Model):
+    __tablename__ = 'favoritos_tiendas'
+    id = db.Column(db.Integer, primary_key=True)
+    tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
+    particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
+
+    # tienda = db.relationship('Tienda', backref='productos')
+
+    def __repr__(self):
+        return f'<FavoritosTiendas {self.nombre_tienda}>'
+
+    def serialize(self):
+        result= Tienda.query.filter_by(id=self.tienda_id).first()
+
+        return {
+            "id": self.id,
+            "nombre_tienda": result.serialize()["nombre_tienda"],
+            "tienda_id": self.tienda_id
+      
+            # do not serialize the password, its a security breach
+        } 
