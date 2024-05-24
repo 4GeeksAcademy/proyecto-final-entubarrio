@@ -1,30 +1,72 @@
-.tarjeta-productos {
-    max-width: 20em;
-    border: none;
-    margin: 0.5em;
-    margin-left: 2em;
-    margin-right: 2em;
-}
-.img-todos-productos {
-    width: 8cm; /* Ajustar el ancho según sea necesario */
-    height: 7cm; /* Mantener la relación de aspecto */
-    object-fit: cover; /* Cubrir toda el área disponible */
-    min-height: 15em;
-  }
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px; /* Ajuste el espacio entre elementos como necesite */
-}
-.custom-col {
+.tarjeta-producto {
+    /* Estilos generales de la tarjeta */
+    max-width: 300px;
+    min-width: 250px;
+    max-height: 400px; /* Ancho máximo de la tarjeta */
+    margin: 1em auto; /* Centrar la tarjeta horizontalmente */
     margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 25px;
-    text-align: center;
-}
-.tittles {
-    font-size: 50px;
-    margin-top: 20px;
-    margin-left: 200px;
-    margin-bottom: 25px;
-}
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px; /* Bordes redondeados más pronunciados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .tarjeta-producto:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01); /* Agrandar ligeramente al hover */
+  }
+  
+  .img-producto {
+    /* Estilos de la imagen del producto */
+    width: 100%; /* Ancho completo de la imagen */
+    height: 200px; /* Altura fija de la imagen */
+    object-fit: cover; /* Cubrir toda el área disponible */
+    margin-bottom: 20px;
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+  }
+  
+  .titulo-producto {
+    /* Estilos del título del producto */
+    font-size: 20px; /* Tamaño de fuente más grande */
+    font-weight: bold;
+    color: #333; /* Color de texto más oscuro */
+    margin-bottom: 10px;
+  }
+  
+  .descripcion-producto {
+    /* Estilos para la descripción del producto (opcional) */
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5; /* Mayor espacio entre líneas para mejor legibilidad */
+    margin-bottom: 20px;
+  }
+  
+  .precio-producto {
+    /* Estilos del precio del producto */
+    font-size: 18px; /* Tamaño de fuente más grande para el precio */
+    font-weight: bold;
+    color: #007bff; /* Color azul para destacar el precio */
+    margin-bottom: 15px;
+  }
+  
+  .boton-compra {
+    /* Estilos del botón de compra */
+    display: block;
+    width: 100%;
+    padding: 12px 20px; /* Aumento del padding para mejor clickabilidad */
+    background-color: #007bff; /* Mismo color azul del precio */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .boton-compra:hover {
+    background-color: #0056b3;
+  }
+  .grid-container {
+    grid-template-columns: none;
+  }
+  
