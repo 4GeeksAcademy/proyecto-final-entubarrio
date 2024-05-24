@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/tienda.css";
-import CardPanaderias from "../component/cardTiendaPan";
-import CardVerdulerias from "../component/cardTiendaDulces";
+
+
 import TituloTienda from "../component/tituloTienda";
 import CategoriasProductos from "../component/CategoriasProductos";
 import MapaTienda from "../component/mapaTienda";
