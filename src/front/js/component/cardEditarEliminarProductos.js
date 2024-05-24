@@ -19,11 +19,11 @@ export const EditarEliminarProductos = ({url_imagen_producto,nombre_producto,des
                         <p className="text-black text-xs">{descripcion_producto}</p>
                         <h5 className="text-black">{precio}€</h5>
                         <div>
-                        <button type="button" className="btn btn-success" onClick={()=>{
+                        <button type="button" className="btn btn-success m-2" onClick={()=>{
                             actions.verProducto(producto)
                             navigate("/editarproducto")
-                                }}><i className="fa fa-pen p-2 m-3" /></button>
-                        <button type="button" className="btn btn-danger"><i className="fa fa-trash p-2 m-3" /></button>
+                                }}><i className="fa fa-pen p-1" /></button>
+                        <button type="button" className="btn btn-danger m-2"><i className="fa fa-trash p-1" /></button>
                         </div>
                     </div>
                 </div>
