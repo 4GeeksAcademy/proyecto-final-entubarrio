@@ -109,7 +109,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (data) {
 						console.log(data);
 						navigate("/login")
-						// return true;
+						return true;
 					} else {
 						console.log(data);
 						return false
@@ -346,11 +346,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 
 					const data = await response.json();
-					if (response.status === 200) {
+					if (data) {
 						console.log(data.msg);
 						setStore({ tiendas: data.result })
 						navigate("/vendedor")
 						console.log("Tienda creada:", data.msg);
+						return true;
 					} else {
 						console.log("Error al crear la tienda:", data.msg);
 						return false;

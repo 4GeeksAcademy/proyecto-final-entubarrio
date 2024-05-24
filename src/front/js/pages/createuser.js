@@ -51,13 +51,22 @@ export const CreateUser = () => {
 			// Registro de empresa
 			Swal.fire({
 				title: 'Error!',
-				text: (error.message),
+				text: "Error al crear el usuario",
 				icon: 'error',
 				confirmButtonText: 'OK'
 			})
-			// alert("Error al crear el usuario");
 			return null;
 		}
+			// if ( "email" || "password" === "") {
+			// 	// Verificar campos completos
+			// 	Swal.fire({
+			// 		title: 'Error!',
+			// 		text: "Faltan datos para crear la cuenta",
+			// 		icon: 'error',
+			// 		confirmButtonText: 'OK'
+			// 	})
+			// 	return null;
+			// }
 	}
 
 	return (

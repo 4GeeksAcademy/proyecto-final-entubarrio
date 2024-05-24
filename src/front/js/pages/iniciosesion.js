@@ -38,37 +38,7 @@ export const InicioSesion = () => {
 			localStorage.setItem("token", response.access_token);
 			// ... (navigate to appropriate page)
 		}
-
-
 	}
-
-	// --------------------------------------Este es es handlesubmit que funciona-----------------------------------------------------------
-	// 	async function handleSubmit(e) {
-	// 		e.preventDefault();
-	// 		if (!tipoUsuario) {
-	// 		  alert("Debes seleccionar un tipo de usuario (Particular o Empresa)");
-	// 		  return null;
-	// 		}else {
-	// 			actions.login(email, password, tipoUsuario, navigate);
-	// 		}
-	// 	}
-	// -------------------------------------------------------------------------------------------------
-
-	// const isLogged = await actions.login(email, password, tipoUsuario);
-	// 	const tieneTienda = store.vendedores.vendedor.tiendas;
-
-	// 	if (isLogged && tipoUsuario === "particular") {
-	// 	  navigate("/");
-	// 	} else if (isLogged && tipoUsuario === "vendedor") {
-	// 	  if (tieneTienda) {
-	// 		navigate("/vendedor");
-	// 	  } else {
-	// 		navigate("/creartienda");
-	// 	  }
-	// 	} else {
-	// 	  alert("Credenciales incorrectas");
-	// 	}
-	//   };
 
 	return (
 		<div className="inicio-sesion d-flex justify-content-center">
