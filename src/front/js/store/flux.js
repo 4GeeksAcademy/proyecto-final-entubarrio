@@ -19,9 +19,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			tienda: [],
 			productosSeleccionados:[],
 			productosTienda:[],
-			categoriasProductos:[],
+			categoriasProductos:[],categoriasTiendas:[],
 			producto:[],
-			vendedores:[]
+			tipo_usuario:""
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -30,66 +30,85 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: async () => {
-				try{
+				try {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
-			login: async (email, password) => {
-				try{
-				let response = await fetch(process.env.BACKEND_URL + "/api/login", {
-					method: 'POST',
-					headers:{
-						'Content-Type':'application/json'
-					},
-					body: JSON.stringify({
-						email:email,
-						password:password
+			login: async (email, password, tipo_usuario, navigate) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/login", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							email: email,
+							password: password,
+							tipo_usuario: tipo_usuario
+						})
 					})
-				})
+					console.log(response);
+					if (!response.ok) {
+						const errorData = await response.json()
+						console.log(errorData);
+						throw new Error(errorData.msg)
+					}
+					let data = await response.json()
+					console.log(data);
+					if (data) {
+						localStorage.setItem("token", data.access_token);
 
-				let data = await response.json()
-				if (response.status === 200) {
-					localStorage.setItem("token", data.access_token);
-					console.log(data);
-					return true;
-				}else{
-					console.log(data);
-					return false
-				}
+						// Verificar si vendedor tiene una tienda
+						if (tipo_usuario === "vendedor" && data.vendedor.tiendas) {
+							setStore({ tipo_usuario: tipo_usuario })
+							navigate("/vendedor") // Navigate a perfil vendedor
+						} else if (tipo_usuario === "vendedor") {
+							// Es Vendedor pero no tiene tienda - navigate a pagina crear tienda
+							navigate("/creartienda")
+						} else {
+							// si es usuario Particular - navigate a home por ahora)
+							navigate("/")
+						}
+					} else {
+						console.log(data);
+						return false;
+					}
 				} catch (error) {
-					return false;
+					console.log(error.message);
+					return error.message;
 				}
-
 			},
-			createUser: async (email, password) => {
-				try{
-				let response = await fetch(process.env.BACKEND_URL + "/api/signup", {
-					method: 'POST',
-					headers:{
-						'Content-Type':'application/json'
-					},
-					body: JSON.stringify({
-						email:email,
-						password:password
-					})
-				})
 
-				let data = await response.json()
-				if (response.status === 200) {
-					localStorage.setItem("token", data.access_token);
-					console.log(data);
-					return true;
-				}else{
-					console.log(data);
-					return false
-				}
+			createUser: async (email, password, tipo_usuario, navigate) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/signup", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							email: email,
+							password: password,
+							tipo_usuario: tipo_usuario
+						})
+					})
+
+					let data = await response.json()
+					if (data.msg) {
+						console.log(data);
+						navigate("/login")
+						return true;
+					} else {
+						console.log(data);
+						return false
+					}
 				} catch (error) {
 					return false;
 				}
@@ -98,7 +117,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: () => {
 				localStorage.removeItem("token")
-		 	},
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -113,10 +132,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-//LINEAS RESERVADAS ALVARO
-			getAllVendedores: async () => {
+			//LINEAS RESERVADAS ALVARO
+			// getAllVendedores: async () => {
+			// 	try {
+			// 		let response = await fetch(process.env.BACKEND_URL + "/api/vendedores", {
+			// 			method: "GET",
+			// 			headers: {
+			// 				"Content-Type": "application/json"
+			// 			},
+			// 		})
+			// 		let data = await response.json()
+			// 		if (response.status === 200) {
+			// 			// Actualiza el estado con los datos de las tiendas
+			// 			// Asumiendo que la respuesta contiene una propiedad 'tienda'
+			// 			setStore({ vendedores: data.result })
+			// 		} else {
+			// 			console.log(data);
+			// 			return console.log("No funciona");
+			// 		}
+			// 	} catch (error) {
+			// 		return false;
+			// 	}
+			// },
+
+			getTiendas: async () => {
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/vendedores", {
+					let response = await fetch(process.env.BACKEND_URL + "/api/tiendas", {
 						method: "GET",
 						headers: {
 							"Content-Type": "application/json"
@@ -126,29 +167,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 200) {
 						// Actualiza el estado con los datos de las tiendas
 						// Asumiendo que la respuesta contiene una propiedad 'tienda'
-						setStore({ vendedores: data.result })
-					} else {
-						console.log(data);
-						return console.log("No funciona");
-					}
-				} catch (error) {
-					return false;
-				}
-			},
-
-			getTiendas: async () => {
-				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/tiendas", {
-						method: "GET",
-						headers:{
-							"Content-Type":"application/json" 
-						},
-					})
-					let data = await response.json()
-					if (response.status === 200){
-						// Actualiza el estado con los datos de las tiendas
-						// Asumiendo que la respuesta contiene una propiedad 'tienda'
-						setStore({tiendas:data.result})
+						setStore({ tiendas: data.result })
 					} else {
 						console.log(data);
 						return console.log("No funciona");
@@ -162,15 +181,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					let response = await fetch(process.env.BACKEND_URL + "/api/productos", {
 						method: "GET",
-						headers:{
-							"Content-Type":"application/json" 
+						headers: {
+							"Content-Type": "application/json"
 						},
 					})
 					let data = await response.json()
-					if (response.status === 200){
+					if (response.status === 200) {
 						// Actualiza el estado con los datos de las tiendas
 						// Asumiendo que la respuesta contiene una propiedad 'tienda'
-						setStore({productos:data.results})
+						setStore({ productos: data.results })
 					} else {
 						console.log(data);
 						return console.log("No funciona");
@@ -179,7 +198,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
-
 
 			crearNuevoProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
 				try {
@@ -190,7 +208,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						precio: precio,
 						url_imagen_producto: urlImagenProducto
 					});
-			
+
 					const response = await fetch(process.env.BACKEND_URL + "/api/producto", {
 						method: 'POST',
 						headers: {
@@ -205,7 +223,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							url_imagen_producto: urlImagenProducto,
 						})
 					});
-			
+
 					const data = await response.json();
 					if (response.status === 200) {
 						console.log(data.msg);
@@ -220,20 +238,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
-			
+
 			getTienda: async (id) => {
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/tienda/"+id, {
+					let response = await fetch(process.env.BACKEND_URL + "/api/tienda/" + id, {
 						method: "GET",
-						headers:{
-							"Content-Type":"application/json" 
+						headers: {
+							"Content-Type": "application/json"
 						},
 					})
 					let data = await response.json()
-					if (response.status === 200){
+					if (response.status === 200) {
 						// Actualiza el estado con los datos de las tiendas
 						// Asumiendo que la respuesta contiene una propiedad 'tienda'
-						setStore({tienda:data})
+						setStore({ tienda: data })
 					} else {
 						console.log(data);
 						return console.log("No funciona");
@@ -245,17 +263,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getProductosTienda: async (id) => {
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/productos/"+id, {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos/" + id, {
 						method: "GET",
-						headers:{
-							"Content-Type":"application/json" 
+						headers: {
+							"Content-Type": "application/json"
 						},
 					})
 					let data = await response.json()
-					if (response.status === 200){
+					if (response.status === 200) {
 						// Actualiza el estado con los datos de las tiendas
 						// Asumiendo que la respuesta contiene una propiedad 'tienda'
-						setStore({productosTienda:data.productos})
+						setStore({ productosTienda: data.productos })
 					} else {
 						console.log(data);
 						return console.log("No funciona");
@@ -277,41 +295,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// },
 
 			getProducto: async (id) => {
-                try {
-                    let response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
-                        method: "GET",
-                        headers:{
-                            "Content-Type":"application/json"
-                        },
-                    })
-                    let data = await response.json()
-                    if (response.status === 200){
-                        // Actualiza el estado con los datos de las tiendas
-                        // Asumiendo que la respuesta contiene una propiedad 'tienda'
-                        setStore({producto:data})
-                    } else {
-                        console.log(data);
-                        return console.log("No funciona");
-                    }
-                } catch (error) {
-                    return false;
-                }
-            },
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/producto/" + id, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json"
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200) {
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({ producto: data })
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
 
-
-			crearTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda) => {
+			crearTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda, navigate) => {
 				let token = localStorage.getItem("token")
 				if (!token) {
 					console.error("Falta el token de autenticación");
 					return false;
-				  }
+				}
 				try {
 					const response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
-							'Authorization': "Bearer "+token
+							'Authorization': "Bearer " + token
 						},
 						body: JSON.stringify({
 							nombre_tienda: nombre_tienda,
@@ -325,103 +342,181 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json();
 					if (response.status === 200) {
 						console.log(data.msg);
-						setStore({ tiendas: data.result})
+						setStore({ tiendas: data.result })
+						navigate("/vendedor")
 						console.log("Tienda creada:", data.msg);
 					} else {
 						console.log("Error al crear la tienda:", data.msg);
 						return false;
 					}
 				} catch (error) {
-						console.error("Error desconocido:", error);
-					  return false;
-					}
-				  },
-
-
-
-
-
-
-
-//LINEAS RESERVADAS ADRIAN
-borrarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
-	try {
-		console.log("Datos del producto a borrar:", {
-			nombre_producto: nombreProducto,
-			descripcion_producto: descripcionProducto,
-			categoria_producto: categoriaProducto,
-			precio: precio,
-			url_imagen_producto: urlImagenProducto
-		});
-
-		const response = await fetch(process.env.BACKEND_URL + "/api/producto"+id, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+					console.error("Error desconocido:", error);
+					return false;
+				}
 			},
+
+			borrarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
+				try {
+					console.log("Datos del producto a borrar:", {
+						nombre_producto: nombreProducto,
+						descripcion_producto: descripcionProducto,
+						categoria_producto: categoriaProducto,
+						precio: precio,
+						url_imagen_producto: urlImagenProducto
+					});
+
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto"+id, {
+						method: 'DELETE',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						
+					});
+
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ productos: data.results });
+						console.log("Producto borrado:", data.results);
+					} else {
+						console.log("Mensaje de error:", data.msg);
+						return false;
+					}
+				} catch (error) {
+					console.error("Error al borrar el producto:", error);
+					return false;
+				}
+			},
+
+			getCategoriasProductos: async () => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/categorias-productos", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						setStore({categoriasProductos:data.results})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
+
+			editarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token, id) => {
+				try {
+					console.log("Datos del producto a editar:", {
+						nombre_producto: nombreProducto,
+						descripcion_producto: descripcionProducto,
+						categoria_producto: categoriaProducto,
+						precio: parseInt(precio),
+						url_imagen_producto: urlImagenProducto
+					});
 			
-		});
+					const response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						body: JSON.stringify({
+							nombre_producto: nombreProducto,
+							descripcion_producto: descripcionProducto,
+							categoria_producto: categoriaProducto,
+							precio: parseInt(precio),
+							url_imagen_producto: urlImagenProducto,
+						})
+					});
+			
+					const data = await response.json();
+					if (response.status === 200) {
+						console.log(data.msg);
+						setStore({ productos: data.results });
+						return true
+					} 
+				} catch (error) {
+					console.error("Error al editar el producto:", error);
+					return false;
+				}
+			},
 
-		const data = await response.json();
-		if (response.status === 200) {
-			console.log(data.msg);
-			setStore({ productos: data.results });
-			console.log("Producto borrado:", data.results);
-		} else {
-			console.log("Mensaje de error:", data.msg);
-			return false;
-		}
-	} catch (error) {
-		console.error("Error al borrar el producto:", error);
-		return false;
-	}
-},
+			getTiendaVendedor: async (token) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/tienda", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({tienda:data})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
+			getProductosVendedor: async (token) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos-vendedor", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({productosTienda:data.productos})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			verProducto: (producto) => {
+				setStore({producto:producto})
+			},
+			getCategoriasTiendas: async () => {
+                try {
+                    let response = await fetch(process.env.BACKEND_URL + "/api/categorias-tiendas", {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    });
+                    let data = await response.json();
+                    if (response.status === 200) {
+                        setStore({ categoriasTiendas: data.results });
+                    } else {
+                        console.log(data);
+                        console.log("No funciona");
+                    }
+                } catch (error) {
+                    console.error("Error fetching categorias tiendas:", error);
+                }
+            },
+      
 		},
 	};
-};		
+};
 
 export default getState;

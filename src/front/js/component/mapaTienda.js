@@ -1,45 +1,49 @@
 import React, { useEffect } from 'react';
+import { Loader } from "@googlemaps/js-api-loader";
 
 const MapaTienda = ({ direccion }) => {
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCsIBNwbUhbP1o2qdj_mbCBWWkoA2zJ1d4&callback=initMap&libraries=maps,marker&v=beta`;
-        script.async = true;
-        document.body.appendChild(script);
+  useEffect(() => {
+    const loadMap = async () => {
+      const loader = new Loader({
+        apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        version: "weekly",
+        libraries: ["marker"], 
+      });
 
-        const initMap = () => {
-            const geocoder = new window.google.maps.Geocoder();
-            geocoder.geocode({ address: direccion }, (results, status) => {
-                if (status === 'OK') {
-                    const map = new window.google.maps.Map(document.getElementById("map"), {
-                        center: results[0].geometry.location,
-                        zoom: 14,
-                    });
+      await loader.load();
 
-                    new window.google.maps.Marker({
-                        position: results[0].geometry.location,
-                        map: map,
-                        title: "Tienda"
-                    });
-                } else {
-                    console.error('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-        };
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: direccion }, (results, status) => {
+        if (status === 'OK') {
+          const map = new google.maps.Map(document.getElementById("map"), {
+            center: results[0].geometry.location,
+            zoom: 14,
+            mapId: "DEMO_MAP_ID", 
+          });
 
-        window.initMap = initMap;
+          
+          const marker = new google.maps.marker.AdvancedMarkerElement({
+            map,
+            position: results[0].geometry.location,
+            title: "Tienda",
+          });
+        } else {
+          console.error();
+        }
+      });
+    };
 
-        return () => {
-            window.initMap = null;
-        };
-    }, [direccion]);
+    loadMap().catch(error => {
+      console.error('Error loading Google Maps API: ', error);
+    });
+  }, [direccion]);
 
-    return (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <h3>Ubicación de la tienda</h3>
-            <div id="map" style={{ height: "70vh", width: "90%" }}></div>
-        </div>
-    );
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <h3>Ubicación de la tienda</h3>
+      <div id="map" style={{ height: "70vh", width: "90%" }}></div>
+    </div>
+  );
 };
 
 export default MapaTienda;
