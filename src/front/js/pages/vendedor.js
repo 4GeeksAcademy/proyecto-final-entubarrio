@@ -142,6 +142,7 @@ import { TodosProductosVendedor } from "../component/cardVendedorTodosProductos"
 import "../../styles/vendedor.css";
 import { EditarEliminarProductos } from "../component/cardEditarEliminarProductos";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 export const Vendedor = () => {
