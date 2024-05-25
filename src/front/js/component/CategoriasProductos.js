@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../store/appContext'; // Ajusta la ruta de importación según la estructura de tu proyecto
 import "../../styles/tienda.css";
 
-const CategoriasProductos = () => {
+const CategoriasProductos = ({ onCategoriaChange }) => {
     const { store, actions } = useContext(Context);
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
 
@@ -13,6 +13,7 @@ const CategoriasProductos = () => {
     const handleChange = (event) => {
         const opcion = event.target.value;
         setOpcionSeleccionada(opcion);
+        onCategoriaChange(opcion); // Llama a la función para cambiar la categoría
     };
 
     return (
@@ -43,6 +44,3 @@ const CategoriasProductos = () => {
 };
 
 export default CategoriasProductos;
-
-
-
