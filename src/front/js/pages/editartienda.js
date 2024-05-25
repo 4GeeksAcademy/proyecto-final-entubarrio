@@ -3,6 +3,7 @@ import { Context } from "../store/appContext.js";
 import "../../styles/creartienda.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 export const EditarTienda = () => {
@@ -32,15 +33,18 @@ export const EditarTienda = () => {
             url_imagen_tienda,
             token);
         navigate("/vendedor")
-        // actions.getTienda();
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Tienda editada",
+            showConfirmButton: false,
+            timer: 2000
+          });
     }
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        console.log(token);
-
 		actions.getTiendaVendedor(token);
-
 	}, [])
 
     return (
