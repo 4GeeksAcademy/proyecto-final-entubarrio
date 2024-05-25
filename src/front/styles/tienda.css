@@ -90,3 +90,11 @@ justify-content: space-around;
     margin: 20px auto; /* Margen superior e inferior de 20px y centrado horizontal */
     border: 2px solid #ccc; /* Marco de 2px sólido de color gris */
 }
+
+.categorias-home-tienda {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+    align-items: center; /* Alinea los elementos en el centro */
+    gap: 16px;
+    padding: 16px;
+}

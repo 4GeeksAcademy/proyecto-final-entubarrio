@@ -52,7 +52,7 @@ export const Tienda = () => {
                     <CategoriasProductos onCategoriaChange={handleCategoriaChange} />
                 </div>
             </div>
-            <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
+            <div className="categorias-home-tienda">
                 {productosFiltrados.map((producto) => {
                     return (
                         <TodosProductos 
@@ -63,7 +63,6 @@ export const Tienda = () => {
                             url_imagen_producto={producto.url_imagen_producto} 
                             precio={producto.precio} 
                             tienda_id={producto.tienda_id} 
-                            nombre_tienda={producto.nombre_tienda} 
                             categoria_producto={producto.categoria_producto} // Añadimos la categoría del producto
                         />
                     );

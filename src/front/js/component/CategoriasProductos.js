@@ -36,7 +36,7 @@ const CategoriasProductos = ({ onCategoriaChange }) => {
             </div>
             <div className="cardcontainertiendas">
                 {opcionSeleccionada && (
-                    <h3>Seleccionaste: {opcionSeleccionada}</h3>
+                    <h3>{opcionSeleccionada}</h3>
                 )}
             </div>
         </div>
