@@ -235,6 +235,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(data.msg);
 						setStore({ productos: data.results });
 						console.log("Producto creado:", data.results);
+						window.location.reload();
 						return true;
 					// } else {
 					// 	console.log("Mensaje de error:", data.msg);

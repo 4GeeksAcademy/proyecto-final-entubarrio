@@ -5,7 +5,7 @@
 
 .tarjeta-tienda {
     /* Estilos generales de la tarjeta */
-    max-width: 500px;
+    max-width: 300px;
     min-width: 250px; /* Ancho máximo de la tarjeta */
     max-height: 450px;
     min-height: 450px;
@@ -26,6 +26,7 @@
   .img-tienda {
     /* Estilos de la imagen del producto */
     width: 100%; /* Ancho completo de la imagen */
+    max-width: 300px;
     height: 200px; /* Altura fija de la imagen */
     object-fit: cover; /* Cubrir toda el área disponible */
     margin-bottom: 20px;
