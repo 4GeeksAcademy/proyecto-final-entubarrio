@@ -2,69 +2,52 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import { TodosProductos } from "../component/cardTodosProductos";
+import CategoriasProductos from "../component/CategoriasProductos"; // Ajusta la ruta de importación según la estructura de tu proyecto
 import "../../styles/todosproductos.css";
 
 export const Productos = () => {
     const { store, actions } = useContext(Context);
+    const [filteredProductos, setFilteredProductos] = useState([]);
 
-	useEffect(() => {
-		actions.getProductos()
-	}, [])
+    useEffect(() => {
+        actions.getProductos();
+    }, []);
+
+    useEffect(() => {
+        setFilteredProductos(store.productos);
+    }, [store.productos]);
+
+    const handleCategoriaChange = (categoria) => {
+        if (categoria) {
+            setFilteredProductos(store.productos.filter(producto => producto.categoria_producto === categoria));
+        } else {
+            setFilteredProductos(store.productos);
+        }
+    };
 
     return (
-			<div className="todos-productos">
-			<h2 className="tittles text-danger">Productos</h2>
-			<div className="cards row justify-content-center">
-				{store.productos.map((producto) => {
-					return (
-						<div className="bg-body-secondary text col-md-3 col-sw-6 mb-4 d-flex justify-content-center custom-col" key={producto.id}>
-
-							<TodosProductos producto={producto}
-								tienda_id={producto.tienda_id}
-								id ={producto.id}
-								nombre_tienda={producto.nombre_tienda}
-								nombre_producto={producto.nombre_producto}
-								url_imagen_producto={producto.url_imagen_producto}
-								descripcion_producto={producto.descripcion_producto}
-								precio={producto.precio}
-							/>
-
-						</div>
-					);
-				})}
-			</div>
-			{/* <div className="categorias-home container d-flex mb-5 justify-content-space-evenly" style={{ overflowBlock: "scroll" }}>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Frutas</h3>
-						<p className="text-black text-xs">Frutas de temporada</p>
-						<p className="text-black">{precio}€ Kg</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Verduras</h3>
-						<p className="text-black text-xs">Verduras y Hortalizas</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-					<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Pan</h3>
-						<p className="text-black text-xs">Pan casero</p>
-					</div>
-				</div>
-				<div className="carrusel-home w-1/3 h-64 bg-zinc-800 flex-shrink-0 relative">
-				<a href="/tiendas"><img src="https://placehold.co/200x200" alt="Image 1" className="w-full h-full object-cover" /></a>
-					<div className="absolute bottom-0 left-0 right-0 p-2">
-						<h3 className="text-black text-sm font-bold">Dulces</h3>
-						<p className="text-black text-xs">Dulces y tartas</p>
-					</div>
-				</div>
-			</div> */}
+        <div className="todos-productos">
+            <h2 className="tittles text-danger">Productos</h2>
+            <CategoriasProductos onCategoriaChange={handleCategoriaChange} />
+            <div className="cards row justify-content-center">
+                {filteredProductos.map((producto) => {
+                    return (
+                        <div className="bg-body-secondary text col-md-3 col-sw-6 mb-4 d-flex justify-content-center custom-col"
+                            key={producto.id}>
+                            <TodosProductos
+                                producto={producto}
+                                tienda_id={producto.tienda_id}
+                                id={producto.id}
+                                nombre_tienda={producto.nombre_tienda}
+                                nombre_producto={producto.nombre_producto}
+                                url_imagen_producto={producto.url_imagen_producto}
+                                descripcion_producto={producto.descripcion_producto}
+                                precio={producto.precio}
+                            />
+                        </div>
+                    );
+                })}
+            </div>
         </div>
-        
     );
 };
