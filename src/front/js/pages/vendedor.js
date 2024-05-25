@@ -18,15 +18,15 @@ export const Vendedor = () => {
     const [precio, setPrecio] = useState("");
     const [urlImagenProducto, setUrlImagenProducto] = useState("");
 
-    const handleSubmit = async () => {
-        // e.preventDefault();
-        const success = await actions.crearNuevoProducto(nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto,token);
-        if (token) {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const success = await actions.crearNuevoProducto(nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token);
+        if (success) {
             // Aquí puedes redirigir a la página de productos o mostrar un mensaje de éxito
             alert("Producto creado");
         } else {
             // Manejo de errores, como mostrar un mensaje al usuario
-            alert("Error al crear el producto");
+            alert("Error en vendedor al crear el producto");
         }
     };
 

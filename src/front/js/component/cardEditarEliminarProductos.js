@@ -39,12 +39,12 @@ export const EditarEliminarProductos = ({ url_imagen_producto, nombre_producto, 
                                     }).then((result) => {
                                         if (result.isConfirmed) {
                                             actions.borrarProducto(id, token);
-                                            window.location.reload();
                                             Swal.fire({
                                                 title: "¡Eliminado!",
                                                 text: "Ya no tienes este producto.",
                                                 icon: "success"
                                             });
+                                            window.location.reload();
                                         }
                                     });
                              }} /></button >

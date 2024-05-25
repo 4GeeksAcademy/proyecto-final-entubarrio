@@ -226,7 +226,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							descripcion_producto: descripcionProducto,
 							categoria_producto: categoriaProducto,
 							precio: precio,
-							url_imagen_producto: urlImagenProducto,
+							url_imagen_producto: urlImagenProducto
 						})
 					});
 
@@ -235,9 +235,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(data.msg);
 						setStore({ productos: data.results });
 						console.log("Producto creado:", data.results);
-					} else {
-						console.log("Mensaje de error:", data.msg);
-						return false;
+						return true;
+					// } else {
+					// 	console.log("Mensaje de error:", data.msg);
+					// 	return false;
 					}
 				} catch (error) {
 					console.error("Error al crear el producto:", error);
@@ -385,9 +386,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(data.msg);
 						setStore({ productos: data.results });
 						console.log("Producto borrado:", data.results);
-					} else {
-						console.log("Mensaje de error:", data.msg);
-						return false;
+						return true;
+					// } else {
+					// 	console.log("Mensaje de error:", data.msg);
+					// 	return false;
 					}
 				} catch (error) {
 					console.error("Error al borrar el producto:", error);
