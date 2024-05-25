@@ -1,6 +1,6 @@
 
 import click
-from api.models import db, Vendedor, Tienda, Producto
+from api.models import db, Vendedor, Tienda, Producto, Particular
 
 """
 In this file, you can add as many commands as you want using the @app.cli.command decorator
@@ -51,9 +51,12 @@ def setup_commands(app):
         db.create_all()
         try:
             vendedores = [
-                Vendedor(email="verduraspaco@gmail.com", password="111111"),
+                Vendedor(email="verduraspaco@gmail.com", password="111111", ),
                 Vendedor(email="verdurasisa@gmail.com", password="123"),
-                Vendedor(email="delahuertaatucasa@gmail.com", password="puerros")
+                Vendedor(email="delahuertaatucasa@gmail.com", password="puerros"),
+                Vendedor(email="panaderiapepe@gmail.com", password="bollos"),
+                Vendedor(email="elhornodelaabuela@gmail.com", password="felisa")
+
             ]
             db.session.add_all(vendedores)
             db.session.commit()
@@ -62,6 +65,8 @@ def setup_commands(app):
                 Tienda(nombre_tienda="Verduras Paco", categoria_tienda="Frutería", direccion_tienda="Calle de Escalante 1, Valencia", descripcion_tienda="La tienda de Paco te trae verduras a saco", url_imagen_tienda="https://frutasyverduraspaco.com/wp-content/themes/yootheme/cache/6306ce68-a34e-4cc9-ae8b-d8282936975a-a14cb339.jpg", vendedor_id=vendedores[0].id),
                 Tienda(nombre_tienda="Verduras Isa", categoria_tienda="Frutería", direccion_tienda="Calle Sierra de Cádiz 4, Vallecas, Madrid", descripcion_tienda="En verduras Isa los precios dan risa", url_imagen_tienda="https://frutasmontijo.com/wp-content/uploads/2018/10/fruterias.jpg", vendedor_id=vendedores[1].id),
                 Tienda(nombre_tienda="La huerta en casa", categoria_tienda="Frutería", direccion_tienda="Calle Badajoz 2, Barcelona", descripcion_tienda="Nuestros productos vienen directos de la huerta", url_imagen_tienda="https://www.sanferescomercio.com/wp-content/uploads/2019/01/LAHUERTAENCASA6.jpg", vendedor_id=vendedores[2].id),
+                Tienda(nombre_tienda="Panaderia Pepe", categoria_tienda="Panadería", direccion_tienda="Calle Ávila 24, Barcelona", descripcion_tienda="Los bollos de Pepe están de rechupete", url_imagen_tienda="https://thefoodtech.com/wp-content/uploads/2023/10/PANADERIA-PRINCIPAL-1-828x548.jpg", vendedor_id=vendedores[3].id),
+                Tienda(nombre_tienda="El horno de la abuela", categoria_tienda="Panadería", direccion_tienda="Calle Badajoz 17, Barcelona", descripcion_tienda="Los bollos de Pepe están de rechupete", url_imagen_tienda="https://abmauri.es/wp-content/uploads/2023/06/aumentar-ventas-panaderia.jpg", vendedor_id=vendedores[4].id),
             ]
             db.session.add_all(tiendas)
             db.session.commit()
@@ -80,10 +85,24 @@ def setup_commands(app):
                 Producto(nombre_producto="Miel", descripcion_producto="Miel de Espliego", precio="9", categoria_producto="Miel", url_imagen_producto="https://www.lamieleria.com/tienda/49-thickbox_default/miel-de-espliego-tarro-1-kg.jpg", vendedor_id=vendedores[0].id, tienda_id=tiendas[0].id),
                 Producto(nombre_producto="Miel", descripcion_producto="Miel de Espliego", precio="10", categoria_producto="Miel", url_imagen_producto="https://www.lamieleria.com/tienda/49-thickbox_default/miel-de-espliego-tarro-1-kg.jpg", vendedor_id=vendedores[1].id, tienda_id=tiendas[1].id),
                 Producto(nombre_producto="Miel", descripcion_producto="Miel de Espliego", precio="11", categoria_producto="Miel", url_imagen_producto="https://www.lamieleria.com/tienda/49-thickbox_default/miel-de-espliego-tarro-1-kg.jpg", vendedor_id=vendedores[2].id, tienda_id=tiendas[2].id),
+                Producto(nombre_producto="Pan", descripcion_producto="Baguette", precio="1", categoria_producto="Pan", url_imagen_producto="https://panamarbakery.com/public/Image/2021/3/16158178038498_baguette_rustica_medit_0222_Galeria.png", vendedor_id=vendedores[3].id, tienda_id=tiendas[3].id),
+                Producto(nombre_producto="Pan", descripcion_producto="Baguette", precio="2", categoria_producto="Pan", url_imagen_producto="https://panamarbakery.com/public/Image/2021/3/16158178038498_baguette_rustica_medit_0222_Galeria.png", vendedor_id=vendedores[4].id, tienda_id=tiendas[4].id),
+                Producto(nombre_producto="Croissant", descripcion_producto="Como el de París", precio="2", categoria_producto="Dulces", url_imagen_producto="https://panamarbakery.com/public/Image/2022/6/165417222612309-13112_1-croissant-artesano-margcopia_Galeria.png", vendedor_id=vendedores[3].id, tienda_id=tiendas[3].id),
+                Producto(nombre_producto="Croissant", descripcion_producto="Como el de París", precio="1", categoria_producto="Dulces", url_imagen_producto="https://panamarbakery.com/public/Image/2022/6/165417222612309-13112_1-croissant-artesano-margcopia_Galeria.png", vendedor_id=vendedores[4].id, tienda_id=tiendas[4].id),
+
             ]
             db.session.add_all(productos)
             db.session.commit()
 
+            particulares = [
+                Particular(email="jamesbond@gmail.com", password="007", ),
+                Particular(email="homersimpson@gmail.com", password="742"),
+                Particular(email="lukeskywalker@gmail.com", password="r2d2"),
+                Particular(email="obiwan@gmail.com", password="kenoby")
+
+            ]
+            db.session.add_all(particulares)
+            db.session.commit()
 
 #             hobbies = [
 #                 Hobbie(name="Fotografía"),
