@@ -4,65 +4,65 @@
 }
 
 .tarjeta-tienda {
-    /* Estilos generales de la tarjeta */
+    
     max-width: 300px;
-    min-width: 250px; /* Ancho máximo de la tarjeta */
+    min-width: 250px; 
     max-height: 450px;
     min-height: 450px;
-    margin: 1em auto; /* Centrar la tarjeta horizontalmente */
+    margin: 1em auto; 
     margin-left: 10px;
     padding: 20px;
     background-color: #fff;
-    border-radius: 10px; /* Bordes redondeados más pronunciados */
+    border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
   
   .tarjeta-tienda:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    transform: scale(1.01); /* Agrandar ligeramente al hover */
+    transform: scale(1.01); 
   }
   
   .img-tienda {
-    /* Estilos de la imagen del producto */
-    width: 100%; /* Ancho completo de la imagen */
+    
+    width: 100%; 
     max-width: 300px;
-    height: 200px; /* Altura fija de la imagen */
-    object-fit: cover; /* Cubrir toda el área disponible */
+    height: 200px; 
+    object-fit: cover; 
     margin-bottom: 20px;
-    border-radius: 10px; /* Bordes redondeados para la imagen */
+    border-radius: 10px; 
   }
   
   .titulo-tienda {
-    /* Estilos del título del producto */
-    font-size: 20px; /* Tamaño de fuente más grande */
+   
+    font-size: 20px; 
     font-weight: bold;
-    color: #333; /* Color de texto más oscuro */
+    color: #333; 
     margin-bottom: 10px;
   }
   
   .descripcion-tienda {
-    /* Estilos para la descripción del producto (opcional) */
+   
     font-size: 14px;
     color: #666;
-    line-height: 1.5; /* Mayor espacio entre líneas para mejor legibilidad */
+    line-height: 1.5; 
     margin-bottom: 20px;
   }
   
   .precio-tienda {
-    /* Estilos del precio del producto */
-    font-size: 18px; /* Tamaño de fuente más grande para el precio */
+    
+    font-size: 18px; 
     font-weight: bold;
-    color: #007bff; /* Color azul para destacar el precio */
+    color: #007bff;
     margin-bottom: 15px;
   }
   
   .boton-compra {
-    /* Estilos del botón de compra */
+    
     display: block;
     width: 100%;
-    padding: 12px 20px; /* Aumento del padding para mejor clickabilidad */
-    background-color: #007bff; /* Mismo color azul del precio */
+    padding: 12px 20px; 
+    background-color: #007bff; 
     color: #fff;
     border: none;
     border-radius: 5px;

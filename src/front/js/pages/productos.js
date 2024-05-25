@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import { TodosProductos } from "../component/cardTodosProductos";
-import CategoriasProductos from "../component/CategoriasProductos"; // Ajusta la ruta de importación según la estructura de tu proyecto
+import CategoriasProductos from "../component/CategoriasProductos";
 import "../../styles/todosproductos.css";
 
 export const Productos = () => {
@@ -27,7 +27,7 @@ export const Productos = () => {
 
     return (
         <div className="todos-productos">
-            <h2 className="tittles text-danger">Productos</h2>
+            <h2 className="tittles text-center mb-4">Productos</h2>
             <CategoriasProductos onCategoriaChange={handleCategoriaChange} />
             <div className="cards row justify-content-center">
                 {filteredProductos.map((producto) => {

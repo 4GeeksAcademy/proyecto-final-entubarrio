@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Context } from '../store/appContext'; // Ajusta la ruta de importación según la estructura de tu proyecto
+import { Context } from '../store/appContext'; 
 import "../../styles/tienda.css";
 
 const CategoriasProductos = ({ onCategoriaChange }) => {
@@ -7,13 +7,13 @@ const CategoriasProductos = ({ onCategoriaChange }) => {
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
 
     useEffect(() => {
-        actions.getCategoriasProductos(); // Llama a la función getCategoriasProductos del flujo al montar el componente
+        actions.getCategoriasProductos(); 
     }, []);
 
     const handleChange = (event) => {
         const opcion = event.target.value;
         setOpcionSeleccionada(opcion);
-        onCategoriaChange(opcion); // Llama a la función para cambiar la categoría
+        onCategoriaChange(opcion); 
     };
 
     return (

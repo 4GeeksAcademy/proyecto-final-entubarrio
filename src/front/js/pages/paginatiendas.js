@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { TodasTiendas } from "../component/cardTodasTiendas";
-import CategoriasTiendas from "../component/CategoriasTiendas"; // Ajusta la ruta de importación según la estructura de tu proyecto
+import CategoriasTiendas from "../component/CategoriasTiendas"; 
 import "../../styles/todastiendas.css";
 
 export const PaginaTiendas = () => {
@@ -26,7 +26,7 @@ export const PaginaTiendas = () => {
 
     return (
         <div className="todas-tiendas">
-            <h2 className="tittles text-danger">Tiendas</h2>
+            <h2 className="tittles text-center mb-4">Tiendas</h2>
             <CategoriasTiendas onCategoriaChange={handleCategoriaChange} />
             <div className="cards row justify-content-center">
                 {filteredTiendas.map((tienda) => {
