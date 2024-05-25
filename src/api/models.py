@@ -63,7 +63,7 @@ class Producto(db.Model):
     descripcion_producto = db.Column(db.String(500), unique=False)
     categoria_producto = db.Column(db.String(80), unique=False, nullable=False)
     url_imagen_producto = db.Column(db.String(120), unique=False, nullable=False)
-    favoritos = db.relationship('FavoritosProductos', backref='producto', lazy=True)
+    favoritos_productos = db.relationship('FavoritosProductos', backref='producto', lazy=True)
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
     tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
     particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
@@ -95,7 +95,7 @@ class Particular(db.Model):
     favoritos_productos = db.relationship('FavoritosProductos', backref='particular', lazy=True)
     favoritos_tiendas = db.relationship('FavoritosTiendas', backref='particular', lazy=True)
 
-    productos = db.relationship('Producto', backref='particular', lazy=True)
+    # productos = db.relationship('Producto', backref='particular', lazy=True)
     # tiendas = db.relationship('Tienda', backref='particular', lazy=True)
     # Otros campos que quieras agregar para usuarios particulares
 
@@ -118,7 +118,7 @@ class FavoritosProductos(db.Model):
     # tienda = db.relationship('Tienda', backref='productos')
 
     def __repr__(self):
-        return f'<FavoritosProductos {self.nombre_producto}>'
+        return f'<FavoritosProductos {self.id}>'
 
     def serialize(self):
         result= Producto.query.filter_by(id=self.producto_id).first()
@@ -126,7 +126,9 @@ class FavoritosProductos(db.Model):
         return {
             "id": self.id,
             "nombre_producto": result.serialize()["nombre_producto"], 
-            "producto_id": self.producto_id        
+            "producto_id": self.producto_id,
+            # "particular_id": self.particular_id      
+    
       
             # do not serialize the password, its a security breach
         } 
@@ -140,7 +142,7 @@ class FavoritosTiendas(db.Model):
     # tienda = db.relationship('Tienda', backref='productos')
 
     def __repr__(self):
-        return f'<FavoritosTiendas {self.nombre_tienda}>'
+        return f'<FavoritosTiendas {self.id}>'
 
     def serialize(self):
         result= Tienda.query.filter_by(id=self.tienda_id).first()
@@ -148,7 +150,8 @@ class FavoritosTiendas(db.Model):
         return {
             "id": self.id,
             "nombre_tienda": result.serialize()["nombre_tienda"],
-            "tienda_id": self.tienda_id
-      
+            "tienda_id": self.tienda_id,
+            "particular_id": self.particular_id      
+
             # do not serialize the password, its a security breach
         } 
