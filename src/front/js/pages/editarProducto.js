@@ -5,6 +5,7 @@ import fruteria from "../../img/fruteria.jpg";
 import { TodosProductosVendedor } from "../component/cardVendedorTodosProductos";
 import "../../styles/vendedor.css";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const EditarProducto = () => {
     const { store, actions } = useContext(Context);
@@ -25,10 +26,21 @@ export const EditarProducto = () => {
         if (success) {
             // Aquí puedes redirigir a la página de productos o mostrar un mensaje de éxito
             navigate("/vendedor");
-            alert("Producto editado");
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Producto editado",
+                showConfirmButton: false,
+                timer: 2000
+              });
         } else {
             // Manejo de errores, como mostrar un mensaje al usuario
-            alert("Error al crear el producto");
+            Swal.fire({
+                title: 'Error!',
+                text: "Error al editar el producto",
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 

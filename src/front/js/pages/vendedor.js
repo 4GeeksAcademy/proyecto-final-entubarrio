@@ -18,15 +18,26 @@ export const Vendedor = () => {
     const [precio, setPrecio] = useState("");
     const [urlImagenProducto, setUrlImagenProducto] = useState("");
 
-    const handleSubmit = async () => {
-        // e.preventDefault();
-        const success = await actions.crearNuevoProducto(nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto,token);
-        if (token) {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const success = await actions.crearNuevoProducto(nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token);
+        if (success) {
             // Aquí puedes redirigir a la página de productos o mostrar un mensaje de éxito
-            alert("Producto creado");
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Producto creado",
+                showConfirmButton: false,
+                timer: 2000
+              });
         } else {
             // Manejo de errores, como mostrar un mensaje al usuario
-            alert("Error al crear el producto");
+            Swal.fire({
+                title: 'Error!',
+                text: "Error al crear el producto",
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 
@@ -42,8 +53,6 @@ export const Vendedor = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        
-
 		actions.getTiendaVendedor(token)
         // actions.getTiendas()
         actions.getProductosVendedor(token)
@@ -74,7 +83,7 @@ export const Vendedor = () => {
                           }).then((result) => {
                             if (result.isConfirmed) {
                                 actions.deleteTienda(store.tienda?.nombre_tienda, token);
-                                window.location.reload();
+                                navigate("/creartienda")
                                 Swal.fire({
                                 title: "¡Eliminada!",
                                 text: "Ya no tienes esta tienda.",
