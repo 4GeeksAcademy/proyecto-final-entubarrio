@@ -700,27 +700,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 				try {
-					const response = await fetch(process.env.BACKEND_URL + "/api/tiendas-favoritas/"+tienda_id, {
+					const response = await fetch(process.env.BACKEND_URL + "/api/tiendas-favoritas/" + tienda_id, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
 							'Authorization': "Bearer " + token
 						},
 						body: JSON.stringify({
-							tienda_id: tienda_id,           
-							particular_id: particular_id         
+							tienda_id: tienda_id     
 						})
 					});
 
-					const data = await response.json();
+					
 					if (!response.ok) {
 						throw new Error (data.error)
 					}
-						console.log(data);
-						setStore({ tiendasFavoritas: data.tiendas })
-						console.log("Favorita añadida:", data.msg);
-						window.location.reload();
-						return data.msg;
+					const data = await response.json();
+					console.log(data);
+					setStore({ tiendasFavoritas: data.tiendas })
+					console.log("Favorita añadida:", data.msg);
+					window.location.reload();
+					return data.msg;
 				} catch (error) {
 					console.error("Error desconocido:", error);
 					throw error;
@@ -761,7 +761,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 				try {
-					const response = await fetch(process.env.BACKEND_URL + "/api/tiendas-favoritas/"+tienda_id, {
+					const response = await fetch(process.env.BACKEND_URL + "/api/tiendas-favoritas/" + tienda_id, {
 						method: "DELETE",
 						headers:{
 							"Content-Type":"application/json",
