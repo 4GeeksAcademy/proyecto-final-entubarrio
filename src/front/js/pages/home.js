@@ -28,7 +28,7 @@ export const Home = () => {
 			<div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
 				{store.tiendas.map((tienda) => {
 					return (
-						<TodasTiendas nombre_tienda={tienda.nombre_tienda} key={tienda.id} id={tienda.id} url_imagen_tienda={tienda.url_imagen_tienda} descripcion_tienda={tienda.descripcion_tienda} />
+						<TodasTiendas nombre_tienda={tienda.nombre_tienda} key={tienda.id} id={tienda.id} url_imagen_tienda={tienda.url_imagen_tienda} descripcion_tienda={tienda.descripcion_tienda} direccion_tienda={tienda.direccion_tienda} />
 					)
 				})}
 			</div>
