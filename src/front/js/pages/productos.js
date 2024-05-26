@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import { TodosProductos } from "../component/cardTodosProductos";
 import "../../styles/todosproductos.css";
+import CompararProductos from "../component/cardCompararProductos";
 
 export const Productos = () => {
     const { store, actions } = useContext(Context);
@@ -13,6 +14,7 @@ export const Productos = () => {
 
     return (
 			<div className="todos-productos">
+				<CompararProductos />
 			<h2 className="tittles text-danger">Productos</h2>
 			<div className="cards row justify-content-center">
 				{store.productos.map((producto) => {
