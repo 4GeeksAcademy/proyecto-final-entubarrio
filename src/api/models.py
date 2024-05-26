@@ -155,6 +155,10 @@ class FavoritosTiendas(db.Model):
         return {
             "id": self.id,
             "nombre_tienda": result.serialize()["nombre_tienda"],
+            "categoria_tienda": result.serialize()["categoria_tienda"],
+            "direccion_tienda": result.serialize()["direccion_tienda"],
+            "url_imagen_tienda": result.serialize()["url_imagen_tienda"],
+            "descripcion_tienda": result.serialize()["descripcion_tienda"],
             "tienda_id": self.tienda_id,
             "particular_id": self.particular_id      
 
