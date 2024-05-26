@@ -27,7 +27,7 @@ export const Productos = () => {
 
     return (
         <div className="todos-productos">
-            <h2 className="tittles text-center mb-4">Productos</h2>
+            <h2 className="tittles text-center mt-4 mb-4">Productos</h2>
             <CategoriasProductos onCategoriaChange={handleCategoriaChange} />
             <div className="cards row justify-content-center">
                 {filteredProductos.map((producto) => {

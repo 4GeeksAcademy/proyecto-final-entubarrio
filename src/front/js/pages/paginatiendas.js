@@ -26,7 +26,7 @@ export const PaginaTiendas = () => {
 
     return (
         <div className="todas-tiendas">
-            <h2 className="tittles text-center mb-4">Tiendas</h2>
+            <h2 className="tittles text-center mt-4 mb-4">Tiendas</h2>
             <CategoriasTiendas onCategoriaChange={handleCategoriaChange} />
             <div className="cards row justify-content-center">
                 {filteredTiendas.map((tienda) => {

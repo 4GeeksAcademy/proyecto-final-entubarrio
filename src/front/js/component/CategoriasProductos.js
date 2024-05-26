@@ -19,7 +19,7 @@ const CategoriasProductos = ({ onCategoriaChange }) => {
     return (
         <div className="custom-categoria-tienda">
             <div className="custom-header">
-                <h2 className="custom-titulo">Selecciona Categoria</h2>
+                <h5 className="custom-titulo">Selecciona Categoria</h5>
                 <select
                     className="form-select-tienda"
                     aria-label="Selecciona Productos"
