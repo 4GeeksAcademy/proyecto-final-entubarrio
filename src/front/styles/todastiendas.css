@@ -16,6 +16,7 @@
     border-radius: 10px; /* Bordes redondeados más pronunciados */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    box-sizing: content-box;
   }
   
   .tarjeta-tienda:hover {

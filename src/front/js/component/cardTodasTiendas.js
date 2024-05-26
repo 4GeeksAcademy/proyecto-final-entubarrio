@@ -26,6 +26,9 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
                         Dirección: {direccion_tienda}
                     </a>
                 </div>
+                <div>
+                <i className="btn fa-solid fa-star mb-3 d-flex justify-content-end"></i>
+                </div>
             </div>
         </div>
     );
