@@ -8,9 +8,13 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
     const addStar = store.productosFavoritos
     const producto_id = id
     function addFavoriteProduct() {
-        // actions.addFavorite(people.name)
         actions.añadirProductoFavorito(producto_id)
       }
+
+    function deleteFavoriteProduct() {
+    actions.borrarProductoFavorito(producto_id)
+    }
+
     return (
         <div className="grid-container">
             <div className="tarjeta-producto">
@@ -28,8 +32,8 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                         <b className="ms-2 text-black text-xs">{nombre_tienda}</b>
                         <h5 className="precio-producto">{precio}€</h5>
                     </div>
-                    <div className="star-productos d-flex justify-content-end me-2">
-                    <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavoriteProduct}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
+                    <div className="star-productos d-flex justify-content-end me-2 mt-2">
+                    <a href="#" className="btn btn-outline-warning ms-5" onClick={deleteFavoriteProduct}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
                 </div>
                 </div>
             </div>

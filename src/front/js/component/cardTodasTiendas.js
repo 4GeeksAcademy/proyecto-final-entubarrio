@@ -8,9 +8,13 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
     const addStar = store.tiendasFavoritas
     const tienda_id = id
     function addFavoriteTienda() {
-        // actions.addFavorite(people.name)
         actions.añadirTiendaFavorita(tienda_id)
       }
+
+    function deleteFavoriteTienda() {
+        actions.borrarTiendaFavorita(tienda_id)
+        }
+
     return (
         <div className="grid-container">
             <div
@@ -32,8 +36,8 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
                         Dirección: {direccion_tienda}
                     </a>
                 </div>
-                <div className="star-tiendas d-flex justify-content-end me-2">
-                    <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavoriteTienda}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
+                <div className="star-tiendas d-flex justify-content-end me-2 mt-3">
+                    <a href="#" className="btn btn-outline-warning ms-5" onClick={deleteFavoriteTienda}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
                 </div>
             </div>
         </div>
