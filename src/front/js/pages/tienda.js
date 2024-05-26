@@ -49,7 +49,7 @@ export const Tienda = () => {
                 alt="Foto Home" />
             <div className="tus-productos">
                 <div className="text-custom-tienda">
-                    <CategoriasProductos onCategoriaChange={handleCategoriaChange} />
+                    <CategoriasProductos onCategoriaChange={handleCategoriaChange} id={params.id} />
                 </div>
             </div>
             <div className="categorias-home-tienda grid-container">

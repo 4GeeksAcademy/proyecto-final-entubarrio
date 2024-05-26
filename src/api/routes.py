@@ -475,3 +475,20 @@ def login():
                 return jsonify({"msg": "El vendedor no existe"}), 404
             access_token = create_access_token(identity=email)
             return jsonify({"msg": "Este Vendedor ya tiene un perfil empresa", "access_token":access_token, "vendedor":vendedor_exist.serialize()}), 201
+    
+# #Enpoints Categorias Productos Tienda-----------------------------------------------------------------------------------
+@api.route('/categorias-productos-tienda/<int:tienda_id>', methods=['GET'])
+def get_categorias_productos_tienda(tienda_id):
+    productos = Producto.query.filter_by(tienda_id=tienda_id)
+    categorias = set()
+    for producto in productos:
+        categorias.add(producto.categoria_producto)
+
+    categorias_lista = list(categorias)
+   
+    if categorias_lista == []:
+        return jsonify({"msg" : "No hay categorias guardadas"}), 404
+    response_body = {
+        "results": categorias_lista
+    }
+    return jsonify(response_body), 200
