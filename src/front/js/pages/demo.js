@@ -2,14 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
-import CompararProductos from "../component/cardCompararProductos";
+import CarruselHome from "../component/cardCarruselHome";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<div>
-			<CompararProductos />
+			<CarruselHome />
 		</div>
 		// <div className="container">
 		// 	<ul className="list-group">

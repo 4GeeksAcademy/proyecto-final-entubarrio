@@ -1,0 +1,27 @@
+/* cardCarruselHome.css */
+/* cardCarruselHome.css */
+.small-carousel {
+    max-width: 900px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centra el carrusel horizontalmente */
+    overflow: hidden; /* Oculta cualquier desbordamiento */
+  }
+  
+  .small-carousel .carousel-inner {
+    max-height: 700px; /* Ajusta la altura máxima según tus necesidades */
+  }
+  
+  .small-carousel .carousel-inner img {
+    width: 100%; /* Ajusta el ancho de las imágenes al ancho del contenedor */
+    height: auto; /* Mantén la proporción de las imágenes */
+    object-fit: cover; /* Asegura que las imágenes cubran el contenedor sin distorsionarse */
+  }
+
+  /* cardCarruselHome.css */
+.carousel-caption {
+    bottom: 0; /* Ajusta la posición de la caption */
+    left: 0; /* Ajusta la posición de la caption */
+    right: 0; /* Ajusta la posición de la caption */
+    background-color: rgba(0, 0, 0, 0.75); /* Fondo semi-transparente */
+    padding: 10px; /* Espaciado interno */
+    color: white; /* Color del texto */
+  }
