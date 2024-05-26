@@ -53,12 +53,12 @@ export const Navbar = () => {
                             </li>
                             {tipo_usuario === "vendedor" && token && (
                                 <li className="nav-item border-start">
-                                    <a className="nav-link" href="/vendedor">Mis favoritos</a>
+                                    <a className="nav-link" href="/vendedor">Mi Tienda</a>
                                 </li>
                             )}
                             {tipo_usuario === "particular" && token && (
                                 <li className="nav-item border-start">
-                                    <a className="nav-link" href="/favoritos">Mi Perfil</a>
+                                    <a className="nav-link" href="/favoritos">Mis favoritos</a>
                                 </li>
                             )}
                         </ul>
@@ -80,8 +80,9 @@ export const Navbar = () => {
                     </div>
                 </div>
             </nav>
+            
             <div className="d-flex justify-content-center mt- border-bottom containerletra">
-                <img src={Letras} alt="Letras" className="logo-letra" />
+            <Link to="/"><img src={Letras} alt="Letras" className="logo-letra" /></Link>
             </div>
         </>
     );
