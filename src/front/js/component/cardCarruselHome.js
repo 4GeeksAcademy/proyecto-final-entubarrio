@@ -13,7 +13,7 @@ const CarruselHome = () => {
               <img src="/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg" className="d-block w-100" alt="..."/>
             </Link>
             <div className="carousel-caption d-none d-md-block text-dark bg-light opacity-75">
-              <h5>¡Bienvenido a tu barrio!</h5>
+              <h3>¡Bienvenido a tu barrio!</h3>
               <p>Aquí encontrarás las mejores tiendas cerca de ti.</p>
             </div>
           </div>
@@ -22,7 +22,7 @@ const CarruselHome = () => {
               <img src="https://i.blogs.es/833342/istock_000051479416_small/450_1000.webp" className="d-block w-100" alt="..."/>
             </Link>
             <div className="carousel-caption d-none d-md-block text-dark bg-light opacity-75">
-              <h5>¡Los mejores productos a la vuelta de la esquina!</h5>
+              <h3>¡Los mejores productos a la vuelta de la esquina!</h3>
               <p>Aquí encontrarás los mejores productos.</p>
             </div>
           </div>
@@ -31,8 +31,8 @@ const CarruselHome = () => {
               <img src="https://grandesamigos.org/wp-content/uploads/2019/05/Grandes-Vecinos_baja.jpg" className="d-block w-100" alt="..."/>
             </Link>
             <div className="carousel-caption d-none d-md-block text-dark bg-light opacity-75">
-              <h5>¡Únete al barrio ahora!</h5>
-              <p>Regístrate y se uno tu barrio.</p>
+              <h3>¡Únete al barrio ahora!</h3>
+              <p>Regístrate y se uno con tu barrio.</p>
             </div>
           </div>
         </div>
