@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../store/appContext'; 
 import "../../styles/tienda.css";
 
-const CategoriasProductos = ({ onCategoriaChange }) => {
+const CategoriasProductos = ({ onCategoriaChange, id }) => {
     const { store, actions } = useContext(Context);
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
 
     useEffect(() => {
-        actions.getCategoriasProductos(); 
+        actions.getCategoriasProductosTienda(id); 
     }, []);
 
     const handleChange = (event) => {

@@ -582,6 +582,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
+
+			getCategoriasProductosTienda: async (id) => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/categorias-productos-tienda/"+id, {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json"
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						setStore({categoriasProductos:data.results})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 		},
 	};
 };
