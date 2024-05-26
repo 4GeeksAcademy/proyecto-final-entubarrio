@@ -8,7 +8,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import CategoriasTiendas from "../component/CategoriasTiendas";
-import CategoriasProductos from "../component/CategoriasProductos";
+import CategoriasTodosProductos from "../component/CategoriasTodosProductos";
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
@@ -109,7 +109,7 @@ export const Home = () => {
             </div>
             <h2>Selección de Productos</h2>
             <p>Aquí podrás encontrar una variedad de productos de tu barrio</p>
-            <CategoriasProductos onCategoriaChange={handleCategoriaProductosChange} />
+            <CategoriasTodosProductos onCategoriaChange={handleCategoriaProductosChange} />
             <div className="categorias-home container-fluid mb-5">
                 <Carousel 
                     responsive={responsive} 
