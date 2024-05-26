@@ -81,7 +81,7 @@ export const Navbar = () => {
                 </div>
             </nav>
             
-            <div className="d-flex justify-content-center mt- border-bottom containerletra">
+            <div className="d-flex justify-content-center border-bottom containerletra">
             <Link to="/"><img src={Letras} alt="Letras" className="logo-letra" /></Link>
             </div>
         </>
