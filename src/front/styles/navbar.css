@@ -1,10 +1,35 @@
+
+.navbar-container {
+
+    height: 6em;
+    background-color: #f8f9fa;
+    
+}
+
+
 .nav-link {
     color: black;
 }
 
-.logo {
-    font-size: 35px;
+.logo-nav {
+    width: 200px;  
+    height: auto;
+    margin-top: 2em;
+    margin-left: 1em;
+}
+
+.logo-letra {
+    width: 200px;  
+    height: auto;
+    margin-top: 1em;
+    
+   
 }
 .titulo-navbar {
     justify-self: center;
+    
   }
+  
+.containerletra{
+    background-color: #f8f9fa;
+}
