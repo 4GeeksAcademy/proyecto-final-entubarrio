@@ -673,7 +673,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/productos-favoritos/"+producto_id, {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos-favoritos/" + producto_id, {
 						method: "DELETE",
 						headers:{
 							"Content-Type":"application/json",
@@ -768,7 +768,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 							'Authorization': `Bearer ${token}`
 						},
 					})
-					const data = await response.json()
+					if (!response.ok) {
+						throw new Error (data.error)
+					}
+					const data = await response.json();
 					if (response.status === 200){
 						window.location.reload();
 						return true;

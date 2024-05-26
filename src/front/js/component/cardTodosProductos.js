@@ -13,6 +13,7 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
 
     function deleteFavoriteProduct() {
     actions.borrarProductoFavorito(producto_id)
+    console.log();
     }
 
     return (
@@ -33,7 +34,7 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                         <h5 className="precio-producto">{precio}€</h5>
                     </div>
                     <div className="star-productos d-flex justify-content-end me-2 mt-2">
-                    <a href="#" className="btn btn-outline-warning ms-5" onClick={deleteFavoriteProduct}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
+                    <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavoriteProduct}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
                 </div>
                 </div>
             </div>
