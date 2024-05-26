@@ -10,6 +10,7 @@ export const Favoritos = () => {
 		actions.getProductosFavoritos()
 		actions.getProductos()
 		actions.getTiendas()
+        
 
 	}, []);
 	console.log(store.productosFavoritos);
