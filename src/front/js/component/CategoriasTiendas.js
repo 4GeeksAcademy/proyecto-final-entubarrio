@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../store/appContext'; 
 import "../../styles/tienda.css";
 
-const CategoriasProductos = ({ onCategoriaChange }) => {
+const CategoriasTiendas = ({ onCategoriaChange }) => {
     const { store, actions } = useContext(Context);
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
 
     useEffect(() => {
-        actions.getCategoriasProductos(); 
+        actions.getCategoriasTiendas(); 
     }, []);
 
     const handleChange = (event) => {
@@ -22,12 +22,12 @@ const CategoriasProductos = ({ onCategoriaChange }) => {
                 <h5 className="custom-titulo">Selecciona Categoria</h5>
                 <select
                     className="form-select-tienda"
-                    aria-label="Selecciona Productos"
+                    aria-label="Selecciona Tiendas"
                     value={opcionSeleccionada}
                     onChange={handleChange}
                 >
                     <option value="">Selecciona</option>
-                    {store.categoriasProductos.map((categoria, index) => (
+                    {store.categoriasTiendas.map((categoria, index) => (
                         <option key={index} value={categoria}>
                             {categoria}
                         </option>
@@ -43,4 +43,4 @@ const CategoriasProductos = ({ onCategoriaChange }) => {
     );
 };
 
-export default CategoriasProductos;
+export default CategoriasTiendas;
