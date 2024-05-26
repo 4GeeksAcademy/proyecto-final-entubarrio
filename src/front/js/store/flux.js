@@ -141,27 +141,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			//LINEAS RESERVADAS ALVARO
-			// getAllVendedores: async () => {
-			// 	try {
-			// 		let response = await fetch(process.env.BACKEND_URL + "/api/vendedores", {
-			// 			method: "GET",
-			// 			headers: {
-			// 				"Content-Type": "application/json"
-			// 			},
-			// 		})
-			// 		let data = await response.json()
-			// 		if (response.status === 200) {
-			// 			// Actualiza el estado con los datos de las tiendas
-			// 			// Asumiendo que la respuesta contiene una propiedad 'tienda'
-			// 			setStore({ vendedores: data.result })
-			// 		} else {
-			// 			console.log(data);
-			// 			return console.log("No funciona");
-			// 		}
-			// 	} catch (error) {
-			// 		return false;
-			// 	}
-			// },
+			getAllVendedores: async () => {
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/vendedores", {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json"
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200) {
+						// Actualiza el estado con los datos de las tiendas
+						// Asumiendo que la respuesta contiene una propiedad 'tienda'
+						setStore({ vendedores: data.result })
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
 
 			getTiendas: async () => {
 				try {

@@ -54,7 +54,7 @@ export const Vendedor = () => {
     useEffect(() => {
         const token = localStorage.getItem("token");
 		actions.getTiendaVendedor(token)
-        // actions.getTiendas()
+        actions.getAllVendedores()
         actions.getProductosVendedor(token)
 	}, [])
     console.log(store.tienda);
@@ -82,7 +82,8 @@ export const Vendedor = () => {
                             cancelButtonText: "¡No, espera!"
                           }).then((result) => {
                             if (result.isConfirmed) {
-                                actions.deleteTienda(store.tienda?.nombre_tienda, token);
+                                // actions.deleteTienda(store.tienda?.nombre_tienda, token);
+                                console.log(store.vendedores.id);
                                 navigate("/creartienda")
                                 Swal.fire({
                                 title: "¡Eliminada!",

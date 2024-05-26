@@ -18,8 +18,10 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                     <div className="precio-tienda-container">
                         <b className="ms-2 text-black text-xs">{nombre_tienda}</b>
                         <h5 className="precio-producto">{precio}€</h5>
-                        <i className="btn fa-solid fa-star mb-3"></i>
                     </div>
+                    <div>
+                <i className="btn fa-solid fa-star mb-3 d-flex justify-content-end"></i>
+                </div>
                 </div>
             </div>
         </div>
