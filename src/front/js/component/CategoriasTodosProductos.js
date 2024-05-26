@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../store/appContext'; 
 import "../../styles/tienda.css";
 
-const CategoriasProductos = ({ onCategoriaChange , id}) => {
+const CategoriasTodosProductos = ({ onCategoriaChange }) => {
     const { store, actions } = useContext(Context);
     const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
 
     useEffect(() => {
-        actions.getCategoriasProductosTienda(id); 
+        actions.getCategoriasProductos(); 
     }, []);
 
     const handleChange = (event) => {
@@ -43,4 +43,4 @@ const CategoriasProductos = ({ onCategoriaChange , id}) => {
     );
 };
 
-export default CategoriasProductos;
+export default CategoriasTodosProductos;

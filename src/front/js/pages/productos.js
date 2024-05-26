@@ -4,7 +4,7 @@ import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042
 import { TodosProductos } from "../component/cardTodosProductos";
 import "../../styles/todosproductos.css";
 import CompararProductos from "../component/cardCompararProductos";
-import CategoriasProductos from "../component/CategoriasProductos";
+import CategoriasTodosProductos from "../component/CategoriasTodosProductos";
 
 export const Productos = () => {
     const { store, actions } = useContext(Context);
@@ -31,7 +31,7 @@ export const Productos = () => {
             <CompararProductos />
             <div className="todos-productos">
                 
-                <CategoriasProductos onCategoriaChange={handleCategoriaChange} />
+                <CategoriasTodosProductos onCategoriaChange={handleCategoriaChange} />
                 <div className="cards row justify-content-center">
                     {filteredProductos.map((producto) => {
                         return (
