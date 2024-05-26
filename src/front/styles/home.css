@@ -8,11 +8,15 @@
 .home{
     margin-left: 100px;
     margin-right: 100px;
+    background-color: #ecf6f7;
 }
 .imagen-barrio {
-    width: 80%;
+    width: 70%;
     height: auto;
     object-fit: cover;
+    margin-top: 2em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .categorias-home {
