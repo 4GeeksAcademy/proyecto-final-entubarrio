@@ -1,7 +1,16 @@
 import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/todosproductos.css";
 
 export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripcion_producto, id, precio, tienda_id, nombre_tienda, categoria_producto }) => {
+    const { store, actions } = useContext(Context);
+
+    const addStar = store.productosFavoritos
+
+    function addFavoriteProduct() {
+        // actions.addFavorite(people.name)
+        actions.añadirProductoFavorito()
+      }
     return (
         <div className="grid-container">
             <div className="tarjeta-producto">
@@ -19,8 +28,8 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                         <b className="ms-2 text-black text-xs">{nombre_tienda}</b>
                         <h5 className="precio-producto">{precio}€</h5>
                     </div>
-                    <div>
-                <i className="btn fa-solid fa-star mb-3 d-flex justify-content-end"></i>
+                    <div className="star-productos d-flex justify-content-end me-2">
+                    <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavoriteProduct}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
                 </div>
                 </div>
             </div>
