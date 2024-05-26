@@ -39,9 +39,9 @@ const CompararProductos = () => {
   };
 
   return (
-    <div className='Comparador'>
+    <div className='Comparador mt-4'>
       <div className='text-danger text-center m-2'>
-        <h1>Comparar productos</h1>
+        <h1>Comparador de precios</h1>
       </div>
       <div className='d-flex justify-content-center'>
         <div className='m-3'>
@@ -68,7 +68,7 @@ const CompararProductos = () => {
                   <div className="card-body">
                     <h5 className="card-title">{store.productos.find(p => p.id === parseInt(producto1)).nombre_producto}</h5>
                     <p className="card-text">{store.productos.find(p => p.id === parseInt(producto1)).descripcion_producto}</p>
-                    <p className="card-text">${store.productos.find(p => p.id === parseInt(producto1)).precio}</p>
+                    <h4 className="card-text">{store.productos.find(p => p.id === parseInt(producto1)).precio}€</h4>
                   </div>
                 </div>
               </div>
@@ -99,7 +99,7 @@ const CompararProductos = () => {
                   <div className="card-body">
                     <h5 className="card-title">{store.productos.find(p => p.id === parseInt(producto2)).nombre_producto}</h5>
                     <p className="card-text">{store.productos.find(p => p.id === parseInt(producto2)).descripcion_producto}</p>
-                    <p className="card-text">${store.productos.find(p => p.id === parseInt(producto2)).precio}</p>
+                    <h4 className="card-text">{store.productos.find(p => p.id === parseInt(producto2)).precio}€</h4>
                   </div>
                 </div>
               </div>
