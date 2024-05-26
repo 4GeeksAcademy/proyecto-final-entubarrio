@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import Logo from "../../img/SIMBOLOCOLOR.png";
+import "../../styles/nosotros.css";
 
 
 export const Nosotros = () => {
@@ -38,7 +39,7 @@ export const Nosotros = () => {
 
             <p><h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6></p>
             <a className="navbar-brand" href="/">
-                        <img src={Logo} alt="Logo" className="logo-nav" />
+                        <img src={Logo} alt="Logo" className="logo-nos" />
                     </a>
         </div>
     );
