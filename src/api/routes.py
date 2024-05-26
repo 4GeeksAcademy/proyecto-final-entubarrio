@@ -573,7 +573,7 @@ def add_tienda_favorita(tienda_id):
     else:
         return jsonify({"msg": "La tienda ya es una favorita"}), 400
 
-#Endpoint Get Productos Favoritos-------------------------------------------------------------------------------------------------
+#Endpoint Get Tiendas Favoritas-------------------------------------------------------------------------------------------------
 @api.route('/tiendas-favoritas', methods=['GET'])
 @jwt_required()
 def get_tiendas_favoritas():
