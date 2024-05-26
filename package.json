@@ -78,6 +78,8 @@
 		"prop-types": "^15.6.1",
 		"react": "^16.14.0",
 		"react-dom": "^16.14.0",
+		"react-icons": "^5.2.1",
+		"react-multi-carousel": "^2.8.5",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
 		"slick-carousel": "^1.8.1",

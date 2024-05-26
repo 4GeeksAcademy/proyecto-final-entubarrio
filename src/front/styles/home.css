@@ -34,3 +34,22 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-size: 1.5rem; /* Tamaño de la fuente */
+    cursor: pointer; /* Cursor de mano */
+}
+
+.left-arrow {
+    left: 0;
+}
+
+.right-arrow {
+    right: 0;
+}
+.btn-circle {
+    border-radius: 50%; /* Hace que el botón tenga bordes redondeados, haciendo que se vea como un círculo */
+}
