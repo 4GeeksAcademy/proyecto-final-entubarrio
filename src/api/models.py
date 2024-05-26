@@ -126,6 +126,11 @@ class FavoritosProductos(db.Model):
         return {
             "id": self.id,
             "nombre_producto": result.serialize()["nombre_producto"], 
+            "precio": result.serialize()["precio"], 
+            "descripcion_producto": result.serialize()["descripcion_producto"], 
+            "categoria_producto": result.serialize()["categoria_producto"], 
+            "url_imagen_producto": result.serialize()["url_imagen_producto"], 
+            "nombre_tienda": result.serialize()["nombre_tienda"], 
             "producto_id": self.producto_id,
             # "particular_id": self.particular_id      
     
