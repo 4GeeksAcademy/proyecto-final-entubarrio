@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Logo from "../../img/unioncolor.png";
+import "../../styles/footer.css";
 
 export const Footer = () => (
 	<footer className="footer mt-auto py-3 text-center border-top">
@@ -17,6 +19,8 @@ export const Footer = () => (
 				<a className="nav-link" href="#">Productos</a>
 			</li>
 		</ul>
-		
+		<a className="footer-img" href="/">
+                        <img src={Logo} alt="Logo" className="logo-footer" />
+                    </a>
 	</footer>
 );

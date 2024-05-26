@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import Logo from "../../img/SIMBOLOCOLOR.png";
+import "../../styles/nosotros.css";
 
 
 export const Nosotros = () => {
 
     return (
         <div className="text-center mt-5 mb-5">
+           
             <h1>Bienvenido</h1><br></br>
+            
             <h3>¡En tu barrio te espera un mundo de posibilidades!</h3>
 
             <p>¿Cansado de las grandes superficies y de la impersonalidad de las compras online? 
@@ -34,6 +38,9 @@ export const Nosotros = () => {
             <a href="/createuser"><h4>¡Regístrate ahora!</h4></a>
 
             <p><h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6></p>
+            <a className="navbar-brand" href="/">
+                        <img src={Logo} alt="Logo" className="logo-nos" />
+                    </a>
         </div>
     );
 };
