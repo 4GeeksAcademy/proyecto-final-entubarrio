@@ -612,30 +612,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 				try {
-					const response = await fetch(process.env.BACKEND_URL + "/api/productos-favoritos/"+producto_id, {
+					const response = await fetch(process.env.BACKEND_URL + "/api/productos-favoritos/" + producto_id, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
 							'Authorization': "Bearer " + token
 						},
 						body: JSON.stringify({
-							producto_id: producto_id,           
-							particular_id: particular_id         
+							producto_id: producto_id           
+							// particular_id: particular_id         
 						})
 					});
-
-					const data = await response.json();
 					if (!response.ok) {
 						throw new Error (data.error)
 					}
-						console.log(data);
-						setStore({ productosFavoritos: data.productos })
-						console.log("Favorito añadido:", data.msg);
-						window.location.reload();
-						return data.msg;
+
+					const data = await response.json();
+					console.log(data);
+					setStore({ productosFavoritos: data.productos })
+					console.log("Favorito añadido:", data.msg);
+					window.location.reload();
+					return data.msg;
 				} catch (error) {
 					console.error("Error desconocido:", error);
-					throw error;
+					// throw error;
 				}
 			},
 

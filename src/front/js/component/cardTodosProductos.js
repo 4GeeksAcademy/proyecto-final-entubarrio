@@ -6,10 +6,10 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
     const { store, actions } = useContext(Context);
 
     const addStar = store.productosFavoritos
-
+    const producto_id = id
     function addFavoriteProduct() {
         // actions.addFavorite(people.name)
-        actions.añadirProductoFavorito()
+        actions.añadirProductoFavorito(producto_id)
       }
     return (
         <div className="grid-container">
