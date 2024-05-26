@@ -7,6 +7,7 @@ import { TodasTiendas } from "../component/cardTodasTiendas";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import CarruselHome from "../component/cardCarruselHome";
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
@@ -54,11 +55,7 @@ export const Home = () => {
     return (
         <div className="home text-center mt-0">
             <p>
-                <img 
-                    src={imagenbarrio}
-                    className="imagen-barrio img-fluid w-150"
-                    alt="Foto Home" 
-                />
+                <CarruselHome />
             </p>
             <h2>Selección de Tiendas</h2>
             <p>Aquí podrás encontrar una variedad de tiendas de tu barrio</p>
