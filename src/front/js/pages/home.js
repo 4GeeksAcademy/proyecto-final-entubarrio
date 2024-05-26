@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import imagenbarrio from "../../img/Barrio-Gracia-Barcelona_1394570563_109101042_667x375.jpg";
 import "../../styles/home.css";
@@ -7,15 +7,41 @@ import { TodasTiendas } from "../component/cardTodasTiendas";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import CategoriasTiendas from "../component/CategoriasTiendas";
+import CategoriasTodosProductos from "../component/CategoriasTodosProductos";
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
+    const [filteredTiendas, setFilteredTiendas] = useState([]);
+    const [filteredProductos, setFilteredProductos] = useState([]);
 
     useEffect(() => {
         actions.getTiendas();
         actions.getProductos();
         actions.getCategoriasProductos();
+        actions.getCategoriasTiendas();
     }, []);
+
+    useEffect(() => {
+        setFilteredTiendas(store.tiendas);
+        setFilteredProductos(store.productos);
+    }, [store.tiendas, store.productos]);
+
+    const handleCategoriaTiendasChange = (categoria) => {
+        if (categoria) {
+            setFilteredTiendas(store.tiendas.filter(tienda => tienda.categoria_tienda === categoria));
+        } else {
+            setFilteredTiendas(store.tiendas);
+        }
+    };
+
+    const handleCategoriaProductosChange = (categoria) => {
+        if (categoria) {
+            setFilteredProductos(store.productos.filter(producto => producto.categoria_producto === categoria));
+        } else {
+            setFilteredProductos(store.productos);
+        }
+    };
 
     const responsive = {
         desktop: {
@@ -62,13 +88,14 @@ export const Home = () => {
             </p>
             <h2>Selección de Tiendas</h2>
             <p>Aquí podrás encontrar una variedad de tiendas de tu barrio</p>
+            <CategoriasTiendas onCategoriaChange={handleCategoriaTiendasChange} />
             <div className="categorias-home container-fluid mb-5">
                 <Carousel 
                     responsive={responsive} 
                     customLeftArrow={<CustomLeftArrow />} 
                     customRightArrow={<CustomRightArrow />}
                 >
-                    {store.tiendas.map((tienda) => (
+                    {filteredTiendas.map((tienda) => (
                         <TodasTiendas 
                             nombre_tienda={tienda.nombre_tienda} 
                             key={tienda.id} 
@@ -82,13 +109,14 @@ export const Home = () => {
             </div>
             <h2>Selección de Productos</h2>
             <p>Aquí podrás encontrar una variedad de productos de tu barrio</p>
+            <CategoriasTodosProductos onCategoriaChange={handleCategoriaProductosChange} />
             <div className="categorias-home container-fluid mb-5">
                 <Carousel 
                     responsive={responsive} 
                     customLeftArrow={<CustomLeftArrow />} 
                     customRightArrow={<CustomRightArrow />}
                 >
-                    {store.productos.map((producto) => (
+                    {filteredProductos.map((producto) => (
                         <TodosProductos 
                             nombre_producto={producto.nombre_producto} 
                             key={producto.id} 
