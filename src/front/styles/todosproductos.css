@@ -5,16 +5,18 @@
 
 .tarjeta-producto {
     /* Estilos generales de la tarjeta */
-    max-width: 300px;
+    max-width: 250px;
     min-width: 250px;
     max-height: 400px; /* Ancho máximo de la tarjeta */
+    min-height: 400px;
     margin: 1em auto; /* Centrar la tarjeta horizontalmente */
     margin-left: 10px;
-    padding: 20px;
+    padding: 10px;
     background-color: #fff;
     border-radius: 10px; /* Bordes redondeados más pronunciados */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    box-sizing: content-box;
   }
   
   .tarjeta-producto:hover {
@@ -37,6 +39,7 @@
     font-weight: bold;
     color: #333; /* Color de texto más oscuro */
     margin-bottom: 10px;
+    margin-left: 10px;
   }
   
   .descripcion-producto {
@@ -44,15 +47,17 @@
     font-size: 14px;
     color: #666;
     line-height: 1.5; /* Mayor espacio entre líneas para mejor legibilidad */
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
   }
   
   .precio-producto {
     /* Estilos del precio del producto */
     font-size: 18px; /* Tamaño de fuente más grande para el precio */
     font-weight: bold;
-    color: #007bff; /* Color azul para destacar el precio */
-    margin-bottom: 15px;
+    color: #ff7300; /* Color azul para destacar el precio */
+    margin-bottom: 5px;
+    margin-left: 10px;
   }
   
   .boton-compra {
@@ -61,7 +66,7 @@
     width: 100%;
     padding: 12px 20px; /* Aumento del padding para mejor clickabilidad */
     background-color: #007bff; /* Mismo color azul del precio */
-    color: #fff;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -74,4 +79,3 @@
   .grid-container {
     grid-template-columns: none;
   }
-  

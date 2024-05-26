@@ -11,7 +11,7 @@ export const PaginaTiendas = () => {
 	}, [])
 
 	return (
-		<div className="todas-tiendas">
+		<div className="todas-tiendas mt-4">
 			<h2 className="tittles text-danger">Tiendas</h2>
 			<div className="cards row justify-content-center">
 				{store.tiendas.map((tienda) => {

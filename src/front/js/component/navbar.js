@@ -40,10 +40,10 @@ export const Navbar = () => {
 						<a className="nav-link" href="/productos">Productos</a>
 					</li>
 					{tipo_usuario == "vendedor" && token ? <li className="nav-item border-start">
-						<a className="nav-link" href="/vendedor">Mi Tienda</a>
+						<a className="nav-link" href="/vendedor">Mis favoritos</a>
 					</li> : null}
 					{tipo_usuario == "particular" && token ? <li className="nav-item border-start">
-						<a className="nav-link" href="/nosotros">Mi Perfil</a>
+						<a className="nav-link" href="/favoritos">Mi Perfil</a>
 					</li> : null}
 				</ul>
 				{token ?
