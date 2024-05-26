@@ -16,8 +16,9 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                     <h4 className="titulo-producto">{nombre_producto}</h4>
                     <p className="descripcion-producto">{descripcion_producto}</p>
                     <div className="precio-tienda-container">
-                        <b className="text-black text-xs">{nombre_tienda}</b>
-                        <h5 className="text-black">{precio}€</h5>
+                        <b className="ms-2 text-black text-xs">{nombre_tienda}</b>
+                        <h5 className="precio-producto">{precio}€</h5>
+                        <i className="btn fa-solid fa-star mb-3"></i>
                     </div>
                 </div>
             </div>
