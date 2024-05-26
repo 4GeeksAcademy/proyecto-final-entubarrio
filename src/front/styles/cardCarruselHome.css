@@ -1,0 +1,22 @@
+.small-carousel {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .small-carousel .carousel-inner {
+    max-height: 700px;
+  }
+  
+  .small-carousel .carousel-inner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .carousel-caption {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+  }
