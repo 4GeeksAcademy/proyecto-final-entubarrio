@@ -21,7 +21,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			productosTienda:[],
 			categoriasProductos:[],categoriasTiendas:[],
 			producto:[],
-			tipo_usuario:""
+			tipo_usuario:"",
+			productosFavoritos:[],
+			tiendasFavoritas:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -594,6 +596,94 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let data = await response.json()
 					if (response.status === 200){
 						setStore({categoriasProductos:data.results})
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
+
+			añadirProductoFavorito: async (producto_id) => {
+				let token = localStorage.getItem("token")
+				if (!token) {
+					console.error("Falta el token de autenticación");
+					return false;
+				}
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/productos-favoritos/"+producto_id, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': "Bearer " + token
+						},
+						body: JSON.stringify({
+							producto_id: producto_id,           
+							particular_id: particular_id         
+						})
+					});
+
+					const data = await response.json();
+					if (!response.ok) {
+						throw new Error (data.error)
+					}
+						console.log(data);
+						setStore({ productosFavoritos: data.productos })
+						console.log("Favorito añadido:", data.msg);
+						window.location.reload();
+						return data.msg;
+				} catch (error) {
+					console.error("Error desconocido:", error);
+					throw error;
+				}
+			},
+
+			getProductosFavoritos: async () => {
+				let token = localStorage.getItem("token")
+				if (!token) {
+					console.error("Falta el token de autenticación");
+					return false;
+				}
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos-favoritos", {
+						method: "GET",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						setStore({productosFavoritos:data.productos});
+						return true;
+					} else {
+						console.log(data);
+						return console.log("No funciona");
+					}
+				} catch (error) {
+					return false;
+				}
+			},
+
+			borrarProductoFavorito: async (producto_id) => {
+				let token = localStorage.getItem("token")
+				if (!token) {
+					console.error("Falta el token de autenticación");
+					return false;
+				}
+				try {
+					let response = await fetch(process.env.BACKEND_URL + "/api/productos-favoritos/"+producto_id, {
+						method: "DELETE",
+						headers:{
+							"Content-Type":"application/json",
+							'Authorization': `Bearer ${token}`
+						},
+					})
+					let data = await response.json()
+					if (response.status === 200){
+						window.location.reload();
+						return true;
 					} else {
 						console.log(data);
 						return console.log("No funciona");
