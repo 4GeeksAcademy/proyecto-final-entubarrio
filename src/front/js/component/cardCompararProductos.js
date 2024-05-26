@@ -10,6 +10,7 @@ const CompararProductos = () => {
 
   useEffect(() => {
     actions.getProductos();
+    actions.getTiendas();
   }, []);
 
   const obtenerColorDeFondo = (productoId) => {
@@ -38,6 +39,41 @@ const CompararProductos = () => {
     }
   };
 
+  const obtenerNombreTienda = (tiendaId) => {
+    const tienda = store.tiendas.find(t => t.id === tiendaId);
+    return tienda ? tienda.nombre_tienda : 'Tienda desconocida';
+  };
+
+  const renderProducto = (productoId) => {
+    const producto = store.productos.find(p => p.id === parseInt(productoId));
+    if (!producto) return null;
+
+    const nombreTienda = obtenerNombreTienda(producto.tienda_id);
+
+    return (
+      <div className={`card mb-3 ${comparar ? obtenerColorDeFondo(productoId) : 'bg-white'}`}>
+        <div className="row g-0">
+          <div className="col-md-4 d-flex align-items-center justify-content-center">
+            <div className="image-container">
+              <img
+                src={producto.url_imagen_producto}
+                className="img-fluid" alt="..."
+              />
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">{producto.nombre_producto}</h5>
+              <p className="card-text">{producto.descripcion_producto}</p>
+              <p className="card-text">Tienda: {nombreTienda}</p>
+              <h4 className="card-text">{producto.precio}€</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className='Comparador mt-4'>
       <div className='text-danger text-center m-2'>
@@ -53,27 +89,7 @@ const CompararProductos = () => {
               </option>
             ))}
           </select>
-          <div className={`card mb-3 ${comparar ? obtenerColorDeFondo(producto1) : 'bg-white'}`}>
-            {producto1 && (
-              <div className="row g-0">
-                <div className="col-md-4 d-flex align-items-center justify-content-center">
-                  <div className="image-container">
-                    <img
-                      src={store.productos.find(p => p.id === parseInt(producto1)).url_imagen_producto}
-                      className="img-fluid" alt="..."
-                    />
-                  </div>
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">{store.productos.find(p => p.id === parseInt(producto1)).nombre_producto}</h5>
-                    <p className="card-text">{store.productos.find(p => p.id === parseInt(producto1)).descripcion_producto}</p>
-                    <h4 className="card-text">{store.productos.find(p => p.id === parseInt(producto1)).precio}€</h4>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          {producto1 && renderProducto(producto1)}
         </div>
         <div className='m-3'>
           <select className="form-select" onChange={e => setProducto2(e.target.value)}>
@@ -84,27 +100,7 @@ const CompararProductos = () => {
               </option>
             ))}
           </select>
-          <div className={`card mb-3 ${comparar ? obtenerColorDeFondo(producto2) : 'bg-white'}`}>
-            {producto2 && (
-              <div className="row g-0">
-                <div className="col-md-4 d-flex align-items-center justify-content-center">
-                  <div className="image-container">
-                    <img
-                      src={store.productos.find(p => p.id === parseInt(producto2)).url_imagen_producto}
-                      className="img-fluid" alt="..."
-                    />
-                  </div>
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">{store.productos.find(p => p.id === parseInt(producto2)).nombre_producto}</h5>
-                    <p className="card-text">{store.productos.find(p => p.id === parseInt(producto2)).descripcion_producto}</p>
-                    <h4 className="card-text">{store.productos.find(p => p.id === parseInt(producto2)).precio}€</h4>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          {producto2 && renderProducto(producto2)}
         </div>
       </div>
       <div className='d-flex justify-content-center mb-4'>
