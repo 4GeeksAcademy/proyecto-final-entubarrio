@@ -82,7 +82,7 @@ export const Vendedor = () => {
                             cancelButtonText: "¡No, espera!"
                           }).then((result) => {
                             if (result.isConfirmed) {
-                                // actions.deleteTienda(store.tienda?.nombre_tienda, token);
+                                actions.deleteTienda(store.tienda?.nombre_tienda, token);
                                 console.log(store.vendedores.id);
                                 navigate("/creartienda")
                                 Swal.fire({
