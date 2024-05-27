@@ -25,13 +25,13 @@ export const InicioSesion = () => {
         }
 
         const response = await actions.login(email, password, tipoUsuario, navigate);
-        console.log("Login response:", response); // Add this line to debug the response
+        console.log("Login response:", response); 
 
         if (response && response.access_token) {
-            // Successful login logic
+            
             localStorage.setItem("token", response.access_token);
-            // Navigate to the appropriate page
-            navigate("/somepage"); // replace with the correct path
+            
+            navigate("/somepage"); 
         } else {
             Swal.fire({
                 title: 'Hola!',
@@ -96,7 +96,8 @@ export const InicioSesion = () => {
                                 <label className="form-check-label" htmlFor="exampleCheck1">Recordarme</label>
                             </div>
                             <br />
-                            <div className="form-text d-flex justify-content-center">¿No tienes cuenta?
+                            <div className="form-text d-flex justify-content-center">¿No tienes cuenta? </div>
+                            <div className="form-text d-flex justify-content-center">
                                 <Link to="/createuser">
                                     Crea una cuenta nueva
                                 </Link>
