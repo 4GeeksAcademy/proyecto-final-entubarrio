@@ -92,10 +92,10 @@ export const InicioSesion = () => {
                                 <div className="form-text">¿Olvidaste tu contraseña?</div>
                             </div>
                             <button type="submit" className="boton mb-4">Iniciar Sesión</button>
-                            <div className="mb-3 form-check">
+                            {/* <div className="mb-3 form-check">
                                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                                 <label className="form-check-label" htmlFor="exampleCheck1">Recordarme</label>
-                            </div>
+                            </div> */}
                             <br />
                             <div className="form-text d-flex justify-content-center">¿No tienes cuenta? </div>
                             <div className="form-text d-flex justify-content-center">

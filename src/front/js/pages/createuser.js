@@ -138,10 +138,10 @@ export const CreateUser = () => {
 							)}
 							<button type="submit" className="boton mb-1">Crear Cuenta</button>
 							<div className="form-text mb-4">Creando una cuenta aceptas nuestros terminos y condiciones de uso.</div>
-							<div className="mb-3 form-check">
+							{/* <div className="mb-3 form-check">
 								<input type="checkbox" className="form-check-input" id="exampleCheck1" />
 								<label className="form-check-label" htmlFor="exampleCheck1">Recordarme</label>
-							</div>
+							</div> */}
 							<div className="form-text d-flex justify-content-center">¿Ya tienes una cuenta?</div>
 							<div className="form-text d-flex justify-content-center"><Link to="/login">Inicia sesión</Link></div>
 						</form>

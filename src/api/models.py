@@ -37,7 +37,7 @@ class Tienda(db.Model):
     url_imagen_tienda = db.Column(db.String(800), unique=False, nullable=False)
     productos = db.relationship('Producto', backref='tienda', lazy=True, cascade="all, delete")
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
-    favoritos = db.relationship('FavoritosTiendas', backref='tienda', lazy=True)
+    favoritos = db.relationship('FavoritosTiendas', backref='tienda', lazy=True, cascade="all, delete")
 
     # particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
 
@@ -63,7 +63,7 @@ class Producto(db.Model):
     descripcion_producto = db.Column(db.String(500), unique=False)
     categoria_producto = db.Column(db.String(80), unique=False, nullable=False)
     url_imagen_producto = db.Column(db.String(120), unique=False, nullable=False)
-    favoritos_productos = db.relationship('FavoritosProductos', backref='producto', lazy=True)
+    favoritos_productos = db.relationship('FavoritosProductos', backref='producto', lazy=True, cascade="all, delete")
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
     tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))
     particular_id = db.Column(db.Integer, db.ForeignKey('particular.id'))
