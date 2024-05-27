@@ -108,7 +108,8 @@ export const Home = () => {
                             id={tienda.id} 
                             url_imagen_tienda={tienda.url_imagen_tienda} 
                             descripcion_tienda={tienda.descripcion_tienda} 
-                            direccion_tienda={tienda.direccion_tienda} 
+                            direccion_tienda={tienda.direccion_tienda}
+                            isFavorito={tienda.isFavorito}  
                         />
                     ))}
                 </Carousel>
@@ -131,7 +132,8 @@ export const Home = () => {
                             descripcion_producto={producto.descripcion_producto} 
                             precio={producto.precio} 
                             tienda_id={producto.tienda_id} 
-                            nombre_tienda={producto.nombre_tienda} 
+                            nombre_tienda={producto.nombre_tienda}
+                            isFavorito={producto.isFavorito} 
                         />
                     ))}
                 </Carousel>

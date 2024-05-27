@@ -607,6 +607,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			añadirProductoFavorito: async (producto_id) => {
 				let token = localStorage.getItem("token")
+				console.log("funciona" + producto_id);
 				if (!token) {
 					console.error("Falta el token de autenticación");
 					return false;
@@ -631,7 +632,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					setStore({ productosFavoritos: data.productos })
 					console.log("Favorito añadido:", data.msg);
-					window.location.reload();
+					// window.location.reload();
 					return data.msg;
 				} catch (error) {
 					console.error("Error desconocido:", error);
@@ -719,7 +720,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					setStore({ tiendasFavoritas: data.tiendas })
 					console.log("Favorita añadida:", data.msg);
-					window.location.reload();
+					// window.location.reload();
 					return data.msg;
 				} catch (error) {
 					console.error("Error desconocido:", error);
@@ -783,6 +784,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
+			eliminarProductosTiendaVendedor: async (tienda_id, vendedor_id) => {
+				let token = localStorage.getItem("token")
+				try {
+				  const response = await fetch(`/productos/${tienda_id}/vendedor/${vendedor_id}`, {
+					method: 'DELETE',
+					headers: {
+						"Content-Type":"application/json",
+					  	'Authorization': "Bearer " + token // Suponiendo que se almacena el token JWT en localStorage
+					},
+				  });
+			  
+				  const data = await response.json();
+			  
+				  if (response.status === 200) {
+					// Mensaje de éxito
+					console.log('Productos de la tienda eliminados con éxito');
+					// Actualizar la interfaz para reflejar la eliminación de los productos
+				  } else {
+					// Mensaje de error
+					console.error(`Error al eliminar productos: ${data.msg}`);
+				  }
+				} catch (error) {
+				  console.error('Error inesperado al eliminar productos:', error);
+				}
+			  }
 		},
 	};
 };

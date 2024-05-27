@@ -46,6 +46,7 @@ export const Productos = () => {
                                     url_imagen_producto={producto.url_imagen_producto}
                                     descripcion_producto={producto.descripcion_producto}
                                     precio={producto.precio}
+                                    isFavorito={producto.isFavorito}
                                 />
                             </div>
                         );

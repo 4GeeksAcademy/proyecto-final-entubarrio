@@ -24,7 +24,7 @@ export const Favoritos = () => {
             <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
                 {store.tiendasFavoritas.map((tienda) => {
 					return (
-						<TodasTiendas nombre_tienda={tienda.nombre_tienda} key={tienda.id} id={tienda.id} url_imagen_tienda={tienda.url_imagen_tienda} descripcion_tienda={tienda.descripcion_tienda} direccion_tienda={tienda.direccion_tienda} />
+						<TodasTiendas nombre_tienda={tienda.nombre_tienda} key={tienda.id} id={tienda.tienda_id} url_imagen_tienda={tienda.url_imagen_tienda} descripcion_tienda={tienda.descripcion_tienda} direccion_tienda={tienda.direccion_tienda} isFavorito={tienda.isFavorito} />
 					)
 				})}
 
@@ -39,7 +39,7 @@ export const Favoritos = () => {
                 <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>   
                     {store.productosFavoritos.map((producto) => {
                         return (
-                            <TodosProductos nombre_producto={producto.nombre_producto} key={producto.id} id={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id} nombre_tienda={producto.nombre_tienda} />
+                            <TodosProductos nombre_producto={producto.nombre_producto} key={producto.id} id={producto.producto_id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id} nombre_tienda={producto.nombre_tienda} isFavorito={producto.isFavorito}/>
                         )
                     })}  
                 </div>
