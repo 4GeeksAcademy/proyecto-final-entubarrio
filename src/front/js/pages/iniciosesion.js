@@ -93,6 +93,7 @@ export const InicioSesion = () => {
 								<input type="checkbox" className="form-check-input" id="exampleCheck1" />
 								<label className="form-check-label" htmlFor="exampleCheck1">Recordarme</label>
 							</div>
+							<br></br>
 							<div className="form-text d-flex justify-content-center">¿No tienes cuenta?
 								<Link to="/createuser">
 									Crea una cuenta nueva
