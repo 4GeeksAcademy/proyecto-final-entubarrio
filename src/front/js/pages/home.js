@@ -21,6 +21,8 @@ export const Home = () => {
         actions.getProductos();
         actions.getCategoriasProductos();
         actions.getCategoriasTiendas();
+        actions.todosMisFavoritos();
+
     }, []);
 
     useEffect(() => {
@@ -61,7 +63,6 @@ export const Home = () => {
             slidesToSlide: 1
         }
     };
-
     const CustomLeftArrow = ({ onClick }) => {
         return (
             <button onClick={onClick} className="btn btn-circle btn-dark opacity-75 custom-arrow left-arrow">
@@ -77,6 +78,7 @@ export const Home = () => {
             </button>
         );
     };
+    console.log(store.productosFavoritos);
 
     return (
         <div className="home text-center mt-0">

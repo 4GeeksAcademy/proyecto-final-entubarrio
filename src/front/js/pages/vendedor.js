@@ -82,7 +82,7 @@ export const Vendedor = () => {
                             cancelButtonText: "¡No, espera!"
                           }).then((result) => {
                             if (result.isConfirmed) {
-                                // actions.deleteTienda(store.tienda?.nombre_tienda, token);
+                                actions.deleteTienda(store.tienda?.nombre_tienda, token);
                                 console.log(store.vendedores.id);
                                 navigate("/creartienda")
                                 Swal.fire({
@@ -168,7 +168,7 @@ export const Vendedor = () => {
                     <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
                         {store.productosTienda.map((producto) =>{
                                 return (
-                                    <EditarEliminarProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id} nombre_tienda={producto.nombre_tienda} producto={producto}/>
+                                    <EditarEliminarProductos nombre_producto = {producto?.nombre_producto} key={producto?.id} id ={producto?.id} url_imagen_producto={producto?.url_imagen_producto} descripcion_producto={producto?.descripcion_producto} precio={producto?.precio} tienda_id={producto?.tienda_id} nombre_tienda={producto?.nombre_tienda} producto={producto}/>
                                 )
                             })}
                         </div>

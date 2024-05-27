@@ -12,7 +12,7 @@ class Vendedor(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     # is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     productos = db.relationship('Producto', backref='vendedor', lazy=True)
-    tiendas = db.relationship('Tienda', backref='vendedor', lazy=True)
+    tiendas = db.relationship('Tienda', backref='vendedor', lazy=True, cascade="all, delete")
 
 
     def __repr__(self):
@@ -35,7 +35,7 @@ class Tienda(db.Model):
     categoria_tienda = db.Column(db.String(80), unique=False, nullable=False)
     direccion_tienda = db.Column(db.String(120), unique=False, nullable=False)
     url_imagen_tienda = db.Column(db.String(800), unique=False, nullable=False)
-    productos = db.relationship('Producto', backref='tienda', lazy=True)
+    productos = db.relationship('Producto', backref='tienda', lazy=True, cascade="all, delete")
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
     favoritos = db.relationship('FavoritosTiendas', backref='tienda', lazy=True)
 

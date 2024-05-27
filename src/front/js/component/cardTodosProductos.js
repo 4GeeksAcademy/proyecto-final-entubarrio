@@ -5,8 +5,8 @@ import "../../styles/todosproductos.css";
 export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripcion_producto, id, precio, tienda_id, nombre_tienda, categoria_producto }) => {
     const { store, actions } = useContext(Context);
 
-    const addStar = store.productosFavoritos
-    const producto_id = id
+    let addStar = store.productosFavoritos.producto_id
+    let producto_id = id
     function addFavoriteProduct() {
         actions.añadirProductoFavorito(producto_id)
       }
@@ -34,7 +34,7 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                         <h5 className="precio-producto">{precio}€</h5>
                     </div>
                     <div className="star-productos d-flex justify-content-end me-2 mt-2">
-                    <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavoriteProduct}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
+                    <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavoriteProduct}><i className={`fa-regular fa-star ${producto_id === addStar ? "far" : "fas"}`}></i></a>
                 </div>
                 </div>
             </div>
