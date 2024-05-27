@@ -13,35 +13,39 @@ export const InicioSesion = () => {
     const navigate = useNavigate()
 
     async function handleSubmit(e) {
-        e.preventDefault();
-        if (!tipoUsuario) {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Seleccione un tipo de usuario (Particular o Empresa)',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
+		e.preventDefault();
+		if (!tipoUsuario) {
+			Swal.fire({
+				title: 'Error!',
+				text: 'Seleccione un tipo de usuario (Particular o Empresa)',
+				icon: 'error',
+				confirmButtonText: 'OK'
+			})
+			return null;
+		}
+
+		const response = await actions.login(email, password, tipoUsuario, navigate);
+		if (!response) {
+			Swal.fire({
+				title: 'Hola!',
+				text: response ? response : "Bienvenid@ a tu barrio!",
+				icon: 'success',
+				showConfirmButton: false,
+                timer: 1500
+			}); // Display error message using toast
             return;
-        }
-
-        const response = await actions.login(email, password, tipoUsuario, navigate);
-        console.log("Login response:", response); 
-
-        if (response && response.access_token) {
-            
-            localStorage.setItem("token", response.access_token);
-            
-            navigate("/somepage"); 
-        } else {
+		} else {
+			// Successful login logic
+			localStorage.setItem("token", response.access_token);
             Swal.fire({
-                title: 'Hola!',
-                text: response ? response : "Bienvenid@ a tu barrio!",
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 2000
-            });
-        }
-    }
+				title: 'Error!',
+				text: (response),
+				icon: 'error',
+				confirmButtonText: 'OK'
+			}); // Display error message using toast
+		}
+	}
+
 
     return (
         <div className="inicio-sesion d-flex justify-content-center">
@@ -92,10 +96,6 @@ export const InicioSesion = () => {
                                 <div className="form-text">¿Olvidaste tu contraseña?</div>
                             </div>
                             <button type="submit" className="boton mb-4">Iniciar Sesión</button>
-                            {/* <div className="mb-3 form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                <label className="form-check-label" htmlFor="exampleCheck1">Recordarme</label>
-                            </div> */}
                             <br />
                             <div className="form-text d-flex justify-content-center">¿No tienes cuenta? </div>
                             <div className="form-text d-flex justify-content-center">
