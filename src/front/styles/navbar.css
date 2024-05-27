@@ -30,14 +30,4 @@
     background-color: #f8f9fa;
 }
 
-.navbar-toggler {
-    position: relative;
-}
 
-.collapse.navbar-collapse {
-    position: absolute;
-    top: 20%;
-    left: 70%;
-    width: 50%;
-    z-index: 1;
-}
