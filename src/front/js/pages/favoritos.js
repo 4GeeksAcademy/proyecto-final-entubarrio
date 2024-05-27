@@ -15,7 +15,7 @@ export const Favoritos = () => {
 
 	}, []);
 	console.log(store.tiendasFavoritas);
-    console.log(store.productos);
+    console.log(store.productosFavoritos);
     // const productosFavoritos = store.productos.filter((producto)=> producto.id == store.productosFavoritos.producto_id);
     // console.log(productosFavoritos);
     return (
