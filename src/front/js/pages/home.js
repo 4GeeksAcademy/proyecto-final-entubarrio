@@ -82,13 +82,6 @@ export const Home = () => {
 
     return (
         <div className="home text-center mt-0">
-            {/* <p>
-                <img 
-                    src={imagenbarrio}
-                    className="imagen-barrio img-fluid w-150"
-                    alt="Foto Home" 
-                />
-            </p> */}
             <div className="carrusel-home mb-3">
                 <CarruselHome />
             </div>
