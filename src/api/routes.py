@@ -608,3 +608,4 @@ def delete_tienda_favorita(tienda_id):
         db.session.delete(check_tienda_favorita)
         db.session.commit()
         return jsonify({"msg" : "Tienda eliminada de favoritas"}), 200
+    
