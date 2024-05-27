@@ -27,25 +27,12 @@ export const Infoproducto = () => {
       <div className="card" >
         <div className="card-body">
           <div><Info nombre_producto = {store.producto.nombre_producto} key={store.producto.id} url_imagen_producto={store.producto?.url_imagen_producto} descripcion_producto={store.producto.descripcion_producto} precio={store.producto.precio} id ={store.producto.id} nombre_tienda ={store.producto.nombre_tienda} isFavorito={store.producto.isFavorito}/></div>
-          <div>
-            {/* <div><CardTienda /></div> */}
-          
-            {/* <div><h2>las reviews van es esta linea</h2> </div> */}
-
-           
-          
-  
-          </div>
-          
-         
-          
-        
          </div>
       </div>
       <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
               {store.productosTienda.map((producto) =>{
                   return (
-                    <TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id}/>
+                    <TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} nombre_tienda={producto.nombre_tienda} precio={producto.precio} tienda_id={producto.tienda_id}/>
                   )
                 })}
 			</div>  
