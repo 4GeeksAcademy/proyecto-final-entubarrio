@@ -37,9 +37,9 @@ const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, prec
     }
   }
   return (
-    <>
-      <div className="card mb-3">
-        <div className="row g-0">
+    <div className="d-flex justify-content-center">
+      <div className="card mb-3 col-8">
+        <div className="row g-0 d-flex justify-content-around">
           <div className="col-md-4">
             <img
               src={url_imagen_producto}
@@ -69,7 +69,7 @@ const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, prec
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
