@@ -37,7 +37,8 @@ export const InicioSesion = () => {
                 title: 'Hola!',
                 text: response ? response : "Bienvenid@ a tu barrio!",
                 icon: 'success',
-                confirmButtonText: 'OK'
+                showConfirmButton: false,
+                timer: 2000
             });
         }
     }

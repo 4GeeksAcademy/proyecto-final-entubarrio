@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/todastiendas.css";
+import Swal from "sweetalert2";
 
 export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tienda, id, categoria_tienda, direccion_tienda, isFavorito}) => {
     const { store, actions } = useContext(Context);
@@ -11,10 +12,23 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
         if (isFavorito) {
             console.log("borrando");
             actions.borrarTiendaFavorita(id)
+            Swal.fire({
+                title: 'Eliminada',
+                text: "Tienda eliminad de tus favoritos",
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 2000
+            });
         }
         if (isFavorito === undefined) {
             actions.añadirTiendaFavorita(id)
-            
+            Swal.fire({
+                title: 'Añadida',
+                text: "Tienda añadida a tus favoritos",
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            });
         }
     }
 
@@ -39,8 +53,8 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
                         Dirección: {direccion_tienda}
                     </a>
                 </div>
-                <div className="star-tiendas d-flex justify-content-end me-2 mt-3">
-                    <a href="#" className="btn btn-outline-warning ms-5" onClick={() => addFavoriteTienda(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
+                <div className="star-tiendas d-flex justify-content-start me-2 mt-3">
+                    <a href="#" className="btn btn-outline-warning ms-2" onClick={() => addFavoriteTienda(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/todosproductos.css";
+import Swal from "sweetalert2";
 
 export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripcion_producto, id, precio, tienda_id, nombre_tienda, categoria_producto, isFavorito }) => {
     const { store, actions } = useContext(Context);
@@ -11,17 +12,25 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
         if (isFavorito) {
             console.log("borrando");
             actions.borrarProductoFavorito(id)
+            Swal.fire({
+                title: 'Eliminado',
+                text: "Producto eliminado de tus favoritos",
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 2000
+            });
         }
         if (isFavorito === undefined) {
             actions.añadirProductoFavorito(id)
-            
+            Swal.fire({
+                title: 'Añadido',
+                text: "Producto añadido a tus favoritos",
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            });
         }
     }
-
-    // function deleteFavoriteProduct() {
-    // actions.borrarProductoFavorito(producto_id)
-    // console.log();
-    // }
 
     return (
         <div className="grid-container">
@@ -40,8 +49,8 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                         <b className="ms-2 text-black text-xs">{nombre_tienda}</b>
                         <h5 className="precio-producto">{precio}€</h5>
                     </div>
-                    <div className="star-productos d-flex justify-content-end me-2 mt-2">
-                    <a href="#" className="btn btn-outline-warning ms-5" onClick={() => addFavoriteProduct(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
+                    <div className="star-productos d-flex justify-content-start me-2 mt-2">
+                    <a href="#" className="btn btn-outline-warning ms-2" onClick={() => addFavoriteProduct(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
                 </div>
                 </div>
             </div>

@@ -632,7 +632,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					setStore({ productosFavoritos: data.productos })
 					console.log("Favorito añadido:", data.msg);
-					window.location.reload();
+					// window.location.reload();
 					return data.msg;
 				} catch (error) {
 					console.error("Error desconocido:", error);
@@ -720,7 +720,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					setStore({ tiendasFavoritas: data.tiendas })
 					console.log("Favorita añadida:", data.msg);
-					window.location.reload();
+					// window.location.reload();
 					return data.msg;
 				} catch (error) {
 					console.error("Error desconocido:", error);
