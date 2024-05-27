@@ -83,7 +83,7 @@ export const CreateUser = () => {
 								<h1>Crea Tu Cuenta</h1>
 							</div>
 							<div className="">
-								<label for="exampleInputEmail1" className="form-label">Selecciona una cuenta de particular o empresa</label>
+								<label htmlFor="exampleInputEmail1" className="form-label">Selecciona una cuenta de particular o empresa</label>
 								<div className="d-flex justify-content-around m-2">
 									<div className="form-check">
 										<input className="form-check-input"
@@ -94,7 +94,7 @@ export const CreateUser = () => {
 											checked={tipoUsuario === "particular"}
 											onChange={(event) => setTipoUsuario(event.target.value)}
 										/>
-										<label className="form-check-label" for="opcion1">Soy un particular</label>
+										<label className="form-check-label" htmlFor="opcion1">Soy un particular</label>
 									</div>
 									<div className="form-check">
 										<input className="form-check-input"
@@ -105,22 +105,22 @@ export const CreateUser = () => {
 											checked={tipoUsuario === "vendedor"}
 											onChange={(event) => setTipoUsuario(event.target.value)}
 										/>
-										<label className="form-check-label" for="opcion2">Soy una empresa</label>
+										<label className="form-check-label" htmlFor="opcion2">Soy una empresa</label>
 									</div>
 								</div>
 							</div>
 							<div className="mb-3">
-								<label for="exampleInputEmail1" className="form-label">Email</label>
+								<label htmlFor="exampleInputEmail1" className="form-label">Email</label>
 								<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@address.com" onChange={(event) => { setEmail(event.target.value) }} />
 							</div>
 							<div className="mb-4">
-								<label for="exampleInputPassword1" className="form-label">Contraseña</label>
+								<label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
 								<input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }} />
 							</div>
 							{tipoUsuario === "vendedor" && (
 								<div className="mb-3">
 									<label
-										for="nombreTienda"
+										htmlFor="nombreTienda"
 										className="form-label"
 									>
 										Nombre de la Empresa
@@ -140,7 +140,7 @@ export const CreateUser = () => {
 							<div className="form-text mb-4">Creando una cuenta aceptas nuestros terminos y condiciones de uso.</div>
 							<div className="mb-3 form-check">
 								<input type="checkbox" className="form-check-input" id="exampleCheck1" />
-								<label className="form-check-label" for="exampleCheck1">Recordarme</label>
+								<label className="form-check-label" htmlFor="exampleCheck1">Recordarme</label>
 							</div>
 							<div className="form-text d-flex justify-content-center">¿Ya tienes una cuenta?
 								<Link to="/login">Inicia sesión</Link></div>
