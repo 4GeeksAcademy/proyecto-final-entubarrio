@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import barraPan from "../../img/barra_pan.jpg";
+import { Context } from "../store/appContext";
 
 
 // hay que quitar de las lineas 22,30,35 el texto una ves que este la base de datos y la imagen tambien
 
-const Info = ({url_imagen_producto,nombre_producto,descripcion_producto,precio,id}) => {
+const Info = ({url_imagen_producto,nombre_producto,descripcion_producto,precio,id, isFavorito}) => {
+
+  const { store, actions } = useContext(Context);
+
+  function addFavoriteProduct(id) {
+    // const producto_id = id
+    console.log(isFavorito);
+    if (isFavorito) {
+        console.log("borrando");
+        actions.borrarProductoFavorito(id)
+    }
+    if (isFavorito === undefined) {
+        actions.añadirProductoFavorito(id)
+    }
+}
   return (
-    <>
-      <div className="card mb-3">
-        <div className="row g-0">
+    <div className="d-flex justify-content-center">
+      <div className="card mb-3 col-8">
+        <div className="row g-0 d-flex justify-content-around">
           <div className="col-md-4">
             <img
               src={url_imagen_producto}
@@ -27,7 +42,7 @@ const Info = ({url_imagen_producto,nombre_producto,descripcion_producto,precio,i
               </p>
 
               <hr />
-              <h2 className="mt-4">$ {precio}</h2>
+              <h2 className="mt-4">{precio} €</h2>
               {/* <h5 className="text-muted">Valoración:<span className="text-warning">★★★★★</span> </h5> */}
               
               <hr />
@@ -36,12 +51,12 @@ const Info = ({url_imagen_producto,nombre_producto,descripcion_producto,precio,i
               </p>
              
               <hr />
-              <Link to="/">
-                <button type="button" className="btn btn-primary btn-lg">
-                  {/* el boton tiene que ir a la parte de REVIEWS es un EXTRA*/}
-                  Valoracion
-                </button>
-              </Link>
+              <button className="btn btn-warning">
+                <a href="#" onClick={()=>addFavoriteProduct(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i> Añadir a favoritos</a>
+              </button>
+              {/* <div className="star-productos d-flex justify-content-end me-2 mt-2">
+                    <a href="#" className="btn btn-outline-warning ms-5" onClick={()=>addFavoriteProduct(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
+                </div> */}
             </div>
           </div>
         </div>
@@ -90,7 +105,7 @@ const Info = ({url_imagen_producto,nombre_producto,descripcion_producto,precio,i
       <hr/> */}
 
       
-    </>
+    </div>
   );
 };
 

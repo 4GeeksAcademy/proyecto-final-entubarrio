@@ -18,15 +18,23 @@ export const Infoproducto = () => {
       actions.getProducto(params.id)
       console.log(store.producto);
       actions.getProductosTienda(params.tienda_id);
-},[]); 
-  console.log(store.productosTienda);
-  console.log(params.tienda_id);
+},[]);
   
     return (
       <>
       <div className="card" >
         <div className="card-body">
-          <div><Info nombre_producto = {store.producto.nombre_producto} key={store.producto.id} url_imagen_producto={store.producto.url_imagen_producto} descripcion_producto={store.producto.descripcion_producto} precio={store.producto.precio} id ={store.producto.id} nombre_tienda ={store.producto.nombre_tienda}/></div>
+          <div>
+            <Info 
+              nombre_producto = {store.producto.nombre_producto} 
+              key={store.producto.id} 
+              url_imagen_producto={store.producto.url_imagen_producto} 
+              descripcion_producto={store.producto.descripcion_producto} 
+              precio={store.producto.precio} 
+              id ={store.producto.id} 
+              nombre_tienda ={store.producto.nombre_tienda}
+              />
+          </div>
           <div>
             {/* <div><CardTienda /></div> */}
           
@@ -45,7 +53,16 @@ export const Infoproducto = () => {
       <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
               {store.productosTienda.map((producto) =>{
                   return (
-                    <TodosProductos nombre_producto = {producto.nombre_producto} key={producto.id} id ={producto.id} url_imagen_producto={producto.url_imagen_producto} descripcion_producto={producto.descripcion_producto} precio={producto.precio} tienda_id={producto.tienda_id}/>
+                    <TodosProductos 
+                    nombre_producto = {producto.nombre_producto} 
+                    key={producto.id} 
+                    id ={producto.id} 
+                    url_imagen_producto={producto.url_imagen_producto} 
+                    descripcion_producto={producto.descripcion_producto} 
+                    precio={producto.precio} 
+                    tienda_id={producto.tienda_id}
+                    isFavorito={producto.isFavorito}
+                    />
                   )
                 })}
 			</div>  
