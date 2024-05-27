@@ -525,12 +525,11 @@ def get_productos_favoritos():
     # Seleciono el particular porque hay muchos productos favoritos
     productos_favoritos = FavoritosProductos.query.filter_by(particular_id=particular_id)
 
-
     # Si la tienda no existe, devolver un error 404
     if productos_favoritos is None:
         return jsonify({"msg": "Favoritos no encontrados"}), 404
     # Serializar los productos a JSON
-    productos_serializados = [producto.serialize() for producto in productos_favoritos]
+    productos_serializados = [{**producto.serialize(), 'isFavorito': True} for producto in productos_favoritos]
 
     # Devolver la lista de productos serializados
     return jsonify({'productos': productos_serializados}), 200
@@ -542,6 +541,7 @@ def delete_producto_favorito(producto_id):
     email = get_jwt_identity()
     particular = Particular.query.filter_by(email=email).first()
     particular_id=particular.id
+    print(producto_id)
     # Seleciono la tienda porque un vendedor puede tener varias
     check_producto_favorito = FavoritosProductos.query.filter_by(producto_id=producto_id, particular_id=particular_id).first()
     if check_producto_favorito is None:
@@ -588,7 +588,7 @@ def get_tiendas_favoritas():
     if tiendas_favoritas is None:
         return jsonify({"msg": "Favoritas no encontradas"}), 404
     # Serializar los productos a JSON
-    productos_serializados = [producto.serialize() for producto in tiendas_favoritas]
+    productos_serializados = [{**producto.serialize(), 'isFavorito': True} for producto in tiendas_favoritas]
 
     # Devolver la lista de productos serializados
     return jsonify({'tiendas': productos_serializados}), 200
@@ -609,24 +609,3 @@ def delete_tienda_favorita(tienda_id):
         db.session.commit()
         return jsonify({"msg" : "Tienda eliminada de favoritas"}), 200
     
-# # #Endpoint Delete todos los productos de una tienda-------------------------------------------------------------------------------------------------
-@api.route('/productos/<int:tienda_id>/vendedor/<int:vendedor_id>', methods=['DELETE'])
-@jwt_required()
-def eliminar_productos_tienda_vendedor(tienda_id, vendedor_id):
-    # Obtener la tienda y el vendedor
-    tienda = Tienda.query.get(tienda_id)
-    email = get_jwt_identity()
-    vendedor = Vendedor.query.filter_by(email=email).first()
-    vendedor_id = vendedor.id
-    # Verificar que la tienda y el vendedor existan
-    if tienda is None or vendedor is None:
-        return jsonify({"msg": "Tienda o vendedor no encontrados"}), 404
-    # Validar que la tienda pertenezca al vendedor
-    if tienda.vendedor_id != vendedor.id:
-        return jsonify({"msg": "La tienda no pertenece a este vendedor"}), 404
-    # Eliminar todos los productos de la tienda del vendedor
-    productos = Producto.query.filter_by(tienda_id=tienda_id, vendedor_id=vendedor_id)
-    productos.delete()
-    db.session.commit()
-    # Devolver mensaje de éxito
-    return jsonify({"msg": "Productos de la tienda eliminados con éxito"}), 200

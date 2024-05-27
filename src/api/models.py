@@ -62,7 +62,7 @@ class Producto(db.Model):
     precio = db.Column(db.Integer, unique=False, nullable=False)
     descripcion_producto = db.Column(db.String(500), unique=False)
     categoria_producto = db.Column(db.String(80), unique=False, nullable=False)
-    url_imagen_producto = db.Column(db.String(800), unique=False, nullable=False)
+    url_imagen_producto = db.Column(db.String(120), unique=False, nullable=False)
     favoritos_productos = db.relationship('FavoritosProductos', backref='producto', lazy=True)
     vendedor_id = db.Column(db.Integer, db.ForeignKey('vendedor.id'))
     tienda_id = db.Column(db.Integer, db.ForeignKey('tienda.id'))

@@ -2,19 +2,26 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/todosproductos.css";
 
-export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripcion_producto, id, precio, tienda_id, nombre_tienda, categoria_producto }) => {
+export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripcion_producto, id, precio, tienda_id, nombre_tienda, categoria_producto, isFavorito }) => {
     const { store, actions } = useContext(Context);
-
-    let addStar = store.productosFavoritos.producto_id
-    let producto_id = id
-    function addFavoriteProduct() {
-        actions.añadirProductoFavorito(producto_id)
-      }
-
-    function deleteFavoriteProduct() {
-    actions.borrarProductoFavorito(producto_id)
-    console.log();
+    
+    function addFavoriteProduct(id) {
+        // const producto_id = id
+        console.log(isFavorito);
+        if (isFavorito) {
+            console.log("borrando");
+            actions.borrarProductoFavorito(id)
+        }
+        if (isFavorito === undefined) {
+            actions.añadirProductoFavorito(id)
+            
+        }
     }
+
+    // function deleteFavoriteProduct() {
+    // actions.borrarProductoFavorito(producto_id)
+    // console.log();
+    // }
 
     return (
         <div className="grid-container">
@@ -34,7 +41,7 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                         <h5 className="precio-producto">{precio}€</h5>
                     </div>
                     <div className="star-productos d-flex justify-content-end me-2 mt-2">
-                    <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavoriteProduct}><i className={`fa-regular fa-star ${producto_id === addStar ? "far" : "fas"}`}></i></a>
+                    <a href="#" className="btn btn-outline-warning ms-5" onClick={() => addFavoriteProduct(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
                 </div>
                 </div>
             </div>

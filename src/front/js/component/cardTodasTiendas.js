@@ -2,18 +2,21 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/todastiendas.css";
 
-export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tienda, id, categoria_tienda, direccion_tienda,}) => {
+export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tienda, id, categoria_tienda, direccion_tienda, isFavorito}) => {
     const { store, actions } = useContext(Context);
 
-    const addStar = store.tiendasFavoritas
-    const tienda_id = id
-    function addFavoriteTienda() {
-        actions.añadirTiendaFavorita(tienda_id)
-      }
-
-    function deleteFavoriteTienda() {
-        actions.borrarTiendaFavorita(tienda_id)
+    function addFavoriteTienda(id) {
+        // const producto_id = id
+        console.log(isFavorito);
+        if (isFavorito) {
+            console.log("borrando");
+            actions.borrarTiendaFavorita(id)
         }
+        if (isFavorito === undefined) {
+            actions.añadirTiendaFavorita(id)
+            
+        }
+    }
 
     return (
         <div className="grid-container">
@@ -37,7 +40,7 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
                     </a>
                 </div>
                 <div className="star-tiendas d-flex justify-content-end me-2 mt-3">
-                    <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavoriteTienda}><i className={`fa-regular fa-star ${addStar ? "fas" : "far"}`}></i></a>
+                    <a href="#" className="btn btn-outline-warning ms-5" onClick={() => addFavoriteTienda(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
                 </div>
             </div>
         </div>

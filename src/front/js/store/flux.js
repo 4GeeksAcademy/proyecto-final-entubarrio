@@ -607,6 +607,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			añadirProductoFavorito: async (producto_id) => {
 				let token = localStorage.getItem("token")
+				console.log("funciona" + producto_id);
 				if (!token) {
 					console.error("Falta el token de autenticación");
 					return false;

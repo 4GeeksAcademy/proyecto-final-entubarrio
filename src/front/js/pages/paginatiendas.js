@@ -41,6 +41,7 @@ export const PaginaTiendas = () => {
                                 categoria_tienda={tienda.categoria_tienda}
                                 direccion_tienda={tienda.direccion_tienda}
                                 url_imagen_tienda={tienda.url_imagen_tienda}
+                                isFavorito={tienda.isFavorito}
                             />
                         </div>
                     );
