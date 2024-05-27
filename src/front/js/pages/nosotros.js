@@ -37,7 +37,7 @@ export const Nosotros = () => {
 
             <a href="/createuser"><h4>¡Regístrate ahora!</h4></a>
 
-            <p><h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6></p>
+            <h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6>
             <a className="navbar-brand" href="/">
                         <img src={Logo} alt="Logo" className="logo-nos" />
                     </a>
