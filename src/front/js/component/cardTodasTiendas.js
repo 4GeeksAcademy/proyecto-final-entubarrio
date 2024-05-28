@@ -6,6 +6,9 @@ import Swal from "sweetalert2";
 export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tienda, id, categoria_tienda, direccion_tienda, isFavorito}) => {
     const { store, actions } = useContext(Context);
 
+    let token = localStorage.getItem("token");
+    let tipo_usuario = localStorage.getItem("tipo_usuario");
+
     function addFavoriteTienda(id) {
         // const producto_id = id
         console.log(isFavorito);
@@ -54,7 +57,7 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
                     </a>
                 </div>
                 <div className="star-tiendas d-flex justify-content-start me-2 mt-3">
-                    <a href="#" className="btn btn-outline-warning ms-2" onClick={() => addFavoriteTienda(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
+                    {tipo_usuario === "particular" && token ? <a href="#" className="btn btn-outline-warning ms-2" onClick={() => addFavoriteTienda(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a> : null}
                 </div>
             </div>
         </div>

@@ -93,7 +93,6 @@ export const InicioSesion = () => {
                             <div className="mb-4">
                                 <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
                                 <input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }} />
-                                <div className="form-text">¿Olvidaste tu contraseña?</div>
                             </div>
                             <button type="submit" className="boton mb-4">Iniciar Sesión</button>
                             <br />

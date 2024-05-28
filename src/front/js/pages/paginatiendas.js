@@ -31,7 +31,7 @@ export const PaginaTiendas = () => {
             <div className="cards row justify-content-center">
                 {filteredTiendas.map((tienda) => {
                     return (
-                        <div className="bg-body-secondary text col-md-3 col-sw-6 mb-4 d-flex justify-content-center custom-col"
+                        <div className="text col-md-3 col-sw-6 mb-4 d-flex justify-content-center custom-col"
                             key={tienda.id}>
                             <TodasTiendas
                                 tienda={tienda}
