@@ -64,6 +64,7 @@ export const Vendedor = () => {
         <>
             <div className="text-center mt-5 vendedor">
                 <h2>{store.tienda?.nombre_tienda}</h2>
+                <h5>{store.tienda?.descripcion_tienda}</h5>
                 <img src={store.tienda?.url_imagen_tienda} className="imagen-vendedor img-fluid w-150" alt="Foto Home" />
                 <div>
                     <button type="button" className="btn btn-success m-2" onClick={()=>{
