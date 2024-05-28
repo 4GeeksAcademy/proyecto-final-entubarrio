@@ -111,7 +111,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (data) {
 						console.log(data);
 						navigate("/login")
-						return true;
+						return data.msg;
 					} else {
 						console.log(data);
 						return false

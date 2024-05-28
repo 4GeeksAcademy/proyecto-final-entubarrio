@@ -56,18 +56,25 @@ export const CreateUser = () => {
 		if (tipoUsuario === "vendedor" || "particular") {
 			// Registro de usuario individual
 			isCreated = await actions.createUser(email, password, tipoUsuario, navigate);
-		} else {
-			// Registro de empresa
+			if (isCreated){
 			Swal.fire({
-				title: 'Error!',
-				text: "Error al crear el usuario",
-				icon: 'error',
-				confirmButtonText: 'OK'
-			})
-			return null;
-		}
-			
+				icon: "success",
+				title: isCreated,
+				showConfirmButton: false,
+				timer: 1500
+			  });
+			} else {
+				// Registro de empresa
+				Swal.fire({
+					title: 'Error!',
+					text: response.msg,
+					icon: 'error',
+					confirmButtonText: 'OK'
+				})
+				return null;
+			}	
 	}
+}
 
 	return (
 		<div className="inicio-sesion d-flex justify-content-center">
