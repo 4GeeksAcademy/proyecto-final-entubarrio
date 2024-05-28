@@ -30,4 +30,86 @@
     background-color: #f8f9fa;
 }
 
+.navbar-container {
+    height: 6em;
+    background-color: #f8f9fa;
+}
+
+.nav-link {
+    color: black;
+}
+
+.logo-nav {
+    width: 100px;  
+    height: auto;
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+.logo-letra {
+    width: 200px;  
+    height: auto;  
+}
+
+.titulo-navbar {
+    justify-self: center; 
+}
+
+.containerletra {
+    background-color: #f8f9fa;
+}
+
+.navbar-container {
+    height: 6em;
+    background-color: #f8f9fa;
+}
+
+.nav-link {
+    color: black;
+}
+
+.logo-nav {
+    width: 100px;  
+    height: auto;
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+.logo-letra {
+    width: 200px;  
+    height: auto;  
+}
+
+.titulo-navbar {
+    justify-self: center; 
+}
+
+.containerletra {
+    background-color: #f8f9fa;
+}
+
+/* Asegúrate de que los elementos del navbar se alineen correctamente */
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.navbar-collapse {
+    justify-content: flex-end; /* Alinea el menú a la derecha */
+}
+
+/* Para dispositivos pequeños, aseguramos que el menú se alinee a la derecha */
+@media (max-width: 767.98px) {
+    .navbar-nav {
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .navbar-toggler {
+        margin-right: 1rem; /* Asegura que el botón esté alineado a la derecha con un pequeño margen */
+    }
+}
 
