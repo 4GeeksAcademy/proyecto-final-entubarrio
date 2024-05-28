@@ -1,0 +1,7 @@
+.info-tarjeta {
+    background-color: #fff;
+    border-radius: 10px; /* Bordes redondeados más pronunciados */
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    box-sizing: content-box;
+}
