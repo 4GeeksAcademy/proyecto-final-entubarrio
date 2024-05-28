@@ -37,7 +37,7 @@ export const Navbar = () => {
                     >
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto">
                             <li className="nav-item border-end">
                                 <a className="nav-link active" aria-current="page" href="/">Home</a>

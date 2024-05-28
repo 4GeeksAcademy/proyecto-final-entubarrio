@@ -52,7 +52,7 @@ export const Tienda = () => {
                     <CategoriasProductos onCategoriaChange={handleCategoriaChange} id={params.id} />
                 </div>
             </div>
-            <div className="categorias-home-tienda grid-container">
+            <div className="grid-container-tienda">
                 {productosFiltrados.map((producto) => {
                     return (
                         <TodosProductos 
