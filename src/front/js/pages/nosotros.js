@@ -16,8 +16,9 @@ export const Nosotros = () => {
             <p>¿Cansado de las grandes superficies y de la impersonalidad de las compras online? 
                 <br></br>En tu barrio queremos acercarte a los comercios de tu barrio, esos pequeños negocios llenos de encanto y
                 <br></br>productos únicos que hacen de nuestra comunidad un lugar especial.</p>
-
-            <h2>¿Qué te ofrece En tu barrio?</h2>
+                <br></br>
+                <br></br>
+            <h3>¿Qué te ofrece En tu barrio?</h3>
             <div className="lista-usuarios container px-5">
             <ul className="Lista-propuestas" style={{ textAlign: 'left' }}>
                 <li><strong>Un centro comercial virtual para tu barrio: </strong>
@@ -30,14 +31,18 @@ export const Nosotros = () => {
                 <li><strong>Precios competitivos: </strong>Compara precios y encuentra las mejores ofertas en productos de tus tiendas favoritas.</li>
             </ul>
             </div>
-            <h2>¿Eres un pequeño comerciante?</h2>
+            <br></br>
+            <br></br>
+            <h3>¿Eres un pequeño comerciante?</h3>
 
             <p>Únete a En tu barrio y da a conocer tu negocio a miles de clientes potenciales. <br></br>
             Crea tu perfil online de forma gratuita y empieza a vender tus productos desde hoy mismo.</p>
-
+            
+            
             <a href="/createuser"><h4>¡Regístrate ahora!</h4></a>
 
-            <h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6>
+            <h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6><br></br>
+            
             <a className="navbar-brand" href="/">
                         <img src={Logo} alt="Logo" className="logo-nos" />
                     </a>
