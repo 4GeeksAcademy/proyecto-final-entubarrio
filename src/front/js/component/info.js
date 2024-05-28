@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 // hay que quitar de las lineas 22,30,35 el texto una ves que este la base de datos y la imagen tambien
 
-const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, precio, id, isFavorito }) => {
+const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, precio, id, isFavorito, nombre_tienda }) => {
   const { store, actions } = useContext(Context);
 
   function addFavoriteProduct(id) {
@@ -52,15 +52,16 @@ const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, prec
               <h2 className="card-title">{nombre_producto}</h2>
               <p className="card-text">
               </p>
-
-              <hr />
-              <h2 className="mt-4">{precio}€</h2>
-
               <hr />
               <p className="text-muted">
                 {descripcion_producto}
               </p>
-
+              <hr />
+              <h5 className="text-black">
+                {nombre_tienda}
+              </h5>
+              <hr />
+              <h2 className="mt-4">{precio}€</h2>
               <hr />
               <div className="star-tiendas d-flex justify-content-start me-2 mt-3">
                 <a href="#" className="btn btn-outline-warning ms-2" onClick={() => addFavoriteProduct(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
