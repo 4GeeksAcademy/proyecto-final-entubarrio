@@ -26,7 +26,17 @@ export const CreateUser = () => {
 			})
 			return null;
 		}
-		if ( email === "" || password === "") {
+		if ( tipoUsuario === "particular" && email === "" || password === "") {
+			// Verificar campos completos
+			Swal.fire({
+				title: 'Error!',
+				text: "Faltan datos para crear la cuenta",
+				icon: 'error',
+				confirmButtonText: 'OK'
+			})
+			return null;
+		}
+		if ( tipoUsuario === "empresa" && email === "" || password === "" || nombre_tienda === "") {
 			// Verificar campos completos
 			Swal.fire({
 				title: 'Error!',
