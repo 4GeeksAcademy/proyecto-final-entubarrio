@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { TodosProductos } from "../component/cardTodosProductos";
 import { TodasTiendas } from "../component/cardTodasTiendas";
+import "../../styles/paginafavoritos.css";
 
 export const Favoritos = () => {
 	
@@ -19,7 +20,7 @@ export const Favoritos = () => {
     // const productosFavoritos = store.productos.filter((producto)=> producto.id == store.productosFavoritos.producto_id);
     // console.log(productosFavoritos);
     return (
-        <div className="text-center mt-5 mb-5">
+        <div className="pagina-favoritos text-center">
             <h1>Mis Tiendas Favoritas</h1><br></br>
             <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
                 {store.tiendasFavoritas.map((tienda) => {

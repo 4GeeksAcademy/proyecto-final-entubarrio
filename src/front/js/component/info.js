@@ -11,6 +11,9 @@ import Swal from "sweetalert2";
 const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, precio, id, isFavorito, nombre_tienda }) => {
   const { store, actions } = useContext(Context);
 
+  let token = localStorage.getItem("token");
+  let tipo_usuario = localStorage.getItem("tipo_usuario");
+
   function addFavoriteProduct(id) {
     // const producto_id = id
     console.log(isFavorito);
@@ -37,7 +40,7 @@ const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, prec
     }
   }
   return (
-    <div className="d-flex justify-content-center">
+    <div className="info-tarjeta d-flex justify-content-center">
       <div className="card mb-3 col-8">
         <div className="row g-0 d-flex justify-content-around">
           <div className="col-md-4">
@@ -64,7 +67,7 @@ const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, prec
               <h2 className="mt-4">{precio}€</h2>
               <hr />
               <div className="star-tiendas d-flex justify-content-start me-2 mt-3">
-                <a href="#" className="btn btn-outline-warning ms-2" onClick={() => addFavoriteProduct(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a>
+              {tipo_usuario === "particular" && token ? <a href="#" className="btn btn-outline-warning ms-2" onClick={() => addFavoriteProduct(id)}><i className={`fa-regular fa-star ${isFavorito ? "fas" : "far"}`}></i></a> : null}
               </div>
             </div>
           </div>
