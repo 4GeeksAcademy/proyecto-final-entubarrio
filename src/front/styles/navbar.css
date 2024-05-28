@@ -88,7 +88,7 @@
     background-color: #f8f9fa;
 }
 
-/* Asegúrate de que los elementos del navbar se alineen correctamente */
+
 .navbar-nav {
     display: flex;
     flex-direction: column;
@@ -98,18 +98,30 @@
 }
 
 .navbar-collapse {
-    justify-content: flex-end; /* Alinea el menú a la derecha */
+    justify-content: flex-end; 
 }
 
-/* Para dispositivos pequeños, aseguramos que el menú se alinee a la derecha */
-@media (max-width: 767.98px) {
+/* //dispositivos pequeños// */
+
+@media (max-width: 800.98px) {
     .navbar-nav {
-        align-items: flex-end;
-        text-align: right;
+        align-items: flex-end; 
+        text-align: right; 
     }
 
     .navbar-toggler {
-        margin-right: 1rem; /* Asegura que el botón esté alineado a la derecha con un pequeño margen */
+        margin-right: 1rem; 
     }
+
+    .btn-info {
+    
+        margin-left: 90%; 
+        margin-right:1em ;
+    }
+        
+        
+   
 }
+
+
 

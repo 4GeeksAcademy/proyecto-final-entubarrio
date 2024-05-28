@@ -65,7 +65,7 @@ export const Navbar = () => {
                         {token ? (
                             <button
                                 type="button"
-                                className="btn btn-info ms-auto my-2 my-lg-0" 
+                                className="btn btn-info me-5 my-3 rounded text-white" 
                                 onClick={logout}
                             >
                                 <i className="fa-solid fa-right-from-bracket"></i> Cerrar sesión
