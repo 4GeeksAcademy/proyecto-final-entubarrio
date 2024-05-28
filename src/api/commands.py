@@ -55,7 +55,9 @@ def setup_commands(app):
                 Vendedor(email="verdurasisa@gmail.com", password="123"),
                 Vendedor(email="delahuertaatucasa@gmail.com", password="puerros"),
                 Vendedor(email="panaderiapepe@gmail.com", password="bollos"),
-                Vendedor(email="elhornodelaabuela@gmail.com", password="felisa")
+                Vendedor(email="elhornodelaabuela@gmail.com", password="felisa"),
+                Vendedor(email="elpanencantado@gmail.com", password="baguette"),
+
 
             ]
             db.session.add_all(vendedores)
@@ -67,6 +69,8 @@ def setup_commands(app):
                 Tienda(nombre_tienda="La huerta en casa", categoria_tienda="Frutería", direccion_tienda="Calle Badajoz 2, Barcelona", descripcion_tienda="Nuestros productos vienen directos de la huerta", url_imagen_tienda="https://www.sanferescomercio.com/wp-content/uploads/2019/01/LAHUERTAENCASA6.jpg", vendedor_id=vendedores[2].id),
                 Tienda(nombre_tienda="Panaderia Pepe", categoria_tienda="Panadería", direccion_tienda="Calle Ávila 24, Barcelona", descripcion_tienda="Los bollos de Pepe están de rechupete", url_imagen_tienda="https://thefoodtech.com/wp-content/uploads/2023/10/PANADERIA-PRINCIPAL-1-828x548.jpg", vendedor_id=vendedores[3].id),
                 Tienda(nombre_tienda="El horno de la abuela", categoria_tienda="Panadería", direccion_tienda="Calle Badajoz 17, Barcelona", descripcion_tienda="Los bollos de Pepe están de rechupete", url_imagen_tienda="https://abmauri.es/wp-content/uploads/2023/06/aumentar-ventas-panaderia.jpg", vendedor_id=vendedores[4].id),
+                Tienda(nombre_tienda="El pan encantado", categoria_tienda="Panadería", direccion_tienda="Calle Ávila 17, Barcelona", descripcion_tienda="El pan encantado te dejará anonadado", url_imagen_tienda="https://www.colbake.com/wp-content/uploads/2019/01/tradicion-maquinaria-panaderia.jpg", vendedor_id=vendedores[5].id),
+
             ]
             db.session.add_all(tiendas)
             db.session.commit()
@@ -89,6 +93,14 @@ def setup_commands(app):
                 Producto(nombre_producto="Pan", descripcion_producto="Baguette", precio="2", categoria_producto="Pan", url_imagen_producto="https://panamarbakery.com/public/Image/2021/3/16158178038498_baguette_rustica_medit_0222_Galeria.png", vendedor_id=vendedores[4].id, tienda_id=tiendas[4].id),
                 Producto(nombre_producto="Croissant", descripcion_producto="Como el de París", precio="2", categoria_producto="Dulces", url_imagen_producto="https://panamarbakery.com/public/Image/2022/6/165417222612309-13112_1-croissant-artesano-margcopia_Galeria.png", vendedor_id=vendedores[3].id, tienda_id=tiendas[3].id),
                 Producto(nombre_producto="Croissant", descripcion_producto="Como el de París", precio="1", categoria_producto="Dulces", url_imagen_producto="https://panamarbakery.com/public/Image/2022/6/165417222612309-13112_1-croissant-artesano-margcopia_Galeria.png", vendedor_id=vendedores[4].id, tienda_id=tiendas[4].id),
+                Producto(nombre_producto="Pan", descripcion_producto="Baguette", precio="3", categoria_producto="Pan", url_imagen_producto="https://panamarbakery.com/public/Image/2021/3/16158178038498_baguette_rustica_medit_0222_Galeria.png", vendedor_id=vendedores[5].id, tienda_id=tiendas[5].id),
+                Producto(nombre_producto="Croissant", descripcion_producto="Como el de París", precio="1", categoria_producto="Dulces", url_imagen_producto="https://panamarbakery.com/public/Image/2022/6/165417222612309-13112_1-croissant-artesano-margcopia_Galeria.png", vendedor_id=vendedores[5].id, tienda_id=tiendas[5].id),
+                Producto(nombre_producto="Hogaza de pan", descripcion_producto="Hogaza de 500 g", precio="2", categoria_producto="Pan", url_imagen_producto="https://panamarbakery.com/public/Image/2022/3/130470-hogazaclasica500gp.png", vendedor_id=vendedores[3].id, tienda_id=tiendas[3].id),
+                Producto(nombre_producto="Hogaza de pan", descripcion_producto="Hogaza de 500 g", precio="4", categoria_producto="Pan", url_imagen_producto="https://panamarbakery.com/public/Image/2022/3/130470-hogazaclasica500gp.png", vendedor_id=vendedores[4].id, tienda_id=tiendas[4].id),
+                Producto(nombre_producto="Hogaza de pan", descripcion_producto="Hogaza de 500 g", precio="3", categoria_producto="Pan", url_imagen_producto="https://panamarbakery.com/public/Image/2022/3/130470-hogazaclasica500gp.png", vendedor_id=vendedores[5].id, tienda_id=tiendas[5].id),
+                Producto(nombre_producto="Pan de centeno", descripcion_producto="Hogaza de 400 g", precio="4", categoria_producto="Pan", url_imagen_producto="https://masamadremurcia.com/wp-content/uploads/2021/01/PAN.jpg", vendedor_id=vendedores[3].id, tienda_id=tiendas[3].id),
+                Producto(nombre_producto="Pan de centeno", descripcion_producto="Hogaza de 400 g", precio="5", categoria_producto="Pan", url_imagen_producto="https://masamadremurcia.com/wp-content/uploads/2021/01/PAN.jpg", vendedor_id=vendedores[4].id, tienda_id=tiendas[4].id),
+                Producto(nombre_producto="Pan de centeno", descripcion_producto="Hogaza de 400 g", precio="3", categoria_producto="Pan", url_imagen_producto="https://masamadremurcia.com/wp-content/uploads/2021/01/PAN.jpg", vendedor_id=vendedores[5].id, tienda_id=tiendas[5].id),
 
             ]
             db.session.add_all(productos)
