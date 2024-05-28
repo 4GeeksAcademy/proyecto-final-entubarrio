@@ -98,3 +98,18 @@ justify-content: space-around;
     gap: 16px;
     padding: 16px;
 }
+
+
+.grid-container-tienda {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(1, 1fr); /* Por defecto, 1 columna */
+    justify-items: center;
+    align-items: start; /* Alinea los elementos al inicio verticalmente */
+}
+
+@media (min-width: 768px) {
+    .grid-container-tienda {
+        grid-template-columns: repeat(3, 1fr); /* A partir de 768px, 3 columnas */
+    }
+}
