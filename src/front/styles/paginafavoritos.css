@@ -1,5 +1,35 @@
 .pagina-favoritos {
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 50px;
+    margin: 50px auto; 
+    padding: 0 15px; 
 }
+
+.categorias-favoritos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.categorias-favoritos .card {
+    margin: 1rem; 
+    flex: 1 1 calc(33.333% - 2rem);
+}
+
+@media (max-width: 800.98px) {
+    .pagina-favoritos {
+        margin: 20px auto; 
+    }
+    
+    .categorias-favoritos .card {
+        flex: 1 1 100%; 
+        margin: 0.5rem 0; 
+    }
+}
+
+   .no-favoritos {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 1rem 0;
+        display: inline-block;
+    }
+
