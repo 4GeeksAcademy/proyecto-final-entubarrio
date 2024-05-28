@@ -35,7 +35,7 @@ export const Productos = () => {
                 <div className="cards row justify-content-center">
                     {filteredProductos.map((producto) => {
                         return (
-                            <div className="bg-body-secondary text col-md-3 col-sw-6 mb-4 d-flex justify-content-center custom-col"
+                            <div className="text col-md-3 col-sw-6 mb-4 d-flex justify-content-center custom-col"
                                 key={producto.id}>
                                 <TodosProductos
                                     producto={producto}
