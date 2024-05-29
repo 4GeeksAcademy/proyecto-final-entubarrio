@@ -88,11 +88,11 @@ export const CreateUser = () => {
 
 	return (
 		<div className="inicio-sesion d-flex justify-content-center">
-			<div className="LeftSide col-md-4">
-				<h1>Crea una cuenta gratuita en tu barrio</h1>
+			<div className="col-2 col-sm-4 mt-5 ms-4 me-2">
+				<h1>¡Únete a tu barrio!</h1>
 			</div>
-			<div className="col-md-4 m-4">
-				<div className="card p-5">
+			<div className="col-sm-4 col-md-6 col-ld-4 m-4">
+				<div className="card p-3">
 					<div className="card-body">
 						<form onSubmit={handleSubmit}>
 							<div className="mb-4">

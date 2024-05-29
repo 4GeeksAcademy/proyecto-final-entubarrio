@@ -39,7 +39,7 @@ export const Nosotros = () => {
             Crea tu perfil online de forma gratuita y empieza a vender tus productos desde hoy mismo.</p>
             
             
-            <a href="/createuser"><h4>¡Regístrate ahora!</h4></a>
+            <a href="/createuser" style={{color:"#00B8A9"}}><h4>¡Regístrate ahora!</h4></a>
 
             <h6>Juntos, podemos construir un futuro mejor para nuestros barrios.</h6><br></br>
             
