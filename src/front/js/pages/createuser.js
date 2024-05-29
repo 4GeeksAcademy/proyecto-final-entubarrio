@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 export const CreateUser = () => {
 
 	const [tipoUsuario, setTipoUsuario] = useState("");
-	const [nombre_tienda, setNombre_tienda] = useState("");
+	// const [nombre_tienda, setNombre_tienda] = useState("");
 
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
@@ -36,7 +36,7 @@ export const CreateUser = () => {
 			})
 			return null;
 		}
-		if ( tipoUsuario === "empresa" && email === "" || password === "" || nombre_tienda === "") {
+		if ( tipoUsuario === "empresa" && email === "" || password === "") {
 			// Verificar campos completos
 			Swal.fire({
 				title: 'Error!',
@@ -46,11 +46,11 @@ export const CreateUser = () => {
 			})
 			return null;
 		}
-		const data = {
-			email,
-			password,
-			...(tipoUsuario === "vendedor" && { nombre_tienda }),
-		};
+		// const data = {
+		// 	email,
+		// 	password,
+		// 	...(tipoUsuario === "vendedor" && { nombre_tienda }),
+		// };
 
 		// Check if user already exists before attempting registration
 		// const userExist = await actions.checkUserExists(email); // Assuming 'checkUserExists' exists
@@ -88,11 +88,11 @@ export const CreateUser = () => {
 
 	return (
 		<div className="inicio-sesion d-flex justify-content-center">
-			<div className="LeftSide col-md-4">
-				<h1>Crea una cuenta gratuita en tu barrio</h1>
+			<div className="col-2 col-sm-4 mt-5 ms-4 me-2">
+				<h1>¡Únete a tu barrio!</h1>
 			</div>
-			<div className="col-md-4 m-4">
-				<div className="card p-5">
+			<div className="col-sm-4 col-md-6 col-ld-4 m-4">
+				<div className="card p-3">
 					<div className="card-body">
 						<form onSubmit={handleSubmit}>
 							<div className="mb-4">
@@ -133,7 +133,7 @@ export const CreateUser = () => {
 								<label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
 								<input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }} />
 							</div>
-							{tipoUsuario === "vendedor" && (
+							{/* {tipoUsuario === "vendedor" && (
 								<div className="mb-3">
 									<label
 										htmlFor="nombreTienda"
@@ -151,7 +151,7 @@ export const CreateUser = () => {
 										}}
 									/>
 								</div>
-							)}
+							)} */}
 							<button type="submit" className="boton mb-1">Crear Cuenta</button>
 							<div className="form-text mb-4">Creando una cuenta aceptas nuestros terminos y condiciones de uso.</div>
 							<div className="form-text d-flex justify-content-center">¿Ya tienes una cuenta?</div>

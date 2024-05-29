@@ -5,14 +5,14 @@ import "../../styles/footer.css";
 export const Footer = () => (
 	<footer className="footer mt-auto py-3 text-center border-top">
 		
-		<ul className="nav justify-content-center ms-5">
-			<li className="nav-item border-end">
+		<ul className="nav justify-content-center">
+			<li className="nav-item border-end border-black">
 				<a className="nav-link active" aria-current="page" href="/">Home</a>
 			</li>
-			<li className="nav-item border-end">
+			<li className="nav-item border-end border-black">
 				<a className="nav-link" href="/nosotros">Nosotros</a>
 			</li>
-			<li className="nav-item border-end">
+			<li className="nav-item border-end border-black">
 				<a className="nav-link" href="/tiendas">Tiendas</a>
 			</li>
 			<li className="nav-item">

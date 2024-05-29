@@ -80,7 +80,8 @@ export const Home = () => {
     };
 
     return (
-        <div className="home text-center mt-0">
+        <div className="home">
+        <div className="text-center mt-0">
             <div className="carrusel-home mb-3">
                 <CarruselHome />
             </div>
@@ -130,6 +131,7 @@ export const Home = () => {
                     ))}
                 </Carousel>
             </div>
+        </div>
         </div>
     );
 };

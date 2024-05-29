@@ -104,7 +104,7 @@ const CompararProductos = () => {
         </div>
       </div>
       <div className='d-flex justify-content-center mb-4'>
-        <button className='btn btn-success' onClick={handleComparar}>Comparar</button>
+        <button className='btn btn-success' style={{backgroundColor:"#00B8A9"}} onClick={handleComparar}>Comparar</button>
       </div>
     </div>
   );
