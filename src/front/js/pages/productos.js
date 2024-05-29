@@ -28,14 +28,15 @@ export const Productos = () => {
 
     return (
         <>
+            <div className="container todos-productos" style={{backgroundColor:"#def4f5"}}>
+
             <CompararProductos />
-            <div className="todos-productos">
                 
                 <CategoriasTodosProductos onCategoriaChange={handleCategoriaChange} />
                 <div className="cards row justify-content-center">
                     {filteredProductos.map((producto) => {
                         return (
-                            <div className="text col-md-3 col-sw-6 mb-4 d-flex justify-content-center custom-col"
+                            <div className="text col-8 col-md-6 col-lg-3 mb-4 d-flex justify-content-center custom-col"
                                 key={producto.id}>
                                 <TodosProductos
                                     producto={producto}

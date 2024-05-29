@@ -29,7 +29,7 @@ export const Vendedor = () => {
                 title: "Producto creado",
                 showConfirmButton: false,
                 timer: 2000
-              });
+            });
         } else {
             // Manejo de errores, como mostrar un mensaje al usuario
             Swal.fire({
@@ -53,24 +53,24 @@ export const Vendedor = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-		actions.getTiendaVendedor(token)
+        actions.getTiendaVendedor(token)
         actions.getAllVendedores()
         actions.getProductosVendedor(token)
-	}, [])
+    }, [])
 
 
     return (
         <>
-            <div className="text-center mt-5 vendedor">
+            <div className="container text-center pt-5 vendedor" style={{ backgroundColor: "#def4f5" }}>
                 <h2>{store.tienda?.nombre_tienda}</h2>
                 <h5>{store.tienda?.descripcion_tienda}</h5>
                 <img src={store.tienda?.url_imagen_tienda} className="imagen-vendedor img-fluid w-150" alt="Foto Home" />
                 <div>
-                    <button type="button" className="btn btn-success m-2" onClick={()=>{
+                    <button type="button" className="btn btn-success m-2" onClick={() => {
                         actions.verTienda(store.tienda)
                         navigate("/editartienda")
-                            }}><i className="fa fa-pen p-1" /></button>
-                    <button type="button" className="btn btn-danger m-2"><i className="fa fa-trash p-1" onClick={()=>{
+                    }}><i className="fa fa-pen p-1" /></button>
+                    <button type="button" className="btn btn-danger m-2"><i className="fa fa-trash p-1" onClick={() => {
                         Swal.fire({
                             title: "¿Estás seguro?",
                             text: "¡Esta tienda promete!",
@@ -80,25 +80,25 @@ export const Vendedor = () => {
                             cancelButtonColor: "#d33",
                             confirmButtonText: "¡Si, elimínala!",
                             cancelButtonText: "¡No, espera!"
-                          }).then((result) => {
+                        }).then((result) => {
                             if (result.isConfirmed) {
                                 actions.deleteTienda(store.tienda?.nombre_tienda, token);
                                 console.log(store.vendedores.id);
                                 navigate("/creartienda")
                                 Swal.fire({
-                                title: "¡Eliminada!",
-                                text: "Ya no tienes esta tienda.",
-                                icon: "success"
-                              });
+                                    title: "¡Eliminada!",
+                                    text: "Ya no tienes esta tienda.",
+                                    icon: "success"
+                                });
                             }
-                          });
-                    }}/></button>
+                        });
+                    }} /></button>
                 </div>
-                <div className="vendedor row d-flex justify-content-center border-top mt-5">
-                    <div className="titulovendedor-añadir-productos col-4 mt-4 ms-4">
+                <div className="vendedor row d-flex justify-content-center border-top mt-5 border-botom">
+                    <div className="titulovendedor-añadir-productos col-6 mt-4 ms-4">
                         <h2>Añade un producto</h2>
                     </div>
-                    <div className="formulariovendedor col-4">
+                    <div className="formulariovendedor col-8 col-md-6 col-lg-8">
                         <form onSubmit={handleSubmit}>
                             <div className="">
                                 <label htmlFor="nombreProducto" className="form-label"></label>
@@ -133,21 +133,21 @@ export const Vendedor = () => {
                                     onChange={(e) => setCategoriaProducto(e.target.value)}
                                 />
                             </div>
-                            
+
                             <div className="">
                                 <label htmlFor="precio" className="form-label"></label>
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        id="precio"
-                                        placeholder="Precio en €"
-                                        value={precio}
-                                        onChange={(e) => setPrecio(e.target.value)}
-                                        step="1"
-                                    />
-                                </div>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    id="precio"
+                                    placeholder="Precio en €"
+                                    value={precio}
+                                    onChange={(e) => setPrecio(e.target.value)}
+                                    step="1"
+                                />
+                            </div>
 
-                            
+
                             <div className="mb-4">
                                 <label htmlFor="urlImagenProducto" className="form-label"></label>
                                 <input
@@ -159,20 +159,22 @@ export const Vendedor = () => {
                                     onChange={(e) => setUrlImagenProducto(e.target.value)}
                                 />
                             </div>
-                            <button type="submit" className="boton vendedor mb-4">Añadir Producto</button>
+                            <button type="submit" className="boton vendedor mb-4" style={{ height: "auto" }}>Añadir Producto</button>
 
                         </form>
                     </div>
-                    <h2>Tus Productos</h2>
-                    
+                    </div>
+                    <div>
+                    <h1 className="border-top mt-4">Tus Productos</h1>
+
                     <div className="categorias-home container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
-                        {store.productosTienda.map((producto) =>{
-                                return (
-                                    <EditarEliminarProductos nombre_producto = {producto?.nombre_producto} key={producto?.id} id ={producto?.id} url_imagen_producto={producto?.url_imagen_producto} descripcion_producto={producto?.descripcion_producto} precio={producto?.precio} tienda_id={producto?.tienda_id} nombre_tienda={producto?.nombre_tienda} producto={producto}/>
-                                )
-                            })}
-                        </div>
-                </div>
+                        {store.productosTienda.map((producto) => {
+                            return (
+                                <EditarEliminarProductos nombre_producto={producto?.nombre_producto} key={producto?.id} id={producto?.id} url_imagen_producto={producto?.url_imagen_producto} descripcion_producto={producto?.descripcion_producto} precio={producto?.precio} tienda_id={producto?.tienda_id} nombre_tienda={producto?.nombre_tienda} producto={producto} />
+                            )
+                        })}
+                    </div>
+                    </div>
             </div>
         </>
     );

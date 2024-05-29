@@ -20,7 +20,7 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
                 text: "Tienda eliminad de tus favoritos",
                 icon: 'error',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 1000
             });
         }
         if (isFavorito === undefined) {
@@ -30,7 +30,7 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
                 text: "Tienda añadida a tus favoritos",
                 icon: 'success',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 1000
             });
         }
     }

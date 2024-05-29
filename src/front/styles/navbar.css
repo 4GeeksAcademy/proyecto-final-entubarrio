@@ -32,11 +32,11 @@
 .title-container {
     background-color: #F8F3D4;
     width: 100%;
-    padding: 1rem 0;
+    padding: 0;
 }
 
 .logo-letra {
-    width: 200px;
+    width: 250px;
     height: auto;
 }
 
@@ -50,4 +50,7 @@
     position: absolute;
     right: 1rem;
     top: 0.75rem;
+}
+.nav-link {
+    color: black;
 }

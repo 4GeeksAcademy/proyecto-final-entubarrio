@@ -75,7 +75,7 @@ const CompararProductos = () => {
   };
 
   return (
-    <div className='Comparador mt-4'>
+    <div className='Comparador pt-4'>
       <div className='text-danger text-center m-2'>
         <h1>Comparador de precios</h1>
       </div>

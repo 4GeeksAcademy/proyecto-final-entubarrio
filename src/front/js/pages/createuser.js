@@ -87,13 +87,12 @@ export const CreateUser = () => {
 }
 
 	return (
-		<div className="inicio-sesion d-flex justify-content-center">
-			<div className="col-2 col-sm-4 mt-5 ms-4 me-2">
-				<h1>¡Únete a tu barrio!</h1>
-			</div>
-			<div className="col-sm-4 col-md-6 col-ld-4 m-4">
-				<div className="card p-3">
-					<div className="card-body">
+		<div className="container inicio-sesion d-flex justify-content-center pt-4 pb-4" style={{backgroundColor:"#def4f5"}}>
+            <div className="row justify-content-center">
+				<h1 className="text-center">¡Únete a tu barrio!</h1>
+				
+				<div className="card col-10 col-sm-4 col-md-6 col-lg-6 col-xl-5 mb-3 mt-2 p-3">
+                    <div className="card-body">
 						<form onSubmit={handleSubmit}>
 							<div className="mb-4">
 								<h1>Crea Tu Cuenta</h1>

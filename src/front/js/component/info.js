@@ -43,7 +43,7 @@ const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, prec
     <div className="d-flex justify-content-center">
       <div className="info-tarjeta card mb-3 col-8">
         <div className="row g-0 d-flex justify-content-around">
-          <div className="col-md-4">
+          <div className="col-8 col-md-6 col-lg-4">
             <img
               src={url_imagen_producto}
               className="img-fluid info-imagen"
