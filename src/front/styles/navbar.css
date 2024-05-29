@@ -1,6 +1,9 @@
-.box-nav{
+/* .box-nav{
     background-color: #F8F3D4;
-}
+} */
+/* .collapse{
+    display: flex;
+} */
 .navbar-container {
     height: 6em;
     background-color: #F8F3D4;
@@ -42,7 +45,10 @@
     height: auto;
 }
 
-@media (max-width: 1080px) {
+.navbar-expand-lg .navbar-collapse {
+    margin-left: 100px;
+}
+/* @media (max-width: 1080px) {
     .navbar-nav {
         flex-direction: column;
         align-items: flex-start;
@@ -69,4 +75,4 @@
     .navbar-toggler {
         display: none;
     }
-}
+} */
