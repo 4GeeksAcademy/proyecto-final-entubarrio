@@ -21,9 +21,9 @@ export const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg container pt-2" style={{ backgroundColor: "#F8F3D4" }}>
+            <nav className="navbar navbar-expand-lg container pt-3" style={{ backgroundColor: "#F8F3D4" }}>
                 <div className="container justify-content-between">
-                    <div className="logo-barrio">
+                    <div className="logo-barrio ms-2">
                         <a className="navbar-brand" href="/">
                             <img src={Logo} alt="Logo" className="logo-nav" />
                         </a>
@@ -34,28 +34,28 @@ export const Navbar = () => {
                     </button>
                     <div className="container d-flex justify-content-center">
                         <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                            <ul className="navbar-nav mb-2 mb-lg-0">
+                            <ul className="navbar-nav mb-2 mb-lg-0 align-items-start">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/"><h6>Home</h6></Link>
+                                    <Link className="nav-link" to="/"><h6><strong>Home</strong></h6></Link>
                                 </li>
 
                                 <li className="nav-item">
-                                    <Link className="nav-link border-start border-black" to="/nosotros"><h6>Nosotros</h6></Link>
+                                    <Link className="nav-link border-start border-black" to="/nosotros"><h6><strong>Nosotros</strong></h6></Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link border-start border-black" to="/paginatiendas"><h6>Tiendas</h6></Link>
+                                    <Link className="nav-link border-start border-black" to="/paginatiendas"><h6><strong>Tiendas</strong></h6></Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link border-start border-black" to="/productos"><h6>Productos</h6></Link>
+                                    <Link className="nav-link border-start border-black" to="/productos"><h6><strong>Productos</strong></h6></Link>
                                 </li>
                                 {tipo_usuario === "vendedor" && token && (
                                     <li className="nav-item border-start border-black">
-                                        <a className="nav-link" href="/vendedor"><h6>Mi Tienda</h6></a>
+                                        <a className="nav-link" href="/vendedor"><h6><strong>Mi Tienda</strong></h6></a>
                                     </li>
                                 )}
                                 {tipo_usuario === "particular" && token && (
                                     <li className="nav-item border-start border-black">
-                                        <a className="nav-link" href="/favoritos"><h6>Mis favoritos</h6></a>
+                                        <a className="nav-link" href="/favoritos"><h6><strong>Mis favoritos</strong></h6></a>
                                     </li>
                                 )}
 
