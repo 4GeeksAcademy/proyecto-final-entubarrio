@@ -56,14 +56,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 							tipo_usuario: tipo_usuario
 						})
 					})
-					console.log(response);
+					// console.log(response);
 					if (!response.ok) {
 						const errorData = await response.json()
 						console.log(errorData);
 						throw new Error(errorData.msg)
 					}
 					let data = await response.json()
-					console.log(data);
+					// console.log(data);
 					if (data) {
 						localStorage.setItem("token", data.access_token);
 						localStorage.setItem("tipo_usuario", tipo_usuario);
@@ -209,14 +209,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			crearNuevoProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token) => {
 				try {
-					console.log("Datos del producto a enviar:", {
-						nombre_producto: nombreProducto,
-						descripcion_producto: descripcionProducto,
-						categoria_producto: categoriaProducto,
-						precio: precio,
-						url_imagen_producto: urlImagenProducto
-					});
-
 					const response = await fetch(process.env.BACKEND_URL + "/api/producto", {
 						method: 'POST',
 						headers: {
@@ -365,16 +357,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			borrarProducto: async (id, token) => {
-				console.log("Funciona");
 				try {
-					// console.log("Datos del producto a borrar:", {
-					// 	nombre_producto: nombreProducto,
-					// 	descripcion_producto: descripcionProducto,
-					// 	categoria_producto: categoriaProducto,
-					// 	precio: precio,
-					// 	url_imagen_producto: urlImagenProducto
-					// });
-
 					const response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
 						method: 'DELETE',
 						headers: {
@@ -421,15 +404,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			editarProducto: async (nombreProducto, descripcionProducto, categoriaProducto, precio, urlImagenProducto, token, id) => {
-				try {
-					console.log("Datos del producto a editar:", {
-						nombre_producto: nombreProducto,
-						descripcion_producto: descripcionProducto,
-						categoria_producto: categoriaProducto,
-						precio: parseInt(precio),
-						url_imagen_producto: urlImagenProducto
-					});
-			
+				try {		
 					const response = await fetch(process.env.BACKEND_URL + "/api/producto/"+id, {
 						method: 'PUT',
 						headers: {
@@ -532,9 +507,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
             editarTienda: async (nombre_tienda, descripcion_tienda, categoria_tienda, direccion_tienda, url_imagen_tienda, token) => {
-                try {
-                    console.log("Datos del producto a editar:");
-           
+                try {           
                     const response = await fetch(process.env.BACKEND_URL + "/api/tienda/"+nombre_tienda, {
                         method: 'PUT',
                         headers: {
@@ -607,7 +580,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			añadirProductoFavorito: async (producto_id) => {
 				let token = localStorage.getItem("token")
-				console.log("funciona" + producto_id);
+				// console.log("funciona" + producto_id);
 				if (!token) {
 					console.error("Falta el token de autenticación");
 					return false;

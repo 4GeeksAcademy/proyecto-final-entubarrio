@@ -11,7 +11,7 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
 
     function addFavoriteProduct(id) {
         // const producto_id = id
-        console.log(isFavorito);
+        // console.log(isFavorito);
         if (isFavorito) {
             console.log("borrando");
             actions.borrarProductoFavorito(id)

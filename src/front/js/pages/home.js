@@ -78,7 +78,6 @@ export const Home = () => {
             </button>
         );
     };
-    console.log(store.productosFavoritos);
 
     return (
         <div className="home text-center mt-0">

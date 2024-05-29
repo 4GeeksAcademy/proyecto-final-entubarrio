@@ -57,8 +57,7 @@ export const Vendedor = () => {
         actions.getAllVendedores()
         actions.getProductosVendedor(token)
 	}, [])
-    console.log(store.tienda);
-    console.log(store.productosTienda);
+
 
     return (
         <>

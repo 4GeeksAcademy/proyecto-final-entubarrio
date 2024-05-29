@@ -12,14 +12,11 @@ export const Infoproducto = () => {
   const { store, actions } = useContext(Context);
 
   const params = useParams()
-  console.log(params.id);
   useEffect(() => {
     actions.getProducto(params.id)
-    console.log(store.producto);
     actions.getProductosTienda(params.tienda_id);
   }, []);
-  console.log(store.productosTienda);
-  console.log(params.tienda_id);
+
 
   return (
     <>
