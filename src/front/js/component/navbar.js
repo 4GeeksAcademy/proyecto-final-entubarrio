@@ -21,17 +21,20 @@ export const Navbar = () => {
 
     return (
         <>
-                <nav className="navbar navbar-expand-lg container" style={{backgroundColor:"#F8F3D4"}}>
-                    <div className="container">
+            <nav className="navbar navbar-expand-lg container pt-2" style={{ backgroundColor: "#F8F3D4" }}>
+                <div className="container justify-content-between">
+                    <div className="logo-barrio">
                         <a className="navbar-brand" href="/">
                             <img src={Logo} alt="Logo" className="logo-nav" />
                         </a>
+                    </div>
 
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="container d-flex justify-content-center">
+                        <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                            <ul className="navbar-nav mb-2 mb-lg-0">
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/"><h6>Home</h6></Link>
                                 </li>
@@ -57,28 +60,29 @@ export const Navbar = () => {
                                 )}
 
                             </ul>
-                            <form className="d-flex" role="search">
+                        </div>
+                        <div className="d-flex" role="search">
                             {token ? (
-                            <button
-                                type="button"
-                                className="btn btn-info me-5 my-3 rounded text-white" 
-                                onClick={logout}
-                            >
-                                <i className="fa-solid fa-right-from-bracket"></i> Cerrar sesión
-                            </button>
-                        ) : (
-                            <Link to="/login">
-                                <button className="Login btn btn-info my-3 text-white" type="submit"> 
-                                    <i className="fa-solid fa-circle-user fa-fade"></i> Iniciar sesión
+                                <button
+                                    type="button"
+                                    className="btn btn-info my-3 rounded text-white"
+                                    onClick={logout}
+                                >
+                                    <i className="fa-solid fa-right-from-bracket"></i> Cerrar sesión
                                 </button>
-                            </Link>
-                        )}
+                            ) : (
+                                <Link to="/login">
+                                    <button className="Login btn btn-info my-3 text-white" type="submit">
+                                        <i className="fa-solid fa-circle-user fa-fade"></i> Iniciar sesión
+                                    </button>
+                                </Link>
+                            )}
 
-                            </form>
                         </div>
                     </div>
-                </nav>
-                <div className="container d-flex justify-content-center title-container border-bottom"> 
+                </div>
+            </nav>
+            <div className="container d-flex justify-content-center title-container border-bottom">
                 <Link to="/"><img src={Letras} alt="Letras" className="logo-letra" /></Link>
             </div>
         </>
