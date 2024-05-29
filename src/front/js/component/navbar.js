@@ -53,12 +53,12 @@ export const Navbar = () => {
                             </li>
                             {tipo_usuario === "vendedor" && token && (
                                 <li className="nav-item border-start border-black">
-                                    <a className="nav-link" href="/vendedor">Mi Tienda</a>
+                                    <a className="nav-link" href="/vendedor"><h6>Mi Tienda</h6></a>
                                 </li>
                             )}
                             {tipo_usuario === "particular" && token && (
                                 <li className="nav-item border-start border-black">
-                                    <a className="nav-link" href="/favoritos">Mis favoritos</a>
+                                    <a className="nav-link" href="/favoritos"><h6>Mis favoritos</h6></a>
                                 </li>
                             )}
                         </ul>
