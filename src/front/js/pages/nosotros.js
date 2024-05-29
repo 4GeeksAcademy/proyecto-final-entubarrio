@@ -9,7 +9,7 @@ import "../../img/02woman.jpg"
 export const Nosotros = () => {
 
     return (
-        <div className="text-center pt-5 pb-5 fondo-amarillo2 ">
+        <div className="text-center pt-5 pb-5 fondo-amarillo2 container">
 
             <h1>Bienvenido</h1><br></br>
 
@@ -36,7 +36,7 @@ export const Nosotros = () => {
             <h2>¿Qué te ofrece En tu barrio?</h2>
             <br></br>
             <div className="lista-usuarios container text-start px-4 fondo-amarillo ">
-                <ul className="Lista-propuestas row row-cols-2 " type="none" >
+                <ul className=" Lista-propuestas row row-cols-2 " type="none" >
                     <div ><li className="text-danger-emphasis m-2"> <strong>Un centro comercial virtual para tu barrio: </strong>
                         Descubre una amplia variedad de productos y servicios a tu alcance,
                         desde tiendas de alimentación hasta librerías,
