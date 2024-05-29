@@ -4,24 +4,3 @@
     margin-top: 1em;
     margin-left: 1em;
 }
-.img-nosotros {
-    /* Estilos de la imagen del producto */
-    width: 100%; /* Ancho completo de la imagen */
-    max-width: 200px;
-    height: 200%; /* Altura fija de la imagen */
-    object-fit: cover; /* Cubrir toda el área disponible */
-    margin-left: 15%;
-    margin-right: 10%;
-    border-radius: 10px; /* Bordes redondeados para la imagen */
-  }
-
-  .img-nosotros2 {
-    /* Estilos de la imagen del producto */
-    width: 40%; /* Ancho completo de la imagen */
-    
-     /* Altura fija de la imagen */
-    object-fit: cover; /* Cubrir toda el área disponible */
-    margin-left: 30%;
-    margin-right: 10%;
-    border-radius: 10px; /* Bordes redondeados para la imagen */
-  }
