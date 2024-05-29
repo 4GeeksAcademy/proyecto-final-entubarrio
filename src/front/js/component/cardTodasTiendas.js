@@ -11,7 +11,7 @@ export const TodasTiendas = ({url_imagen_tienda, nombre_tienda, descripcion_tien
 
     function addFavoriteTienda(id) {
         // const producto_id = id
-        console.log(isFavorito);
+        // console.log(isFavorito);
         if (isFavorito) {
             console.log("borrando");
             actions.borrarTiendaFavorita(id)

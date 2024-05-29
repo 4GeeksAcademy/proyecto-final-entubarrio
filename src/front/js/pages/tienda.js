@@ -14,7 +14,7 @@ export const Tienda = () => {
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
 
     const params = useParams();
-    console.log(params.id);
+
 
     useEffect(() => {
         actions.getTienda(params.id);
@@ -34,8 +34,6 @@ export const Tienda = () => {
         setCategoriaSeleccionada(categoria);
     };
 
-    console.log(store.tienda);
-    console.log(store.productosTienda);
 
     return (
         <div>
