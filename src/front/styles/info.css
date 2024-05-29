@@ -5,3 +5,10 @@
     transition: all 0.3s ease;
     box-sizing: content-box;
 }
+.info-imagen{
+    margin-top: 30px;
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    border-radius: 5%;
+}

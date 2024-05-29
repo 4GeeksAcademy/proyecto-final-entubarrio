@@ -46,7 +46,7 @@ const Info = ({ url_imagen_producto, nombre_producto, descripcion_producto, prec
           <div className="col-md-4">
             <img
               src={url_imagen_producto}
-              className="img-fluid rounded-start"
+              className="img-fluid info-imagen"
               alt="descripción del producto de la foto"
             />
           </div>
