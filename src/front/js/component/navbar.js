@@ -21,7 +21,7 @@ export const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{backgroundColor:"#F8F3D4"}}>
+            <nav className="navbar navbar-expand-lg navbar-light container" style={{backgroundColor:"#F8F3D4"}}>
                 <div className="box-nav container">
                     <a className="navbar-brand" href="/">
                         <img src={Logo} alt="Logo" className="logo-nav" />
