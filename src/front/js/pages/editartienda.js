@@ -48,7 +48,7 @@ export const EditarTienda = () => {
 	}, [])
 
     return (
-        <div className="container-fluid form-tienda">
+        <div className="container pt-5 pb-5" style={{backgroundColor:"#def4f5"}}>
             <h1 className="title-crear-tienda">Edita tu tienda</h1>
             <form onSubmit={handleSubmit} >
                 <div className="mb-3">

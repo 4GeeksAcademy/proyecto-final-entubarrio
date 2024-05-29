@@ -40,7 +40,7 @@ const MapaTienda = ({ direccion }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <h3>Ubicación de la tienda</h3>
+      <h1 className='pt-4'>Ubicación de la tienda</h1>
       <div id="map" style={{ height: "70vh", width: "90%" }}></div>
     </div>
   );

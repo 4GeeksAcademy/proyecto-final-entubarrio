@@ -54,7 +54,7 @@ export const CrearTienda = () => {
     }
 
     return (
-        <div className="container-fluid form-tienda">
+        <div className="container pt-5 pb-5" style={{backgroundColor:"#def4f5"}}>
             <h1 className="title-crear-tienda">Crea tu tienda</h1>
             <form onSubmit={handleSubmit} >
                 {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}

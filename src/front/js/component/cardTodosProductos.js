@@ -20,7 +20,7 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                 text: "Producto eliminado de tus favoritos",
                 icon: 'error',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 1000
             });
         }
         if (isFavorito === undefined) {
@@ -30,7 +30,7 @@ export const TodosProductos = ({ url_imagen_producto, nombre_producto, descripci
                 text: "Producto añadido a tus favoritos",
                 icon: 'success',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 1000
             });
         }
     }

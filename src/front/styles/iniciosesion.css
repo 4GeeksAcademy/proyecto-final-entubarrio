@@ -1,6 +1,6 @@
-.LeftSide {
+/* .LeftSide {
     margin-top: 100px;
-}
+} */
 
 .boton {
     background-color: #00B8A9;
@@ -13,4 +13,7 @@
 }
 .inicio-sesion {
     width: auto;
+}
+.row {
+    margin-left: 0px;
 }

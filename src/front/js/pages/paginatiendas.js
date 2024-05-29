@@ -25,13 +25,13 @@ export const PaginaTiendas = () => {
     };
 
     return (
-        <div className="todas-tiendas">
-            <h2 className="tittles text-center mt-4 mb-4">Tiendas</h2>
+        <div className="container todas-tiendas" style={{backgroundColor:"#def4f5"}}>
+            <h2 className="tittles text-center pt-4 mb-4">Tiendas</h2>
             <CategoriasTiendas onCategoriaChange={handleCategoriaChange} />
             <div className="cards row justify-content-center">
                 {filteredTiendas.map((tienda) => {
                     return (
-                        <div className="text col-md-3 col-sw-6 mb-4 d-flex justify-content-center custom-col"
+                        <div className="text col-8 col-md-6 col-lg-4 mb-4 d-flex justify-content-center custom-col"
                             key={tienda.id}>
                             <TodasTiendas
                                 tienda={tienda}

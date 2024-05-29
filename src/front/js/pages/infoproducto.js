@@ -20,7 +20,7 @@ export const Infoproducto = () => {
 
   return (
     <>
-      <div className="container mt-3" >
+      <div className="container pt-3 " style={{backgroundColor:"#def4f5"}}>
         <div className="card-body">
           <div><Info nombre_producto={store.producto.nombre_producto} key={store.producto.id} url_imagen_producto={store.producto?.url_imagen_producto} descripcion_producto={store.producto.descripcion_producto} precio={store.producto.precio} id={store.producto.id} nombre_tienda={store.producto.nombre_tienda} isFavorito={store.producto.isFavorito} /></div>
         </div>

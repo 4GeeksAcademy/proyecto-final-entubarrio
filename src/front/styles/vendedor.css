@@ -9,7 +9,7 @@
 }
 
 .imagen-vendedor {
-    width: 60%; /* Ancho completo */
+    width: 70%; /* Ancho completo */
     max-width: 600px; /* Máximo ancho de 600px para que sea responsiva */
     height: auto; /* Altura automática */
     border-radius: 10px; /* Bordes redondeados */

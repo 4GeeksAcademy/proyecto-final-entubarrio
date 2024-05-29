@@ -15,9 +15,9 @@ export const Favoritos = () => {
     }, []);
 
     return (
-        <div className="pagina-favoritos text-center">
+        <div className="pagina-favoritos text-center container pt-5" style={{backgroundColor:"#def4f5"}}>
             <h1>Mis Tiendas Favoritas</h1><br></br>
-            <div className="categorias-favoritos container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
+            <div className="categorias-favoritos container-fluid d-flex pb-5" style={{ overflowX: "scroll" }}>
                 {store.tiendasFavoritas.length > 0 ? (
                     store.tiendasFavoritas.map((tienda) => (
                         <TodasTiendas
@@ -37,7 +37,7 @@ export const Favoritos = () => {
                 )}
             </div>
 
-            <div className="text-center mt-5 mb-5">
+            <div className="text-center pt-5 mb-5">
                 <h1>Mis Productos Favoritos</h1><br></br>
                 <div className="categorias-favoritos container-fluid d-flex mb-5" style={{ overflowX: "scroll" }}>
                     {store.productosFavoritos.length > 0 ? (

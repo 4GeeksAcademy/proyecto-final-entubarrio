@@ -1,13 +1,11 @@
-.box-nav{
-    background-color: #F8F3D4;
-}
+
 .navbar-container {
     height: 6em;
     background-color: #F8F3D4;
 }
 
 .logo-nav {
-    width: 100px;
+    width: 120px;
     height: auto;
 }
 
@@ -34,39 +32,25 @@
 .title-container {
     background-color: #F8F3D4;
     width: 100%;
-    padding: 1rem 0;
+    padding: 0;
 }
 
 .logo-letra {
-    width: 200px;
+    width: 250px;
     height: auto;
 }
 
-@media (max-width: 1080px) {
-    .navbar-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-    }
-
-    .navbar-toggler {
-        display: none;
-        margin: 0 auto;
-    }
-
-    .collapse:not(.show) + .title-container {
-        display: none;
-    }
-
-    .login-btn {
-        position: absolute;
-        right: 1rem;
-        top: 0.75rem;
-    }
+.navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: none;
 }
-
-@media (min-width: 1081px) {
-    .navbar-toggler {
-        display: none;
-    }
+.login-btn {
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+}
+.nav-link {
+    color: black;
 }

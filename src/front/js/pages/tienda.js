@@ -36,8 +36,8 @@ export const Tienda = () => {
 
 
     return (
-        <div>
-            <div className="title-shop">
+        <div className="container" style={{backgroundColor:"#def4f5"}}>
+            <div className="title-shop" >
                 <div className="text-custom-tienda">
                     <TituloTienda />
                 </div>
@@ -50,9 +50,10 @@ export const Tienda = () => {
                     <CategoriasProductos onCategoriaChange={handleCategoriaChange} id={params.id} />
                 </div>
             </div>
-            <div className="grid-container-tienda">
+            <div className="cards row justify-content-center container">
                 {productosFiltrados.map((producto) => {
                     return (
+                        <div className="text col-8 col-md-6 col-lg-3 mb-4 d-flex justify-content-center custom-col">
                         <TodosProductos 
                             key={producto.id} 
                             id={producto.id} 
@@ -63,6 +64,7 @@ export const Tienda = () => {
                             tienda_id={producto.tienda_id} 
                             categoria_producto={producto.categoria_producto} // Añadimos la categoría del producto
                         />
+                        </div>
                     );
                 })}
             </div>
