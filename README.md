@@ -1,81 +1,122 @@
-# WebApp boilerplate with React JS and Flask API
+EN TU BARRIO - Proyecto final 4Geeks Full Stack Developer
+![Captura de Pantalla 2024-06-17 a las 10 24 57](https://github.com/superteclas/EN-TU-BARRIO--Proyecto-final-4Geeks-Full-Stack-Developer/assets/147168257/f31d0e9c-37c6-446a-9e61-9a3422ee7cdb)
 
-Build web applications using React.js for the front end and python/flask for your backend API.
+Este proyecto es una aplicación web desarrollada como parte del Bootcamp de Full Stack Developer en 4Geeks Academy. La aplicación tiene como objetivo conectar a los vecinos de un barrio, permitiendo compartir información y eventos locales.
+Tecnologías Utilizadas
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+    Frontend: React, HTML, CSS, JavaScript
+    Backend: Python, Flask, SQLAlchemy
+    Base de Datos: PostgreSQL
+    Otros: Docker, Git, Webpack
 
-### 1) Installation:
+Instalación
+Backend
 
-> If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
+    Clona el repositorio:
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
+    bash
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
+git clone https://github.com/superteclas/EN-TU-BARRIO--Proyecto-final-4Geeks-Full-Stack-Developer.git
+cd EN-TU-BARRIO--Proyecto-final-4Geeks-Full-Stack-Developer
 
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
+Instala los paquetes de Python:
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
+bash
 
-> Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
+pipenv install
 
-### Undo a migration
+Crea un archivo .env basado en el archivo .env.example y configura tu base de datos:
 
-You are also able to undo a migration by running
+bash
 
-```sh
-$ pipenv run downgrade
-```
+cp .env.example .env
 
-### Backend Populate Table Users
+Realiza las migraciones de la base de datos:
 
-To insert test users in the database execute the following command:
+bash
 
-```sh
-$ flask insert-test-users 5
-```
+pipenv run migrate
+pipenv run upgrade
 
-And you will see the following message:
+Llena la base de datos con datos de ejemplo:
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
+bash
 
-### **Important note for the database and the data inside it**
+pipenv run flask fill-db-with-example-data
 
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
+Ejecuta la aplicación:
 
-### Front-End Manual Installation:
+bash
 
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
+    pipenv run start
 
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
+Frontend
 
-## Publish your website!
+    Instala las dependencias de Node.js:
 
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
+    bash
 
-### Contributors
+npm install
 
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
+Instala los paquetes adicionales:
 
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+bash
+
+npm install @googlemaps/js-api-loader
+npm install sweetalert2
+npm install react-multi-carousel
+npm install react-icons
+
+Configura la clave de la API de Google Maps en el archivo .env:
+
+env
+
+REACT_APP_GOOGLE_MAPS_API_KEY=tu_clave_API
+
+IMPORTANTE: La primera vez que pongas la clave en el archivo .env, reinicia el codespace para que surta efecto.
+
+Inicia el servidor de desarrollo de Webpack:
+
+bash
+
+    npm run start
+
+Mapa - Instrucciones
+
+    Instalar el paquete:
+
+    bash
+
+npm install @googlemaps/js-api-loader
+
+Poner la clave en el archivo .env para protegerla y poder ver el mapa:
+
+env
+
+    REACT_APP_GOOGLE_MAPS_API_KEY=tu_clave_API
+
+    IMPORTANTE: La primera vez que pongas la clave en el archivo .env, reinicia el codespace para que surta efecto.
+
+Demostración
+
+Para ver cómo funciona la aplicación, visita el siguiente enlace de YouTube:
+Ver en YouTube
+Contribución
+
+Las contribuciones son bienvenidas. Por favor, sigue estos pasos:
+
+    Haz un fork del proyecto.
+    Crea una nueva rama (git checkout -b feature/nueva-funcionalidad).
+    Realiza los cambios y haz un commit (git commit -m 'Añadir nueva funcionalidad').
+    Sube los cambios (git push origin feature/nueva-funcionalidad).
+    Abre una solicitud de extracción.
+
+Licencia
+
+Este proyecto está bajo la licencia MIT. Para más detalles, consulta el archivo LICENSE.
+Contributors
+
+Este proyecto fue desarrollado por Jonay Bolaños, David Padilla, Adrian Torres, Juan Plasencia y Álvaro Ponce como parte del Bootcamp de 4Geeks Academy. Este template fue construido como parte del Coding Bootcamp por Alejandro Sanchez y muchos otros contribuyentes. Para más información sobre nuestros cursos de Full Stack Developer y Data Science.
+Contacto
+
+ Si tienes alguna pregunta o sugerencia, no dudes en contactarnos.
