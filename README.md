@@ -7,6 +7,9 @@
 
 Este proyecto es una aplicación web desarrollada como parte del Bootcamp de Full Stack Developer en 4Geeks Academy. La aplicación tiene como objetivo conectar a los vecinos de un barrio, permitiendo compartir información y eventos locales.
 
+![Captura de Pantalla 2024-06-17 a las 10 24 57](https://github.com/superteclas/EN-TU-BARRIO--Proyecto-final-4Geeks-Full-Stack-Developer/assets/147168257/0a87f16b-6681-47d5-9f41-4344be40bc6a)
+
+
 ## Demostración
 
 Para ver cómo funciona la aplicación, visita el siguiente enlace de YouTube:
