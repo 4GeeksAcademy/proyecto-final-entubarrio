@@ -82,19 +82,6 @@ Para ver cómo funciona la aplicación, visita el siguiente enlace de YouTube:
    npm run start
    ```
 
-## Mapa - Instrucciones
-1. Instalar el paquete:
-   ```bash
-   npm install @googlemaps/js-api-loader
-   ```
-
-2. Poner la clave en el archivo `.env` para protegerla y poder ver el mapa:
-   ```env
-   REACT_APP_GOOGLE_MAPS_API_KEY=tu_clave
-   ```
-
-   **IMPORTANTE:** La primera vez que pongas la clave en el archivo `.env`, reinicia el codespace para que surta efecto.
-
 
 ## Contribución
 Las contribuciones son bienvenidas. Por favor, sigue estos pasos:
