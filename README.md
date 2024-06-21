@@ -1,81 +1,102 @@
-# WebApp boilerplate with React JS and Flask API
 
-Build web applications using React.js for the front end and python/flask for your backend API.
+# EN TU BARRIO - Proyecto final 4Geeks Full Stack Developer
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+<p align="center">
+<img src="https://github.com/superteclas/EN-TU-BARRIO--Proyecto-final-4Geeks-Full-Stack-Developer/assets/147168257/82c25603-8aab-4430-a25e-3c9e93daddaf" alt="EN TU BARRIO Logo">
+</p>
 
-### 1) Installation:
+Este proyecto es una aplicación web desarrollada como parte del Bootcamp de Full Stack Developer en 4Geeks Academy. La aplicación tiene como objetivo conectar a los vecinos de un barrio, permitiendo compartir información y eventos locales.
 
-> If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
+![Captura de Pantalla 2024-06-17 a las 10 24 57](https://github.com/superteclas/EN-TU-BARRIO--Proyecto-final-4Geeks-Full-Stack-Developer/assets/147168257/0a87f16b-6681-47d5-9f41-4344be40bc6a)
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
+## Demostración
 
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
+Para ver cómo funciona la aplicación, visita el siguiente enlace de YouTube:
+[Ver en YouTube](https://www.youtube.com/watch?v=SrZRXFhTtzs)
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
+## Tecnologías Utilizadas
+- **Frontend**: React, HTML, CSS, JavaScript
+- **Backend**: Python, Flask, SQLAlchemy
+- **Base de Datos**: PostgreSQL
+- **Otros**: Docker, Git, Webpack
 
-> Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
+## Instalación
 
-### Undo a migration
+### Backend
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/superteclas/EN-TU-BARRIO--Proyecto-final-4Geeks-Full-Stack-Developer.git
+   cd EN-TU-BARRIO--Proyecto-final-4Geeks-Full-Stack-Developer
+   ```
 
-You are also able to undo a migration by running
+2. Instala los paquetes de Python:
+   ```bash
+   pipenv install
+   ```
 
-```sh
-$ pipenv run downgrade
-```
+3. Crea un archivo `.env` basado en el archivo `.env.example` y configura tu base de datos:
+   ```bash
+   cp .env.example .env
+   ```
 
-### Backend Populate Table Users
+4. Realiza las migraciones de la base de datos:
+   ```bash
+   pipenv run migrate
+   pipenv run upgrade
+   ```
 
-To insert test users in the database execute the following command:
+5. Llena la base de datos con datos de ejemplo:
+   ```bash
+   pipenv run flask fill-db-with-example-data
+   ```
 
-```sh
-$ flask insert-test-users 5
-```
+6. Ejecuta la aplicación:
+   ```bash
+   pipenv run start
+   ```
 
-And you will see the following message:
+### Frontend
+1. Instala las dependencias de Node.js:
+   ```bash
+   npm install
+   ```
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
+2. Instala los paquetes adicionales:
+   ```bash
+   npm install @googlemaps/js-api-loader
+   npm install sweetalert2
+   npm install react-multi-carousel
+   npm install react-icons
+   ```
 
-### **Important note for the database and the data inside it**
+3. Configura la clave de la API de Google Maps en el archivo `.env`:
+   ```env
+   REACT_APP_GOOGLE_MAPS_API_KEY=tu_clave
+   ```
 
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
+   **IMPORTANTE:** La primera vez que pongas la clave en el archivo `.env`, reinicia el codespace para que surta efecto.
 
-### Front-End Manual Installation:
+4. Inicia el servidor de desarrollo de Webpack:
+   ```bash
+   npm run start
+   ```
 
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
 
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
+## Contribución
+Las contribuciones son bienvenidas. Por favor, sigue estos pasos:
+1. Haz un fork del proyecto.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza los cambios y haz un commit (`git commit -m 'Añadir nueva funcionalidad'`).
+4. Sube los cambios (`git push origin feature/nueva-funcionalidad`).
+5. Abre una solicitud de extracción.
 
-## Publish your website!
+## Licencia
+Este proyecto está bajo la licencia MIT. Para más detalles, consulta el archivo LICENSE.
 
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
+## Contributors
 
-### Contributors
+Este proyecto fue desarrollado por Jonay Bolaños, David Padilla, Adrian Torres, Juan Plasencia y Álvaro Ponce como parte del Bootcamp de 4Geeks Academy. Este template fue construido como parte del Coding Bootcamp por Alejandro Sanchez y muchos otros contribuyentes. Para más información sobre cursos de Full Stack Developer y Data Science visita www.4geeksacademy.com
 
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
 
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+---
