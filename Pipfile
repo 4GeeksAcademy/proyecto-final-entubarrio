@@ -19,6 +19,7 @@ cloudinary = "*"
 flask-admin = "*"
 typing-extensions = "*"
 flask-jwt-extended = "*"
+importlib-metadata = "*"
 
 [requires]
 python_version = "3.12"
