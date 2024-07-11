@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../store/appContext'; 
-import "../../styles/tienda.css";
+import "../../styles/categoriaTiendas.css";
 
 const CategoriasTiendas = ({ onCategoriaChange }) => {
     const { store, actions } = useContext(Context);
