@@ -11,7 +11,7 @@ export const Nosotros = () => {
     return (
         <div className="nosotros-body text-center pt-5 pb-5 container" style={{backgroundColor:"#def4f5"}}>
 
-            <h1>Bienvenido</h1><br></br>
+            <h1>Bienvenid@</h1><br></br>
 
             <h3 className="text-danger-emphasis pb-3">¡En tu barrio te espera un mundo de posibilidades!</h3>
             <div className=" text-center  pt-3 pb-3  ">

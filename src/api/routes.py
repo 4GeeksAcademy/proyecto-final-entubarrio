@@ -222,6 +222,15 @@ def get_all_productos():
     }
     return jsonify(response_body), 200
 
+# @api.route('/productos', methods=['GET'])
+# def get_all_productos():
+#     try:
+#         query_results = Producto.query.all()
+#         return jsonify([producto.to_dict() for producto in query_results]), 200
+#     except Exception as e:
+#         print(f"Error: {e}")
+#         return jsonify({"error": "Error al obtener productos"}), 500
+
 @api.route('/producto/<int:producto_id>', methods=['GET'])
 def get_producto(producto_id):
 

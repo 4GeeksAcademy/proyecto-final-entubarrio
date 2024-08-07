@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 flask = "*"
-sqlalchemy = "==1.4.46"
+sqlalchemy = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 flask-swagger = "*"
@@ -20,6 +20,7 @@ flask-admin = "*"
 typing-extensions = "*"
 flask-jwt-extended = "*"
 importlib-metadata = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.12"
