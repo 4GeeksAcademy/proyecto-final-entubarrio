@@ -1,30 +1,62 @@
-.nosotros.body{
-    color: #def4f5;
+/* General container settings for Nosotros view */
+.nosotros-container {
+  background-color: #def4f5;
 }
-.logo-nos {
-    width: 100px;   
-    height: auto;
-    margin-top: 1em;
-    margin-left: 1em;
-}
-.img-nosotros {
-    /* Estilos de la imagen del producto */
-    width: 100%; /* Ancho completo de la imagen */
-    max-width: 200px;
-    height: 200%; /* Altura fija de la imagen */
-    object-fit: cover; /* Cubrir toda el área disponible */
-    margin-left: 15%;
-    margin-right: 10%;
-    border-radius: 10px; /* Bordes redondeados para la imagen */
-  }
 
-  .img-nosotros2 {
-    /* Estilos de la imagen del producto */
-    width: 40%; /* Ancho completo de la imagen */
-    
-     /* Altura fija de la imagen */
-    object-fit: cover; /* Cubrir toda el área disponible */
-    margin-left: 30%;
-    margin-right: 10%;
-    border-radius: 10px; /* Bordes redondeados para la imagen */
-  }
+/* Header styles specific to Nosotros view */
+.nosotros-header {
+  text-align: center;
+}
+
+.nosotros-subtitle {
+  color: #000000; /* Color específico para el texto en la vista Nosotros */
+}
+
+/* Main section styles */
+.nosotros-main-section {
+  padding: 2rem 0;
+}
+
+/* Estilos de la imagen */
+.nosotros-image {
+  max-width: 100%; /* Mantiene el ancho máximo al 100% del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 10px; /* Bordes redondeados para la imagen */
+  width: 35%; /* Aumenta el ancho de la imagen al 110% del contenedor */
+  /* Usa un valor de porcentaje mayor a 100% para aumentar la imagen */
+}
+
+/* Secondary section styles */
+.nosotros-secondary-section {
+  padding: 2rem 0;
+}
+
+.nosotros-secondary-image {
+  max-width: 100%;
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 10px;
+}
+
+/* Text styles specific to Nosotros view */
+.nosotros-text-danger-emphasis {
+  color: #000000; /* Color específico para el texto */
+}
+
+.nosotros-text {
+  margin-bottom: 1rem; /* Espaciado inferior uniforme para párrafos */
+}
+
+/* Footer styles */
+.nosotros-footer {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.nosotros-logo {
+  width: 100px;
+  height: auto;
+  margin: 1em auto;
+}
+
+
+
