@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -91,7 +93,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			createUser: async (email, password, tipo_usuario, navigate) => {
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/signup", {
+					// Paso 1: Registrar al usuario
+					let registerResponse = await fetch(process.env.BACKEND_URL + "/api/signup", {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
@@ -101,28 +104,79 @@ const getState = ({ getStore, getActions, setStore }) => {
 							password: password,
 							tipo_usuario: tipo_usuario
 						})
-					})
-					if (!response.ok) {
-						const errorData = await response.json()
-						console.log(errorData);
-						throw new Error(errorData.msg)
+					});
+			
+					// Verificar si la respuesta del registro fue exitosa
+					if (!registerResponse.ok) {
+						const errorData = await registerResponse.json();
+						throw new Error(errorData.msg);
 					}
-					let data = await response.json()
-					if (data) {
-						console.log(data);
-						navigate("/login")
-						return data.msg;
+			
+					// Obtener el mensaje de la respuesta del registro
+					const registerData = await registerResponse.json();
+					const registerMessage = registerData.msg;
+			
+					// Mostrar el mensaje de éxito del registro
+					Swal.fire({
+						icon: "success",
+						title: registerMessage,
+						showConfirmButton: false,
+						timer: 1700
+					});
+			
+					// Paso 2: Iniciar sesión automáticamente
+					let loginResponse = await fetch(process.env.BACKEND_URL + "/api/login", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							email: email,
+							password: password,
+							tipo_usuario: tipo_usuario
+						})
+					});
+			
+					// Verificar si la respuesta del inicio de sesión fue exitosa
+					if (!loginResponse.ok) {
+						const errorData = await loginResponse.json();
+						throw new Error(errorData.msg);
+					}
+			
+					// Procesar la respuesta del inicio de sesión
+					const loginData = await loginResponse.json();
+					if (loginData) {
+						localStorage.setItem("token", loginData.access_token);
+						localStorage.setItem("tipo_usuario", tipo_usuario);
+			
+						// Redirigir basado en el tipo de usuario
+						if (tipo_usuario === 'vendedor') {
+							// Si es vendedor y no tiene tiendas, redirigir a crear tienda
+							if (loginData.vendedor && !loginData.vendedor.tiendas) {
+								navigate("/creartienda");
+							} else {
+								navigate("/vendedor");
+							}
+						} else {
+							navigate("/");
+						}
+						return loginData.msg;
 					} else {
-						console.log(data);
-						return false
+						return false;
 					}
 				} catch (error) {
 					console.log(error.message);
+					// Mostrar un mensaje de error si ocurre una excepción
+					Swal.fire({
+						icon: "error",
+						title: "Error",
+						text: error.message,
+						confirmButtonText: 'OK'
+					});
 					return error.message;
 				}
-
-			},
-
+			},			
+			
 			logout: () => {
 				localStorage.removeItem("token")
 			},
