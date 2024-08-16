@@ -73,13 +73,12 @@ export const Navbar = () => {
                                                 <ul className="dropdown-menu">
                                                     <li><Link className="dropdown-item" to="/datos-usuario">Mis datos</Link></li>
                                                     <li><Link className="dropdown-item" to="/another-action">Reservas</Link></li>
-                                                    <li><Link className="dropdown-item" to="/something-else">Favoritos</Link></li>
+                                                    <li><Link className="dropdown-item" to="/favoritos">Favoritos</Link></li>
                                                     <li><hr className="dropdown-divider" /></li>
                                                     <li>
                                                         <button
                                                             className="dropdown-item"
-                                                            onClick={logout}
-                                                        >
+                                                            onClick={logout}>
                                                             Cerrar sesión
                                                         </button>
                                                     </li>
