@@ -64,35 +64,45 @@ export const Navbar = () => {
                         <div className="d-flex" role="search">
                             {token ? (
                                 <>
-                                    {tipo_usuario === "particular" && token ? (
-                                        <Link to="/">
-                                            <div className="btn-group my-3 me-1">
-                                                <button type="button" className="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i className="fa-solid fa-circle-user fa-fade"></i> Mi Perfil
-                                                </button>
-                                                <ul className="dropdown-menu">
-                                                    <li><Link className="dropdown-item" to="/datos-usuario">Mis datos</Link></li>
-                                                    <li><Link className="dropdown-item" to="/another-action">Reservas</Link></li>
-                                                    <li><Link className="dropdown-item" to="/favoritos">Favoritos</Link></li>
-                                                    <li><hr className="dropdown-divider" /></li>
-                                                    <li>
-                                                        <button
-                                                            className="dropdown-item"
-                                                            onClick={logout}>
-                                                            Cerrar sesión
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </Link>
-                                    ) : null}
-                                    <button
-                                        type="button"
-                                        className="btn btn-info my-3 rounded text-white"
-                                        onClick={logout}
-                                    >
-                                        <i className="fa-solid fa-right-from-bracket"></i> Cerrar sesión
-                                    </button>
+                                    <Link to="/">
+                                        <div className="btn-group my-3 me-1">
+                                            <button
+                                                type="button"
+                                                className="btn btn-info dropdown-toggle"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false"
+                                            >
+                                                <i className="fa-solid fa-circle-user fa-fade"></i> Mi Perfil
+                                            </button>
+                                            <ul className="dropdown-menu">
+                                                <li>
+                                                    <Link className="dropdown-item" to="/datos-usuario">Mis datos</Link>
+                                                </li>
+                                                <li>
+                                                    <Link className="dropdown-item" to="/another-action">Reservas</Link>
+                                                </li>
+                                                <li>
+                                                    <Link
+                                                        className="dropdown-item"
+                                                        to={tipo_usuario === "particular" ? "/favoritos" : "/vendedor"}
+                                                    >
+                                                        {tipo_usuario === "particular" ? "Favoritos" : "Mi tienda"}
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <hr className="dropdown-divider" />
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        className="dropdown-item"
+                                                        onClick={logout}
+                                                    >
+                                                        Cerrar sesión
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </Link>
                                 </>
                             ) : (
                                 <Link to="/login">
@@ -102,6 +112,7 @@ export const Navbar = () => {
                                 </Link>
                             )}
                         </div>
+
 
                     </div>
                 </div>
