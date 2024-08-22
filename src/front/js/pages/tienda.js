@@ -53,7 +53,7 @@ export const Tienda = () => {
             <div className="cards row justify-content-center container">
                 {productosFiltrados.map((producto) => {
                     return (
-                        <div className="text col-8 col-md-6 col-lg-3 mb-4 d-flex justify-content-center custom-col">
+                        <div key={producto.id} className="text col-8 col-md-6 col-lg-3 mb-4 d-flex justify-content-center custom-col">
                         <TodosProductos 
                             key={producto.id} 
                             id={producto.id} 

@@ -13,7 +13,7 @@
     margin-left: auto;
 }
 .btn-info {
-    --bs-btn-color: #000;
+    --bs-btn-color: #ffffff;
     --bs-btn-bg: #00B8A9;
     --bs-btn-border-color: #00B8A9;
     --bs-btn-hover-color: #000;
@@ -53,4 +53,7 @@
 }
 .nav-link {
     color: black;
+}
+.dropdown-menu[data-bs-popper] {
+    transform: translateX(-22%);
 }

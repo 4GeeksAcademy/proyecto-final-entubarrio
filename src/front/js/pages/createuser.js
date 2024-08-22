@@ -26,8 +26,7 @@ export const CreateUser = () => {
 			})
 			return null;
 		}
-		if ( tipoUsuario === "particular" && email === "" || password === "") {
-			// Verificar campos completos
+		if (email === "" || password === "") {
 			Swal.fire({
 				title: 'Error!',
 				text: "Faltan datos para crear la cuenta",
@@ -36,63 +35,25 @@ export const CreateUser = () => {
 			})
 			return null;
 		}
-		if ( tipoUsuario === "empresa" && email === "" || password === "") {
-			// Verificar campos completos
+		
+		let registerData = await actions.createUser(email, password, tipoUsuario, navigate);
+		if (!registerData) {
 			Swal.fire({
 				title: 'Error!',
-				text: "Faltan datos para crear la cuenta",
+				text: 'No se pudo crear la cuenta.',
 				icon: 'error',
 				confirmButtonText: 'OK'
 			})
-			return null;
 		}
-		// const data = {
-		// 	email,
-		// 	password,
-		// 	...(tipoUsuario === "vendedor" && { nombre_tienda }),
-		// };
-
-		// Check if user already exists before attempting registration
-		// const userExist = await actions.checkUserExists(email); // Assuming 'checkUserExists' exists
-
-		// if (email) {
-		//   // User already exists, display alert
-		//   alert("El usuario con este correo electrónico ya esta registrado.");
-		//   return null; // Prevent further processing if user already exists
-		// }
-
-		let isCreated;
-
-		if (tipoUsuario === "vendedor" || "particular") {
-			// Registro de usuario individual
-			isCreated = await actions.createUser(email, password, tipoUsuario, navigate);
-			if (isCreated){
-			Swal.fire({
-				icon: "success",
-				title: isCreated,
-				showConfirmButton: false,
-				timer: 1500
-			  });
-			} else {
-				// Registro de empresa
-				Swal.fire({
-					title: 'Error!',
-					text: response.msg,
-					icon: 'error',
-					confirmButtonText: 'OK'
-				})
-				return null;
-			}	
 	}
-}
 
 	return (
-		<div className="container inicio-sesion d-flex justify-content-center pt-4 pb-4" style={{backgroundColor:"#def4f5"}}>
-            <div className="row justify-content-center">
+		<div className="container inicio-sesion d-flex justify-content-center pt-4 pb-4" style={{ backgroundColor: "#def4f5" }}>
+			<div className="row justify-content-center">
 				<h1 className="text-center">¡Únete a tu barrio!</h1>
-				
+
 				<div className="card col-10 col-sm-4 col-md-6 col-lg-6 col-xl-5 mb-3 mt-2 p-3">
-                    <div className="card-body">
+					<div className="card-body">
 						<form onSubmit={handleSubmit}>
 							<div className="mb-4">
 								<h1>Crea Tu Cuenta</h1>
@@ -126,11 +87,11 @@ export const CreateUser = () => {
 							</div>
 							<div className="mb-3">
 								<label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-								<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@address.com" onChange={(event) => { setEmail(event.target.value) }} />
+								<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@address.com" autoComplete="username" onChange={(event) => { setEmail(event.target.value) }} />
 							</div>
 							<div className="mb-4">
 								<label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
-								<input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }} />
+								<input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" autoComplete="new-password"onChange={(event) => { setPassword(event.target.value) }} />
 							</div>
 							{/* {tipoUsuario === "vendedor" && (
 								<div className="mb-3">

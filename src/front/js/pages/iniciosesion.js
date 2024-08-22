@@ -87,18 +87,18 @@ export const InicioSesion = () => {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@address.com" onChange={(event) => { setEmail(event.target.value) }} />
+                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@address.com" autoComplete="username" onChange={(event) => { setEmail(event.target.value) }} />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
-                                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" onChange={(event) => { setPassword(event.target.value) }} />
+                                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="***********" autoComplete="current-password" onChange={(event) => { setPassword(event.target.value) }} />
                             </div>
                             <button type="submit" className="boton mb-4">Iniciar Sesión</button>
                             <br />
-                            <div className="form-text d-flex justify-content-center">¿No tienes cuenta? </div>
+                            <div className="form-text d-flex justify-content-center"><h5>¿No tienes cuenta?</h5></div>
                             <div className="form-text d-flex justify-content-center">
                                 <Link to="/createuser">
-                                    Crea una cuenta nueva
+                                    <h6>¡Únete a tu barrio!</h6>
                                 </Link>
                             </div>
                         </form>

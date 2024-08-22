@@ -73,7 +73,7 @@
 		]
 	},
 	"dependencies": {
-		"@googlemaps/js-api-loader": "^1.16.6",
+		"@googlemaps/js-api-loader": "^1.16.8",
 		"leaflet": "^1.9.4",
 		"prop-types": "^15.6.1",
 		"react": "^16.14.0",
@@ -83,6 +83,6 @@
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
 		"slick-carousel": "^1.8.1",
-		"sweetalert2": "^11.11.0"
+		"sweetalert2": "^11.12.2"
 	}
 }
