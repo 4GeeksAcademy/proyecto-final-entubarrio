@@ -54,3 +54,6 @@
 .nav-link {
     color: black;
 }
+.dropdown-menu[data-bs-popper] {
+    transform: translateX(-22%);
+}
